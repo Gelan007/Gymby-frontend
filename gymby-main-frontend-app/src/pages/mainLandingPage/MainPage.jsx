@@ -29,13 +29,15 @@ import facebook from '../../assets/images/LandingPage/footer/facebookBlack.svg'
 import telegram from '../../assets/images/LandingPage/footer/telegramBlack.svg'
 import instagram from '../../assets/images/LandingPage/footer/instagramBlack.svg'
 import twitter from '../../assets/images/LandingPage/footer/twitterBlack.svg'
+import NavbarContainer from "../../components/navbars/NavbarContainer";
+
 
 
 
 const MainPage = () => {
     return (
         <div>
-            <NavbarLanding/>
+            <NavbarContainer/>
             <section className={s.titular}>
                 <div className={s.titular__container}>
                     <div className={s.titular__topBlock + " " + s.topBlockTitular}>

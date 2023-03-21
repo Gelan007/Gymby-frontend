@@ -5,20 +5,7 @@ import IconUsa from "../UI/icons/IconUSA";
 import logo from '../../assets/images/LandingPage/general/logo_web.svg'
 import ButtonOrange from "../UI/buttons/ButtonOrange";
 
-const NavbarLanding = () => {
-    const [burgerMenuState, setBurgerMenuState] = useState(true);
-    const menuBody = useRef(null);
-
-    function toggleBurgerMenu() {
-        if(!burgerMenuState) {
-            menuBody.current.style.top = '-100%';
-            setBurgerMenuState(true);
-        } else {
-            menuBody.current.style.top = '0';
-            setBurgerMenuState(false);
-        }
-    }
-
+const NavbarLanding = ({toggleBurgerMenu, menuBody}) => {
     return (
         <header className={s.header}>
             <div className={s.header__container + " _container"}>
