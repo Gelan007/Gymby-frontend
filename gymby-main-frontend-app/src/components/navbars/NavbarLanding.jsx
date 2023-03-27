@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import s from './NavbarLanding.module.scss'
 import IconUkr from "../UI/icons/IconUKR";
 import IconUsa from "../UI/icons/IconUSA";
-import logo from '../../assets/images/LandingPage/general/logo_web.svg'
+import logo from '../../assets/images/general/logo_web.svg'
 import ButtonOrange from "../UI/buttons/ButtonOrange";
 
 const NavbarLanding = ({toggleBurgerMenu, menuBody}) => {

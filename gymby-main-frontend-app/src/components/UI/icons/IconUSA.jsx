@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Icons.module.scss'
-import usaIcon from '../../../assets/images/LandingPage/general/usa_icon.svg'
+import usaIcon from '../../../assets/images/general/usa_icon.svg'
 
 const IconUsa = () => {
     return (
