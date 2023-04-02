@@ -37,7 +37,7 @@ import NavbarContainer from "../../components/navbars/NavbarContainer";
 const MainPage = () => {
     return (
         <div>
-            <NavbarContainer/>
+            {/*<NavbarContainer/>*/}
             <section className={s.titular}>
                 <div className={s.titular__container}>
                     <div className={s.titular__topBlock + " " + s.topBlockTitular}>
@@ -87,7 +87,7 @@ const MainPage = () => {
                 </div>
             </section>
             <section className={s.story}>
-                <div className={s.story__container + " _container"}>
+                <div className={s.story__container + " _containerLanding"}>
                     <div className={s.story__mainBlock + " " + s.mainBlockStory}>
                         <h2 className={s.mainBlockStory__title}>Що таке Gymby?</h2>
                         <div className={s.mainBlockStory__description}>
@@ -151,7 +151,7 @@ const MainPage = () => {
                 </div>
             </section>
             <section className={s.way}>
-                <div className={s.way__container + " _container"}>
+                <div className={s.way__container + " _containerLanding"}>
                     <div className={s.way__blockText + " " + s.blockTextWay}>
                         <h2 className={s.blockTextWay__title}>Обери свій шлях</h2>
                         <div className={s.blockTextWay__text}>Програми</div>
@@ -260,7 +260,7 @@ const MainPage = () => {
             </section>
             <footer className={s.footer}>
                 <div className={s.footer__topBlock}>
-                    <div className={s.footer__container + " _container"}>
+                    <div className={s.footer__container + " _containerLanding"}>
                         <div className={s.footer__column}>
                             <div className={s.footer__body}>
                                 <div className={s.footer__logo}>

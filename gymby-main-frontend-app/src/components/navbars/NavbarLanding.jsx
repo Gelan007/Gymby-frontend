@@ -8,7 +8,7 @@ import ButtonOrange from "../UI/buttons/ButtonOrange";
 const NavbarLanding = ({toggleBurgerMenu, menuBody}) => {
     return (
         <header className={s.header}>
-            <div className={s.header__container + " _container"}>
+            <div className={s.header__container + " _containerLanding"}>
                 <a href="#" className={s.header__logo}>
                     <img src={logo} alt="logo"/>
                 </a>
@@ -22,14 +22,14 @@ const NavbarLanding = ({toggleBurgerMenu, menuBody}) => {
                     </ul>
                 </nav>
                 <div className={s.header__generalRightBlock}></div>
-                    <div className={s.header__iconsBody}>
-                        <IconUkr/>
-                        <IconUsa/>
-                    </div>
-                    <div className={s.header__buttonsBody}>
-                        <ButtonOrange>Вхід</ButtonOrange>
-                        <ButtonOrange>Реєстрація</ButtonOrange>
-                    </div>
+                <div className={s.header__iconsBody}>
+                    <IconUkr/>
+                    <IconUsa/>
+                </div>
+                <div className={s.header__buttonsBody}>
+                    <ButtonOrange>Вхід</ButtonOrange>
+                    <ButtonOrange>Реєстрація</ButtonOrange>
+                </div>
 
             </div>
         </header>

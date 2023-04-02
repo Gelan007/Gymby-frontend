@@ -1,15 +1,17 @@
 import React from 'react';
-import s from "./NavbarLanding.module.scss";
+import s from "./NavbarMain.module.scss";
 import logo from "../../assets/images/general/logo_web.svg";
 import IconUkr from "../UI/icons/IconUKR";
 import IconUsa from "../UI/icons/IconUSA";
 import userCabinetIcon from "../../assets/images/general/userCabinetIcon.svg";
+import {Link} from "react-router-dom";
+import {USER_ACCOUNT_PERSONAL_DATA_ROUTE} from "../../utils/routes/consts";
 
 
 const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
     return (
         <header className={s.header}>
-            <div className={s.header__container + " _container"}>
+            <div className={s.header__container + " _containerLanding"}>
                 <a href="#" className={s.header__logo}>
                     <img src={logo} alt="logo"/>
                 </a>
@@ -27,12 +29,14 @@ const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
                     <IconUkr/>
                     <IconUsa/>
                 </div>
-                <div className={s.header__buttonsBody}>
+                <Link to={USER_ACCOUNT_PERSONAL_DATA_ROUTE} className={s.header__iconCabinet}>
                     <img src={userCabinetIcon} alt="cabinet"/>
-                </div>
-
+                </Link>
             </div>
+            <div className={s.hrContainer}><hr className={s.hr}/></div>
+
         </header>
+
     );
 };
 

@@ -1,3 +1,202 @@
 /*Here are the general styles for each of the navbars*/
+.buttonOrange {
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #F5F5F5;
+  background: #FE5F55;
+  box-shadow: 0px 30px 20px -20px rgba(254, 95, 85, 0.5);
+  border-radius: 10px;
+  transition: 0.3s ease 0s;
+}
+.buttonOrange:hover {
+  background: #cc3d36;
+}
+
+.header {
+  padding: 20px 0 0 0;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  min-height: 111px;
+}
+.header__container .header__logo {
+  z-index: 2;
+}
+.header__container .header__menu {
+  margin: 0 164px 0 105px;
+}
+.header__container .menu .menu__list {
+  display: flex;
+  align-items: center;
+}
+.header__container .menu .menu__list > *:not(:last-child) {
+  margin-right: 15px;
+}
+.header__container .menu .menu__list .menu__link {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 137%;
+  color: #000000;
+}
+.header__container .menu .menu__list .menu__link:hover {
+  text-decoration: underline;
+}
+.header__container .header__iconsBody {
+  display: flex;
+  align-items: center;
+  margin-right: 22px;
+}
+.header__container .header__iconsBody > *:not(:last-child) {
+  margin-right: 8px;
+}
+.header__container .header__iconsBody .burgerMenu {
+  display: none;
+}
+.header__container .header__buttonsBody {
+  display: flex;
+  align-items: center;
+  flex: 0 1 300px;
+}
+.header__container .header__buttonsBody > *:not(:last-child) {
+  margin-right: 5px;
+}
+
+@media (max-width: 1200px) {
+  .header__container .header__menu {
+    margin: 0 120px 0 60px;
+  }
+}
+/*PC*/
+@media (max-width: 1087px) {
+  .header__container .header__buttonsBody > * {
+    height: 45px;
+    font-size: 16px;
+  }
+  .header__container .header__buttonsBody {
+    flex: 0 1 220px;
+  }
+  .header__container .header__menu {
+    margin: 0 95px 0 60px;
+  }
+}
+/*Laptop*/
+@media (max-width: 991.98px) {
+  .header__container .header__menu {
+    margin: 0;
+  }
+  .header__container .header__generalRightBlock {
+    flex: 1 1 auto;
+  }
+  .header__container .burgerMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 0 30px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+    margin: 0 0 0 15px;
+  }
+  .header__container .burgerMenu:after, .header__container .burgerMenu:before {
+    content: "";
+    height: 4px;
+    background-color: #000000;
+    border-radius: 5px;
+  }
+  .header__container .burgerMenu span {
+    height: 4px;
+    background-color: #000000;
+    border-radius: 5px;
+  }
+  .header__container .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    height: 150px;
+    background-color: #FE5F55;
+    transition: top 0.4s ease 0s;
+    overflow: auto;
+    z-index: 1;
+  }
+}
+@media (max-width: 900px) {
+  .header__container .menu {
+    padding-left: 130px;
+  }
+}
+/*Tablet*/
+@media (max-width: 767.98px) {
+  .header__container .header__logo {
+    flex: 0 0 130px;
+  }
+  .header__container .header__logo img {
+    max-width: 100%;
+  }
+  .header__container .header__buttonsBody {
+    flex-direction: column;
+    flex: 0 1 100px;
+  }
+  .header__container .header__buttonsBody > *:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  .header__container .menu {
+    height: 150px;
+    padding-left: 220px;
+  }
+  .header__container .menu .menu__list {
+    flex-wrap: wrap;
+  }
+  .header__container .menu .menu__list > * {
+    margin-right: 15px;
+  }
+}
+/*Mobile*/
+@media (max-width: 479.98px) {
+  .header__container .header__logo {
+    flex: 0 0 110px;
+  }
+  .header__container .burgerMenu {
+    margin-left: 2px;
+  }
+  .header__container .menu {
+    height: 160px;
+    padding-left: 200px;
+  }
+  .header__container .menu .menu__list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header__container .menu .menu__list > *:not(:last-child) {
+    margin: 0 0 12px 0;
+  }
+  .header__container .header__iconsBody {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 0px;
+  }
+  .header__container .header__iconsBody > *:not(:last-child) {
+    margin-bottom: 8px;
+  }
+  .header__container .header__buttonsBody {
+    flex: 0 1 70px;
+  }
+  .header__container .header__buttonsBody > * {
+    font-size: 13px;
+    height: 35px;
+  }
+}
 
 /*# sourceMappingURL=Navbar.module.css.map */
