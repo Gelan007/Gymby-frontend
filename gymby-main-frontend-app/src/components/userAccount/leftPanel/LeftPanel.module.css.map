@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"LeftPanel.module.css"}
+{"version":3,"sourceRoot":"","sources":["LeftPanel.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;;;AAEF;EACE;EACA;;;AAEF;EACE;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;;;AAGJ;EACE;EACA;;;AAEF;EACE","file":"LeftPanel.module.css"}

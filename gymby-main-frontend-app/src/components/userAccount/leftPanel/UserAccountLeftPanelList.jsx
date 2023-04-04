@@ -19,45 +19,48 @@ const UserAccountLeftPanelList = () => {
             <h5 className={s.title}>Особистий кабінет</h5>
             <nav className={s.navigation__container}>
                 <ul className={s.list}>
-                        <li className={s.item}>
-                            <div className={s.icon}><img src={userIcon} alt="userIcon"/></div>
-                            <NavLink to={USER_ACCOUNT_PERSONAL_DATA_ROUTE}  className={({ isActive, isPending }) =>
-                                isPending ? s.pending : isActive ? s.active : s.text
-                            }>
-                                Особисті дані
-                            </NavLink>
-                        </li>
-
-                    <NavLink to={USER_ACCOUNT_COACHING_ROUTE}>
-                        <li className={s.item}>
-                            <div className={s.icon}><img src={documentIcon} alt="documentIcon"/></div>
-                            <span className={s.text}>Тренерство</span>
-                        </li>
-                    </NavLink>
-                    <NavLink to={USER_ACCOUNT_FRIENDS_LIST_ROUTE}>
-                        <li className={s.item}>
-                            <div className={s.icon}><img src={usersThreeIcon} alt="usersThreeIcon"/></div>
-                            <span className={s.text}>Список друзів</span>
-                        </li>
-                    </NavLink>
-                    <NavLink to={USER_ACCOUNT_INSTRUCTION_ROUTE}>
-                        <li className={s.item}>
-                            <div className={s.icon}><img src={infoIcon} alt="infoIcon"/></div>
-                            <span className={s.text}>Інструкція</span>
-                        </li>
-                    </NavLink>
-                    <NavLink to={USER_ACCOUNT_SUBSCRIBES_ROUTE}>
-                        <li className={s.item}>
-                            <div className={s.icon}><img src={dollarIcon} alt="dollarIcon"/></div>
-                            <span className={s.text}>Управління підписками</span>
-                        </li>
-                    </NavLink>
-                    <NavLink to={USER_ACCOUNT_SEARCH_ROUTE}>
-                        <li className={s.item}>
-                            <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
-                            <span className={s.text}>Пошук людей</span>
-                        </li>
-                    </NavLink>
+                    <li className={s.item}>
+                        <div className={s.icon}><img src={userIcon} alt="userIcon"/></div>
+                        <NavLink to={USER_ACCOUNT_PERSONAL_DATA_ROUTE} className={({isActive, isPending}) =>
+                            isPending ? s.pending : isActive ? s.active : s.text}>
+                            Особисті дані
+                        </NavLink>
+                    </li>
+                    <li className={s.item}>
+                        <div className={s.icon}><img src={documentIcon} alt="documentIcon"/></div>
+                        <NavLink to={USER_ACCOUNT_COACHING_ROUTE} className={({isActive, isPending}) =>
+                            isPending ? s.pending : isActive ? s.active : s.text}>
+                            Тренерство
+                        </NavLink>
+                    </li>
+                    <li className={s.item}>
+                        <div className={s.icon}><img src={usersThreeIcon} alt="usersThreeIcon"/></div>
+                        <NavLink to={USER_ACCOUNT_FRIENDS_LIST_ROUTE} className={({isActive, isPending}) =>
+                            isPending ? s.pending : isActive ? s.active : s.text}>
+                            Список друзів
+                        </NavLink>
+                    </li>
+                    <li className={s.item}>
+                        <div className={s.icon}><img src={infoIcon} alt="infoIcon"/></div>
+                        <NavLink to={USER_ACCOUNT_INSTRUCTION_ROUTE} className={({isActive, isPending}) =>
+                            isPending ? s.pending : isActive ? s.active : s.text}>
+                            Інструкція
+                        </NavLink>
+                    </li>
+                    <li className={s.item}>
+                        <div className={s.icon}><img src={dollarIcon} alt="dollarIcon"/></div>
+                        <NavLink to={USER_ACCOUNT_SUBSCRIBES_ROUTE} className={({isActive, isPending}) =>
+                            isPending ? s.pending : isActive ? s.active : s.text}>
+                            Управління підписками
+                        </NavLink>
+                    </li>
+                    <li className={s.item}>
+                        <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
+                        <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
+                            isPending ? s.pending : isActive ? s.active : s.text}>
+                            Пошук людей
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </div>
