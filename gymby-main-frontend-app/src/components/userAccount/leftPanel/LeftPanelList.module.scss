@@ -1,3 +1,5 @@
+@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
+
 %textProperties {
   font-weight: 400;
   font-size: 18px;
@@ -45,4 +47,12 @@
 .active {
   @extend %textProperties;
   opacity: 1;
+  &:after {
+    content: "";
+    position: absolute;
+    right: -1px;
+    height: 40px;
+    width: 3px;
+    background-color: $gymbyRed;
+  }
 }

@@ -43,5 +43,13 @@
 .active {
   opacity: 1;
 }
+.active:after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  height: 40px;
+  width: 3px;
+  background-color: #FE5F55;
+}
 
 /*# sourceMappingURL=LeftPanelList.module.css.map */

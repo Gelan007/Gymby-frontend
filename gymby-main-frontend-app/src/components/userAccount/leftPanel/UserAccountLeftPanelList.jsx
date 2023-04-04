@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './LeftPanelList.module.scss'
 import userIcon from '../../../assets/images/userCabinet/leftPanel/user.svg'
 import documentIcon from '../../../assets/images/userCabinet/leftPanel/document.svg'
