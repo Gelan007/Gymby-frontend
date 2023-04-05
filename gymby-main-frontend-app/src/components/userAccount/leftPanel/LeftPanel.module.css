@@ -1,5 +1,5 @@
 .leftPanel__container {
-  max-width: 400px;
+  width: 400px;
   /*border-right: black 1px solid;*/
   padding: 30px 0 0 0;
   height: 100%;
@@ -41,7 +41,7 @@
 }
 
 .buttonExit__container {
-  margin: 40px 0 0 52px;
+  margin: 45px 0 0 52px;
 }
 
 /*# sourceMappingURL=LeftPanel.module.css.map */
