@@ -4,12 +4,13 @@
 .personalData__body {
   display: flex;
   flex-direction: column;
+  padding-left: 40px;
 }
 
 .avatarBlock {
   display: flex;
   align-items: center;
-  padding: 60px 0 0 40px;
+  padding: 60px 0 0 0;
 }
 .avatarBlock__image {
   margin-right: 20px;
@@ -49,7 +50,7 @@
 }
 
 .inputData {
-  padding: 50px 0 0 40px;
+  padding: 50px 0 0 0;
   display: flex;
   flex-direction: column;
 }

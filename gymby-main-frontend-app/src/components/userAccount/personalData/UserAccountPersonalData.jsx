@@ -4,6 +4,7 @@ import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
 import zaglushka from '../../../assets/images/userCabinet/personalData/Revan.jpg'
 import s from './PersonalData.module.scss'
 import InputGrey from "../../UI/inputs/InputGrey";
+import AddingCardPhotos from "../../general/addingCardPhotos/AddingCardPhotos";
 
 const UserAccountPersonalData = (props) => {
     return (
@@ -50,6 +51,7 @@ const UserAccountPersonalData = (props) => {
                         </div>
                     </div>
                 </div>
+                <AddingCardPhotos/>
             </div>
         </div>
     );

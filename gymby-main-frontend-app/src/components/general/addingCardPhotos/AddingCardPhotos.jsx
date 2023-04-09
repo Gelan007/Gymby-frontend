@@ -1,5 +1,7 @@
 import React from 'react';
-import s from './AddingCardPhotos.scss'
+import s from './AddingCardPhotos.module.scss'
+import PhotoCard from "./PhotoCard";
+import AddingCard from "./AddingCard";
 const AddingCardPhotos = () => {
     return (
         <div className={s.addingCardPhotos}>
@@ -11,6 +13,10 @@ const AddingCardPhotos = () => {
              будем, то тогда она просто автоматически замапиться в стор, и оно перересуется уже вместе с ней по идее. И
              все что нам надо, это будет проверить чтоб количество картинок не превышало максимальное количество.
              Я пока отложу этот блок, потому что не хочу потом переделывать со  слайсами из reduxToolkit.*/}
+
+            <PhotoCard/>
+            <PhotoCard/>
+            <AddingCard/>
         </div>
     );
 };
