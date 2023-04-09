@@ -2,6 +2,8 @@ import MainPage from "../../pages/mainLandingPage/MainPage";
 import {HOME_ROUTE, USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_SUBSCRIBES_ROUTE} from "./consts";
 import UserAccountPersonalData from "../../components/userAccount/personalData/UserAccountPersonalData";
 import UserAccountSubscriptions from "../../components/userAccount/subscriptions/UserAccountSubscriptions";
+import UserAccountPersonalDataContainer
+    from "../../components/userAccount/personalData/UserAccountPersonalDataContainer";
 
 export const publicRoutes = [
    /* {
@@ -17,7 +19,7 @@ export const publicRoutes = [
 export const authRoutes = [
     {
         path: USER_ACCOUNT_PERSONAL_DATA_ROUTE,
-        Component: <UserAccountPersonalData/>
+        Component: <UserAccountPersonalDataContainer/>
     },
     {
         path: USER_ACCOUNT_SUBSCRIBES_ROUTE,

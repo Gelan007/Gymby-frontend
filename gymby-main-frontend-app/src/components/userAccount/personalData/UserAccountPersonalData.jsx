@@ -5,7 +5,7 @@ import zaglushka from '../../../assets/images/userCabinet/personalData/Revan.jpg
 import s from './PersonalData.module.scss'
 import InputGrey from "../../UI/inputs/InputGrey";
 
-const UserAccountPersonalData = () => {
+const UserAccountPersonalData = (props) => {
     return (
         <div className={s.personalData}>
             <UserAccountLeftPanel/>
@@ -16,9 +16,9 @@ const UserAccountPersonalData = () => {
                     </div>
                     <div className={s.avatarBlock__description}>
                         <div className={s.avatarBlock__titleBlock}>
-                         <span className={s.avatarBlock__name}>
-                            Петро Петренко
-                        </span>
+                            <span className={s.avatarBlock__name}>
+                                {props.userName}
+                            </span>
                             <div className={s.avatarBlock__icon}>
                                 <img src={trainerIcon} alt="trainerIcon"/>
                             </div>
