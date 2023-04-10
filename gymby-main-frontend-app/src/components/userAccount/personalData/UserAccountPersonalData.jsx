@@ -5,6 +5,8 @@ import zaglushka from '../../../assets/images/userCabinet/personalData/Revan.jpg
 import s from './PersonalData.module.scss'
 import InputGrey from "../../UI/inputs/InputGrey";
 import AddingCardPhotos from "../../general/addingCardPhotos/AddingCardPhotos";
+import TextareaGrey from "../../UI/textareas/TextareaGrey";
+import ButtonOrange from "../../UI/buttons/ButtonOrange";
 
 const UserAccountPersonalData = (props) => {
     return (
@@ -51,7 +53,39 @@ const UserAccountPersonalData = (props) => {
                         </div>
                     </div>
                 </div>
-                <AddingCardPhotos/>
+                <div className={s.photoCards}>
+                    <div className={s.photoCards__textBlock}>
+                        <h4 className={s.photoCards__title}>Сертифікати та фотографії</h4>
+                        <span className={s.photoCards__subtitle}>Завантажуйте сертифікати, дипломи та інші документи, що підтверджують Вашу компетентність.  </span>
+                    </div>
+                    <AddingCardPhotos/>
+                </div>
+                <div className={s.description}>
+                    <div className={s.description__textBlock}>
+                        <h4 className={s.description__title}>Про Вас</h4>
+                        <span className={s.description__subtitle}>Коротко опишіть себе та розкажіть щось цікаве</span>
+                    </div>
+                    <div className={s.description__textarea}>
+                        <TextareaGrey></TextareaGrey>
+                    </div>
+                </div>
+                <div className={s.socialMedia}>
+                    <div className={s.socialMedia__row}>
+                        <div className={s.socialMedia__block}>
+                            <div className={s.socialMedia__title}>Instagram</div>
+                            <InputGrey placeholder="*Link to Instagram*"/>
+                        </div>
+                        <div className={s.socialMedia__block}>
+                            <div className={s.socialMedia__title}>Telegram</div>
+                            <InputGrey placeholder="*Link to Telegram*"/>
+                        </div>
+                    </div>
+                </div>
+                <div className={s.buttonSave}>
+                    <div className={s.buttonSave__container}>
+                        <ButtonOrange>Зберегти</ButtonOrange>
+                    </div>
+                </div>
             </div>
         </div>
     );
