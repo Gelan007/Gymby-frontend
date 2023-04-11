@@ -20,7 +20,7 @@ const UserAccountCoaching = () => {
                                 <li className={s.pointsList__item}>Відстеження прогресу своїх учнів.</li>
                             </ul>
                         </div>
-                        <div className={s.possibilities__description}>Зацікавило? Тоді ставай тренером вже зараз!</div>
+                        <div className={s.possibilities__description}>Зацікавило? Тоді <span>ставай тренером</span> вже зараз!</div>
                     </div>
                     <div className={s.possibilities__image}>
                         <img src={man} alt="man"/>
