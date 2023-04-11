@@ -4,17 +4,17 @@ import logo from "../../assets/images/general/logo_web.svg";
 import IconUkr from "../UI/icons/IconUKR";
 import IconUsa from "../UI/icons/IconUSA";
 import userCabinetIcon from "../../assets/images/general/userCabinetIcon.svg";
-import {Link} from "react-router-dom";
-import {USER_ACCOUNT_PERSONAL_DATA_ROUTE} from "../../utils/routes/consts";
+import {Link, NavLink} from "react-router-dom";
+import {HOME_ROUTE, USER_ACCOUNT_PERSONAL_DATA_ROUTE} from "../../utils/routes/consts";
 
 
 const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
     return (
         <header className={s.header}>
             <div className={s.header__container + " _containerLanding"}>
-                <a href="#" className={s.header__logo}>
+                <NavLink to={HOME_ROUTE} className={s.header__logo}>
                     <img src={logo} alt="logo"/>
-                </a>
+                </NavLink>
                 <div className={s.burgerMenu} onClick={toggleBurgerMenu}><span></span></div>
                 <nav className={`${s.header__menu} ${s.menu}`} ref={menuBody}>
                     <ul className={s.menu__list}>

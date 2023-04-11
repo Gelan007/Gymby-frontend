@@ -11,7 +11,7 @@ import ButtonOrange from "../../UI/buttons/ButtonOrange";
 const UserAccountPersonalData = (props) => {
     return (
         <div className={s.personalData}>
-            <UserAccountLeftPanel/>
+            <UserAccountLeftPanel isButtonGold={true}/>
             <div className={s.personalData__body}>
                 <div className={s.avatarBlock}>
                     <div className={s.avatarBlock__image}>

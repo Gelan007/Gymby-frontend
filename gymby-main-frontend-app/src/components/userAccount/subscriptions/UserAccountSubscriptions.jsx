@@ -4,7 +4,7 @@ import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 const UserAccountSubscriptions = () => {
     return (
         <div>
-            <UserAccountLeftPanel/>
+            <UserAccountLeftPanel isButtonGold={true}/>
             subscriptions
         </div>
     );
