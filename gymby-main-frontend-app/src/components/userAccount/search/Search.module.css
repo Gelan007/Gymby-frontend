@@ -1,0 +1,10 @@
+.userAccountSearch {
+  display: flex;
+}
+.userAccountSearch__body {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 0;
+}
+
+/*# sourceMappingURL=Search.module.css.map */
