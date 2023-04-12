@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchItem from "./SearchItem";
+import UserAccountSearchItem from "./UserAccountSearchItem";
 import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import s from './Search.module.scss'
 const UserAccountSearch = () => {
@@ -8,7 +8,7 @@ const UserAccountSearch = () => {
             <UserAccountLeftPanel isButtonGold={true}/>
             <div className={s.userAccountSearch__body}>
                 <div className={s.itemsList}>
-                    <SearchItem/>
+                    <UserAccountSearchItem/>
                 </div>
             </div>
         </div>

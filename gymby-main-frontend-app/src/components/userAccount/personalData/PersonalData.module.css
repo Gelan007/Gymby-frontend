@@ -28,11 +28,11 @@
   padding: 60px 0 0 0;
 }
 .avatarBlock__image {
-  margin-right: 20px;
   width: 160px;
   height: 160px;
   border-radius: 50%;
   overflow: hidden;
+  margin-right: 20px;
 }
 .avatarBlock__image img {
   width: 100%;

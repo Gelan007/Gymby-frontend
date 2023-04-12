@@ -1,0 +1,44 @@
+@import '../general/userAccount.module.scss';
+
+.searchItem {
+  &__body {
+    padding: 0 100px 0 40px;
+    display: flex;
+    align-items: center;
+  }
+}
+.avatar {
+  @include avatarBlock(80px, 80px);
+  & img {
+    @include avatarBlockImage();
+  }
+}
+.fullTextBlock {
+  display: flex;
+  padding-top: 10px;
+}
+.infoBlock {
+  margin: 0 10px 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__name {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+  }
+  &__username {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    opacity: 0.7;
+  }
+}
+.trainerIcon {
+
+}
+.addIcon {
+  margin-left: auto;
+}
