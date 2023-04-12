@@ -5,7 +5,7 @@ import IconUkr from "../UI/icons/IconUKR";
 import IconUsa from "../UI/icons/IconUSA";
 import userCabinetIcon from "../../assets/images/general/userCabinetIcon.svg";
 import {Link, NavLink} from "react-router-dom";
-import {HOME_ROUTE, USER_ACCOUNT_PERSONAL_DATA_ROUTE} from "../../utils/routes/consts";
+import {HOME_ROUTE, USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_ROUTE} from "../../utils/routes/consts";
 
 
 const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
@@ -29,9 +29,9 @@ const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
                     <IconUkr/>
                     <IconUsa/>
                 </div>
-                <Link to={USER_ACCOUNT_PERSONAL_DATA_ROUTE} className={s.header__iconCabinet}>
+                <NavLink to={USER_ACCOUNT_ROUTE} className={({isActive}) => isActive ? s.activeCabinet + " " + s.header__iconCabinet : s.header__iconCabinet}>
                     <img src={userCabinetIcon} alt="cabinet"/>
-                </Link>
+                </NavLink>
             </div>
             <div className={s.hrContainer}><hr className={s.hr}/></div>
 
