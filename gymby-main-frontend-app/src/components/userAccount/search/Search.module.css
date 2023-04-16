@@ -59,5 +59,8 @@
 .navBlock__option_red {
   color: #FE5F55;
 }
+.navBlock__option:hover {
+  text-decoration: underline;
+}
 
 /*# sourceMappingURL=Search.module.css.map */

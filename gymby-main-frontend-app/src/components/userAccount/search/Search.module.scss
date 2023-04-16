@@ -46,6 +46,9 @@
     &_red {
       color: $gymbyRed;
     }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 .itemsList {}
