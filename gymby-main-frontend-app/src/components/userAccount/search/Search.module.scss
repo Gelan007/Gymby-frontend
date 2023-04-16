@@ -1,10 +1,12 @@
+@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
+
 .userAccountSearch {
   display: flex;
 
   &__body {
     display: flex;
     flex-direction: column;
-    padding: 0 0 0 0;
+    padding: 25px 0 0 0;
     width: 100%;
   }
 }
@@ -12,16 +14,38 @@
 .navBlock {
   display: flex;
   align-items: center;
+  padding-left: 30px;
+  margin-bottom: 25px;
   &__input {
     flex: 0 0 350px;
+    margin-right: 40px;
   }
-  &__options {}
+  &__options {
+    &>*:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
   &__option {
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
     color: rgba(0, 0, 0, 0.75);
-    &_line:before {}
+    position: relative;
+    cursor: pointer;
+    &_line {
+      &:before {
+        content: "";
+        height: 22px;
+        width: 1.6px;
+        background-color: rgba(0, 0, 0, 0.25);
+        position: absolute;
+        left: -9px;
+        cursor: initial;
+      }
+    }
+    &_red {
+      color: $gymbyRed;
+    }
   }
 }
 .itemsList {}

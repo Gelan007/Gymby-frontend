@@ -48,14 +48,14 @@
 
 .inputGreySearch {
   height: 50px;
-  padding: 0 22px 0 10px;
+  padding: 0 25px 0 10px;
 }
 .inputGreySearch:focus {
   outline: 1px solid #577399;
 }
 .inputGreySearch__magnifier {
   background-repeat: no-repeat;
-  background-position: 99.4%;
+  background-position: 99%;
 }
 
 /*# sourceMappingURL=Inputs.module.css.map */

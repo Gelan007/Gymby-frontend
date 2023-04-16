@@ -43,7 +43,7 @@
 .inputGreySearch {
   @extend %inputGreyMain;
   height: 50px;
-  padding: 0 22px 0 10px;
+  padding: 0 25px 0 10px;
 
   &::placeholder {
     @extend %inputGreyPlaceholder;
@@ -55,7 +55,7 @@
 
   &__magnifier {
     background-repeat: no-repeat;
-    background-position: 99.4%;
+    background-position: 99%;
   }
 }
 
