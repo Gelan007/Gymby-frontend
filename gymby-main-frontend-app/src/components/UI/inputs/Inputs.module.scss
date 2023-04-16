@@ -1,6 +1,7 @@
 @import "../../../utils/styles/GymbyGeneralStyles.module.scss";
 
-.inputGrey {
+
+%inputGreyMain {
   background: #FAFAFA;
   border: 1px solid #E4E4E4;
   border-radius: 20px;
@@ -9,22 +10,52 @@
   line-height: 22px;
   color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 55px;
   font-family: inherit;
   //padding-left: 10px;
   outline: none;
+}
+%inputGreyPlaceholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: inherit;
+  opacity: 0.6;
+}
+
+
+
+.inputGrey {
+  @extend %inputGreyMain;
+  height: 55px;
   text-align: center;
 
   &::placeholder {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    color: rgba(0, 0, 0, 0.5);
-    font-family: inherit;
-    opacity: 0.6;
+    @extend %inputGreyPlaceholder;
   }
 
   &:focus {
     outline: 1px solid $gymbyBlue;
   }
 }
+
+
+.inputGreySearch {
+  @extend %inputGreyMain;
+  height: 50px;
+  padding: 0 22px 0 10px;
+
+  &::placeholder {
+    @extend %inputGreyPlaceholder;
+  }
+
+  &:focus {
+    outline: 1px solid $gymbyBlue;
+  }
+
+  &__magnifier {
+    background-repeat: no-repeat;
+    background-position: 99.4%;
+  }
+}
+

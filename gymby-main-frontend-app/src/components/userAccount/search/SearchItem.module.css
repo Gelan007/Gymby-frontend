@@ -1,3 +1,13 @@
+.searchItem {
+  height: 90px;
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.searchItem_borderBottom {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
 .searchItem__body {
   padding: 0 100px 0 40px;
   display: flex;
@@ -5,8 +15,8 @@
 }
 
 .avatar {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   overflow: hidden;
 }

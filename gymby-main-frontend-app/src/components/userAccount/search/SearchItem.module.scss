@@ -1,6 +1,14 @@
 @import '../general/userAccount.module.scss';
 
 .searchItem {
+  height: 90px;
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &_borderBottom {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  }
   &__body {
     padding: 0 100px 0 40px;
     display: flex;
@@ -8,7 +16,7 @@
   }
 }
 .avatar {
-  @include avatarBlock(80px, 80px);
+  @include avatarBlock(70px, 70px);
   & img {
     @include avatarBlockImage();
   }

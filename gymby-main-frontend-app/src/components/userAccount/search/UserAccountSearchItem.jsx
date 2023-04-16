@@ -5,9 +5,10 @@ import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
 import addUserIcon from '../../../assets/images/general/icons/addUser_icon.svg'
 
 
-const UserAccountSearchItem = () => {
+const UserAccountSearchItem = ({isOneItemInList}) => {
+
     return (
-        <div className={s.searchItem}>
+        <div className={isOneItemInList ? s.searchItem + " " + s.searchItem_borderBottom : s.searchItem}>
             <div className={s.searchItem__body}>
                 <div className={s.avatar}>
                     <img src={plug} alt="avatar"/>
