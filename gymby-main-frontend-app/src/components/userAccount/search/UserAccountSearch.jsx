@@ -3,12 +3,14 @@ import UserAccountSearchItem from "./UserAccountSearchItem";
 import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import s from './Search.module.scss'
 import InputGreySearch from "../../UI/inputs/InputGreySearch";
-const UserAccountSearch = () => {
+
+const UserAccountSearch = ({profiles}) => {
     const TRAINERS = 'trainers';
     const EVERYBODY = 'everybody';
     const [selectedOption, setSelectedOption] = useState(TRAINERS);
     const trainersOptionHandle = () => setSelectedOption(TRAINERS);
     const everybodyOptionHandle = () => setSelectedOption(EVERYBODY);
+
 
 
 
@@ -32,6 +34,7 @@ const UserAccountSearch = () => {
                     </div>
                 </div>
                 <div className={s.itemsList}>
+                    <UserAccountSearchItem isOneItemInList={false}/>
                     <UserAccountSearchItem isOneItemInList={false}/>
                     <UserAccountSearchItem isOneItemInList={false}/>
                 </div>

@@ -12,6 +12,7 @@ import UserAccountPersonalDataContainer
 import UserAccountCoaching from "../../components/userAccount/coaching/UserAccountCoaching";
 import UserAccountPage from "../../pages/userAccount/UserAccountPage";
 import UserAccountSearch from "../../components/userAccount/search/UserAccountSearch";
+import UserAccountSearchContainer from "../../components/userAccount/search/UserAccountSearchContainer";
 
 export const publicRoutes = [
    /* {
@@ -43,6 +44,6 @@ export const authRoutes = [
     },
     {
         path: USER_ACCOUNT_SEARCH_ROUTE,
-        Component: <UserAccountSearch/>
+        Component: <UserAccountSearchContainer/>
     },
 ]

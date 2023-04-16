@@ -63,4 +63,8 @@
   text-decoration: underline;
 }
 
+.itemsList {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
 /*# sourceMappingURL=Search.module.css.map */
