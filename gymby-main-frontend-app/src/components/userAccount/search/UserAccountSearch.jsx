@@ -34,9 +34,13 @@ const UserAccountSearch = ({profiles}) => {
                     </div>
                 </div>
                 <div className={s.itemsList}>
-                    <UserAccountSearchItem isOneItemInList={false}/>
-                    <UserAccountSearchItem isOneItemInList={false}/>
-                    <UserAccountSearchItem isOneItemInList={false}/>
+                    {profiles?.map(profile => (
+                        <UserAccountSearchItem
+                        username={profile.username}
+                        firstName={profile.firstName}
+                        lastName={profile.lastName}
+                        />
+                    ))}
                 </div>
             </div>
         </div>

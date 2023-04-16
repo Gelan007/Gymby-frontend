@@ -46,6 +46,19 @@ let initialState = {
             isCoach: false,
             username: '',
             email: '',
+        },
+        {
+            profileId: 0,
+            firstName: 'Ivan',
+            lastName: 'Korobov',
+            description: 'Best trainer WOT in the world!',
+            photoAvatarPath: null,
+            instagramUrl: '',
+            facebookUrl: '',
+            telegramUsername: '',
+            isCoach: false,
+            username: '@IvanChiftein',
+            email: 'ivan.korobov@gmail.com',
         }
     ]
 }

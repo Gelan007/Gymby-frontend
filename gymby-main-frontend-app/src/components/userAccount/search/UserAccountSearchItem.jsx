@@ -5,7 +5,7 @@ import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
 import addUserIcon from '../../../assets/images/general/icons/addUser_icon.svg'
 
 
-const UserAccountSearchItem = () => {
+const UserAccountSearchItem = ({username, firstName, lastName}) => {
 
     return (
         <div className={s.searchItem}>
@@ -15,8 +15,8 @@ const UserAccountSearchItem = () => {
                 </div>
                 <div className={s.fullTextBlock}>
                     <div className={s.infoBlock}>
-                        <span className={s.infoBlock__name}>Петро Петренко</span>
-                        <span className={s.infoBlock__username}>(@petrenko)</span>
+                        <span className={s.infoBlock__name}>{firstName} {lastName}</span>
+                        <span className={s.infoBlock__username}>({username})</span>
                     </div>
                     <div className={s.trainerIcon}>
                         <img src={trainerIcon} alt="trainer"/>
