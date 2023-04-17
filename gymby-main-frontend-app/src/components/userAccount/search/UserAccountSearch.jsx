@@ -11,9 +11,6 @@ const UserAccountSearch = ({profiles}) => {
     const trainersOptionHandle = () => setSelectedOption(TRAINERS);
     const everybodyOptionHandle = () => setSelectedOption(EVERYBODY);
 
-
-
-
     return (
         <div className={s.userAccountSearch}>
             <UserAccountLeftPanel isButtonGold={true}/>

@@ -36,15 +36,15 @@ let initialState = {
     profiles: [
         {
             profileId: 0,
-            firstName: '',
-            lastName: '',
+            firstName: 'Тимур',
+            lastName: 'Травоманович',
             description: '',
             photoAvatarPath: null,
             instagramUrl: '',
             facebookUrl: '',
             telegramUsername: '',
             isCoach: false,
-            username: '',
+            username: '@techis3501',
             email: '',
         },
         {

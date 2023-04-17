@@ -16,24 +16,6 @@
   margin-right: 7px;
 }
 
-.pointsList__item {
-  display: flex;
-  align-items: baseline;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 19px;
-  line-height: 136.8421052632%;
-  color: #000000;
-}
-.pointsList__item:before {
-  content: "";
-  min-width: 9px;
-  height: 9px;
-  background: #FE5F55;
-  border-radius: 2px;
-  margin-right: 7px;
-}
-
 /*items*/
 .userAccountItem {
   height: 90px;
@@ -128,14 +110,14 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.06);
 }
 
-.userAccountSearch {
+.userAccountFriendsList {
   display: flex;
 }
-.userAccountSearch__body {
+.userAccountFriendsList__body {
   display: flex;
   flex-direction: column;
   padding: 25px 0 0 0;
   width: 100%;
 }
 
-/*# sourceMappingURL=Search.module.css.map */
+/*# sourceMappingURL=FriendsList.module.css.map */

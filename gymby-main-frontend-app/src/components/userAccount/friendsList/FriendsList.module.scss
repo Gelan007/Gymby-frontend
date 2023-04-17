@@ -1,7 +1,5 @@
-@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
 @import '../general/userAccount.module.scss';
-
-.userAccountSearch {
+.userAccountFriendsList {
   display: flex;
 
   &__body {
@@ -11,4 +9,3 @@
     width: 100%;
   }
 }
-

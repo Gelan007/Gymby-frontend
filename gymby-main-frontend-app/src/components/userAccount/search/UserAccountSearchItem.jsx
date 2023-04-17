@@ -8,8 +8,8 @@ import addUserIcon from '../../../assets/images/general/icons/addUser_icon.svg'
 const UserAccountSearchItem = ({username, firstName, lastName}) => {
 
     return (
-        <div className={s.searchItem}>
-            <div className={s.searchItem__body}>
+        <div className={s.searchItem + " " + s.userAccountItem}>
+            <div className={s.searchItem__body + " " + s.userAccountItem__body}>
                 <div className={s.avatar}>
                     <img src={plug} alt="avatar"/>
                 </div>
