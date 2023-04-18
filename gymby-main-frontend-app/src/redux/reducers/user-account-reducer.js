@@ -1,7 +1,7 @@
 const SET_USERS = 'SET_USERS'
 const SET_USERNAME = 'SET_USERNAME'
 
-//Пока оставлю profile, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
+//Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
 let initialState = {
     users: [],
     pageSize: 5,

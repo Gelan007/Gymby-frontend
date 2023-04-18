@@ -2,7 +2,7 @@ import MainPage from "../../pages/mainLandingPage/MainPage";
 import {
     HOME_ROUTE,
     USER_ACCOUNT_COACHING_ROUTE, USER_ACCOUNT_FRIENDS_LIST_ROUTE, USER_ACCOUNT_INSTRUCTION_ROUTE,
-    USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_ROUTE, USER_ACCOUNT_SEARCH_ROUTE,
+    USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_PROFILE_ROUTE, USER_ACCOUNT_ROUTE, USER_ACCOUNT_SEARCH_ROUTE,
     USER_ACCOUNT_SUBSCRIBES_ROUTE
 } from "./consts";
 import UserAccountPersonalData from "../../components/userAccount/personalData/UserAccountPersonalData";
@@ -15,6 +15,7 @@ import UserAccountSearch from "../../components/userAccount/search/UserAccountSe
 import UserAccountSearchContainer from "../../components/userAccount/search/UserAccountSearchContainer";
 import UserAccountFriendsListContainer from "../../components/userAccount/friendsList/UserAccountFriendsListContainer";
 import UserAccountInstruction from "../../components/userAccount/instruction/UserAccountInstruction";
+import UserAccountProfile from "../../components/userAccount/profiles/UserAccountProfile";
 
 export const publicRoutes = [
    /* {
@@ -55,5 +56,9 @@ export const authRoutes = [
     {
         path: USER_ACCOUNT_INSTRUCTION_ROUTE,
         Component: <UserAccountInstruction/>
+    },
+    {
+        path: USER_ACCOUNT_PROFILE_ROUTE,
+        Component: <UserAccountProfile/>
     },
 ]
