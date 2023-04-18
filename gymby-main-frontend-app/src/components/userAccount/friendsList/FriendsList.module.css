@@ -24,6 +24,9 @@
   flex-direction: column;
   justify-content: center;
 }
+.userAccountItem:hover {
+  background-color: #F7F7FF;
+}
 .userAccountItem__body {
   padding: 0 100px 0 30px;
   display: flex;

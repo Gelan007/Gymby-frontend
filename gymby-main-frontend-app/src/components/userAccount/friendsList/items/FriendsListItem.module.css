@@ -24,6 +24,9 @@
   flex-direction: column;
   justify-content: center;
 }
+.userAccountItem:hover {
+  background-color: #F7F7FF;
+}
 .userAccountItem__body {
   padding: 0 100px 0 30px;
   display: flex;
@@ -148,7 +151,7 @@
   cursor: pointer;
 }
 .iconsBlock__sendIcon:hover {
-  filter: drop-shadow(0px 8px 8px rgba(0, 102, 255, 0.85));
+  filter: drop-shadow(0px 8px 8px rgba(0, 102, 255, 0.99));
 }
 .iconsBlock__sendIcon img {
   max-width: 90%;
@@ -157,7 +160,7 @@
   cursor: pointer;
 }
 .iconsBlock__applyIcon:hover {
-  filter: drop-shadow(0px 8px 8px rgba(0, 246, 10, 0.5));
+  filter: drop-shadow(0px 8px 8px rgba(0, 246, 10, 0.7));
 }
 .iconsBlock__applyIcon img {
   max-width: 90%;
