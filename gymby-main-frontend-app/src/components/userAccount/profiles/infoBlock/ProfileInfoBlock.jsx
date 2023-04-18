@@ -10,27 +10,29 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 const ProfileInfoBlock = () => {
     return (
         <div className={s.profileInfoBlock}>
-            <div className={s.profileInfoBlock__avatarBlock}>
-                <div className={s.profileInfoBlock__avatar}>
-                    <img src={plug} alt="avatar"/>
-                </div>
-                <span className={s.profileInfoBlock__username}>@petrenko</span>
-            </div>
-            <div className={s.contentBlock}>
-                <div className={s.contentBlock__fullNameBlock}>
-                    <span className={s.contentBlock__fullName}>Петро Петренко</span>
-                    <div className={s.contentBlock__trainerIcon}>
-                        <img src={trainerIcon} alt="trainerIcon"/>
+            <div className={s.profileInfoBlock__leftBlock}>
+                <div className={s.profileInfoBlock__avatarBlock}>
+                    <div className={s.profileInfoBlock__avatar}>
+                        <img src={plug} alt="avatar"/>
                     </div>
+                    <span className={s.profileInfoBlock__username}>@petrenko</span>
                 </div>
-                <div className={s.contentBlock__text}>Тренує вже <span>180</span> днів</div>
-                <div className={s.contentBlock__text}><span>15</span> клієнтів</div>
-                <div className={s.contentBlock__socialMediaIcons}>
-                    <div className={s.contentBlock__icon}>
-                        <img src={instagram} alt="instagram"/>
+                <div className={s.contentBlock}>
+                    <div className={s.contentBlock__fullNameBlock}>
+                        <span className={s.contentBlock__fullName}>Петро Петренко</span>
+                        <div className={s.contentBlock__trainerIcon}>
+                            <img src={trainerIcon} alt="trainerIcon"/>
+                        </div>
                     </div>
-                    <div className={s.contentBlock__icon}>
-                        <img src={telegram} alt="telegram"/>
+                    <div className={s.contentBlock__text}>Тренує вже <span>180</span> днів</div>
+                    <div className={s.contentBlock__text}><span>15</span> клієнтів</div>
+                    <div className={s.contentBlock__socialMediaIcons}>
+                        <div className={s.contentBlock__icon}>
+                            <img src={instagram} alt="instagram"/>
+                        </div>
+                        <div className={s.contentBlock__icon}>
+                            <img src={telegram} alt="telegram"/>
+                        </div>
                     </div>
                 </div>
             </div>

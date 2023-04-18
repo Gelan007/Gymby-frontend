@@ -7,6 +7,8 @@ import InputGrey from "../../UI/inputs/InputGrey";
 import AddingCardPhotos from "../../general/addingCardPhotos/AddingCardPhotos";
 import TextareaGrey from "../../UI/textareas/TextareaGrey";
 import ButtonOrange from "../../UI/buttons/ButtonOrange";
+import {NavLink} from "react-router-dom";
+import {USER_ACCOUNT_PROFILE_ROUTE} from "../../../utils/routes/consts";
 
 const UserAccountPersonalData = (props) => {
     return (
@@ -27,8 +29,9 @@ const UserAccountPersonalData = (props) => {
                             </div>
                         </div>
                         <span className={s.avatarBlock__subscription}>
-                        Без підписки
-                    </span>
+                            Без підписки
+                        </span>
+                        <NavLink to={USER_ACCOUNT_PROFILE_ROUTE} className={s.avatarBlock__profileOverview}>Переглянути особистий профіль</NavLink>
                     </div>
                 </div>
                 <div className={s.inputData}>

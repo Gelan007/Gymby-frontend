@@ -1,0 +1,74 @@
+@import '../../general/userAccount.module.scss';
+
+.profileInfoBlock {
+  padding: 30px 200px;
+  display: flex;
+  &__leftBlock {
+    display: flex;
+  }
+  &__avatarBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+  }
+  &__avatar {
+    @include avatarBlock(160px, 160px);
+    margin-bottom: 8px;
+    & img {
+      @include avatarBlockImage();
+    }
+  }
+  &__username {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+    opacity: 0.6;
+  }
+  &__addButton {
+    margin-left: auto;
+    align-self: center;
+  }
+}
+
+.contentBlock {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  &>*:not(:last-child) {
+    margin-bottom: 7px;
+  }
+  &__fullNameBlock {
+    display: flex;
+    align-items: center;
+    &>*:not(last-child) {
+      margin-right: 7px;
+  }
+  }
+  &__fullName {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    color: #000000;
+  }
+  &__trainerIcon {
+  }
+  &__text {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+    opacity: 0.6;
+    & span {
+      font-weight: 700;
+    }
+  }
+  &__socialMediaIcons {
+    display: flex;
+    &>*:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+  &__icon {}
+}
