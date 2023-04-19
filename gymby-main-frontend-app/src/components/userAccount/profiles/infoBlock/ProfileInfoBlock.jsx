@@ -27,12 +27,16 @@ const ProfileInfoBlock = () => {
                     <div className={s.contentBlock__text}>Тренує вже <span>180</span> днів</div>
                     <div className={s.contentBlock__text}><span>15</span> клієнтів</div>
                     <div className={s.contentBlock__socialMediaIcons}>
-                        <div className={s.contentBlock__icon}>
-                            <img src={instagram} alt="instagram"/>
-                        </div>
-                        <div className={s.contentBlock__icon}>
-                            <img src={telegram} alt="telegram"/>
-                        </div>
+                        <a href="#">
+                            <div className={s.contentBlock__icon + " " + s.contentBlock__icon_instagram}>
+                                <img src={instagram} alt="instagram"/>
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div className={s.contentBlock__icon + " " + s.contentBlock__icon_telegram}>
+                                <img src={telegram} alt="telegram"/>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
