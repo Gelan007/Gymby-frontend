@@ -8,6 +8,7 @@ import secondImage from '../../../assets/images/userCabinet/personalData/Elrond2
 import thirdImage from '../../../assets/images/userCabinet/personalData/Elrond3.jpg';
 import fourthImage from '../../../assets/images/userCabinet/personalData/Elrond4.jpg';
 import fifthImage from '../../../assets/images/userCabinet/personalData/Revan.jpg';
+import ButtonExit from "../../UI/buttons/ButtonExit";
 
 
 
@@ -45,6 +46,9 @@ const UserAccountProfile = () => {
                             <div className={s.carousel__image}><img src={fifthImage} alt=""/></div>
                         </CarouselProfile>
                     </div>
+                </div>
+                <div className={s.backBlock}>
+                    <ButtonExit text='Повернутись'/>
                 </div>
             </div>
         </div>

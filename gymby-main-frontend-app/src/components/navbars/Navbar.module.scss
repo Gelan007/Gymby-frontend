@@ -55,6 +55,9 @@
       &:hover {
         text-decoration: underline;
       }
+      &_active {
+        color: $gymbyRed;
+      }
     }
 }
 

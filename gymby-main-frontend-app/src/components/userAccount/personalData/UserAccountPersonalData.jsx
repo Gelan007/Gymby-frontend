@@ -9,6 +9,7 @@ import TextareaGrey from "../../UI/textareas/TextareaGrey";
 import ButtonOrange from "../../UI/buttons/ButtonOrange";
 import {NavLink} from "react-router-dom";
 import {USER_ACCOUNT_PROFILE_ROUTE} from "../../../utils/routes/consts";
+import ButtonGreen from "../../UI/buttons/ButtonGreen";
 
 const UserAccountPersonalData = (props) => {
     return (
@@ -86,7 +87,7 @@ const UserAccountPersonalData = (props) => {
                 </div>
                 <div className={s.buttonSave}>
                     <div className={s.buttonSave__container}>
-                        <ButtonOrange>Зберегти</ButtonOrange>
+                        <ButtonGreen style={{height: '50px'}}>Зберегти</ButtonGreen>
                     </div>
                 </div>
             </div>

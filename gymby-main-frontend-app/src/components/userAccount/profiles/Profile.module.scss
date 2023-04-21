@@ -1,8 +1,11 @@
 .userAccountProfile {
-  padding: 30px 220px;
   &__body {
     display: flex;
     flex-direction: column;
+    padding-top: 30px;
+    &>*:not(.backBlock) {
+      padding: 0 220px;
+    }
   }
   &__title {
     font-weight: 700;
@@ -68,4 +71,9 @@
       object-fit: cover;
     }
   }
+}
+
+.backBlock {
+  margin: 50px 0 20px 60px;
+
 }

@@ -29,7 +29,7 @@ const UserAccountLeftPanel = ({isButtonGold}) => {
                 <div></div>
             }
             <div className={s.buttonExit__container}>
-                <ButtonExit/>
+                <ButtonExit text={'Вийти'}/>
             </div>
         </div>
     );
