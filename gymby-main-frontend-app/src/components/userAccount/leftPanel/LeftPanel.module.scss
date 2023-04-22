@@ -1,6 +1,7 @@
+@import '../../general/leftPanelStyles/LeftPanel.module.scss';
 .leftPanel__container {
   min-width: 400px;
-  /*border-right: black 1px solid;*/
+ /* !*border-right: black 1px solid;*!
   padding: 30px 0 0 0;
   height: 100%;
   position: relative;
@@ -12,12 +13,12 @@
     height: 100%;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.15);
-  }
+  }*/
 }
-.leftPanelList {
+/*.leftPanelList {
   display: flex;
   justify-content: center;
-}
+}*/
 .trainerBlock {
   display: flex;
   flex-direction: column;

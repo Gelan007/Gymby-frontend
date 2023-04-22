@@ -1,0 +1,10 @@
+.measurementsHand {
+  display: flex;
+}
+.measurementsHand__body {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+}
+
+/*# sourceMappingURL=MeasurementsHand.module.css.map */

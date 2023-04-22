@@ -1,0 +1,8 @@
+.measurementsHand {
+  display: flex;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+  }
+}
