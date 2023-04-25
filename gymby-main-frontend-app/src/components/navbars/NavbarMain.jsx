@@ -6,6 +6,7 @@ import IconUsa from "../UI/icons/IconUSA";
 import userCabinetIcon from "../../assets/images/general/userCabinetIcon.svg";
 import {Link, NavLink} from "react-router-dom";
 import {
+    DIARY_ROUTE,
     HOME_ROUTE,
     MEASUREMENTS_ROUTE,
     USER_ACCOUNT_PERSONAL_DATA_ROUTE,
@@ -23,9 +24,15 @@ const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
                 <div className={s.burgerMenu} onClick={toggleBurgerMenu}><span></span></div>
                 <nav className={`${s.header__menu} ${s.menu}`} ref={menuBody}>
                     <ul className={s.menu__list}>
-                        <li className={s.menu__item}><a href="" className={s.menu__link}>Щоденник</a></li>
+                        <li className={s.menu__item}>
+                            <NavLink to={DIARY_ROUTE}
+                                     className={({isActive}) => isActive ? `${s.menu__link} ${s.menu__link_active}` : s.menu__link}
+                            >Щоденник</NavLink>
+                        </li>
+
                         <li className={s.menu__item}><a href="" className={s.menu__link}>Програми</a></li>
                         <li className={s.menu__item}><a href="" className={s.menu__link}>Статистика</a></li>
+
                         <li className={s.menu__item}>
                             <NavLink to={MEASUREMENTS_ROUTE}
                                      className={({isActive}) => isActive ? `${s.menu__link} ${s.menu__link_active}` : s.menu__link}
