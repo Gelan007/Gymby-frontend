@@ -10,7 +10,7 @@ import checkboxEnabled from '../../../../assets/images/approach/checkBoxEnabled.
 /*когда буду добавлять состояние для checkbox добавить условие, что если false то тогда
 * отображаем checkboxDisabled иначе checkboxEnabled*/
 /*onClick для стрелочек вешать на само изображение а не на блок*/
-const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numeration = 1}, ...props) => {
+const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numeration = 1, isEditMode}, ...props) => {
     return (
         <div className={s.approachItem}>
             <div className={`${s.numeration} ${s.text}`}>
@@ -49,9 +49,16 @@ const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numer
                 <div className={isMark ? `${s.iconsBlock__checkbox}` : `${s.iconsBlock__checkbox} ${s.invisibility}`}>
                     <img src={checkboxDisabled} alt="checkbox"/>
                 </div>
-                <div className={isBasket ? `${s.iconsBlock__basket}` : `${s.iconsBlock__basket} ${s.invisibility}`}>
-                    <img src={basket} alt="basket"/>
-                </div>
+                {isEditMode ?
+                    <div className={isBasket ? `${s.iconsBlock__basket}` : `${s.iconsBlock__basket} ${s.invisibility}`}>
+                        <img src={basket} alt="basket"/>
+                    </div>
+                    :
+                    <div className={`${s.editModeIcon}`}>
+                        <img src={basket} alt="basket"/>
+                    </div>
+                }
+
             </div>
         </div>
     );

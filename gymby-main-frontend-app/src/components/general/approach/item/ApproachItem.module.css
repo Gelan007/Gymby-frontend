@@ -102,4 +102,9 @@
   visibility: hidden;
 }
 
+.editModeIcon img {
+  opacity: 0.4;
+  max-width: 85%;
+}
+
 /*# sourceMappingURL=ApproachItem.module.css.map */

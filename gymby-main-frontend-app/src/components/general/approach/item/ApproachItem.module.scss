@@ -95,3 +95,9 @@
 .invisibility {
   visibility: hidden;
 }
+.editModeIcon {
+  & img {
+    opacity: 0.4;
+    max-width: 85%;
+  }
+}
