@@ -1,0 +1,36 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.select {
+  background: #FFFFFF;
+  border: 0px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #000000;
+  outline: none;
+}
+
+.defaultValue {
+  color: #577399;
+}
+
+.option {
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=SelectSimple.module.css.map */
