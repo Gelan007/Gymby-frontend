@@ -11,7 +11,7 @@ import DiaryModalProgramsList from "./modal/programsList/DiaryModalProgramsList"
 
 const Diary = () => {
     const [date, setDate] = useState(new Date());
-    const [isModalActive, setIsModalActive] = useState(true);
+    const [isModalActive, setIsModalActive] = useState(false);
     const programImportHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
 
     useEffect(() => {

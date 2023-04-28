@@ -10,7 +10,10 @@ const ModalWindow = ({isActive = false, setActive = false, children}) => {
             <div className={isActive ? `${s.modal__content} ${s.active}` : `${s.modal__content}`}
                  onClick={e => e.stopPropagation()}
             >
-                {children}
+                <div className={s.modal__content_overflowController}>
+                    {children}
+                </div>
+
             </div>
         </div>
     );

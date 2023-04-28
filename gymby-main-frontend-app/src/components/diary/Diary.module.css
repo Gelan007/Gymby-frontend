@@ -35,9 +35,10 @@
 }
 .bottomBlock {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .bottomBlock__calendarBlock {
+  margin-right: 70px;
   flex: 0 0 430px;
 }
 .bottomBlock__approaches {

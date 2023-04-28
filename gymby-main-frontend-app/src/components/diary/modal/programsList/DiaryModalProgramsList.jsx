@@ -1,10 +1,13 @@
 import React from 'react';
 import ModalWindow from "../../../general/modalWindow/ModalWindow";
+import DiaryModalWindowTemplate from "../template/DiaryModalWindowTemplate";
 
-const DiaryModalProgramsList = ({isActive, setActive, children}) => {
+const DiaryModalProgramsList = ({isActive, setActive}) => {
     return (
         <div>
-            <ModalWindow isActive={isActive} setActive={setActive}/>
+            <DiaryModalWindowTemplate isActive={isActive} setActive={setActive}>
+
+            </DiaryModalWindowTemplate>
         </div>
     );
 };
