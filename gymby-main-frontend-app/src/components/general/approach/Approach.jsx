@@ -42,6 +42,7 @@ const Approach = (props) => {
             <div className={s.itemsBlock}>
                 <ApproachItem isWeight={true} isMark={true} isBasket={true} isEditMode={isEditMode}/>
                 <ApproachItem isWeight={true} isMark={true} isBasket={true} isEditMode={isEditMode}/>
+                <ApproachItem isWeight={true} isMark={true} isBasket={true} isEditMode={isEditMode}/>
             </div>
         </div>
     );

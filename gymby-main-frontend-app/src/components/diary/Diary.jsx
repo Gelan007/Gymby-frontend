@@ -57,11 +57,12 @@ const Diary = () => {
                             <ButtonOrange>Додати вправу</ButtonOrange>
                         </div>
                         <div className={s.calendarBlock__buttonImport}>
-                            <ButtonOrange>Імпортувати вправу</ButtonOrange>
+                            <ButtonOrange>Імпортувати програму</ButtonOrange>
                         </div>
                     </div>
                 </div>
                 <div className={s.bottomBlock__approaches}>
+                    <Approach/>
                     <Approach/>
                     <Approach/>
                 </div>
