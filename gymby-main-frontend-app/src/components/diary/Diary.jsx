@@ -7,9 +7,13 @@ import ButtonOrange from "../UI/buttons/ButtonOrange";
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css'
+import DiaryModalProgramsList from "./modal/programsList/DiaryModalProgramsList";
 
 const Diary = () => {
     const [date, setDate] = useState(new Date());
+    const [isModalActive, setIsModalActive] = useState(true);
+    const programImportHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
+
     useEffect(() => {
         console.log(date)
     }, [date])
@@ -56,7 +60,9 @@ const Diary = () => {
                         <div className={s.calendarBlock__buttonAdd}>
                             <ButtonOrange>Додати вправу</ButtonOrange>
                         </div>
-                        <div className={s.calendarBlock__buttonImport}>
+                        <div className={s.calendarBlock__buttonImport}
+                             onClick={programImportHandler}
+                        >
                             <ButtonOrange>Імпортувати програму</ButtonOrange>
                         </div>
                     </div>
@@ -67,6 +73,9 @@ const Diary = () => {
                     <Approach/>
                 </div>
             </div>
+            <DiaryModalProgramsList isActive={isModalActive} setActive={setIsModalActive}>
+
+            </DiaryModalProgramsList>
         </div>
     );
 };
