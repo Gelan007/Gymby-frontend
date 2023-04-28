@@ -47,17 +47,23 @@
   margin-bottom: 20px;
 }
 
+.calendarBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .calendarBlock__buttons {
   display: flex;
+  margin-top: 35px;
 }
 .calendarBlock__buttons > *:not(:last-child) {
   margin-right: 15px;
 }
 .calendarBlock__buttonAdd {
-  flex: 0 0 170px;
+  width: 170px;
 }
 .calendarBlock__buttonImport {
-  flex: 0 0 220px;
+  width: 220px;
 }
 
 /*# sourceMappingURL=Diary.module.css.map */

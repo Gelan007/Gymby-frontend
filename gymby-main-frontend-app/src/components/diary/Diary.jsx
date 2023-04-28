@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Approach from "../general/approach/Approach";
 import s from './Diary.module.scss'
 import SelectSimple from "../UI/select/SelectSimple";
 import arrowSelect from "../../assets/images/approach/bottomArrow.svg"
 import ButtonOrange from "../UI/buttons/ButtonOrange";
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
+import './Calendar.css'
 
 const Diary = () => {
+    const [date, setDate] = useState(new Date());
+    useEffect(() => {
+        console.log(date)
+    }, [date])
+
     return (
         <div className={s.diary}>
             <div className={s.diary__topBlock}>
@@ -38,7 +46,11 @@ const Diary = () => {
             <div className={`${s.diary__bottomBlock} ${s.bottomBlock}`}>
                 <div className={`${s.bottomBlock__calendarBlock} ${s.calendarBlock}`}>
                     <div className={s.calendarBlock__calendar}>
-
+                        <Calendar onChange={setDate}
+                                  value={date}
+                                  maxDate={new Date(2030, 0, 0)}
+                                  minDate={new Date(2019, 0, 0)}
+                        />
                     </div>
                     <div className={s.calendarBlock__buttons}>
                         <div className={s.calendarBlock__buttonAdd}>

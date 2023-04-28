@@ -57,17 +57,22 @@
 }
 
 .calendarBlock {
-  &__calendar {}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__calendar {
+  }
   &__buttons {
     display: flex;
+    margin-top: 35px;
     &>*:not(:last-child) {
       margin-right: 15px;
     }
   }
   &__buttonAdd {
-    flex: 0 0 170px;
+    width: 170px;
   }
   &__buttonImport {
-    flex: 0 0 220px;
+   width: 220px;
   }
 }
