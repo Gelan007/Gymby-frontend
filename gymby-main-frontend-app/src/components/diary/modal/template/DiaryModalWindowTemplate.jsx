@@ -15,7 +15,9 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children}) => {
                     <div className={s.date}>
                         22.11.2022р.
                     </div>
-                    <div className={s.close}>
+                    <div className={s.close}
+                         onClick={() => setActive(false)}
+                    >
                         <img src={closeIcon} alt="close"/>
                     </div>
                 </div>

@@ -1,3 +1,5 @@
+@import "../../../../utils/styles/GymbyGeneralStyles.module.scss";
+
 .diaryModalWindowTemplate {
   display: flex;
   flex-direction: column;
@@ -23,6 +25,11 @@
 }
 .close {
   margin-left: auto;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    filter: drop-shadow(0px 8px 8px $gymbyRed);
+  }
   & img {}
 }
 .bottomBlock {
