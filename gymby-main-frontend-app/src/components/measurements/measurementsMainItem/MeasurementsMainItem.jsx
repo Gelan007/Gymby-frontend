@@ -35,6 +35,7 @@ const MeasurementsMainItem = () => {
                 </div>
                 <div className={s.itemsList}>
                     <MeasurementsItem icon={biceps} measurements={'34 см'} changesValue={'+1,2 см'} date={'16.09.2022'} days={'31 днів тому'}/>
+                    <MeasurementsItem icon={biceps} measurements={'34 см'} changesValue={'+1,2 см'} date={'16.09.2022'} days={'31 днів тому'}/>
                 </div>
             </div>
         </div>

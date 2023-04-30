@@ -1,0 +1,69 @@
+@import "../general/DiaryModalStyles.module.scss";
+
+.topBlock {
+  display: flex;
+  align-items: center;
+}
+
+.exerciseIcon {
+  margin-right: 20px;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 350px;
+}
+.title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.programDescriptionItems {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  &>*:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+.programDescriptionItem {
+  font-size: 14px;
+}
+.arrowIcon {
+  margin-left: auto;
+  & img {}
+}
+
+
+.bottomBlock {
+  margin-top: 10px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  &__daysBlock {
+    padding-left: 50px;
+  }
+  &__rightBlock {
+    width: 370px;
+  }
+}
+
+.displayer__content {
+  display: flex;
+  flex-direction: column;
+
+  &>*:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+
+
+.programListItems {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}

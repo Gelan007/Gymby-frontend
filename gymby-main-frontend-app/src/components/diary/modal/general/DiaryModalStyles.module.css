@@ -1,0 +1,35 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.diaryItem {
+  height: 90px;
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.diaryItem:hover {
+  background-color: #F7F7FF;
+}
+.diaryItem__body {
+  padding: 0 100px 0 30px;
+  display: flex;
+  align-items: center;
+}
+
+/*# sourceMappingURL=DiaryModalStyles.module.css.map */

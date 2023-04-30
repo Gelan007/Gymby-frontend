@@ -1,14 +1,21 @@
 import React from 'react';
 import ModalWindow from "../../../general/modalWindow/ModalWindow";
 import DiaryModalWindowTemplate from "../template/DiaryModalWindowTemplate";
+import s from './DiaryModalProgramsList.module.scss'
+import plug from "../../../../assets/images/measurements/biceps.svg";
+import DiaryModalProgramsListItem from "./DiaryModalProgramsListItem";
+
 
 const DiaryModalProgramsList = ({isActive, setActive}) => {
     return (
-        <div>
-            <DiaryModalWindowTemplate isActive={isActive} setActive={setActive}>
+        <DiaryModalWindowTemplate isActive={isActive} setActive={setActive}>
+            <div className={s.programListItems}>
+                <DiaryModalProgramsListItem/>
+                <DiaryModalProgramsListItem/>
+                <DiaryModalProgramsListItem/>
+            </div>
+        </DiaryModalWindowTemplate>
 
-            </DiaryModalWindowTemplate>
-        </div>
     );
 };
 

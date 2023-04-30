@@ -1,0 +1,37 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.dayBlock {
+  display: flex;
+  align-items: center;
+}
+
+.dumbbell {
+  margin-right: 8px;
+}
+.day {
+  background-color: #495867;
+  color: #FFFFFF;
+  padding: 2px 6px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  border-radius: 20px;
+}
+
+/*# sourceMappingURL=Day.module.css.map */
