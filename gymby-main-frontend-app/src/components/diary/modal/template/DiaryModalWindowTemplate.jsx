@@ -3,8 +3,9 @@ import s from './DiaryModalWindowTemplate.module.scss'
 import ModalWindow from "../../../general/modalWindow/ModalWindow";
 import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
+import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const DiaryModalWindowTemplate = ({isActive, setActive, children}) => {
+const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Додати'}) => {
     return (
         <ModalWindow isActive={isActive} setActive={setActive}>
             <div className={s.diaryModalWindowTemplate}>
@@ -23,6 +24,9 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children}) => {
                 </div>
                 <div className={s.bottomBlock}>
                     {children}
+                </div>
+                <div className={s.button}>
+                    <ButtonGreen>{buttonName}</ButtonGreen>
                 </div>
             </div>
         </ModalWindow>
