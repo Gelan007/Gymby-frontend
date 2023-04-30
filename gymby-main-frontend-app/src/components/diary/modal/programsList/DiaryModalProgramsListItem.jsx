@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "./DiaryModalProgramsList.module.scss";
 import plug from "../../../../assets/images/measurements/biceps.svg";
 import arrowIcon from "../../../../assets/images/modal/bottomArrow.svg"
@@ -7,10 +7,14 @@ import DisplayerDarkBlue from "./displayer/DisplayerDarkBlue";
 
 const DiaryModalProgramsListItem = ({isExpand = false}) => {
 
+    const [expand, setExpand] = useState(isExpand);
+    const arrowExpandHandler = () => expand ? setExpand(false) : setExpand(true);
+
+
     return (
-        <div className={s.diaryItem}>
+        <div className={expand ? `${s.diaryItem} ${s.active}` : s.diaryItem}>
             <div className={s.diaryItem__body}>
-                <div className={s.topBlock}>
+                <div className={expand ? s.topBlock : `${s.topBlock} ${s.hidden}`}>
                     <div className={s.exerciseIcon}>
                         <img src={plug} alt="icon"/>
                     </div>
@@ -22,11 +26,13 @@ const DiaryModalProgramsListItem = ({isExpand = false}) => {
                             <div className={s.programDescriptionItem}>середній</div>
                         </div>
                     </div>
-                    <div className={s.arrowIcon}>
+                    <div className={expand ? `${s.arrowIcon} ${s.rotate}` : s.arrowIcon}
+                         onClick={arrowExpandHandler}
+                    >
                         <img src={arrowIcon} alt="arrow"/>
                     </div>
                 </div>
-                <div className={s.bottomBlock}>
+                <div className={expand ? `${s.bottomBlock} ${s.active}` : `${s.bottomBlock} ${s.invisible}` }>
                     <div className={s.bottomBlock__daysBlock}>
                         <Day isActive={true}/>
                         <Day number={2}/>
@@ -35,7 +41,7 @@ const DiaryModalProgramsListItem = ({isExpand = false}) => {
                         <Day number={5}/>
                     </div>
                     <div className={s.bottomBlock__rightBlock}>
-                        <DisplayerDarkBlue>
+                        <DisplayerDarkBlue>{/**/}
                             <div className={s.displayer__content}>
                                 <span>1. Жим штанги лежачи</span>
                                 <span>2. Жим штанги лежачи</span>

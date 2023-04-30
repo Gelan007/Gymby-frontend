@@ -1,3 +1,21 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
 .modal {
   display: flex;
   align-items: center;
@@ -32,6 +50,24 @@
 .modal__content_overflowController {
   max-height: 600px;
   overflow: auto;
+  margin-right: 4px;
+}
+.modal__content_overflowController::-webkit-scrollbar {
+  width: 20px;
+  height: 8px;
+}
+.modal__content_overflowController::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey;
+  border-radius: 10px;
+  background-color: #464646;
+}
+.modal__content_overflowController::-webkit-scrollbar-thumb {
+  background: rgb(213, 213, 213);
+  border-radius: 10px;
+  /*border: 6px solid #464646;*/
+}
+.modal__content_overflowController::-webkit-scrollbar-thumb:hover {
+  background: rgb(189, 189, 189);
 }
 
 /*# sourceMappingURL=ModalWindow.module.css.map */

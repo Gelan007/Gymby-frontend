@@ -10,8 +10,8 @@ const DiaryModalProgramsList = ({isActive, setActive}) => {
     return (
         <DiaryModalWindowTemplate isActive={isActive} setActive={setActive}>
             <div className={s.programListItems}>
-                <DiaryModalProgramsListItem/>
-                <DiaryModalProgramsListItem/>
+                <DiaryModalProgramsListItem isExpand={false}/>
+                <DiaryModalProgramsListItem isExpand={false}/>
                 <DiaryModalProgramsListItem/>
             </div>
         </DiaryModalWindowTemplate>

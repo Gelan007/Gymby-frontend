@@ -1,9 +1,14 @@
 @import "../general/DiaryModalStyles.module.scss";
 
+
 .topBlock {
   display: flex;
   align-items: center;
   padding-top: 5px;
+
+  &.hidden {
+    padding-top: 20px;
+  }
 }
 
 .exerciseIcon {
@@ -36,7 +41,12 @@
 }
 .arrowIcon {
   margin-left: auto;
+  cursor: pointer;
+  transition: 0.3s linear;
   & img {}
+  &.rotate {
+    transform: rotate(180deg);
+  }
 }
 
 
@@ -46,6 +56,18 @@
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
+
+  max-height: 0px;
+  overflow: hidden;
+  transition: 0.3s linear;
+  opacity: 0;
+  pointer-events: none;
+
+  &.active {
+    max-height: 1000px;
+    pointer-events: all;
+    opacity: 1;
+  }
 
   &__daysBlock {
     padding-left: 50px;

@@ -29,11 +29,17 @@
 .diaryItem__body {
   padding: 0 25px 0 30px;
 }
+.diaryItem.active {
+  background-color: #F7F7FF;
+}
 
 .topBlock {
   display: flex;
   align-items: center;
   padding-top: 5px;
+}
+.topBlock.hidden {
+  padding-top: 20px;
 }
 
 .exerciseIcon {
@@ -69,13 +75,29 @@
 
 .arrowIcon {
   margin-left: auto;
+  cursor: pointer;
+  transition: 0.3s linear;
 }
+.arrowIcon.rotate {
+  transform: rotate(180deg);
+}
+
 .bottomBlock {
   margin-top: 15px;
   padding-right: 20px;
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
+  max-height: 0px;
+  overflow: hidden;
+  transition: 0.3s linear;
+  opacity: 0;
+  pointer-events: none;
+}
+.bottomBlock.active {
+  max-height: 1000px;
+  pointer-events: all;
+  opacity: 1;
 }
 .bottomBlock__daysBlock {
   padding-left: 50px;

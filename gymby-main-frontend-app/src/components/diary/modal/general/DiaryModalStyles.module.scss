@@ -12,4 +12,7 @@
   &__body {
     padding: 0 25px 0 30px;
   }
+  &.active {
+    background-color: $gymbyLightWhiteBlue;
+  }
 }
