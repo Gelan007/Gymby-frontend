@@ -28,7 +28,11 @@ const DiaryModalProgramsListItem = ({isExpand = false}) => {
                 </div>
                 <div className={s.bottomBlock}>
                     <div className={s.bottomBlock__daysBlock}>
-                        <Day/>
+                        <Day isActive={true}/>
+                        <Day number={2}/>
+                        <Day number={3}/>
+                        <Day number={4}/>
+                        <Day number={5}/>
                     </div>
                     <div className={s.bottomBlock__rightBlock}>
                         <DisplayerDarkBlue>
