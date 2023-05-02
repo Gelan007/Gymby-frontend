@@ -1,0 +1,15 @@
+{
+  "about": {
+    "timeToQuest": "Its time to quest",
+    "universalPlatform": "Universal platform with the ability to record, view and add quests",
+    "goTo": "Go to quests"
+  },
+
+  "header": {
+    "main": "Main",
+    "quests": "Quests",
+    "booking": "Booking",
+    "cabinet": "Account",
+    "enter": "SignIn/SignOut"
+  }
+}

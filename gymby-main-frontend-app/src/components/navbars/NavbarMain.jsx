@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./NavbarMain.module.scss";
 import logo from "../../assets/images/general/logo_web.svg";
 import IconUkr from "../UI/icons/IconUKR";
@@ -14,7 +14,18 @@ import {
 } from "../../utils/routes/consts";
 
 
-const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
+const NavbarMain = ({toggleBurgerMenu, menuBody, isActiveUABtn, isActiveENGBtn, setIsActiveENGBtn, setIsActiveUABtn}) => {
+
+   /* useEffect(() => {
+        console.log('setIsActiveUABtn: ', isActiveUABtn)
+        console.log('setIsActiveENGBtn: ', isActiveENGBtn)
+    }, [isActiveUABtn, isActiveENGBtn])
+
+    function handler() {
+        setIsActiveENGBtn(true)
+        setIsActiveUABtn(true)
+    }*/
+
     return (
         <header className={s.header}>
             <div className={s.header__container + " _containerLanding"}>
@@ -50,7 +61,6 @@ const NavbarMain = ({toggleBurgerMenu, menuBody}) => {
                 </NavLink>
             </div>
             <div className={s.hrContainer}><hr className={s.hr}/></div>
-
         </header>
 
     );

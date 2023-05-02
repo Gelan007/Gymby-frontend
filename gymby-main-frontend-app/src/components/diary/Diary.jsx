@@ -14,9 +14,9 @@ const Diary = () => {
     const [isModalActive, setIsModalActive] = useState(false);
     const programImportHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
 
-    useEffect(() => {
+   /* useEffect(() => {
         console.log(date)
-    }, [date])
+    }, [date])*/
 
     return (
         <div className={s.diary}>
