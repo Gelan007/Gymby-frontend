@@ -3,6 +3,7 @@ import UserAccountSearchItem from "./UserAccountSearchItem";
 import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import s from './Search.module.scss'
 import InputGreySearch from "../../UI/inputs/InputGreySearch";
+import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 
 const UserAccountSearch = ({profiles}) => {
     const TRAINERS = 'trainers';
@@ -13,7 +14,7 @@ const UserAccountSearch = ({profiles}) => {
 
     return (
         <div className={s.userAccountSearch}>
-            <UserAccountLeftPanel isButtonGold={true}/>
+            <UserAccountLeftPanelContainer isButtonGold={true}/>
             <div className={s.userAccountSearch__body}>
                 <div className={s.navBlock}>
                     <div className={s.navBlock__input}>

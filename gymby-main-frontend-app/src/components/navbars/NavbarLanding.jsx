@@ -7,7 +7,7 @@ import ButtonOrange from "../UI/buttons/ButtonOrange";
 import {NavLink} from "react-router-dom";
 import {HOME_ROUTE} from "../../utils/routes/consts";
 
-const NavbarLanding = ({toggleBurgerMenu, menuBody}) => {
+const NavbarLanding = ({toggleBurgerMenu, menuBody, login}) => {
     return (
         <header className={s.header}>
             <div className={s.header__container + " _containerLanding"}>
@@ -29,7 +29,7 @@ const NavbarLanding = ({toggleBurgerMenu, menuBody}) => {
                     <IconUsa/>
                 </div>
                 <div className={s.header__buttonsBody}>
-                    <ButtonOrange>Вхід</ButtonOrange>
+                    <ButtonOrange onClick={() => login()}>Вхід</ButtonOrange>
                     <ButtonOrange>Реєстрація</ButtonOrange>
                 </div>
 

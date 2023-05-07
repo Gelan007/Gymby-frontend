@@ -2,11 +2,12 @@ import React from 'react';
 import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import s from './Subscriptions.module.scss'
 import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
+import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 
 const UserAccountSubscriptions = () => {
     return (
         <div className={s.subscriptions}>
-            <UserAccountLeftPanel isButtonGold={true}/>
+            <UserAccountLeftPanelContainer isButtonGold={true}/>
             <div className={s.subscriptions__body}>
                 <div className={s.infoBlock}>
                     <div className={s.infoBlock__text}>
