@@ -9,6 +9,7 @@ import {store} from "./redux/store";
 import {OidcProvider} from "@axa-fr/react-oidc";
 import {configuration} from "./api/oidc/axa-auth";
 /*import store from "./redux/store";*/
+import './utils/i18next/i18next';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

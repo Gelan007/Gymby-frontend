@@ -1,6 +1,6 @@
 {
-  "about": {
-    "timeToQuest": "Its time to quest",
+  "landingPage": {
+    "titularOnlineTraining": "Онлайн-тренування з особистим тренером",
     "universalPlatform": "Universal platform with the ability to record, view and add quests",
     "goTo": "Go to quests"
   },

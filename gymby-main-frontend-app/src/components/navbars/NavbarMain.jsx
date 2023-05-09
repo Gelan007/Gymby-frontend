@@ -12,19 +12,13 @@ import {
     USER_ACCOUNT_PERSONAL_DATA_ROUTE,
     USER_ACCOUNT_ROUTE
 } from "../../utils/routes/consts";
+import {useTranslation} from "react-i18next";
 
 
-const NavbarMain = ({toggleBurgerMenu, menuBody, isActiveUABtn, isActiveENGBtn, setIsActiveENGBtn, setIsActiveUABtn}) => {
-
-   /* useEffect(() => {
-        console.log('setIsActiveUABtn: ', isActiveUABtn)
-        console.log('setIsActiveENGBtn: ', isActiveENGBtn)
-    }, [isActiveUABtn, isActiveENGBtn])
-
-    function handler() {
-        setIsActiveENGBtn(true)
-        setIsActiveUABtn(true)
-    }*/
+const NavbarMain = ({toggleBurgerMenu, menuBody,
+                        isActiveUABtn, isActiveENGBtn,
+                        UAButtonStateHandler, ENGButtonStateHandler}) => {
+    const {t} = useTranslation();
 
     return (
         <header className={s.header}>
@@ -53,8 +47,8 @@ const NavbarMain = ({toggleBurgerMenu, menuBody, isActiveUABtn, isActiveENGBtn, 
                 </nav>
                 <div className={s.header__generalRightBlock}></div>
                 <div className={s.header__iconsBody}>
-                    <IconUkr/>
-                    <IconUsa/>
+                    <IconUkr onClick={() => UAButtonStateHandler('ua')} isActive={isActiveUABtn}/>
+                    <IconUsa onClick={() => ENGButtonStateHandler('eng')} isActive={isActiveENGBtn}/>
                 </div>
                 <NavLink to={USER_ACCOUNT_ROUTE} className={({isActive}) => isActive ? s.activeCabinet + " " + s.header__iconCabinet : s.header__iconCabinet}>
                     <img src={userCabinetIcon} alt="cabinet"/>
