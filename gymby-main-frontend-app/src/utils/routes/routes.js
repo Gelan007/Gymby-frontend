@@ -1,7 +1,7 @@
 import MainPage from "../../pages/mainLandingPage/MainPage";
 import {
     DIARY_ROUTE,
-    HOME_ROUTE, MEASUREMENTS_HAND_ROUTE, MEASUREMENTS_ROUTE,
+    HOME_ROUTE, MEASUREMENTS_HAND_ROUTE, MEASUREMENTS_ROUTE, PROGRAMS_FREE_ROUTE, PROGRAMS_ROUTE,
     USER_ACCOUNT_COACHING_ROUTE, USER_ACCOUNT_FRIENDS_LIST_ROUTE, USER_ACCOUNT_INSTRUCTION_ROUTE,
     USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_PROFILE_ROUTE, USER_ACCOUNT_ROUTE, USER_ACCOUNT_SEARCH_ROUTE,
     USER_ACCOUNT_SUBSCRIBES_ROUTE
@@ -20,6 +20,8 @@ import UserAccountProfile from "../../components/userAccount/profiles/UserAccoun
 import MeasurementsPage from "../../pages/measurements/MeasurementsPage";
 import MeasurementsHandContainer from "../../components/measurements/hand/MeasurementsHandContainer";
 import Diary from "../../components/diary/Diary";
+import ProgramsFreeContainer from "../../components/programs/free/ProgramsFreeContainer";
+import ProgramsPage from "../../pages/programs/ProgramsPage";
 
 export const publicRoutes = [
    /* {
@@ -78,5 +80,14 @@ export const authRoutes = [
     {
         path: DIARY_ROUTE,
         Component: <Diary/>
+    },
+
+    {
+        path: PROGRAMS_ROUTE,
+        Component: <ProgramsPage/>
+    },
+    {
+        path: PROGRAMS_FREE_ROUTE,
+        Component: <ProgramsFreeContainer/>
     },
 ]

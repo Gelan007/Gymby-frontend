@@ -16,3 +16,6 @@ export const MEASUREMENTS_HAND_ROUTE = MEASUREMENTS_ROUTE + "/hand";
 
 export const DIARY_ROUTE = "/diary";
 
+export const PROGRAMS_ROUTE = "/programs";
+export const PROGRAMS_FREE_ROUTE = PROGRAMS_ROUTE + "/free";
+
