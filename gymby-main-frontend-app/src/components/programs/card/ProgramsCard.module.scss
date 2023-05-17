@@ -1,0 +1,36 @@
+@import "../../../utils/styles/GymbyGeneralStyles.module.scss";
+.card {
+  background: $gymbyDarkBlue;
+  width: 330px;
+  height: 300px;
+  border-radius: 20px;
+
+
+  &__body {
+    padding: 12px 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+  &__text {
+    margin: auto;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #FFFFFF;
+
+  }
+}
+
+.marksBlock {
+  display: flex;
+  flex-wrap: wrap;
+  &>*:not(:last-child) {
+    margin-right: 10px;
+  }
+  &>* {
+    margin: 3px 0;
+  }
+}
