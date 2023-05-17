@@ -18,4 +18,7 @@ export const DIARY_ROUTE = "/diary";
 
 export const PROGRAMS_ROUTE = "/programs";
 export const PROGRAMS_FREE_ROUTE = PROGRAMS_ROUTE + "/free";
+export const PROGRAMS_FAVORITES_ROUTE = PROGRAMS_ROUTE + "/favorites";
+export const PROGRAMS_PERSONAL_ROUTE = PROGRAMS_ROUTE + "/personal";
+export const PROGRAMS_TRAINER_BASED_ROUTE = PROGRAMS_ROUTE + "/trainerBased";
 

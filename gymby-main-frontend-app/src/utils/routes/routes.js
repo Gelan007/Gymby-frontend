@@ -1,9 +1,19 @@
 import MainPage from "../../pages/mainLandingPage/MainPage";
 import {
     DIARY_ROUTE,
-    HOME_ROUTE, MEASUREMENTS_HAND_ROUTE, MEASUREMENTS_ROUTE, PROGRAMS_FREE_ROUTE, PROGRAMS_ROUTE,
-    USER_ACCOUNT_COACHING_ROUTE, USER_ACCOUNT_FRIENDS_LIST_ROUTE, USER_ACCOUNT_INSTRUCTION_ROUTE,
-    USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_PROFILE_ROUTE, USER_ACCOUNT_ROUTE, USER_ACCOUNT_SEARCH_ROUTE,
+    HOME_ROUTE,
+    MEASUREMENTS_HAND_ROUTE,
+    MEASUREMENTS_ROUTE, PROGRAMS_FAVORITES_ROUTE,
+    PROGRAMS_FREE_ROUTE,
+    PROGRAMS_PERSONAL_ROUTE,
+    PROGRAMS_ROUTE, PROGRAMS_TRAINER_BASED_ROUTE,
+    USER_ACCOUNT_COACHING_ROUTE,
+    USER_ACCOUNT_FRIENDS_LIST_ROUTE,
+    USER_ACCOUNT_INSTRUCTION_ROUTE,
+    USER_ACCOUNT_PERSONAL_DATA_ROUTE,
+    USER_ACCOUNT_PROFILE_ROUTE,
+    USER_ACCOUNT_ROUTE,
+    USER_ACCOUNT_SEARCH_ROUTE,
     USER_ACCOUNT_SUBSCRIBES_ROUTE
 } from "./consts";
 import UserAccountPersonalData from "../../components/userAccount/personalData/UserAccountPersonalData";
@@ -22,6 +32,9 @@ import MeasurementsHandContainer from "../../components/measurements/hand/Measur
 import Diary from "../../components/diary/Diary";
 import ProgramsFreeContainer from "../../components/programs/free/ProgramsFreeContainer";
 import ProgramsPage from "../../pages/programs/ProgramsPage";
+import ProgramsPersonalContainer from "../../components/programs/personal/ProgramsPersonalContainer";
+import ProgramsFavoritesContainer from "../../components/programs/favorites/ProgramsFavoritesContainer";
+import ProgramsTrainerBasedContainer from "../../components/programs/trainerBased/ProgramsTrainerBasedContainer";
 
 export const publicRoutes = [
    /* {
@@ -89,5 +102,17 @@ export const authRoutes = [
     {
         path: PROGRAMS_FREE_ROUTE,
         Component: <ProgramsFreeContainer/>
+    },
+    {
+        path: PROGRAMS_PERSONAL_ROUTE,
+        Component: <ProgramsPersonalContainer/>
+    },
+    {
+        path: PROGRAMS_FAVORITES_ROUTE,
+        Component: <ProgramsFavoritesContainer/>
+    },
+    {
+        path: PROGRAMS_TRAINER_BASED_ROUTE,
+        Component: <ProgramsTrainerBasedContainer/>
     },
 ]

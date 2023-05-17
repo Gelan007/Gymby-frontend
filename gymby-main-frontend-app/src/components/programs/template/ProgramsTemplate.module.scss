@@ -1,0 +1,30 @@
+.programs {
+  display: flex;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 50px 0 30px;
+    width: 100%;
+  }
+}
+
+.navBlock {
+  display: flex;
+  align-items: center;
+  margin-bottom: 23px;
+
+  &__input {
+    flex: 0 0 350px;
+    margin-right: 10px;
+  }
+
+  &__button {
+    flex: 230px 0 0;
+    margin-left: auto;
+    &>*{
+      height: 48px;
+    }
+
+  }
+}

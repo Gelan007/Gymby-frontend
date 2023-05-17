@@ -2,7 +2,7 @@ import React from 'react';
 import ProgramsTemplate from "../template/ProgramsTemplate";
 import ProgramsCard from "../card/ProgramsCard";
 
-const ProgramsFree = () => {
+const ProgramsFavorites = () => {
     return (
         <div>
             <ProgramsTemplate>
@@ -12,4 +12,4 @@ const ProgramsFree = () => {
     );
 };
 
-export default ProgramsFree;
+export default ProgramsFavorites;

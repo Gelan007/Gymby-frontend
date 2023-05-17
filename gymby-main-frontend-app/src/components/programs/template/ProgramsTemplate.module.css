@@ -1,0 +1,28 @@
+.programs {
+  display: flex;
+}
+.programs__body {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 50px 0 30px;
+  width: 100%;
+}
+
+.navBlock {
+  display: flex;
+  align-items: center;
+  margin-bottom: 23px;
+}
+.navBlock__input {
+  flex: 0 0 350px;
+  margin-right: 10px;
+}
+.navBlock__button {
+  flex: 230px 0 0;
+  margin-left: auto;
+}
+.navBlock__button > * {
+  height: 48px;
+}
+
+/*# sourceMappingURL=ProgramsTemplate.module.css.map */
