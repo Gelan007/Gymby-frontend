@@ -3,9 +3,17 @@ import ProgramsLeftPanel from "../leftPanel/ProgramsLeftPanel";
 import s from './ProgramsTemplate.module.scss'
 import InputGreySearch from "../../UI/inputs/InputGreySearch";
 import ButtonGreen from "../../UI/buttons/ButtonGreen";
+import ProgramsCard from "../card/ProgramsCard";
+import {Grid} from "@mui/material";
 
-
-const ProgramsTemplate = ({children}) => {
+//*Этот массив вообще удалить потом, и оставить просто programs = [] - НО НАВЕРНОЕ ВСЕ ТАКИ ПРОСТО programs И ВСЁ*
+const defaultTestProgramsArray = [
+    {title: '4-недільна програма на масу від Івана', marks: ['ектоморф', 'набір маси', 'середній']},
+    {title: '5-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'складний']},
+    {title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
+    {title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
+]
+const ProgramsTemplate = ({programs = defaultTestProgramsArray}) => {
     return (
         <div className={s.programs}>
             <ProgramsLeftPanel/>
@@ -19,7 +27,13 @@ const ProgramsTemplate = ({children}) => {
                     </div>
                 </div>
                 <div className={s.cards}>
-                    {children}
+                    <Grid container spacing={2}>
+                        {programs?.map(((program, index) => (
+                            <Grid item xs={12} sm={6} md={4} key={index}>
+                                <ProgramsCard title={program.title} marks={program.marks}/>
+                            </Grid>
+                        )))}
+                    </Grid>
                 </div>
             </div>
         </div>

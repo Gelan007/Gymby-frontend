@@ -25,4 +25,12 @@
   height: 48px;
 }
 
+.cards {
+  /*  display: flex;
+    flex-wrap: wrap;
+    &>* {
+      margin: 10px 20px;
+    }*/
+}
+
 /*# sourceMappingURL=ProgramsTemplate.module.css.map */

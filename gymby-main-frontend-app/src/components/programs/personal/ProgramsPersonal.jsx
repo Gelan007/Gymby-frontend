@@ -5,9 +5,7 @@ import ProgramsCard from "../card/ProgramsCard";
 const ProgramsPersonal = () => {
     return (
         <div>
-            <ProgramsTemplate>
-                <ProgramsCard/>
-            </ProgramsTemplate>
+            <ProgramsTemplate/>
         </div>
     );
 };

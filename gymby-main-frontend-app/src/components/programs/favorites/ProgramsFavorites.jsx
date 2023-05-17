@@ -5,11 +5,14 @@ import ProgramsCard from "../card/ProgramsCard";
 const ProgramsFavorites = () => {
     return (
         <div>
-            <ProgramsTemplate>
-                <ProgramsCard/>
-            </ProgramsTemplate>
+            <ProgramsTemplate/>
         </div>
     );
 };
 
 export default ProgramsFavorites;
+
+/*
+<ProgramsTemplate>
+    <ProgramsCard/>
+</ProgramsTemplate>*/
