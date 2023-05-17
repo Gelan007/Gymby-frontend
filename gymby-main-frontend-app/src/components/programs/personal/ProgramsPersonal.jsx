@@ -5,7 +5,7 @@ import ProgramsCard from "../card/ProgramsCard";
 const ProgramsPersonal = () => {
     return (
         <div>
-            <ProgramsTemplate/>
+            <ProgramsTemplate isButtonShow={true}/>
         </div>
     );
 };

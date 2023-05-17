@@ -13,7 +13,7 @@ const defaultTestProgramsArray = [
     {title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
     {title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
 ]
-const ProgramsTemplate = ({programs = defaultTestProgramsArray}) => {
+const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= false}) => {
     return (
         <div className={s.programs}>
             <ProgramsLeftPanel/>
@@ -22,7 +22,7 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray}) => {
                     <div className={s.navBlock__input}>
                         <InputGreySearch placeholder="Пошук"/>
                     </div>
-                    <div className={s.navBlock__button}>
+                    <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}>
                         <ButtonGreen>Створити програму</ButtonGreen>
                     </div>
                 </div>

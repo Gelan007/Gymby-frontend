@@ -24,6 +24,9 @@
 .navBlock__button > * {
   height: 48px;
 }
+.navBlock__button.disable {
+  display: none;
+}
 
 .cards {
   /*  display: flex;

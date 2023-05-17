@@ -25,9 +25,12 @@
     &>*{
       height: 48px;
     }
-
+    &.disable {
+      display: none;
+    }
   }
 }
+
 
 .cards {
 /*  display: flex;

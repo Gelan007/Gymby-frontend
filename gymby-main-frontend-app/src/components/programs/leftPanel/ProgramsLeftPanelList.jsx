@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "../../measurements/leftPanel/MeasurementsLeftPanelList.module.scss";
+import s from "./ProgramsLeftPanelList.module.scss";
 import {NavLink} from "react-router-dom";
 import userIcon from '../../../assets/images/programs/user.svg'
 import freeIcon from '../../../assets/images/programs/free.svg'
