@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ProgramsMark = () => {
+const ProgramsMark = ({text}) => {
     return (
         <div>
-            
+            {text}
         </div>
     );
 };

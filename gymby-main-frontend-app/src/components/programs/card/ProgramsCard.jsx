@@ -11,7 +11,7 @@ const ProgramsCard = ({title, marks}) => {
                 </div>
                 <div className={s.marksBlock}>
                     {marks.map(mark => (
-                        <ProgramsMark mark={mark}/>
+                        <ProgramsMark text={mark}/>
                     ))}
                 </div>
             </div>
