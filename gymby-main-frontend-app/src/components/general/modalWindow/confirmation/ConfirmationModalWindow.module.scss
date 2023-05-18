@@ -1,0 +1,68 @@
+@import "../../../../utils/styles/GymbyGeneralStyles.module.scss";
+
+.confirmationModal {
+  display: flex;
+  flex-direction: column;
+}
+
+.topBlock {
+  display: flex;
+  padding: 0 30px 30px;
+}
+
+.close {
+  margin-left: auto;
+  cursor: pointer;
+  user-select: none;
+  &:hover {
+    filter: drop-shadow(0px 8px 8px $gymbyRed);
+  }
+  & img {}
+}
+
+.centralBlock {
+  min-height: 50px;
+  border-top: 1px solid rgba($gymbyBlue, 0.5);
+  border-bottom: 1px solid rgba($gymbyBlue, 0.5);
+
+  &__titleBlock {
+    display: flex;
+    align-items: center;
+    margin: 10px 4% 5px;
+  }
+  &__icon {
+    margin-right: 6px;
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+  }
+  &__content {
+    margin: 18px 4%;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+
+    & span {
+      color: $gymbyRed;
+    }
+  }
+}
+
+.bottomBlock {
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin: 2% 0 0 0;
+
+    &>*{
+      flex: 0 0 100px;
+    }
+    &>*:not(:last-child) {
+      margin-right: 6px;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import ProgramsCard from "../card/ProgramsCard";
 const ProgramsFavorites = () => {
     return (
         <div>
-            <ProgramsTemplate/>
+            <ProgramsTemplate isDeleteIcon={true}/>
         </div>
     );
 };
