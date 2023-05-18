@@ -1,0 +1,31 @@
+.defaultStyles, .yellow, .green, .red, .darkBlue {
+  border-radius: 15px;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  min-width: 50px;
+  padding: 5px 8px;
+}
+
+.darkBlue {
+  background: rgba(87, 115, 153, 0.6);
+}
+
+.red {
+  background: rgba(255, 77, 0, 0.6);
+}
+
+.green {
+  background: rgba(66, 255, 0, 0.6);
+}
+
+.yellow {
+  background: rgba(255, 224, 0, 0.6);
+}
+
+.defaultStyles {
+  background: rgba(143, 84, 187, 0.6);
+}
+
+/*# sourceMappingURL=ProgramMark.module.css.map */
