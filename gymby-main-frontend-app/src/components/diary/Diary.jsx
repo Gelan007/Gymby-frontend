@@ -73,9 +73,7 @@ const Diary = () => {
                     <Approach/>
                 </div>
             </div>
-            <DiaryModalProgramsList isActive={isModalActive} setActive={setIsModalActive}>
-
-            </DiaryModalProgramsList>
+            <DiaryModalProgramsList isActive={isModalActive} setActive={setIsModalActive}/>
         </div>
     );
 };
