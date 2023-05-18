@@ -33,9 +33,8 @@ const NavbarLanding = ({toggleBurgerMenu, menuBody, login,
                 </div>
                 <div className={s.header__buttonsBody}>
                     <ButtonOrange onClick={() => login()}>Вхід</ButtonOrange>
-                    <ButtonOrange>Реєстрація</ButtonOrange>
+                    {/*<ButtonOrange>Реєстрація</ButtonOrange>*/}
                 </div>
-
             </div>
         </header>
     );

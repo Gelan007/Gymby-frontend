@@ -5,12 +5,12 @@
 // Domains used by OIDC server must be also declared here
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const trustedDomains = {
-    default: ['https://localhost:44351','https://demo.duendesoftware.com', 'https://kdhttps.auth0.com'],
-    config_classic: ['https://localhost:44351', 'https://demo.duendesoftware.com'],
-    config_without_silent_login: ['https://localhost:44351', 'https://demo.duendesoftware.com'],
-    config_without_refresh_token: ['https://localhost:44351', 'https://demo.duendesoftware.com'],
-    config_without_refresh_token_silent_login: ['https://localhost:44351', 'https://demo.duendesoftware.com'],
-    config_with_hash: ['https://localhost:44351', 'https://demo.duendesoftware.com'],
+    default: ['https://gymby-auth.azurewebsites.net','https://localhost:44351','https://demo.duendesoftware.com', 'https://kdhttps.auth0.com'],
+    config_classic: ['https://gymby-auth.azurewebsites.net','https://localhost:44351', 'https://demo.duendesoftware.com'],
+    config_without_silent_login: ['https://gymby-auth.azurewebsites.net','https://localhost:44351', 'https://demo.duendesoftware.com'],
+    config_without_refresh_token: ['https://gymby-auth.azurewebsites.net','https://localhost:44351', 'https://demo.duendesoftware.com'],
+    config_without_refresh_token_silent_login: ['https://gymby-auth.azurewebsites.net','https://localhost:44351', 'https://demo.duendesoftware.com'],
+    config_with_hash: ['https://gymby-auth.azurewebsites.net','https://localhost:44351', 'https://demo.duendesoftware.com'],
 };
 
 /*    config_google: ['https://oauth2.googleapis.com', 'https://openidconnect.googleapis.com'],*/

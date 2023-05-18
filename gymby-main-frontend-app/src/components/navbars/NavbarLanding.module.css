@@ -131,7 +131,7 @@
 .header__buttonsBody {
   display: flex;
   align-items: center;
-  flex: 0 1 300px;
+  flex: 0 1 150px;
 }
 .header__buttonsBody > *:not(:last-child) {
   margin-right: 5px;
