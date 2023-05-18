@@ -5,7 +5,6 @@
 
 .header {
   padding: 20px 0 0 0;
-
   &__container {
     display: flex;
     align-items: center;
@@ -28,7 +27,7 @@
   &__buttonsBody {
     display: flex;
     align-items: center;
-    flex: 0 1 300px;
+    flex: 0 1 150px;
 
     &>*:not(:last-child) {
       margin-right: 5px;

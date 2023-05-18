@@ -4,6 +4,7 @@ import UserAccountPersonalDataContainer
 import {useNavigate } from "react-router-dom";
 import {USER_ACCOUNT_PERSONAL_DATA_ROUTE} from "../../utils/routes/consts";
 
+
 const UserAccountPage = () => {
     const navigate = useNavigate();
 

@@ -30,11 +30,13 @@ import telegram from '../../assets/images/LandingPage/footer/telegramBlack.svg'
 import instagram from '../../assets/images/LandingPage/footer/instagramBlack.svg'
 import twitter from '../../assets/images/LandingPage/footer/twitterBlack.svg'
 import NavbarContainer from "../../components/navbars/NavbarContainer";
+import {useTranslation} from "react-i18next";
 
 
 
 
 const MainPage = () => {
+    const {t} = useTranslation();
     return (
         <div>
             {/*<NavbarContainer/>*/}
@@ -43,7 +45,7 @@ const MainPage = () => {
                     <div className={s.titular__topBlock + " " + s.topBlockTitular}>
                         <div className={s.topBlockTitular__content}>
                             <div className={s.topBlockTitular__blockText + " " + s.topBlockTextTitular}>
-                                <h1 className={s.topBlockTextTitular__title}>Онлайн-тренування з особистим тренером</h1>
+                                <h1 className={s.topBlockTextTitular__title}>{t("landingPage.titularOnlineTraining")}</h1>
                                 <div className={s.topBlockTextTitular__description}>Є можливість займатися за допомогою веб- або мобільного застосунку.</div>
                             </div>
                             <div className={s.topBlockTitular__pointsBlock}>

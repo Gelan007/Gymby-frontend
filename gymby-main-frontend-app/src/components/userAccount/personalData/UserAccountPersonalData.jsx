@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
 import zaglushka from '../../../assets/images/userCabinet/personalData/Revan.jpg'
@@ -10,11 +10,17 @@ import ButtonOrange from "../../UI/buttons/ButtonOrange";
 import {NavLink} from "react-router-dom";
 import {USER_ACCOUNT_PROFILE_ROUTE} from "../../../utils/routes/consts";
 import ButtonGreen from "../../UI/buttons/ButtonGreen";
+import {useOidcAccessToken, useOidcUser, UserStatus} from "@axa-fr/react-oidc";
+import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
+
 
 const UserAccountPersonalData = (props) => {
+    const { oidcUser, oidcUserLoadingState } = useOidcUser();
+    const { accessToken, accessTokenPayload } = useOidcAccessToken();
+
     return (
         <div className={s.personalData}>
-            <UserAccountLeftPanel isButtonGold={true}/>
+            <UserAccountLeftPanelContainer isButtonGold={true}/>
             <div className={s.personalData__body}>
                 <div className={s.avatarBlock}>
                     <div className={s.avatarBlock__image}>
@@ -24,6 +30,8 @@ const UserAccountPersonalData = (props) => {
                         <div className={s.avatarBlock__titleBlock}>
                             <span className={s.avatarBlock__name}>
                                 {props.userName}
+                                {/*{oidcUser && <div>{JSON.stringify(oidcUser)}</div> }*/}
+                                {/*{oidcUser && <div>{JSON.stringify(accessTokenPayload)}</div> }*/}
                             </span>
                             <div className={s.avatarBlock__icon}>
                                 <img src={trainerIcon} alt="trainerIcon"/>
@@ -92,6 +100,7 @@ const UserAccountPersonalData = (props) => {
                 </div>
             </div>
         </div>
+
     );
 };
 

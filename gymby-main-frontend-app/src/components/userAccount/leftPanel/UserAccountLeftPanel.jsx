@@ -4,14 +4,7 @@ import s from './LeftPanel.module.scss'
 import ButtonExit from "../../UI/buttons/ButtonExit";
 import ButtonGold from "../../UI/buttons/ButtonGold";
 
-const UserAccountLeftPanel = ({isButtonGold}) => {
-
-   /* const [isButtonGoldState, setIsButtonGoldState] = useState(true);
-
-    useEffect(() => {
-        setIsButtonGoldState(isButtonGold)
-    }, [isButtonGold])*/
-
+const UserAccountLeftPanel = ({isButtonGold, logout}) => {
     return (
         <div className={s.leftPanel__container}>
             <div className={s.leftPanelList}>
@@ -28,7 +21,7 @@ const UserAccountLeftPanel = ({isButtonGold}) => {
                 :
                 <div></div>
             }
-            <div className={s.buttonExit__container}>
+            <div className={s.buttonExit__container} onClick={() => logout('/')}>
                 <ButtonExit text={'Вийти'}/>
             </div>
         </div>

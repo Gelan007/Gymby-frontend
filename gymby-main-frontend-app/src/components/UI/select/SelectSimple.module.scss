@@ -1,0 +1,19 @@
+@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
+
+.select {
+  background: #FFFFFF;
+  border: 0px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #000000;
+  outline: none;
+  cursor: pointer;
+}
+
+.defaultValue {
+  color:$gymbyBlue;
+}
+
+.option {
+  font-size: 20px;
+}

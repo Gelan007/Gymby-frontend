@@ -4,6 +4,7 @@ import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import InputGreySearch from "../../UI/inputs/InputGreySearch";
 import UserAccountSearchItem from "../search/UserAccountSearchItem";
 import UserAccountFriendsListItem from "./items/UserAccountFriendsListItem";
+import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 
 
 const UserAccountFriendsList = ({profiles}) => {
@@ -16,7 +17,7 @@ const UserAccountFriendsList = ({profiles}) => {
 
     return (
         <div className={s.userAccountFriendsList}>
-            <UserAccountLeftPanel isButtonGold={true}/>
+            <UserAccountLeftPanelContainer isButtonGold={true}/>
             <div className={s.userAccountFriendsList__body}>
                 <div className={s.navBlock}>
                     <div className={s.navBlock__input}>

@@ -2,11 +2,12 @@ import React from 'react';
 import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import s from './Coaching.module.scss'
 import man from '../../../assets/images/userCabinet/coaching/man.png'
+import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 
 const UserAccountCoaching = () => {
     return (
         <div className={s.coaching}>
-            <UserAccountLeftPanel isButtonGold={false}/>
+            <UserAccountLeftPanelContainer isButtonGold={false}/>
             <div className={s.coaching__body}>
                 <div className={s.possibilities}>
                     <div className={s.possibilities__content}>

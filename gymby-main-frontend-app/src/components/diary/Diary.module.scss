@@ -1,0 +1,79 @@
+.diary {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 80px 50px;
+  &__topBlock {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  &__bottomBlock {}
+}
+
+.topBlock {
+  &__diarySelect {
+    position: relative;
+    display: inline-block;
+    &:after {
+      content: "";
+      padding: 0 8px;
+      font-size: 12px;
+      position: absolute;
+      right: 8px;
+      top: 4px;
+      z-index: 1;
+      text-align: center;
+      width: 10%;
+      height: 100%;
+      pointer-events: none;
+      box-sizing: border-box;
+      background: url("../../assets/images/approach/bottomArrow.svg") no-repeat left top 20%;
+    }
+    select {
+      padding-right: 20px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+  }
+  &__accessSelect {
+
+  }
+}
+
+.bottomBlock {
+  display: flex;
+  justify-content: center;
+  &__calendarBlock {
+    margin-right: 70px;
+    flex: 0 0 430px;
+  }
+  &__approaches {
+    flex: 0 0 850px;
+    &>*:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.calendarBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__calendar {
+  }
+  &__buttons {
+    display: flex;
+    margin-top: 35px;
+    &>*:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+  &__buttonAdd {
+    width: 170px;
+  }
+  &__buttonImport {
+   width: 230px;
+  }
+}

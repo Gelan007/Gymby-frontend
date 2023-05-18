@@ -1,0 +1,110 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.approachItem {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background: #F7F7FF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  height: 42px;
+  width: 100%;
+}
+.approachItem:hover {
+  background-color: #FFFFFF;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.numeration {
+  margin-right: 30px;
+}
+
+.customizableBlock {
+  display: flex;
+  align-items: center;
+}
+.customizableBlock__content {
+  display: flex;
+  align-items: center;
+  margin-right: 65px;
+}
+.customizableBlock__content > *:not(:last-child) {
+  margin-right: 8px;
+}
+.customizableBlock__arrowsBlock {
+  display: flex;
+  flex-direction: column;
+}
+.topArrow {
+  margin-bottom: 4px;
+}
+.topArrow img {
+  max-width: 82%;
+}
+.topArrow img:hover {
+  cursor: pointer;
+}
+
+.bottomArrow img {
+  max-width: 82%;
+}
+.bottomArrow img:hover {
+  cursor: pointer;
+}
+
+.iconsBlock {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.iconsBlock > *:not(:last-child) {
+  margin-right: 10px;
+}
+.iconsBlock__checkbox:hover {
+  cursor: pointer;
+}
+.iconsBlock__checkbox img {
+  max-width: 90%;
+}
+.iconsBlock__basket {
+  cursor: pointer;
+}
+.iconsBlock__basket:hover {
+  filter: drop-shadow(0px 8px 8px #FE5F55);
+}
+.iconsBlock__basket img {
+  max-width: 85%;
+}
+
+.invisibility {
+  visibility: hidden;
+}
+
+.editModeIcon img {
+  opacity: 0.4;
+  max-width: 85%;
+}
+
+/*# sourceMappingURL=ApproachItem.module.css.map */
