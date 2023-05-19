@@ -5,7 +5,7 @@ import {
     MEASUREMENTS_HAND_ROUTE,
     MEASUREMENTS_ROUTE, PROGRAMS_FAVORITES_ROUTE,
     PROGRAMS_FREE_ROUTE,
-    PROGRAMS_PERSONAL_ROUTE,
+    PROGRAMS_PERSONAL_ROUTE, PROGRAMS_PROGRAM_PROFILE_ROUTE,
     PROGRAMS_ROUTE, PROGRAMS_TRAINER_BASED_ROUTE,
     USER_ACCOUNT_COACHING_ROUTE,
     USER_ACCOUNT_FRIENDS_LIST_ROUTE,
@@ -35,6 +35,7 @@ import ProgramsPage from "../../pages/programs/ProgramsPage";
 import ProgramsPersonalContainer from "../../components/programs/personal/ProgramsPersonalContainer";
 import ProgramsFavoritesContainer from "../../components/programs/favorites/ProgramsFavoritesContainer";
 import ProgramsTrainerBasedContainer from "../../components/programs/trainerBased/ProgramsTrainerBasedContainer";
+import ProgramsProgramProfile from "../../components/programs/programProfile/ProgramsProgramProfile";
 
 export const publicRoutes = [
    /* {
@@ -115,4 +116,8 @@ export const authRoutes = [
         path: PROGRAMS_TRAINER_BASED_ROUTE,
         Component: <ProgramsTrainerBasedContainer/>
     },
+    {
+        path: PROGRAMS_PROGRAM_PROFILE_ROUTE,
+        Component: <ProgramsProgramProfile/>
+    }
 ]
