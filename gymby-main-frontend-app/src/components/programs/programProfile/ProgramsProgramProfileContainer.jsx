@@ -10,6 +10,7 @@ const ProgramsProgramProfileContainer = () => {
     * в свою очередь прокинет уже в свой leftPanel для отрисовки дней и тд*/
 
     /*ЗАГЛУШКА ДЛЯ ТЕСТА! ПОТОМ НА СТОР ЗАМЕНИТЬ*/
+    /*Не забыть selectedDay в store записать вместо leftPanelList, и тут его через пропсы передавать потом в ProgramsProgramProfile*/
     const programProfilePlug = {
         id: 11,
         title: '4-недільна програма на масу від Івана',
@@ -22,7 +23,7 @@ const ProgramsProgramProfileContainer = () => {
         ]
     }
     return (
-        <ProgramsProgramProfile program={programProfilePlug} programId={programId}/>
+        <ProgramsProgramProfile program={programProfilePlug} programId={programId} selectedDay={0}/>
     );
 };
 
