@@ -22,7 +22,7 @@ const ProgramsProgramProfileContainer = () => {
         ]
     }
     return (
-        <ProgramsProgramProfile program={programProfilePlug}/>
+        <ProgramsProgramProfile program={programProfilePlug} programId={programId}/>
     );
 };
 

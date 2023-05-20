@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 const ProgramsProgramLeftPanelList = ({daysCount, programId }) => {
     const t = useTranslation()
     const days = Array.from({ length: daysCount }, (_, index) => index + 1);
-    const [selectedDay, setSelectedDay] = useState(1); // ЗАМЕНИТЬ НА СТОР
+    const [selectedDay, setSelectedDay] = useState(0); // ЗАМЕНИТЬ НА СТОР
 
     /*осталось только на основе выбранного дня(selectedDay), который будет в store находится,
     * отрисовывать в ProgramsProgramProfile нужные данные */
@@ -26,10 +26,12 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId }) => {
                 <ul className={s.list}>
                     <li className={s.item}>
                         <div className={s.icon}><img src={spellIcon} alt="spellIcon"/></div>
-                        <NavLink to={PROGRAMS_FREE_ROUTE} className={({isActive, isPending}) =>
-                            isPending ? s.pending : isActive ? s.active : s.text}>
+                        <div className={selectedDay === 0 ? s.active : s.text}
+                             style={{cursor: "pointer"}}
+                             onClick={() => setSelectedDay(0)}
+                        >
                             Опис
-                        </NavLink>
+                        </div>
                     </li>
                     {days?.map((day) => (
                         <li className={s.item}>

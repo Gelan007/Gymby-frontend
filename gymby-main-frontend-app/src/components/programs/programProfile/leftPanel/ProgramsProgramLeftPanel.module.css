@@ -20,6 +20,10 @@
   justify-content: center;
 }
 
+.leftPanel {
+  min-height: 50vh;
+}
+
 .leftPanel__container {
   min-width: 348px;
 }
