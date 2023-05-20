@@ -36,6 +36,7 @@ import ProgramsPersonalContainer from "../../components/programs/personal/Progra
 import ProgramsFavoritesContainer from "../../components/programs/favorites/ProgramsFavoritesContainer";
 import ProgramsTrainerBasedContainer from "../../components/programs/trainerBased/ProgramsTrainerBasedContainer";
 import ProgramsProgramProfile from "../../components/programs/programProfile/ProgramsProgramProfile";
+import ProgramsProgramProfileContainer from "../../components/programs/programProfile/ProgramsProgramProfileContainer";
 
 export const publicRoutes = [
    /* {
@@ -118,6 +119,6 @@ export const authRoutes = [
     },
     {
         path: PROGRAMS_PROGRAM_PROFILE_ROUTE,
-        Component: <ProgramsProgramProfile/>
+        Component: <ProgramsProgramProfileContainer/>
     }
 ]

@@ -7,7 +7,7 @@ import ProgramsCard from "../card/ProgramsCard";
 import {Grid} from "@mui/material";
 import ConfirmationModalWindow from "../../general/modalWindow/confirmation/ConfirmationModalWindow";
 import {NavLink} from "react-router-dom";
-import {PROGRAMS_PROGRAM_PROFILE_ROUTE} from "../../../utils/routes/consts";
+import {PROGRAMS_PROGRAM_PROFILE_ROUTE, PROGRAMS_ROUTE} from "../../../utils/routes/consts";
 
 
 //*Этот массив вообще удалить потом, и оставить просто programs = [] - НО НАВЕРНОЕ ВСЕ ТАКИ ПРОСТО programs И ВСЁ*
@@ -41,7 +41,7 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= fa
                     <Grid container spacing={2}>
                         {programs?.map(((program, index) => (
                             <Grid item xs={12} sm={6} md={4} key={index}>
-                                <NavLink to={PROGRAMS_PROGRAM_PROFILE_ROUTE + program.id}>
+                                <NavLink to={`${PROGRAMS_ROUTE}/${program.id}`}>
                                 <ProgramsCard isDeleteIcon={isDeleteIcon}
                                               title={program.title}
                                               marks={program.marks}
