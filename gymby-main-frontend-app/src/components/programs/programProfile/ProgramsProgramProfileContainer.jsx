@@ -1,8 +1,10 @@
 import React from 'react';
 import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
+import {connect} from "react-redux";
+import {setSelectedDay} from '../../../redux/slices/profile-slice'
 
-const ProgramsProgramProfileContainer = () => {
+const ProgramsProgramProfileContainer = (props) => {
     /*подставлять в запрос потом*/
     const {programId} = useParams()
     /*в этой компоненте запрос, записать в стор, и через пропсы прокинуть
@@ -23,8 +25,14 @@ const ProgramsProgramProfileContainer = () => {
         ]
     }
     return (
-        <ProgramsProgramProfile program={programProfilePlug} programId={programId} selectedDay={1}/>
+        <ProgramsProgramProfile program={programProfilePlug} programId={programId} selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}/>
     );
 };
 
-export default ProgramsProgramProfileContainer;
+let mapStateToProps = (state) => {
+    return {
+        selectedDay: state.profile.selectedDay
+    }
+}
+
+export default connect(mapStateToProps, {setSelectedDay})(ProgramsProgramProfileContainer);

@@ -4,7 +4,7 @@ import ProgramsProgramLeftPanel from "../leftPanel/ProgramsProgramLeftPanel";
 import ButtonOrange from "../../../UI/buttons/ButtonOrange";
 import Approach from "../../../general/approach/Approach";
 
-const ProgramsProgramDay = ({program, programId, selectedDay}) => {
+const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay}) => {
     return (
         <div className={s.program}>
             <div className={s.program__title}>
@@ -12,7 +12,7 @@ const ProgramsProgramDay = ({program, programId, selectedDay}) => {
             </div>
             <div className={s.hrContainer}><hr className={s.hr}/></div>
             <div className={s.program__container}>
-                <ProgramsProgramLeftPanel daysCount={program?.days.length} programId={programId}/>
+                <ProgramsProgramLeftPanel daysCount={program?.days.length} programId={programId} selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
                 <div className={s.program__body}>
                     <div className={s.button}>
                         <ButtonOrange>Додати в обране</ButtonOrange>

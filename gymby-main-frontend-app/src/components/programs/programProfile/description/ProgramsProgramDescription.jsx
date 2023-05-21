@@ -5,7 +5,7 @@ import defaultProgramPhoto from "../../../../assets/images/programs/man.png";
 import ProgramsMark from "../../card/programsMark/ProgramsMark";
 import ButtonOrange from "../../../UI/buttons/ButtonOrange";
 
-const ProgramsProgramDescription = ({program, programId}) => {
+const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay}) => {
     return (
         <div className={s.program}>
             <div className={s.program__title}>
@@ -13,7 +13,7 @@ const ProgramsProgramDescription = ({program, programId}) => {
             </div>
             <div className={s.hrContainer}><hr className={s.hr}/></div>
             <div className={s.program__container}>
-                <ProgramsProgramLeftPanel daysCount={program?.days.length} programId={programId}/>
+                <ProgramsProgramLeftPanel daysCount={program?.days.length} programId={programId} selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
                 <div className={s.program__body}>
                     <div className={s.photoBlock}>
                         <div className={s.photoBlock__photo}>

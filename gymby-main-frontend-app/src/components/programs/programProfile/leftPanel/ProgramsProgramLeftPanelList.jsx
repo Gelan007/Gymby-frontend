@@ -11,13 +11,10 @@ import {
 } from "../../../../utils/routes/consts";
 import {useTranslation} from "react-i18next";
 
-const ProgramsProgramLeftPanelList = ({daysCount, programId }) => {
+const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay}) => {
+    
     const t = useTranslation()
     const days = Array.from({ length: daysCount }, (_, index) => index + 1);
-    const [selectedDay, setSelectedDay] = useState(0); // ЗАМЕНИТЬ НА СТОР
-
-    /*осталось только на основе выбранного дня(selectedDay), который будет в store находится,
-    * отрисовывать в ProgramsProgramProfile нужные данные */
 
     return (
         <div className={s.navigation}>
