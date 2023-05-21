@@ -18,9 +18,9 @@ const ProgramsProgramDay = ({program, programId, selectedDay}) => {
                         <ButtonOrange>Додати в обране</ButtonOrange>
                     </div>
                     <div className={s.approaches}>
-                        <Approach/>
-                        <Approach/>
-                        <Approach/>
+                        <Approach isDrawControlIcons={false} isWeight={false} isMark={false}/>
+                        <Approach isDrawControlIcons={false} isWeight={false} isMark={false}/>
+                        <Approach isDrawControlIcons={false} isWeight={false} isMark={false}/>
                     </div>
                 </div>
             </div>
