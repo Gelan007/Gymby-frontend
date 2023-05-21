@@ -1,0 +1,45 @@
+.statistics {
+  display: flex;
+  flex-direction: column;
+  padding: 35px 65px;
+}
+.topBlock {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -10px -20px;
+
+ /* &>*:not(:last-child) {
+    padding: 0 10px;
+    margin-bottom: 15px;
+  }*/
+
+  &__column {
+    flex: 0 1 410px;
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+
+}
+
+
+@media (max-width: 1340px) {
+  .topBlock {
+    /*justify-content: initial;*/
+
+    &__column {
+      flex: 0 1 33.333%;
+    }
+  }
+
+}
+
+@media (max-width: 950px) {
+  .topBlock {
+    /*justify-content: initial;*/
+
+    &__column {
+      flex: 0 1 50%;
+    }
+  }
+}

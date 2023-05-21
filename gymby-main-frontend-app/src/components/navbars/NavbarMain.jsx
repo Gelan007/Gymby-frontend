@@ -8,7 +8,7 @@ import {Link, NavLink} from "react-router-dom";
 import {
     DIARY_ROUTE,
     HOME_ROUTE,
-    MEASUREMENTS_ROUTE, PROGRAMS_ROUTE,
+    MEASUREMENTS_ROUTE, PROGRAMS_ROUTE, STATISTICS_ROUTE,
     USER_ACCOUNT_PERSONAL_DATA_ROUTE,
     USER_ACCOUNT_ROUTE
 } from "../../utils/routes/consts";
@@ -41,7 +41,11 @@ const NavbarMain = ({toggleBurgerMenu, menuBody,
                             >Програми
                         </NavLink>
                         </li>
-                        <li className={s.menu__item}><a href="" className={s.menu__link}>Статистика</a></li>
+                        <li className={s.menu__item}>
+                            <NavLink to={STATISTICS_ROUTE}
+                                     className={({isActive}) => isActive ? `${s.menu__link} ${s.menu__link_active}` : s.menu__link}
+                            >Статистика</NavLink>
+                        </li>
 
                         <li className={s.menu__item}>
                             <NavLink to={MEASUREMENTS_ROUTE}

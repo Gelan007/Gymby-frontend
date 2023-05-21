@@ -23,4 +23,6 @@ export const PROGRAMS_PERSONAL_ROUTE = PROGRAMS_ROUTE + "/personal";
 export const PROGRAMS_TRAINER_BASED_ROUTE = PROGRAMS_ROUTE + "/trainerBased";
 export const PROGRAMS_PROGRAM_PROFILE_ROUTE = PROGRAMS_ROUTE + "/:programId";
 
+export const STATISTICS_ROUTE = "/statistics";
+
 
