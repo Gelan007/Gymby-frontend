@@ -16,7 +16,7 @@ const ProgramsProgramProfile = ({program, programId, selectedDay, ...props}) => 
         {selectedDay === 0 ?
             <ProgramsProgramDescription program={program} programId={programId}/>
             :
-            <ProgramsProgramDay selectedDay={selectedDay}/>
+            <ProgramsProgramDay program={program} selectedDay={selectedDay} programId={programId}/>
         }
         </div>
     );

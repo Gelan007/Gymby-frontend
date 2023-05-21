@@ -31,12 +31,6 @@
 .program__container {
   display: flex;
 }
-.program__body {
-  display: flex;
-  padding: 25px 50px 40px 30px;
-  width: 100%;
-}
-
 .hrContainer {
   display: flex;
   justify-content: center;
@@ -47,6 +41,12 @@
   background-color: rgba(0, 0, 0, 0.15);
   height: 1.2px;
   width: 95%;
+}
+
+.program__body {
+  display: flex;
+  padding: 25px 50px 40px 30px;
+  width: 100%;
 }
 
 .photoBlock {
