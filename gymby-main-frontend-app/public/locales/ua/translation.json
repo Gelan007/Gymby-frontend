@@ -5,11 +5,33 @@
     "goTo": "Go to quests"
   },
 
-  "header": {
-    "main": "Main",
-    "quests": "Quests",
-    "booking": "Booking",
-    "cabinet": "Account",
-    "enter": "SignIn/SignOut"
+  "navbarMain": {
+    "diary": "Щоденник",
+    "programs": "Програми",
+    "statistics": "Статистика",
+    "measurements": "Заміри тіла"
+  },
+  "navbarLanding": {
+    "servises": "Послуги",
+    "programs": "Програми",
+    "coaching": "Тренерство",
+    "contacts": "Контакти",
+    "enter": "Вхід"
+  },
+
+  "diary": {
+    "sort": {
+      "popularity": "За популярністю",
+      "diaryChoosing": "Оберіть щоденник"
+    },
+    "buttons": {
+      "addExercise": "Додати вправу",
+      "importProgram": "Імпортувати програму",
+      "addModal": "Додати"
+    },
+    "modal": {
+      "day": "День"
+    }
+
   }
 }

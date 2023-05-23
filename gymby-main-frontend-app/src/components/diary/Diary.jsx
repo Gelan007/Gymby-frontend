@@ -8,11 +8,15 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css'
 import DiaryModalProgramsList from "./modal/programsList/DiaryModalProgramsList";
+import { useTranslation } from 'react-i18next';
+
 
 const Diary = () => {
     const [date, setDate] = useState(new Date());
     const [isModalActive, setIsModalActive] = useState(false);
     const programImportHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
+    const {t} = useTranslation();
+
 
    /* useEffect(() => {
         console.log(date)
@@ -24,7 +28,7 @@ const Diary = () => {
                 <div className={s.topBlock__diarySelect}>
                     <SelectSimple  value={'selectedSort'}
                                    onChange={() => {}}
-                                   defaultName="Оберіть щоденник:"
+                                   defaultName='Оберіть щоденник:'
                                    options={[
                                        {value: 'popularity', name: 'За популярністю'},
                                        {value: 'name', name: 'Назва'},
@@ -58,12 +62,12 @@ const Diary = () => {
                     </div>
                     <div className={s.calendarBlock__buttons}>
                         <div className={s.calendarBlock__buttonAdd}>
-                            <ButtonOrange>Додати вправу</ButtonOrange>
+                            <ButtonOrange>{t("diary.buttons.addExercise")}</ButtonOrange>
                         </div>
                         <div className={s.calendarBlock__buttonImport}
                              onClick={programImportHandler}
                         >
-                            <ButtonOrange>Імпортувати програму</ButtonOrange>
+                            <ButtonOrange>{t("diary.buttons.importProgram")}</ButtonOrange>
                         </div>
                     </div>
                 </div>
@@ -73,7 +77,7 @@ const Diary = () => {
                     <Approach/>
                 </div>
             </div>
-            <DiaryModalProgramsList isActive={isModalActive} setActive={setIsModalActive}/>
+            <DiaryModalProgramsList isActive={isModalActive} setActive={setIsModalActive} buttonName={t("diary.buttons.addModal")}/>
         </div>
     );
 };

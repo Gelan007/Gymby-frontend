@@ -5,7 +5,7 @@ import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Додати'}) => {
+const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add'}) => {
     return (
         <ModalWindow isActive={isActive} setActive={setActive}>
             <div className={s.diaryModalWindowTemplate}>

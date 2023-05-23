@@ -5,11 +5,33 @@
     "goTo": "Go to quests"
   },
 
-  "header": {
-    "main": "Main",
-    "quests": "Quests",
-    "booking": "Booking",
-    "cabinet": "Account",
-    "enter": "SignIn/SignOut"
+  "navbarMain": {
+    "diary": "Diary",
+    "programs": "Programs",
+    "statistics": "Statistics",
+    "measurements": "Measurements"
+  },
+  "navbarLanding": {
+    "servises": "Servises",
+    "programs": "Programs",
+    "coaching": "Coaching",
+    "contacts": "Contacts",
+    "enter": "Sign in"
+  },
+
+  "diary": {
+    "sort": {
+      "popularity": "За популярністю",
+      "diaryChoosing": "Choose diary"
+    },
+    "buttons": {
+      "addExercise": "Add an exercise",
+      "importProgram": "Import a program",
+      "addModal": "Add"
+    },
+    "modal": {
+      "day": "Day"
+    }
+
   }
 }

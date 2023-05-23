@@ -32,25 +32,25 @@ const NavbarMain = ({toggleBurgerMenu, menuBody,
                         <li className={s.menu__item}>
                             <NavLink to={DIARY_ROUTE}
                                      className={({isActive}) => isActive ? `${s.menu__link} ${s.menu__link_active}` : s.menu__link}
-                            >Щоденник</NavLink>
+                            >{t("navbarMain.diary")}</NavLink>
                         </li>
 
                         <li className={s.menu__item}>
                             <NavLink to={PROGRAMS_ROUTE}
                                      className={({isActive}) => isActive ? `${s.menu__link} ${s.menu__link_active}` : s.menu__link}
-                            >Програми
+                            >{t("navbarMain.programs")}
                         </NavLink>
                         </li>
                         <li className={s.menu__item}>
                             <NavLink to={STATISTICS_ROUTE}
                                      className={({isActive}) => isActive ? `${s.menu__link} ${s.menu__link_active}` : s.menu__link}
-                            >Статистика</NavLink>
+                            >{t("navbarMain.statistics")}</NavLink>
                         </li>
 
                         <li className={s.menu__item}>
                             <NavLink to={MEASUREMENTS_ROUTE}
                                      className={({isActive}) => isActive ? `${s.menu__link} ${s.menu__link_active}` : s.menu__link}
-                            >Заміри тіла</NavLink>
+                            >{t("navbarMain.measurements")}</NavLink>
                         </li>
                     </ul>
                 </nav>
