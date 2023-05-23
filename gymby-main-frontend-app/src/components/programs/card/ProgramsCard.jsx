@@ -7,7 +7,9 @@ import ConfirmationModalWindow from "../../general/modalWindow/confirmation/Conf
 
 const ProgramsCard = ({title, marks, isDeleteIcon= false, modalHandler, setSelectedProgram}) => {
 
-    const deleteHandler = () => {
+    const deleteHandler = (e) => {
+        e.preventDefault()
+        // e.stopPropagation()
         modalHandler();
         setSelectedProgram(title)
     }
@@ -16,7 +18,7 @@ const ProgramsCard = ({title, marks, isDeleteIcon= false, modalHandler, setSelec
         <div className={s.card}>
             <div className={s.card__body}>
                 {isDeleteIcon &&
-                    <div className={s.card__closeIcon} onClick={() => deleteHandler()}>
+                    <div className={s.card__closeIcon} onClick={(e) => deleteHandler(e)}>
                         <img src={closeIcon} alt="delete"/>
                     </div>
                 }

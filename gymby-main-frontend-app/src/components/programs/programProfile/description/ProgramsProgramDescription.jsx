@@ -4,8 +4,12 @@ import ProgramsProgramLeftPanel from "../leftPanel/ProgramsProgramLeftPanel";
 import defaultProgramPhoto from "../../../../assets/images/programs/man.png";
 import ProgramsMark from "../../card/programsMark/ProgramsMark";
 import ButtonOrange from "../../../UI/buttons/ButtonOrange";
+import { useTranslation } from 'react-i18next';
 
 const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay}) => {
+
+    const {t} = useTranslation() 
+
     return (
         <div className={s.program}>
             <div className={s.program__title}>
@@ -19,12 +23,12 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                         <div className={s.photoBlock__photo}>
                             <img src={defaultProgramPhoto} alt="programPhoto"/>
                         </div>
-                        <div className={s.photoBlock__description}>Програма від: <span>@Gymby_team</span></div>
+                        <div className={s.photoBlock__description}>{t("programs.programDescription.programAuthor")}: <span>@Gymby_team</span></div>
                     </div>
                     <div className={s.mainBlock}>
                         <div className={s.mainBlock__titleBlock}>
                             <div className={s.mainBlock__title}>
-                                Загальний опис тренувальної програми
+                            {t("programs.programDescription.subTitle")}
                             </div>
                             <div className={s.mainBlock__marks}>
                                 <ProgramsMark text={"набір маси"} isBlackTextColor={true}/>
@@ -36,7 +40,7 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
                         </div>
                         <div className={s.mainBlock__button}>
-                            <ButtonOrange>Додати в обране</ButtonOrange>
+                            <ButtonOrange>{t("programs.programDescription.addToFavorite")}</ButtonOrange>
                         </div>
                     </div>
                 </div>

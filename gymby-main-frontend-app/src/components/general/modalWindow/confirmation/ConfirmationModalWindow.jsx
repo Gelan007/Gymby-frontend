@@ -6,9 +6,11 @@ import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import dumbbell from '../../../../assets/images/general/dumbbell.svg'
 import ButtonRed from "../../../UI/buttons/ButtonRed";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
+import { useTranslation } from 'react-i18next';
 
 const ConfirmationModalWindow = ({isActive, setActive, titleText, titleIcon = dumbbell, children, applyButtonRequest}) => {
-
+    const {t} = useTranslation();
+    
     const applyButtonHandler = () => {
         setActive(false);
         /*запрос на сервер для удаления*/
@@ -41,8 +43,8 @@ const ConfirmationModalWindow = ({isActive, setActive, titleText, titleIcon = du
                </div>
                <div className={s.bottomBlock}>
                    <div className={s.bottomBlock__buttons}>
-                       <ButtonRed onClick={() => setActive(false)}>Ні</ButtonRed>
-                       <ButtonGreen onClick={applyButtonHandler}>Так</ButtonGreen>
+                       <ButtonRed onClick={() => setActive(false)}>{t("general.confirmationModalWindow.no")}</ButtonRed>
+                       <ButtonGreen onClick={applyButtonHandler}>{t("general.confirmationModalWindow.yes")}</ButtonGreen>
                    </div>
                </div>
 

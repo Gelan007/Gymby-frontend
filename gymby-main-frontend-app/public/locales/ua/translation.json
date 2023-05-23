@@ -32,6 +32,37 @@
     "modal": {
       "day": "День"
     }
+  },
 
-  }
+    "programs": {
+      "leftPanel": {
+        "title": "Програми",
+        "free": "Безкоштовні",
+        "favorite": "Обрані",
+        "fromTrainer": "Від тренера",
+        "personal": "Особисті"
+      },
+      "programDescription": {
+        "leftPanel": {
+          "title": "Програма",
+          "description": "Опис",
+          "day": "День"
+        },
+        "subTitle": "Загальний опис тренувальної програми",
+        "programAuthor": "Програма від",
+        "addToFavorite": "Додати в обране"
+      },
+      "modalWindow": {
+        "title": "Видалення програми",
+        "text": "Ви дійсно бажаєте видалити"
+      },
+      "createProgram": "Створити програму"
+    },
+
+    "general": {
+      "confirmationModalWindow":  {
+        "yes": "Так",
+        "no": "Ні"
+      }
+    }
 }

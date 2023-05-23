@@ -8,6 +8,7 @@ import {Grid} from "@mui/material";
 import ConfirmationModalWindow from "../../general/modalWindow/confirmation/ConfirmationModalWindow";
 import {NavLink} from "react-router-dom";
 import {PROGRAMS_PROGRAM_PROFILE_ROUTE, PROGRAMS_ROUTE} from "../../../utils/routes/consts";
+import { useTranslation } from 'react-i18next';
 
 
 //*Этот массив вообще удалить потом, и оставить просто programs = [] - НО НАВЕРНОЕ ВСЕ ТАКИ ПРОСТО programs И ВСЁ*
@@ -18,12 +19,14 @@ const defaultTestProgramsArray = [
     {id: 14, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
 ]
 const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= false, isDeleteIcon}) => {
+    const {t} = useTranslation();
     const [isModalActive, setIsModalActive] = useState(false);
     const modalHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
-    const modalWindowTitleText = 'Видалення програми'
+    const modalWindowTitleText = t("programs.modalWindow.title")
 
     /*надо будет заменить на store*/
     const [selectedProgram, setSelectedProgram] = useState('');
+    
 
     return (
         <div className={s.programs}>
@@ -34,7 +37,7 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= fa
                         <InputGreySearch placeholder="Пошук"/>
                     </div>
                     <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}>
-                        <ButtonGreen>Створити програму</ButtonGreen>
+                        <ButtonGreen>{t("programs.createProgram")}</ButtonGreen>
                     </div>
                 </div>
                 <div className={s.cards}>
@@ -59,7 +62,7 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= fa
                                      titleText={modalWindowTitleText}
             >
                 {/*чтоб смочь выделить при переводе i18n, просто разбить на 2 разные части*/}
-                Ви дійсно бажаєте видалити <span>{selectedProgram}</span> ?
+                {t("programs.modalWindow.text")} <span>{selectedProgram}</span> ?
             </ConfirmationModalWindow>
         </div>
     );

@@ -32,6 +32,38 @@
     "modal": {
       "day": "Day"
     }
+  },
 
+  "programs": {
+    "leftPanel": {
+      "title": "Programs",
+      "free": "Free",
+      "favorite": "Favorites",
+      "fromTrainer": "From trainer",
+      "personal": "Personal"
+    },
+    "programDescription": {
+      "leftPanel": {
+        "title": "Program",
+        "description": "Description",
+        "day": "Day"
+      },
+      "subTitle": "General program description",
+      "programAuthor": "Program by",
+      "addToFavorite": "Add to favorite"
+    },
+    "modalWindow": {
+      "title": "Program deletion",
+      "text": "Are you sure that you want to delete the"
+    },
+    "createProgram": "Create the program"
+  },
+
+  "general": {
+    "confirmationModalWindow":  {
+      "yes": "Yes",
+      "no": "No"
+    }
   }
+
 }

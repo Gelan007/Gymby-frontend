@@ -13,12 +13,12 @@ import {useTranslation} from "react-i18next";
 
 const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay}) => {
     
-    const t = useTranslation()
+    const {t} = useTranslation()
     const days = Array.from({ length: daysCount }, (_, index) => index + 1);
 
     return (
         <div className={s.navigation}>
-            <h5 className={s.title}>Програма</h5>
+            <h5 className={s.title}>{t("programs.programDescription.leftPanel.title")}</h5>
             <nav className={s.navigation__container}>
                 <ul className={s.list}>
                     <li className={s.item}>
@@ -27,7 +27,7 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                              style={{cursor: "pointer"}}
                              onClick={() => setSelectedDay(0)}
                         >
-                            Опис
+                            {t("programs.programDescription.leftPanel.description")}
                         </div>
                     </li>
                     {days?.map((day) => (
@@ -37,7 +37,7 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                                  onClick={() => setSelectedDay(day)}
                                  style={{cursor: "pointer"}}
                             >
-                                    День {day}
+                                    {t("programs.programDescription.leftPanel.day")} {day}
                             </div>
                         </li>
                     ))}
