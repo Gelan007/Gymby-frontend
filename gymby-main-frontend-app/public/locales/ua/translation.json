@@ -87,6 +87,70 @@
       "chart": "Графік",
       "add": "Додати"
     },
+    "userAccount": {
+      "leftPanel": {
+        "title": "Особистий кабінет",
+        "personalData": "Особисті дані",
+        "coaching": "Тренерство",
+        "friendsList": "Список друзів",
+        "instruction": "Інструкція",
+        "subscriptionsManagement": "Управління підписками",
+        "search": "Пошук людей",
+        "subscriptionTagline1": "Бажаєш тренувати інших?",
+        "subscriptionTagline2": "Тоді оформлюй підписку тренера вже зараз!",
+        "subscriptionTaglineButton": "Стати тренером",
+        "exit": "Вийти"
+      },
+      "personalData": {
+        "withoutSubscription": "Без підписки",
+        "checkMyProfile": "Переглянути особистий профіль",
+        "textInputs": {
+          "name": "Ім’я",
+          "surname": "Прізвище",
+          "email": "Пошта",
+          "username": "Ім’я користувача"
+        },
+        "certificatesBlock": {
+          "title": "Сертифікати та фотографії",
+          "subtitle": "Завантажуйте сертифікати, дипломи та інші документи, що підтверджують Вашу компетентність."
+        },
+        "aboutBlock": {
+          "title": "Про Вас",
+          "subtitle": "Коротко опишіть себе та розкажіть щось цікаве"
+        },
+        "save": "Зберегти"
+      },
+      "coaching": {
+        "title": "Можливості тренера:",
+        "firstPoint": "Можливість створювати свої платні програми тренувань та виставляти їх до загального списку програм;",
+        "secondPoint": "Створення тренування індивідуально для учня;",
+        "thirdPoint": "Взаємодія з календарем тренувань учня;",
+        "fourthPoint": "Редагування плана тренувань учня;",
+        "fifthPoint": "Відстеження прогресу своїх учнів.",
+        "interesting1": "Зацікавило? Тоді",
+        "interesting2": "ставай тренером",
+        "interesting3": "вже зараз!"
+      },
+      "friendsList": {
+        "friends": "Друзі",
+        "requests": "Запити"
+      },
+      "subscriptions": {
+        "yourSubscription": "Ваша підписка:",
+        "subscriptionTerm": "Термін дії підписки:",
+        "subscriptionTermDays": "днів",
+        "lastDate": "Дата останнього продовження підписки:",
+        "alreadyTrainer1": "Ви тренер вже",
+        "alreadyTrainer2": "днів!",
+        "createdPrograms1": "Вами створено",
+        "createdPrograms2": "програм для своїх учнів."
+
+      },
+      "search": {
+        "trainers": "Тренери",
+        "everybody": "Всі"
+      }
+    },
 
     "general": {
       "confirmationModalWindow":  {

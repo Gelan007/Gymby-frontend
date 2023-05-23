@@ -5,6 +5,7 @@ import InputGreySearch from "../../UI/inputs/InputGreySearch";
 import UserAccountSearchItem from "../search/UserAccountSearchItem";
 import UserAccountFriendsListItem from "./items/UserAccountFriendsListItem";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
+import { useTranslation } from 'react-i18next';
 
 
 const UserAccountFriendsList = ({profiles}) => {
@@ -14,6 +15,7 @@ const UserAccountFriendsList = ({profiles}) => {
     const [selectedOption, setSelectedOption] = useState(FRIENDS);
     const friendsOptionHandle = () => setSelectedOption(FRIENDS);
     const requestsOptionHandle = () => setSelectedOption(REQUESTS);
+    const {t} = useTranslation()
 
     return (
         <div className={s.userAccountFriendsList}>
@@ -26,12 +28,12 @@ const UserAccountFriendsList = ({profiles}) => {
                     <div className={s.navBlock__options}>
                         <span className={selectedOption === FRIENDS ?
                             `${s.navBlock__option} ${s.navBlock__option_red}` : s.navBlock__option}
-                              onClick={friendsOptionHandle}>Друзі</span>
+                              onClick={friendsOptionHandle}>{t("userAccount.friendsList.friends")}</span>
 
                         <span className={selectedOption === REQUESTS ?
                             `${s.navBlock__option} ${s.navBlock__option_line} ${s.navBlock__option_red}` :
                             `${s.navBlock__option} ${s.navBlock__option_line}`}
-                              onClick={requestsOptionHandle}>Запити</span>
+                              onClick={requestsOptionHandle}>{t("userAccount.friendsList.requests")}</span>
                     </div>
                 </div>
                 <div className={s.itemsList}>

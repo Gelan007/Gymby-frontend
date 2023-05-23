@@ -87,6 +87,69 @@
     "chart": "Chart",
     "add": "Add"
   },
+  "userAccount": {
+    "leftPanel": {
+      "title": "Personal account",
+      "personalData": "Personal data",
+      "coaching": "Coaching",
+      "friendsList": "Friends list",
+      "instruction": "Instruction",
+      "subscriptionsManagement": "Subscriptions management",
+      "search": "People search",
+      "subscriptionTagline1": "Do you want to train others?",
+      "subscriptionTagline2": "So then make a subscription now!",
+      "subscriptionTaglineButton": "Become trainer",
+      "exit": "Exit"
+    },
+    "personalData": {
+      "withoutSubscription": "Without a subscription",
+      "checkMyProfile": "Check my personal profile",
+      "textInputs": {
+        "name": "First name",
+        "surname": "Last name",
+        "email": "Email",
+        "username": "Username"
+      },
+      "certificatesBlock": {
+        "title": "Certificates and photos",
+        "subtitle": "Upload certificates, diplomas and other documents confirming your competence."
+      },
+      "aboutBlock": {
+        "title": "About you ",
+        "subtitle": "Briefly describe yourself and tell us something interesting"
+      },
+      "save": "Save"
+    },
+    "coaching": {
+      "title": "Trainer features:",
+      "firstPoint": "The ability to create your own paid training programs and put them on the general list of programs;",
+      "secondPoint": "Creating a workout individually for a student;",
+      "thirdPoint": "Interaction with the student's training calendar;",
+      "fourthPoint": "Edit a student's training plan;",
+      "fifthPoint": "Tracking the progress of your students.",
+      "interesting1": "Are you interested? Then",
+      "interesting2": "become a coach",
+      "interesting3": "right now!"
+    },
+    "friendsList": {
+      "friends": "Friends",
+      "requests": "Requests"
+    },
+    "subscriptions": {
+      "yourSubscription": "Your subscription:",
+      "subscriptionTerm": "Subscription term:",
+      "subscriptionTermDays": "days",
+      "lastDate": "Date of the last subscription renewal:",
+      "alreadyTrainer1": "You are already a coach",
+      "alreadyTrainer2": "days!",
+      "createdPrograms1": "You created",
+      "createdPrograms2": "programs for your students."
+    },
+    "search": {
+      "trainers": "Trainers",
+      "everybody": "Everybody"
+    }
+  },
 
   "general": {
     "confirmationModalWindow":  {

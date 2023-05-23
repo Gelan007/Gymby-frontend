@@ -12,53 +12,55 @@ import {
     USER_ACCOUNT_FRIENDS_LIST_ROUTE, USER_ACCOUNT_INSTRUCTION_ROUTE,
     USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_SEARCH_ROUTE, USER_ACCOUNT_SUBSCRIBES_ROUTE
 } from "../../../utils/routes/consts";
+import { useTranslation } from 'react-i18next';
 
 const UserAccountLeftPanelList = () => {
+    const {t} = useTranslation()
     return (
         <div className={s.navigation}>
-            <h5 className={s.title}>Особистий кабінет</h5>
+            <h5 className={s.title}>{t("userAccount.leftPanel.title")}</h5>
             <nav className={s.navigation__container}>
                 <ul className={s.list}>
                     <li className={s.item}>
                         <div className={s.icon}><img src={userIcon} alt="userIcon"/></div>
                         <NavLink to={USER_ACCOUNT_PERSONAL_DATA_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Особисті дані
+                            {t("userAccount.leftPanel.personalData")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={documentIcon} alt="documentIcon"/></div>
                         <NavLink to={USER_ACCOUNT_COACHING_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Тренерство
+                            {t("userAccount.leftPanel.coaching")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={usersThreeIcon} alt="usersThreeIcon"/></div>
                         <NavLink to={USER_ACCOUNT_FRIENDS_LIST_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Список друзів
+                            {t("userAccount.leftPanel.friendsList")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={infoIcon} alt="infoIcon"/></div>
                         <NavLink to={USER_ACCOUNT_INSTRUCTION_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Інструкція
+                            {t("userAccount.leftPanel.instruction")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={dollarIcon} alt="dollarIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SUBSCRIBES_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Управління підписками
+                            {t("userAccount.leftPanel.subscriptionsManagement")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Пошук людей
+                            {t("userAccount.leftPanel.search")}
                         </NavLink>
                     </li>
                 </ul>

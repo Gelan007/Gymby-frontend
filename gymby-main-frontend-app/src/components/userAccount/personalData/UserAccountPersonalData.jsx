@@ -12,12 +12,13 @@ import {USER_ACCOUNT_PROFILE_ROUTE} from "../../../utils/routes/consts";
 import ButtonGreen from "../../UI/buttons/ButtonGreen";
 import {useOidcAccessToken, useOidcUser, UserStatus} from "@axa-fr/react-oidc";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
+import { useTranslation } from 'react-i18next';
 
 
 const UserAccountPersonalData = (props) => {
     const { oidcUser, oidcUserLoadingState } = useOidcUser();
     const { accessToken, accessTokenPayload } = useOidcAccessToken();
-
+    const {t} = useTranslation()
     return (
         <div className={s.personalData}>
             <UserAccountLeftPanelContainer isButtonGold={true}/>
@@ -38,44 +39,44 @@ const UserAccountPersonalData = (props) => {
                             </div>
                         </div>
                         <span className={s.avatarBlock__subscription}>
-                            Без підписки
+                            {t("userAccount.personalData.withoutSubscription")}
                         </span>
-                        <NavLink to={USER_ACCOUNT_PROFILE_ROUTE} className={s.avatarBlock__profileOverview}>Переглянути особистий профіль</NavLink>
+                        <NavLink to={USER_ACCOUNT_PROFILE_ROUTE} className={s.avatarBlock__profileOverview}>{t("userAccount.personalData.checkMyProfile")}</NavLink>
                     </div>
                 </div>
                 <div className={s.inputData}>
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
-                            <span>Ім’я</span>
+                            <span>{t("userAccount.personalData.textInputs.name")}</span>
                             <InputGrey/>
                         </div>
                         <div className={s.inputData__item}>
-                            <span>Прізвище</span>
+                            <span>{t("userAccount.personalData.textInputs.surname")}</span>
                             <InputGrey/>
                         </div>
                     </div>
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
-                            <span>Пошта</span>
+                            <span>{t("userAccount.personalData.textInputs.email")}</span>
                             <InputGrey type="email"/>
                         </div>
                         <div className={s.inputData__item}>
-                            <span>Ім’я користувача</span>
+                            <span>{t("userAccount.personalData.textInputs.username")}</span>
                             <InputGrey/>
                         </div>
                     </div>
                 </div>
                 <div className={s.photoCards}>
                     <div className={s.photoCards__textBlock}>
-                        <h4 className={s.photoCards__title}>Сертифікати та фотографії</h4>
-                        <span className={s.photoCards__subtitle}>Завантажуйте сертифікати, дипломи та інші документи, що підтверджують Вашу компетентність.  </span>
+                        <h4 className={s.photoCards__title}>{t("userAccount.personalData.certificatesBlock.title")}</h4>
+                        <span className={s.photoCards__subtitle}>{t("userAccount.personalData.certificatesBlock.subtitle")}</span>
                     </div>
                     <AddingCardPhotos/>
                 </div>
                 <div className={s.description}>
                     <div className={s.description__textBlock}>
-                        <h4 className={s.description__title}>Про Вас</h4>
-                        <span className={s.description__subtitle}>Коротко опишіть себе та розкажіть щось цікаве</span>
+                        <h4 className={s.description__title}>{t("userAccount.personalData.aboutBlock.title")}</h4>
+                        <span className={s.description__subtitle}>{t("userAccount.personalData.aboutBlock.subtitle")}</span>
                     </div>
                     <div className={s.description__textarea}>
                         <TextareaGrey></TextareaGrey>
@@ -95,7 +96,7 @@ const UserAccountPersonalData = (props) => {
                 </div>
                 <div className={s.buttonSave}>
                     <div className={s.buttonSave__container}>
-                        <ButtonGreen style={{height: '50px'}}>Зберегти</ButtonGreen>
+                        <ButtonGreen style={{height: '50px'}}>{t("userAccount.personalData.save")}</ButtonGreen>
                     </div>
                 </div>
             </div>
