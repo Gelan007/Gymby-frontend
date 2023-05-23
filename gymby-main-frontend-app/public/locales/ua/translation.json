@@ -58,6 +58,35 @@
       },
       "createProgram": "Створити програму"
     },
+    "statistics": {
+      "cards": {
+        "card1": "Кількість виконаних вправ",
+        "card2": "Кількість тренувань",
+        "card3": "Кількість виконаних підходів"
+      }
+    },
+    "measurements": {
+      "leftPanel": {
+        "title": "Заміри тіла",
+        "weight": "Вага",
+        "fatPersent": "Відсоток жиру",
+        "neck": "Шия",
+        "shoulders": "Плечі",
+        "forearms": "Предпліччя",
+        "chest": "Груди",
+        "waist": "Талія",
+        "thigh": "Стегно",
+        "hand": "Рука", 
+        "photos": "Фотографії"
+      },
+      "item": {
+        "centimeter": "см",
+        "daysAgo": "днів тому"
+      },
+      "list": "Список",
+      "chart": "Графік",
+      "add": "Додати"
+    },
 
     "general": {
       "confirmationModalWindow":  {

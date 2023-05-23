@@ -13,81 +13,85 @@ import usersThreeIcon from "../../../assets/images/userCabinet/leftPanel/usersTh
 import infoIcon from "../../../assets/images/userCabinet/leftPanel/info.svg";
 import dollarIcon from "../../../assets/images/userCabinet/leftPanel/dollar.svg";
 import searchIcon from "../../../assets/images/userCabinet/leftPanel/search.svg";
+import { useTranslation } from 'react-i18next';
 
 const MeasurementsLeftPanelList = () => {
+
+    const {t} = useTranslation()
+
     return (
         <div className={s.navigation}>
-            <h5 className={s.title}>Заміри тіла</h5>
+            <h5 className={s.title}>{t("measurements.leftPanel.title")}</h5>
             <nav className={s.navigation__container}>
                 <ul className={s.list}>
                     <li className={s.item}>
                         <div className={s.icon}><img src={userIcon} alt="userIcon"/></div>
                         <NavLink to={USER_ACCOUNT_PERSONAL_DATA_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Вага
+                            {t("measurements.leftPanel.weight")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={documentIcon} alt="documentIcon"/></div>
                         <NavLink to={USER_ACCOUNT_COACHING_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Відсоток жиру
+                            {t("measurements.leftPanel.fatPersent")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={usersThreeIcon} alt="usersThreeIcon"/></div>
                         <NavLink to={USER_ACCOUNT_FRIENDS_LIST_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Шия
+                            {t("measurements.leftPanel.neck")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={infoIcon} alt="infoIcon"/></div>
                         <NavLink to={USER_ACCOUNT_INSTRUCTION_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Плечі
+                            {t("measurements.leftPanel.shoulders")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={dollarIcon} alt="dollarIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SUBSCRIBES_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Предпліччя
+                           {t("measurements.leftPanel.forearms")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Груди
+                            {t("measurements.leftPanel.chest")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Талія
+                            {t("measurements.leftPanel.waist")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Стегно
+                            {t("measurements.leftPanel.thigh")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
                         <NavLink to={MEASUREMENTS_HAND_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Рука
+                            {t("measurements.leftPanel.hand")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
                         <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
-                            Фотографії
+                            {t("measurements.leftPanel.photos")}
                         </NavLink>
                     </li>
                 </ul>

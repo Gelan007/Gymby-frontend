@@ -58,6 +58,35 @@
     },
     "createProgram": "Create the program"
   },
+  "statistics": {
+    "cards": {
+      "card1": "Count of performed exercises",
+      "card2": "Count of trainings",
+      "card3": "Count of performed approaches"
+    }
+  },
+  "measurements": {
+    "leftPanel": {
+      "title": "Measurements",
+      "weight": "Weight",
+      "fatPersent": "Fat percentage",
+      "neck": "Neck",
+      "shoulders": "Shoulders",
+      "forearms": "Forearms",
+      "chest": "Chest",
+      "waist": "Waist",
+      "thigh": "Thigh",
+      "hand": "Hand", 
+      "photos": "Photos"
+    },
+    "item": {
+      "centimeter": "cm",
+      "daysAgo": "days ago"
+    },
+    "list": "List",
+    "chart": "Chart",
+    "add": "Add"
+  },
 
   "general": {
     "confirmationModalWindow":  {
