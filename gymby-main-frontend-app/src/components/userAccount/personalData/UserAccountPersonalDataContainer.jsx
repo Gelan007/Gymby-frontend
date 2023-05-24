@@ -7,7 +7,8 @@ const UserAccountPersonalDataContainer = (props) => {
     return (
         <div>
             <UserAccountPersonalData
-                userName={props.userName}
+                myProfile={props.myProfile}
+                {...props}
             />
         </div>
     );
@@ -15,7 +16,7 @@ const UserAccountPersonalDataContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        userName: state.userAccountPage.userName
+        myProfile: state.userAccountPage.myProfile
     }
 }
 

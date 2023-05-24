@@ -11,7 +11,7 @@ import {$authHost} from './main'
 
 export const profileAPI = {
     async getMeasurements() {
-        const response = await fetch('https://60b6-212-86-119-131.ngrok-free.app/api/Measurements', {
+        const response = await fetch('https://gymby-api.azurewebsites/api/Measurements', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

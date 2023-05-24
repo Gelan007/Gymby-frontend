@@ -3,22 +3,21 @@ const SET_USERNAME = 'SET_USERNAME'
 
 //Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
 let initialState = {
-    users: [],
     pageSize: 5,
-    userId: 0,
     userName: 'Ivan Ruslanovich',
     myProfile: {
         profileId: 0,
-        firstName: 'firstName',
-        lastName: 'lastName',
-        description: '',
+        firstName: 'Ivan',
+        lastName: 'Ruslanovich',
+        description: 'Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії.',
         photoAvatarPath: null,
-        instagramUrl: '',
-        facebookUrl: '',
-        telegramUsername: '',
+        instagramUrl: 'https://www.instagram.com/',
+        facebookUrl: 'https://uk-ua.facebook.com/',
+        telegramUsername: '@the_korobov',
         isCoach: false,
-        username: 'userName',
-        email: '',
+        username: '@the_korovob1',
+        email: 'ivan.korobov@nure.ua',
+        photos: {}
     },
     profile: {
         profileId: 0,

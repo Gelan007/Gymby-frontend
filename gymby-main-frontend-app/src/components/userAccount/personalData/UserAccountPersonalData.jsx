@@ -15,7 +15,7 @@ import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelCont
 import { useTranslation } from 'react-i18next';
 
 
-const UserAccountPersonalData = (props) => {
+const UserAccountPersonalData = ({myProfile, ...props}) => {
     const { oidcUser, oidcUserLoadingState } = useOidcUser();
     const { accessToken, accessTokenPayload } = useOidcAccessToken();
     const {t} = useTranslation()
@@ -30,7 +30,7 @@ const UserAccountPersonalData = (props) => {
                     <div className={s.avatarBlock__description}>
                         <div className={s.avatarBlock__titleBlock}>
                             <span className={s.avatarBlock__name}>
-                                {props.userName}
+                                {`${myProfile.firstName} ${myProfile.lastName}`}
                                 {/*{oidcUser && <div>{JSON.stringify(oidcUser)}</div> }*/}
                                 {/*{oidcUser && <div>{JSON.stringify(accessTokenPayload)}</div> }*/}
                             </span>
@@ -48,7 +48,7 @@ const UserAccountPersonalData = (props) => {
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.name")}</span>
-                            <InputGrey/>
+                            <InputGrey value={myProfile.firstName}/>
                         </div>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.surname")}</span>
