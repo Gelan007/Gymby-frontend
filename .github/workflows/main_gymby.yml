@@ -1,36 +1,37 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - gymby
-
+name: Build and deploy Node.js application to Web App ITHealthWeb
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
-
+    - main
+env:
+  APP_NAME: gymby
+  NODE_VERSION: 16.x
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '16.13.0'
-
+          node-version: ${{ env.NODE_VERSION }}
       - name: npm install, build, and test
         run: |
-          cd gymby-main-frontend-app
+          cd ./gymby-main-frontend-app/
           npm install
-      
+          npm run build
+        env:
+          CI: ""
+      - name: Zip artifact for deployment 
+        run: zip release.zip ./gymby-main-frontend-app/build/* -r
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: node-app
-          path: .
+          name: gymby-main-frontend-app
+          path: release.zip #add release.zip to path
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,7 +44,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: node-app
+          name: gymby-main-frontend-app
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
