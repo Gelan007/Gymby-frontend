@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js application to Web App ITHealthWeb
+name: Build and deploy Node.js application to Web App Gymby
 on:
   push:
     branches:
@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'gymby'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E2EADA5499BB421E9EBCD8950F6EB022 }}
-          package: .
+          publish-profile: ${{ secrets.AZURE_GYMBY_FRONTEND }}
+          package: ./gymby-main-frontend-app
