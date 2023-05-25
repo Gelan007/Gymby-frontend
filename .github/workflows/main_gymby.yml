@@ -7,7 +7,7 @@ on:
     branches:
     - main
 env:
-  APP_NAME: gymby
+  APP_NAME: gymby-web
   NODE_VERSION: 16.x
 jobs:
   build:
@@ -50,7 +50,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'gymby'
+          app-name: 'gymby-web'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_GYMBY_FRONTEND }}
           package: .
