@@ -1,0 +1,36 @@
+.carouselProfile {
+  height: 550px;
+  // размер фото 350px*2, 30px-отступ*2, 47px*2-arrows, 10px*2-отступ arrows
+  /*width: 875px;*/
+  display: flex;
+  align-items: center;
+  &__window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  &__allItems {
+    height: 100%;
+    display: flex;
+
+    transition: transform 300ms ease-in-out;
+  }
+  &__arrow {
+    cursor: pointer;
+    &:hover {
+      filter: drop-shadow(5px 8px 8px rgba(0, 178, 255, 0.6));
+    }
+    & img {
+      width: 90%;
+    }
+    &_right {
+      transform: rotate(-180deg);
+    }
+    &_left {
+    }
+  }
+}
+
+.noPhoto {
+  text-align: center;
+}

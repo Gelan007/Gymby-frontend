@@ -1,0 +1,11 @@
+@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
+@import "../general/MeasurementsStyles.module.scss";
+.measurementsMainItem {
+  display: flex;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0 0 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,10 @@
+@import "../general/MeasurementsStyles.module.scss";
+.measurementsHand {
+  display: flex;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0 0 0;
+    width: 100%;
+  }
+}

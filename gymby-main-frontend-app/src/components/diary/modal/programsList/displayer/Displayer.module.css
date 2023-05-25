@@ -1,0 +1,52 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.displayerDarkBlue {
+  background: #495867;
+  border-radius: 20px;
+  width: 100%;
+  min-height: 130px;
+  max-height: 130px;
+  padding: 10px 8px 10px 12px;
+  display: flex;
+  flex-direction: column;
+}
+.displayerDarkBlue__content {
+  overflow: auto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+.displayerDarkBlue__content::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+}
+.displayerDarkBlue__content::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.displayerDarkBlue__content::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}
+.displayerDarkBlue__content::-webkit-scrollbar-thumb:hover {
+  background: rgb(213, 213, 213);
+}
+
+/*# sourceMappingURL=Displayer.module.css.map */

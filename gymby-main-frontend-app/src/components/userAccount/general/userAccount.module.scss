@@ -1,0 +1,109 @@
+@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
+
+@mixin avatarBlock($width, $height) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+@mixin avatarBlockImage() {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+
+/*items*/
+.userAccountItem {
+  height: 90px;
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &:hover {
+    background-color: $gymbyLightWhiteBlue;
+  }
+  &__body {
+    padding: 0 100px 0 30px;
+    display: flex;
+    align-items: center;
+  }
+}
+.avatar {
+  @include avatarBlock(70px, 70px);
+  & img {
+    @include avatarBlockImage();
+  }
+}
+.fullTextBlock {
+  display: flex;
+  padding-top: 10px;
+}
+.infoBlock {
+  margin: 0 10px 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__name {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+  }
+  &__username {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    opacity: 0.7;
+  }
+}
+.trainerIcon {}
+
+
+/*NavBlock*/
+.navBlock {
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  margin-bottom: 23px;
+  &__input {
+    flex: 0 0 350px;
+    margin-right: 40px;
+  }
+  &__options {
+    &>*:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+  &__option {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.75);
+    position: relative;
+    cursor: pointer;
+    &_line {
+      &:before {
+        content: "";
+        height: 22px;
+        width: 1.6px;
+        background-color: rgba(0, 0, 0, 0.25);
+        position: absolute;
+        left: -9px;
+        cursor: initial;
+      }
+    }
+    &_red {
+      color: $gymbyRed;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.itemsList {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}

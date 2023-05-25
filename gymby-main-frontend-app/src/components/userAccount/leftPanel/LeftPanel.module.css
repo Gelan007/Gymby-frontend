@@ -1,0 +1,68 @@
+.leftPanel__container {
+  min-width: 400px;
+  /*border-right: black 1px solid;*/
+  padding: 30px 0 0 0;
+  height: 100%;
+  position: relative;
+}
+.leftPanel__container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.leftPanelList {
+  display: flex;
+  justify-content: center;
+}
+
+.leftPanel__container {
+  min-width: 400px;
+  /* !*border-right: black 1px solid;*!
+   padding: 30px 0 0 0;
+   height: 100%;
+   position: relative;
+   &:after {
+     content: "";
+     position: absolute;
+     top: 0;
+     right: 0;
+     height: 100%;
+     width: 1px;
+     background-color: rgba(0, 0, 0, 0.15);
+   }*/
+}
+
+/*.leftPanelList {
+  display: flex;
+  justify-content: center;
+}*/
+.trainerBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.trainerBlock span {
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  opacity: 0.8;
+  line-height: 18px;
+}
+
+.buttonGold__container {
+  width: 48%;
+  margin-top: 12px;
+}
+
+.buttonExit__container {
+  margin: 45px 0 0 52px;
+}
+
+/*# sourceMappingURL=LeftPanel.module.css.map */

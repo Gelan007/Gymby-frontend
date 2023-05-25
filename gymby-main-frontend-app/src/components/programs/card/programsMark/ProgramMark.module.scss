@@ -1,0 +1,34 @@
+%marksStyles {
+  border-radius: 15px;
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  min-width: 50px;
+  padding: 5px 8px;
+}
+
+.darkBlue {
+  @extend %marksStyles;
+  background: rgba(87, 115, 153, 0.6);
+}
+
+.red {
+  @extend %marksStyles;
+  background: rgba(255, 77, 0, 0.6);
+}
+
+.green {
+  @extend %marksStyles;
+  background: rgba(66, 255, 0, 0.6);
+}
+
+.yellow {
+  @extend %marksStyles;
+  background: rgba(255, 224, 0, 0.6);
+}
+
+.defaultStyles {
+  @extend %marksStyles;
+  background: rgba(143, 84, 187, 0.6);
+}

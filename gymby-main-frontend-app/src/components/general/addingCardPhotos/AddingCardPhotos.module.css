@@ -1,0 +1,92 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.addingCardPhotos {
+  display: flex;
+}
+.addingCardPhotos > *:not(:last-child) {
+  margin-right: 20px;
+}
+
+/*---------------------------*/
+.photoCard {
+  position: relative;
+  height: 200px;
+  flex: 0 0 135px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  /* &:not(:hover) {
+      .photoCard {
+        filter: none;
+      }
+    }
+  */
+}
+.photoCard:hover {
+  filter: drop-shadow(0px 6px 9px rgba(0, 117, 255, 0.65));
+}
+.photoCard img {
+  border-radius: 20px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+}
+
+.basketIcon {
+  cursor: pointer;
+  width: 21px;
+  height: 21px;
+  position: relative;
+  margin: 11px 11px 0 0;
+}
+.basketIcon:hover {
+  filter: drop-shadow(0px 6px 9px #FE5F55);
+}
+.basketIcon img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/*----------------------------*/
+.addingCard {
+  height: 200px;
+  flex: 0 0 135px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.addingCard:hover {
+  box-shadow: inset 6px 6px 6px #BDD5EA;
+  border: 1px solid #BDD5EA;
+}
+
+/*# sourceMappingURL=AddingCardPhotos.module.css.map */

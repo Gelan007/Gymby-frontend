@@ -31,11 +31,13 @@ h6 {
   font-size: inherit;
 }
 html, body {
+  margin: 0 auto;
   height: 100%;
   line-height: 1;
   font-size: 18px;
   color:#000000;
   font-family: 'Nunito', sans-serif;
+  max-width: 1700px;
 }
 
 /* Указываем понятную периодичность в потоке данных у article*/
@@ -78,7 +80,7 @@ button {
   object-fit: cover;
 }
 
-._container {
+._containerLanding {
   max-width: 1216px;  /*1186 + 30px padding*/
   margin: 0 auto;
   padding: 0 15px;

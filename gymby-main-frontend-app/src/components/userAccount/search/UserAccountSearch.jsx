@@ -1,0 +1,50 @@
+import React, {useState} from 'react';
+import UserAccountSearchItem from "./UserAccountSearchItem";
+import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
+import s from './Search.module.scss'
+import InputGreySearch from "../../UI/inputs/InputGreySearch";
+import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
+import { useTranslation } from 'react-i18next';
+
+const UserAccountSearch = ({profiles}) => {
+    const TRAINERS = 'trainers';
+    const EVERYBODY = 'everybody';
+    const [selectedOption, setSelectedOption] = useState(TRAINERS);
+    const trainersOptionHandle = () => setSelectedOption(TRAINERS);
+    const everybodyOptionHandle = () => setSelectedOption(EVERYBODY);
+    const {t} = useTranslation()
+
+    return (
+        <div className={s.userAccountSearch}>
+            <UserAccountLeftPanelContainer isButtonGold={true}/>
+            <div className={s.userAccountSearch__body}>
+                <div className={s.navBlock}>
+                    <div className={s.navBlock__input}>
+                        <InputGreySearch placeholder="Пошук"/>
+                    </div>
+                    <div className={s.navBlock__options}>
+                        <span className={selectedOption === TRAINERS ?
+                            `${s.navBlock__option} ${s.navBlock__option_red}` : s.navBlock__option}
+                              onClick={trainersOptionHandle}>{t("userAccount.search.trainers")}</span>
+
+                        <span className={selectedOption === EVERYBODY ?
+                            `${s.navBlock__option} ${s.navBlock__option_line} ${s.navBlock__option_red}` :
+                            `${s.navBlock__option} ${s.navBlock__option_line}`}
+                              onClick={everybodyOptionHandle}>{t("userAccount.search.everybody")}</span>
+                    </div>
+                </div>
+                <div className={s.itemsList}>
+                    {profiles?.map(profile => (
+                        <UserAccountSearchItem
+                        username={profile.username}
+                        firstName={profile.firstName}
+                        lastName={profile.lastName}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default UserAccountSearch;

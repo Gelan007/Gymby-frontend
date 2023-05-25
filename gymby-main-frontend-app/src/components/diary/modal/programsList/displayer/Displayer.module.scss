@@ -1,0 +1,39 @@
+@import '../../../../../utils/styles/GymbyGeneralStyles.module.scss';
+
+.displayerDarkBlue {
+  background: $gymbyDarkBlue;
+  border-radius: 20px;
+  width: 100%;
+  min-height: 130px;
+  max-height: 130px;
+  padding: 10px 8px 10px 12px;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    overflow: auto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ffffff;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(213, 213, 213);
+    }
+  }
+}

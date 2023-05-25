@@ -1,0 +1,26 @@
+@import '../../../../../utils/styles/GymbyGeneralStyles.module.scss';
+
+.dayBlock {
+  display: flex;
+  align-items: center;
+}
+.dumbbell {
+  margin-right: 8px;
+  & img {}
+}
+.day {
+
+  color: #000000;
+  opacity: 0.6;
+  padding: 2px 6px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+
+  &.active {
+    background-color: $gymbyDarkBlue;
+    color: #FFFFFF;
+    border-radius: 20px;
+    opacity: 1;
+  }
+}

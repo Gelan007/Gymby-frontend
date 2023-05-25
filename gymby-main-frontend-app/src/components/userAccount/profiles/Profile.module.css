@@ -1,0 +1,76 @@
+.userAccountProfile__body {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+.userAccountProfile__body > *:not(.backBlock) {
+  padding: 0 220px;
+}
+.userAccountProfile__title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.userDescriptionBlock {
+  margin: 35px 0 50px 0;
+}
+.userDescriptionBlock > *:not(:last-child) {
+  margin-bottom: 6px;
+}
+.userDescriptionBlock__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: justify;
+  color: #000000;
+  opacity: 0.8;
+}
+
+.photosBlock {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.photosBlock__titleBlock {
+  display: flex;
+  flex-direction: column;
+  max-width: 580px;
+}
+.photosBlock__titleBlock > *:not(:last-child) {
+  margin-bottom: 8px;
+}
+.photosBlock__title {
+  text-align: center;
+}
+.photosBlock__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+  opacity: 0.6;
+}
+
+.carousel {
+  margin-top: 20px;
+}
+.carousel__image {
+  /* height: 550px;
+   width: 350px;*/
+  border-radius: 20px;
+  overflow: hidden;
+}
+.carousel__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.backBlock {
+  margin: 50px 0 20px 60px;
+}
+
+/*# sourceMappingURL=Profile.module.css.map */

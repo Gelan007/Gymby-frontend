@@ -1,0 +1,79 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.confirmationModal {
+  display: flex;
+  flex-direction: column;
+}
+
+.topBlock {
+  display: flex;
+  padding: 0 30px 30px;
+}
+
+.close {
+  margin-left: auto;
+  cursor: pointer;
+  user-select: none;
+}
+.close:hover {
+  filter: drop-shadow(0px 8px 8px #FE5F55);
+}
+.centralBlock {
+  min-height: 50px;
+  border-top: 1px solid rgba(87, 115, 153, 0.5);
+  border-bottom: 1px solid rgba(87, 115, 153, 0.5);
+}
+.centralBlock__titleBlock {
+  display: flex;
+  align-items: center;
+  margin: 10px 4% 5px;
+}
+.centralBlock__icon {
+  margin-right: 6px;
+}
+.centralBlock__title {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 30px;
+  color: #000000;
+}
+.centralBlock__content {
+  margin: 18px 4%;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000000;
+}
+.centralBlock__content span {
+  color: #FE5F55;
+}
+
+.bottomBlock__buttons {
+  display: flex;
+  justify-content: center;
+  margin: 2% 0 0 0;
+}
+.bottomBlock__buttons > * {
+  flex: 0 0 100px;
+}
+.bottomBlock__buttons > *:not(:last-child) {
+  margin-right: 6px;
+}
+
+/*# sourceMappingURL=ConfirmationModalWindow.module.css.map */

@@ -1,0 +1,103 @@
+@import "../../../../utils/styles/GymbyGeneralStyles.module.scss";
+
+.approachItem {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background: $gymbyLightWhiteBlue;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  height: 42px;
+  width: 100%;
+
+  &:hover {
+    background-color: #FFFFFF;
+  }
+}
+
+.text {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.numeration {
+  margin-right: 30px;
+}
+.customizableBlock {
+  display: flex;
+  align-items: center;
+  &__content {
+    display: flex;
+    align-items: center;
+    &>*:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    margin-right: 65px;
+  }
+  &__value {}
+  &__arrowsBlock {
+    display: flex;
+    flex-direction: column;
+  }
+  &__repeats {}
+  &__time {}
+}
+
+.topArrow {
+  margin-bottom: 4px;
+  & img {
+    max-width: 82%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+.bottomArrow {
+  & img {
+    max-width: 82%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.iconsBlock {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  &>*:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__checkbox {
+    &:hover {
+      cursor: pointer;
+    }
+    & img {
+      max-width: 90%;
+    }
+  }
+
+  &__basket {
+    cursor: pointer;
+    &:hover {
+      filter: drop-shadow(0px 8px 8px $gymbyRed);
+    }
+    & img {
+      max-width: 85%;
+    }
+  }
+}
+
+.invisibility {
+  visibility: hidden;
+}
+.editModeIcon {
+  & img {
+    opacity: 0.4;
+    max-width: 85%;
+  }
+}

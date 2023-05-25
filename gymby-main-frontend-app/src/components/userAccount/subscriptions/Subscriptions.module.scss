@@ -1,0 +1,40 @@
+@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
+
+.subscriptions {
+  display: flex;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+  }
+}
+
+.infoBlock {
+  padding: 30px 0 0 0;
+  &__text {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+  &__boldPart {
+    margin-right: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    color: #000000;
+  }
+  &__thinPart {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+  }
+  &__redPart {
+    color: $gymbyRed;
+  }
+  &__icon {
+    margin-left: 5px;
+  }
+}

@@ -1,0 +1,73 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.active, .text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 33px;
+  color: #000000;
+}
+
+.title {
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 37px;
+  color: #000000;
+}
+
+.list {
+  display: inline-flex;
+  flex-direction: column;
+}
+.list > *:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+.item > *:not(:last-child) {
+  margin-right: 9px;
+}
+
+.icon img {
+  width: 90%;
+}
+
+.text {
+  opacity: 0.65;
+}
+.text:hover {
+  opacity: 1;
+}
+
+.active {
+  opacity: 1;
+}
+.active:after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  height: 34px;
+  width: 3px;
+  background-color: #FE5F55;
+}
+
+/*# sourceMappingURL=LeftPanelList.module.css.map */

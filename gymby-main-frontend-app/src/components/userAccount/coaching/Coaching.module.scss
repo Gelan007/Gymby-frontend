@@ -1,0 +1,46 @@
+@import "../../../utils/styles/GymbyGeneralStyles.module.scss";
+
+.coaching {
+  display: flex;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 0 50px;
+  }
+}
+
+.possibilities {
+  display: flex;
+  padding: 40px 0 0 0;
+  &__content {
+    flex: 0 1 545px;
+    &>*:not(:last-child) {
+      margin-bottom: 18px;
+    }
+  }
+  &__title {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 40px;
+    color: #000000;
+  }
+  &__points {}
+  &__list {
+    &>*:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+  &__description {
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 26px;
+    color: #000000;
+    & span {
+      font-weight: 700;
+    }
+  }
+  &__image {
+    & img {}
+  }
+}
+

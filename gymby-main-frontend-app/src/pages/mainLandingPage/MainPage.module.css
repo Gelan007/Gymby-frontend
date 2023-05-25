@@ -1,3 +1,39 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
 .titular__container {
   max-width: 1380px;
   margin: 0 auto;
@@ -346,6 +382,24 @@
     font-size: 14px;
   }
 }
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
 .story {
   background: #F7F7FF;
 }
@@ -450,6 +504,24 @@
     font-size: 14px;
   }
 }
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
 .bottomBlockWay__image img, .middleBlockWay__image img, .topBlockWay__image img {
   position: absolute;
   width: 100%;
@@ -776,6 +848,24 @@
     max-width: 100%;
   }
 }
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
 .trainerAdvertising {
   background-color: #F7F7FF;
 }
@@ -932,6 +1022,24 @@
     height: 8px;
   }
 }
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
 .footer {
   /*---------------*/
   /*---------------*/
@@ -1098,22 +1206,26 @@
     height: 50px;
   }
 }
-.pointsList__item {
-  display: flex;
-  align-items: baseline;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 19px;
-  line-height: 136.8421052632%;
-  color: #000000;
+/*
+.pointsList {
+  &__item {
+    display: flex;
+    align-items: baseline;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 26 / 19 * 100%;
+    color: #000000;
+    &:before {
+      content: '';
+      min-width: 9px;
+      height: 9px;
+      background: $gymbyRed;
+      border-radius: 2px;
+      margin-right: 7px;
+    }
+  }
 }
-.pointsList__item:before {
-  content: "";
-  min-width: 9px;
-  height: 9px;
-  background: #FE5F55;
-  border-radius: 2px;
-  margin-right: 7px;
-}
+*/
 
 /*# sourceMappingURL=MainPage.module.css.map */

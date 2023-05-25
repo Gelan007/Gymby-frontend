@@ -1,0 +1,33 @@
+.carouselProfile {
+  height: 550px;
+  /*width: 875px;*/
+  display: flex;
+  align-items: center;
+}
+.carouselProfile__window {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.carouselProfile__allItems {
+  height: 100%;
+  display: flex;
+  transition: transform 300ms ease-in-out;
+}
+.carouselProfile__arrow {
+  cursor: pointer;
+}
+.carouselProfile__arrow:hover {
+  filter: drop-shadow(5px 8px 8px rgba(0, 178, 255, 0.6));
+}
+.carouselProfile__arrow img {
+  width: 90%;
+}
+.carouselProfile__arrow_right {
+  transform: rotate(-180deg);
+}
+.noPhoto {
+  text-align: center;
+}
+
+/*# sourceMappingURL=CarouselProfile.module.css.map */

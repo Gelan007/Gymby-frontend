@@ -1,0 +1,14 @@
+@import '../../../utils/styles/GymbyGeneralStyles.module.scss';
+@import '../general/userAccount.module.scss';
+
+.userAccountSearch {
+  display: flex;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0 0 0;
+    width: 100%;
+  }
+}
+
