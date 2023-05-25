@@ -53,4 +53,4 @@ jobs:
           app-name: 'gymby'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_GYMBY_FRONTEND }}
-          package: ./gymby-main-frontend-app
+          package: .
