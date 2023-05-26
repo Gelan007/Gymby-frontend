@@ -13,12 +13,15 @@ import ButtonGreen from "../../UI/buttons/ButtonGreen";
 import {useOidcAccessToken, useOidcUser, UserStatus} from "@axa-fr/react-oidc";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 import { useTranslation } from 'react-i18next';
+import {setFirstName} from "../../../redux/reducers/user-account-reducer";
 
 
 const UserAccountPersonalData = ({myProfile, ...props}) => {
     const { oidcUser, oidcUserLoadingState } = useOidcUser();
     const { accessToken, accessTokenPayload } = useOidcAccessToken();
     const {t} = useTranslation()
+    const [userData, setUserData] = useState(myProfile);
+
     return (
         <div className={s.personalData}>
             <UserAccountLeftPanelContainer isButtonGold={true}/>
@@ -48,7 +51,7 @@ const UserAccountPersonalData = ({myProfile, ...props}) => {
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.name")}</span>
-                            <InputGrey value={myProfile.firstName}/>
+                            <InputGrey value={userData.firstName} onChange={(e) => setUserData(e.target.value)}/>
                         </div>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.surname")}</span>
