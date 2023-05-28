@@ -51,21 +51,21 @@ const UserAccountPersonalData = ({myProfile, ...props}) => {
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.name")}</span>
-                            <InputGrey value={userData.firstName} onChange={(e) => setUserData(e.target.value)}/>
+                            <InputGrey value={userData.firstName} onChange={(e) => setUserData({...myProfile, firstName: e.target.value})}/>
                         </div>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.surname")}</span>
-                            <InputGrey/>
+                            <InputGrey value={userData.lastName} onChange={(e) => setUserData({...myProfile, lastName: e.target.value})}/>
                         </div>
                     </div>
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.email")}</span>
-                            <InputGrey type="email"/>
+                            <InputGrey type="email" value={userData.email} onChange={(e) => setUserData({...myProfile, email: e.target.value})}/>
                         </div>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.username")}</span>
-                            <InputGrey/>
+                            <InputGrey value={userData.username} onChange={(e) => setUserData({...myProfile, username: e.target.value})}/>
                         </div>
                     </div>
                 </div>
@@ -82,18 +82,18 @@ const UserAccountPersonalData = ({myProfile, ...props}) => {
                         <span className={s.description__subtitle}>{t("userAccount.personalData.aboutBlock.subtitle")}</span>
                     </div>
                     <div className={s.description__textarea}>
-                        <TextareaGrey></TextareaGrey>
+                        <TextareaGrey value={userData.description} onChange={(e) => setUserData({...myProfile, description: e.target.value})}></TextareaGrey>
                     </div>
                 </div>
                 <div className={s.socialMedia}>
                     <div className={s.socialMedia__row}>
                         <div className={s.socialMedia__block}>
                             <div className={s.socialMedia__title}>Instagram</div>
-                            <InputGrey placeholder="*Link to Instagram*"/>
+                            <InputGrey placeholder="*Link to Instagram*" value={userData.instagramUrl} onChange={(e) => setUserData({...myProfile, instagramUrl: e.target.value})}/>
                         </div>
                         <div className={s.socialMedia__block}>
                             <div className={s.socialMedia__title}>Telegram</div>
-                            <InputGrey placeholder="*Link to Telegram*"/>
+                            <InputGrey placeholder="*Link to Telegram*" value={userData.telegramUsername} onChange={(e) => setUserData({...myProfile, telegramUsername: e.target.value})}/>
                         </div>
                     </div>
                 </div>
