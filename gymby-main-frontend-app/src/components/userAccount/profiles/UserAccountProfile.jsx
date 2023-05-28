@@ -9,31 +9,36 @@ import thirdImage from '../../../assets/images/userCabinet/personalData/Elrond3.
 import fourthImage from '../../../assets/images/userCabinet/personalData/Elrond4.jpg';
 import fifthImage from '../../../assets/images/userCabinet/personalData/Revan.jpg';
 import ButtonExit from "../../UI/buttons/ButtonExit";
+import {useTranslation} from "react-i18next";
 
 
 
 
-const UserAccountProfile = () => {
+const UserAccountProfile = ({myProfile, ...props}) => {
+    const {t} = useTranslation()
+
     return (
         <div className={s.userAccountProfile}>
             <div className={s.userAccountProfile__body}>
-                <ProfileInfoBlock/>
+                <ProfileInfoBlock firstName={myProfile.firstName} lastName={myProfile.lastName}
+                                  telegramUsername={myProfile.telegramUsername} username={myProfile.username}
+                                  instagramUrl={myProfile.instagramUrl}
+                />
                 <div className={s.userDescriptionBlock}>
                     <div className={s.userDescriptionBlock__title + " " + s.userAccountProfile__title}>
-                        Інформація про користувача
+                        {t("userAccount.profile.userInfo")}
                     </div>
                     <div className={s.userDescriptionBlock__text}>
-                        Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії.
+                        {myProfile.description}
                     </div>
                 </div>
                 <div className={s.photosBlock}>
                     <div className={s.photosBlock__titleBlock}>
                         <div className={s.photosBlock__title + " " + s.userAccountProfile__title}>
-                            Сертифікати та фотографії
+                            {t("userAccount.profile.certificationsAndPhotos")}
                         </div>
                         <div className={s.photosBlock__text}>
-                            По цим фото ви можете впевнитися в компетенції тренера або подивитися на досягнення з
-                            побудови свого тіла інших користувачів.
+                            {t("userAccount.profile.photoDescription")}
                         </div>
                     </div>
                     <div className={s.carousel}>
@@ -48,7 +53,7 @@ const UserAccountProfile = () => {
                     </div>
                 </div>
                 <div className={s.backBlock}>
-                    <ButtonExit text='Повернутись'/>
+                    <ButtonExit text={t("userAccount.profile.backButton")}/>
                 </div>
             </div>
         </div>
