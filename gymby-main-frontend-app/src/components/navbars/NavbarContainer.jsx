@@ -13,6 +13,8 @@ const NavbarContainer = (props) => {
     const { login, isAuthenticated } = useOidc();
     const { idToken, idTokenPayload } = useOidcIdToken();
     const {i18n} = useTranslation();
+    const [oidcUser, setOidcUser] = useState(null);
+    const { accessToken, accessTokenPayload } = useOidcAccessToken();
 
     useEffect(()  => {
         props.setIsAuth(isAuthenticated)
@@ -28,9 +30,10 @@ const NavbarContainer = (props) => {
     }, [props.isActiveUABtn, props.isActiveENGBtn]);
 
 
-    useEffect(() => {
+   /* useEffect(() => {
         props.setAccessToken(idToken)
-    }, [props.isAuth])
+        console.log(accessToken)
+    }, [props.isAuth])*/
 
 
     function UAButtonStateHandler (lang) {

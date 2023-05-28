@@ -15,6 +15,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const SessionLost = () => <p>Session Lost</p>;
 /*const SessionLost = () => <p>Session Lost</p>;*/
 /*sessionLostComponent={SessionLost}*/
+
 root.render(
     <React.StrictMode>
         <OidcProvider configuration={configuration} sessionLostComponent={SessionLost}>
