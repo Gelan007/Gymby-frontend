@@ -1,11 +1,12 @@
 import {$authHost} from './main'
 
 export const profileAPI = {
-    async getMeasurements() {
+    async getMeasurements(token) {
         const response = await $authHost.get('api/Measurements', {
             method: "GET",
             headers: {
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Bearer': `${token}`
             },
         })
         return response.data;

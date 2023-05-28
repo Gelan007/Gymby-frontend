@@ -1,15 +1,20 @@
 import React, {useEffect} from 'react';
 import MeasurementsHand from "./MeasurementsHand";
 import {profileAPI} from "../../../api/measurements";
+import {connect} from "react-redux";
 
-const MeasurementsHandContainer = () => {
+const MeasurementsHandContainer = (props) => {
     useEffect(() => {
-        profileAPI.getMeasurements().then(data => console.log(data))
+        profileAPI.getMeasurements(props.accessToken).then(data => console.log(data))
     }, [])
 
     return (
         <MeasurementsHand/>
     );
 };
-
-export default MeasurementsHandContainer;
+const mapStateToProps = (state) => {
+    return {
+        accessToken: state.auth.accessToken
+    }
+}
+export default connect(mapStateToProps,{})(MeasurementsHandContainer);
