@@ -1,13 +1,14 @@
 import React from 'react';
 import UserAccountPersonalData from "./UserAccountPersonalData";
 import {connect} from "react-redux";
-import {setUserName} from "../../../redux/reducers/user-account-reducer";
+import {setFirstName, setUserName} from "../../../redux/reducers/user-account-reducer";
 
 const UserAccountPersonalDataContainer = (props) => {
     return (
         <div>
             <UserAccountPersonalData
-                userName={props.userName}
+                myProfile={props.myProfile}
+                {...props}
             />
         </div>
     );
@@ -15,9 +16,9 @@ const UserAccountPersonalDataContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        userName: state.userAccountPage.userName
+        myProfile: state.userAccountPage.myProfile
     }
 }
 
 
-export default connect(mapStateToProps, {setUserName})(UserAccountPersonalDataContainer);
+export default connect(mapStateToProps, {setFirstName})(UserAccountPersonalDataContainer);

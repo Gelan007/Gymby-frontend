@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import s from './ProgramMark.module.scss'
 
-const ProgramsMark = ({text}) => {
+const ProgramsMark = ({text, isBlackTextColor = false}) => {
     const systemDarkBlueMarks = ['ектоморф', 'набір маси', 'витривалість']
     const systemYellowMarks = ['середній']
     const systemRedMarks = ['просунутий']
@@ -18,7 +18,8 @@ const ProgramsMark = ({text}) => {
             || isRedStyles && s.red
             || isGreenStyles && s.green
             || s.defaultStyles
-        }>
+        }
+             style={isBlackTextColor ? {color: '#000000'} : {color: '#FFFFFF'}}>
             {text}
         </div>
     );

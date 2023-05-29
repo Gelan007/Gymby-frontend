@@ -321,14 +321,14 @@ const handleFetch = async (event) => {
                         body: newBody,
                         method: clonedRequest.method,
                         headers: {
-                            ...serializeHeaders(originalRequest.headers)
+                            ...serializeHeaders(originalRequest.headers),
                         },
                         mode: clonedRequest.mode,
                         cache: clonedRequest.cache,
                         redirect: clonedRequest.redirect,
                         referrer: clonedRequest.referrer,
                         credentials: clonedRequest.credentials,
-                        integrity: clonedRequest.integrity
+                        integrity: clonedRequest.integrity,
                     });
                     if (currentDatabase.oidcServerConfiguration != null && currentDatabase.oidcServerConfiguration.revocationEndpoint && url.startsWith(currentDatabase.oidcServerConfiguration.revocationEndpoint)) {
                         return fetchPromise.then(async response => {
@@ -345,14 +345,13 @@ const handleFetch = async (event) => {
                         method: clonedRequest.method,
                         headers: {
                             ...serializeHeaders(originalRequest.headers),
-
                         },
                         mode: clonedRequest.mode,
                         cache: clonedRequest.cache,
                         redirect: clonedRequest.redirect,
                         referrer: clonedRequest.referrer,
                         credentials: clonedRequest.credentials,
-                        integrity: clonedRequest.integrity
+                        integrity: clonedRequest.integrity,
                     }).then(hideTokens(currentDatabase));
                 }
             });

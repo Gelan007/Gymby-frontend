@@ -10,7 +10,7 @@ import checkboxEnabled from '../../../../assets/images/approach/checkBoxEnabled.
 /*когда буду добавлять состояние для checkbox добавить условие, что если false то тогда
 * отображаем checkboxDisabled иначе checkboxEnabled*/
 /*onClick для стрелочек вешать на само изображение а не на блок*/
-const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numeration = 1, isEditMode}, ...props) => {
+const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numeration = 1, isEditMode, isDrawControlIcons}) => {
     return (
         <div className={s.approachItem}>
             <div className={`${s.numeration} ${s.text}`}>
@@ -21,45 +21,53 @@ const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numer
                     <div className={`${s.customizableBlock__value} ${s.text}`}>
                         100 кг
                     </div>
-                    <div className={s.customizableBlock__arrowsBlock}>
-                        <div className={s.topArrow}>
-                            <img src={topArrow} alt="top arrow"/>
+                    {isDrawControlIcons &&
+                        <div className={s.customizableBlock__arrowsBlock}>
+                            <div className={s.topArrow}>
+                                <img src={topArrow} alt="top arrow"/>
+                            </div>
+                            <div className={s.bottomArrow}>
+                                <img src={bottomArrow} alt="bottom arrow"/>
+                            </div>
                         </div>
-                        <div className={s.bottomArrow}>
-                            <img src={bottomArrow} alt="bottom arrow"/>
-                        </div>
-                    </div>
+                    }
+
                 </div>
                 <div className={s.customizableBlock__content}>
                     <div className={`${s.customizableBlock__value} ${s.text}`}>
                         12 пвт
                     </div>
-                    <div className={s.customizableBlock__arrowsBlock}>
-                        <div className={s.topArrow}>
-                            <img src={topArrow} alt="top arrow"/>
+                    {isDrawControlIcons &&
+                        <div className={s.customizableBlock__arrowsBlock}>
+                            <div className={s.topArrow}>
+                                <img src={topArrow} alt="top arrow"/>
+                            </div>
+                            <div className={s.bottomArrow}>
+                                <img src={bottomArrow} alt="bottom arrow"/>
+                            </div>
                         </div>
-                        <div className={s.bottomArrow}>
-                            <img src={bottomArrow} alt="bottom arrow"/>
-                        </div>
-                    </div>
+                    }
                 </div>
                 <div className={`${s.customizableBlock__time} ${s.text}`}> 1мин. 30сек.</div>
             </div>
-            <div className={s.iconsBlock}>
-                <div className={isMark ? `${s.iconsBlock__checkbox}` : `${s.iconsBlock__checkbox} ${s.invisibility}`}>
-                    <img src={checkboxDisabled} alt="checkbox"/>
-                </div>
-                {isEditMode ?
-                    <div className={isBasket ? `${s.iconsBlock__basket}` : `${s.iconsBlock__basket} ${s.invisibility}`}>
-                        <img src={basket} alt="basket"/>
-                    </div>
-                    :
-                    <div className={`${s.editModeIcon}`}>
-                        <img src={basket} alt="basket"/>
-                    </div>
-                }
 
-            </div>
+                <div className={s.iconsBlock}>
+                    <div className={isMark ? `${s.iconsBlock__checkbox}` : `${s.iconsBlock__checkbox} ${s.invisibility}`}>
+                        <img src={checkboxDisabled} alt="checkbox"/>
+                    </div>
+                    {isEditMode ?
+                        <div className={isBasket ? `${s.iconsBlock__basket}` : `${s.iconsBlock__basket} ${s.invisibility}`}
+                        style={!isDrawControlIcons ? {display: 'none'} : {}}
+                        >
+                            <img src={basket} alt="basket"/>
+                        </div>
+                        :
+                        <div className={`${s.editModeIcon}`} style={!isDrawControlIcons ? {display: 'none'} : {}}>
+                            <img src={basket} alt="basket"/>
+                        </div>
+                    }
+                </div>
+
         </div>
     );
 };

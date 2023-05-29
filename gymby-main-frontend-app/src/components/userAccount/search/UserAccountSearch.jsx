@@ -4,6 +4,7 @@ import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import s from './Search.module.scss'
 import InputGreySearch from "../../UI/inputs/InputGreySearch";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
+import { useTranslation } from 'react-i18next';
 
 const UserAccountSearch = ({profiles}) => {
     const TRAINERS = 'trainers';
@@ -11,6 +12,7 @@ const UserAccountSearch = ({profiles}) => {
     const [selectedOption, setSelectedOption] = useState(TRAINERS);
     const trainersOptionHandle = () => setSelectedOption(TRAINERS);
     const everybodyOptionHandle = () => setSelectedOption(EVERYBODY);
+    const {t} = useTranslation()
 
     return (
         <div className={s.userAccountSearch}>
@@ -23,12 +25,12 @@ const UserAccountSearch = ({profiles}) => {
                     <div className={s.navBlock__options}>
                         <span className={selectedOption === TRAINERS ?
                             `${s.navBlock__option} ${s.navBlock__option_red}` : s.navBlock__option}
-                              onClick={trainersOptionHandle}>Тренери</span>
+                              onClick={trainersOptionHandle}>{t("userAccount.search.trainers")}</span>
 
                         <span className={selectedOption === EVERYBODY ?
                             `${s.navBlock__option} ${s.navBlock__option_line} ${s.navBlock__option_red}` :
                             `${s.navBlock__option} ${s.navBlock__option_line}`}
-                              onClick={everybodyOptionHandle}>Всі</span>
+                              onClick={everybodyOptionHandle}>{t("userAccount.search.everybody")}</span>
                     </div>
                 </div>
                 <div className={s.itemsList}>

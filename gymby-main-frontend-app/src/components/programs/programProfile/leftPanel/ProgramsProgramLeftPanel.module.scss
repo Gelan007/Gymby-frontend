@@ -1,0 +1,9 @@
+@import "../../../general/leftPanelStyles/LeftPanel.module.scss";
+
+.leftPanel {
+  min-height: 50vh;
+}
+
+.leftPanel__container {
+  min-width: 310px;
+}

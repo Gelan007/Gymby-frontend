@@ -4,9 +4,11 @@ import MeasurementsLeftPanel from "../leftPanel/MeasurementsLeftPanel";
 import ButtonGreen from "../../UI/buttons/ButtonGreen";
 import MeasurementsItem from "../item/MeasurementsItem";
 import biceps from "../../../assets/images/measurements/biceps.svg";
+import { useTranslation } from 'react-i18next';
 
 const MeasurementsMainItem = () => {
 
+    const {t} = useTranslation()
     const LIST = 'list';
     const CHART = 'chart';
     const [selectedOption, setSelectedOption] = useState(LIST);
@@ -22,20 +24,20 @@ const MeasurementsMainItem = () => {
                     <div className={s.navBlock__options}>
                         <span className={selectedOption === LIST ?
                             `${s.navBlock__option} ${s.navBlock__option_red}` : s.navBlock__option}
-                              onClick={listOptionHandle}>Список</span>
+                              onClick={listOptionHandle}>{t("measurements.chart")}</span>
 
                         <span className={selectedOption === CHART ?
                             `${s.navBlock__option} ${s.navBlock__option_line} ${s.navBlock__option_red}` :
                             `${s.navBlock__option} ${s.navBlock__option_line}`}
-                              onClick={chartOptionHandle}>Графік</span>
+                              onClick={chartOptionHandle}>{t("measurements.list")}</span>
                     </div>
                     <div className={s.navBlock__button}>
-                        <ButtonGreen>Додати</ButtonGreen>
+                        <ButtonGreen>{t("measurements.add")}</ButtonGreen>
                     </div>
                 </div>
                 <div className={s.itemsList}>
-                    <MeasurementsItem icon={biceps} measurements={'34 см'} changesValue={'+1,2 см'} date={'16.09.2022'} days={'31 днів тому'}/>
-                    <MeasurementsItem icon={biceps} measurements={'34 см'} changesValue={'+1,2 см'} date={'16.09.2022'} days={'31 днів тому'}/>
+                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'}/>
+                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'}/>
                 </div>
             </div>
         </div>

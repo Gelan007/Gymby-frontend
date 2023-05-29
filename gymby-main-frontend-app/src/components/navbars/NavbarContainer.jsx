@@ -3,15 +3,18 @@ import NavbarLanding from "./NavbarLanding";
 import NavbarMain from "./NavbarMain";
 import {connect} from "react-redux";
 import {setIsActiveENGBtn, setIsActiveUABtn} from '../../redux/slices/language-slice'
-import {useOidc} from "@axa-fr/react-oidc";
-import {setIsAuth} from "../../redux/reducers/auth-reducer";
+import {useOidc, useOidcAccessToken, useOidcIdToken, useOidcUser} from "@axa-fr/react-oidc";
+import {setAccessToken, setIsAuth} from "../../redux/reducers/auth-reducer";
 import {useTranslation} from "react-i18next";
 
 const NavbarContainer = (props) => {
     const [burgerMenuState, setBurgerMenuState] = useState(true);
     const menuBody = useRef(null);
     const { login, isAuthenticated } = useOidc();
+    const { idToken, idTokenPayload } = useOidcIdToken();
     const {i18n} = useTranslation();
+    const [oidcUser, setOidcUser] = useState(null);
+    const { accessToken, accessTokenPayload } = useOidcAccessToken();
 
     useEffect(()  => {
         props.setIsAuth(isAuthenticated)
@@ -25,6 +28,12 @@ const NavbarContainer = (props) => {
             i18n.changeLanguage('eng');
         }
     }, [props.isActiveUABtn, props.isActiveENGBtn]);
+
+
+   /* useEffect(() => {
+        props.setAccessToken(idToken)
+        console.log(accessToken)
+    }, [props.isAuth])*/
 
 
     function UAButtonStateHandler (lang) {
@@ -59,6 +68,7 @@ const NavbarContainer = (props) => {
                             UAButtonStateHandler={UAButtonStateHandler}
                             ENGButtonStateHandler={ENGButtonStateHandler}
             />
+
                 :
                 <NavbarLanding toggleBurgerMenu={toggleBurgerMenu}
                                menuBody={menuBody}
@@ -78,9 +88,10 @@ const mapStateToProps = (state) => {
         isActiveUABtn: state.language.isActiveUABtn,
         isActiveENGBtn: state.language.isActiveENGBtn,
         setIsAuth: state.auth.setIsAuth,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        accessToken: state.auth.accessToken
     }
 }
 
 export default connect(mapStateToProps,
-    {setIsActiveUABtn, setIsActiveENGBtn, setIsAuth})(NavbarContainer);
+    {setIsActiveUABtn, setIsActiveENGBtn, setIsAuth, setAccessToken})(NavbarContainer);

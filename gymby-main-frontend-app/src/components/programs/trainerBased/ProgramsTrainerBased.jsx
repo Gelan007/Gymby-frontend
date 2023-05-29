@@ -5,7 +5,7 @@ import ProgramsCard from "../card/ProgramsCard";
 const ProgramsTrainerBased = () => {
     return (
         <div>
-            <ProgramsTemplate/>
+            <ProgramsTemplate isDeleteIcon={true}/>
         </div>
     );
 };

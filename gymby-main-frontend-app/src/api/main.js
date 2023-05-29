@@ -13,11 +13,11 @@ export {
 }*/
 
 const $authHost = axios.create({
-    baseURL: 'https://60b6-212-86-119-131.ngrok-free.app/',
+    baseURL: 'https://gymby-api.azurewebsites.net/',
     headers: {
-        'Access-Control-Allow-Origin': '*'
-    },
-    withCredentials: true
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+    }
 })
 
 export {

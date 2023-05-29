@@ -5,7 +5,7 @@ import basket from '../../../assets/images/general/icons/basketWhiteBackground2.
 import editIcon from '../../../assets/images/general/icons/editIcon.png'
 import s from './Approach.module.scss'
 
-const Approach = (props) => {
+const Approach = ({isDrawControlIcons = true, isWeight = true, isMark = true, isBasket = true}) => {
     const [isEditMode, setIsEditMode] = useState(false);
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
 
@@ -20,29 +20,30 @@ const Approach = (props) => {
                 <div className={s.title}>
                     Жим штанги лежачи - накл
                 </div>
-                <div className={s.iconsControl}>
-                    <div className={isEditMode ? `${s.editButton} ${s.editButton_mode}` : `${s.editButton}`}
-                         onClick={editModeHandler}>
-                        <img src={editIcon} alt="edit"/>
+                {isDrawControlIcons &&
+                    <div className={s.iconsControl}>
+                        <div className={isEditMode ? `${s.editButton} ${s.editButton_mode}` : `${s.editButton}`}
+                             onClick={editModeHandler}>
+                            <img src={editIcon} alt="edit"/>
+                        </div>
+                        {isEditMode ?
+                            <div className={s.basket}
+                                 onClick={() => {}}
+                            >
+                                <img src={basket} alt="basket"/>
+                            </div>
+                            :
+                            <div className={`${s.editModeIcon}`}>
+                                <img src={basket} alt="basket"/>
+                            </div>
+                        }
                     </div>
-                    {isEditMode ?
-                        <div className={s.basket}
-                             onClick={() => {}}
-                        >
-                            <img src={basket} alt="basket"/>
-                        </div>
-                        :
-                        <div className={`${s.editModeIcon}`}>
-                            <img src={basket} alt="basket"/>
-                        </div>
-                    }
-
-                </div>
+                }
             </div>
             <div className={s.itemsBlock}>
-                <ApproachItem isWeight={true} isMark={true} isBasket={true} isEditMode={isEditMode}/>
-                <ApproachItem isWeight={true} isMark={true} isBasket={true} isEditMode={isEditMode}/>
-                <ApproachItem isWeight={true} isMark={true} isBasket={true} isEditMode={isEditMode}/>
+                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
+                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
+                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
             </div>
         </div>
     );

@@ -1,0 +1,28 @@
+.program {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 115%;
+    color: #000000;
+    padding: 21px 0;
+    margin-left: 25%;
+  }
+  &__container {
+    display: flex;
+  }
+  &__body {}
+}
+
+.hrContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+}
+.hr {
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 1.2px;
+  width: 95%;
+}

@@ -3,8 +3,11 @@ import UserAccountLeftPanelList from "./UserAccountLeftPanelList";
 import s from './LeftPanel.module.scss'
 import ButtonExit from "../../UI/buttons/ButtonExit";
 import ButtonGold from "../../UI/buttons/ButtonGold";
+import { useTranslation } from 'react-i18next';
 
 const UserAccountLeftPanel = ({isButtonGold, logout}) => {
+    const {t} = useTranslation()
+
     return (
         <div className={s.leftPanel__container}>
             <div className={s.leftPanelList}>
@@ -12,17 +15,17 @@ const UserAccountLeftPanel = ({isButtonGold, logout}) => {
             </div>
             {isButtonGold ?
                 <div className={s.trainerBlock}>
-                    <span>Бажаєш тренувати інших?</span>
-                    <span>Тоді оформлюй підписку тренера вже зараз!</span>
+                    <span>{t("userAccount.leftPanel.subscriptionTagline1")}</span>
+                    <span>{t("userAccount.leftPanel.subscriptionTagline2")}</span>
                     <div className={s.buttonGold__container}>
-                        <ButtonGold>Стати тренером</ButtonGold>
+                        <ButtonGold>{t("userAccount.leftPanel.subscriptionTaglineButton")}</ButtonGold>
                     </div>
                 </div>
                 :
                 <div></div>
             }
             <div className={s.buttonExit__container} onClick={() => logout('/')}>
-                <ButtonExit text={'Вийти'}/>
+                <ButtonExit text={t("userAccount.leftPanel.exit")}/>
             </div>
         </div>
     );

@@ -31,6 +31,7 @@ h6 {
   font-size: inherit;
 }
 html, body {
+  margin: 0 auto;
   height: 100%;
   line-height: 1;
   font-size: 18px;
