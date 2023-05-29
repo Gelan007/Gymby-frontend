@@ -218,6 +218,18 @@
       "search": {
         "trainers": "Тренери",
         "everybody": "Всі"
+      },
+      "profile": {
+        "profileInfoBlock": {
+          "content1": "Тренує вже",
+          "content2": "днів",
+          "content3": "клієнтів",
+          "addToFriends": "Додати у друзі"
+        },
+        "userInfo": "Інформація про користувача",
+        "certificationsAndPhotos": "Сертифікати та фотографії",
+        "photoDescription": "По цим фото ви можете впевнитися в компетенції тренера або подивитися на досягнення з побудови свого тіла інших користувачів.",
+        "backButton": "Повернутись"
       }
     },
 

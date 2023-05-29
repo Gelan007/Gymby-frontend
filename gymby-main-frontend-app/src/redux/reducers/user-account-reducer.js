@@ -1,4 +1,5 @@
-const SET_USERS = 'SET_USERS'
+const SET_FIRST_NAME = 'SET_FIRST_NAME'
+const SET_LAST_NAME = 'SET_LAST_NAME'
 const SET_USERNAME = 'SET_USERNAME'
 
 //Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
@@ -6,7 +7,7 @@ let initialState = {
     pageSize: 5,
     userName: 'Ivan Ruslanovich',
     myProfile: {
-        profileId: 0,
+        profileId: '',
         firstName: 'Ivan',
         lastName: 'Ruslanovich',
         description: 'Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії.',
@@ -64,9 +65,13 @@ let initialState = {
 
 const userAccountReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_USERS:
+        case SET_FIRST_NAME:
             return {
-                ...state
+                ...state,
+                myProfile: {
+                    ...state.myProfile,
+                    firstName: action.firstName
+                }
             }
         case SET_USERNAME:
             return {
@@ -78,8 +83,9 @@ const userAccountReducer = (state = initialState, action) => {
     }
 }
 
-export const setUsersAC = (userId) => ({type: SET_USERS, userId})
+//export const setUsersAC = (userId) => ({type: SET_USERS, userId})
 export const setUserName = (userName) => ({type: SET_USERNAME, userName})
+export const setFirstName = (firstName) => ({type: SET_FIRST_NAME, firstName})
 
 export const getUserNameThunkCreator = () => {
     return (dispatch) => {

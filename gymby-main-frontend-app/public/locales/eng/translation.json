@@ -217,6 +217,18 @@
     "search": {
       "trainers": "Trainers",
       "everybody": "Everybody"
+    },
+    "profile": {
+      "profileInfoBlock": {
+        "content1": "Already coaching",
+        "content2": "days",
+        "content3": "clients",
+        "addToFriends": "Add to friends"
+      },
+      "userInfo": "User information",
+      "certificationsAndPhotos": "Certificates and photos",
+      "photoDescription": "From these photos, you can verify the competence of the trainer or look at the achievements of other users in building their bodies.",
+      "backButton": "Back"
     }
   },
 

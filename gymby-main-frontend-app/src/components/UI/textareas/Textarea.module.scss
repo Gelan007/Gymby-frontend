@@ -10,8 +10,8 @@
   color: rgba(0, 0, 0, 0.5);
   max-width: 100%;
   min-width: 100%;
-  min-height: 150px;
-  max-height: 250px;
+  min-height: 200px;
+  max-height: 350px;
   font-family: inherit;
   //padding-left: 10px;
   outline: none;
@@ -27,6 +27,27 @@
 
   &:focus {
     outline: 1px solid $gymbyBlue;
+  }
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey;
+    border-radius: 10px;
+    background-color: #464646;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(213, 213, 213);
+    border-radius: 10px;
+    /*border: 6px solid #464646;*/
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(189, 189, 189);
   }
 }
 

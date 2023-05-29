@@ -12,12 +12,13 @@ import {configuration} from "./api/oidc/axa-auth";
 import './utils/i18next/i18next';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
+const SessionLost = () => <p>Session Lost</p>;
 /*const SessionLost = () => <p>Session Lost</p>;*/
 /*sessionLostComponent={SessionLost}*/
+
 root.render(
     <React.StrictMode>
-        <OidcProvider configuration={configuration} >
+        <OidcProvider configuration={configuration} sessionLostComponent={SessionLost}>
             <BrowserRouter>
                 <Provider store={store}>
                     <App/>

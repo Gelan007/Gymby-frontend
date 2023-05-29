@@ -49,6 +49,7 @@ const NavbarContainer = (props) => {
         }
     }
 
+
     return (
         <div>
             {props.isAuth ?
@@ -59,6 +60,7 @@ const NavbarContainer = (props) => {
                             UAButtonStateHandler={UAButtonStateHandler}
                             ENGButtonStateHandler={ENGButtonStateHandler}
             />
+
                 :
                 <NavbarLanding toggleBurgerMenu={toggleBurgerMenu}
                                menuBody={menuBody}

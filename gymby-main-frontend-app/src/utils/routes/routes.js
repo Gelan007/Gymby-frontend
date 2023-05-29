@@ -38,6 +38,7 @@ import ProgramsTrainerBasedContainer from "../../components/programs/trainerBase
 import ProgramsProgramProfile from "../../components/programs/programProfile/ProgramsProgramProfile";
 import ProgramsProgramProfileContainer from "../../components/programs/programProfile/ProgramsProgramProfileContainer";
 import StatisticsContainer from "../../components/statistics/main/StatisticsContainer";
+import UserAccountProfileContainer from "../../components/userAccount/profiles/UserAccountProfileContainer";
 
 export const publicRoutes = [
    /* {
@@ -81,7 +82,7 @@ export const authRoutes = [
     },
     {
         path: USER_ACCOUNT_PROFILE_ROUTE,
-        Component: <UserAccountProfile/>
+        Component: <UserAccountProfileContainer/>
     },
 
     {

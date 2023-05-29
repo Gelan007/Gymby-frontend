@@ -1,5 +1,6 @@
 const SET_IS_AUTH = 'SET_IS_AUTH'
 
+
 let initialState = {
     isAuth: false
 }
@@ -17,5 +18,6 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setIsAuth = (isAuth) => ({type: SET_IS_AUTH, isAuth})
+
 
 export default authReducer;

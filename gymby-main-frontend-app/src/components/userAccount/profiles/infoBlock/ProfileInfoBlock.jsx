@@ -5,9 +5,12 @@ import trainerIcon from '../../../../assets/images/general/icons/trainer_icon.sv
 import telegram from '../../../../assets/images/general/icons/socialMedia/telegram.svg'
 import instagram from '../../../../assets/images/general/icons/socialMedia/instagram.svg'
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
+import {useTranslation} from "react-i18next";
 
 
-const ProfileInfoBlock = () => {
+const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, instagramUrl}) => {
+    const {t} = useTranslation()
+
     return (
         <div className={s.profileInfoBlock}>
             <div className={s.profileInfoBlock__leftBlock}>
@@ -15,24 +18,24 @@ const ProfileInfoBlock = () => {
                     <div className={s.profileInfoBlock__avatar}>
                         <img src={plug} alt="avatar"/>
                     </div>
-                    <span className={s.profileInfoBlock__username}>@petrenko</span>
+                    <span className={s.profileInfoBlock__username}>{username}</span>
                 </div>
                 <div className={s.contentBlock}>
                     <div className={s.contentBlock__fullNameBlock}>
-                        <span className={s.contentBlock__fullName}>Петро Петренко</span>
+                        <span className={s.contentBlock__fullName}>{`${firstName} ${lastName}`}</span>
                         <div className={s.contentBlock__trainerIcon}>
                             <img src={trainerIcon} alt="trainerIcon"/>
                         </div>
                     </div>
-                    <div className={s.contentBlock__text}>Тренує вже <span>180</span> днів</div>
-                    <div className={s.contentBlock__text}><span>15</span> клієнтів</div>
+                    <div className={s.contentBlock__text}>{t("userAccount.profile.profileInfoBlock.content1")} <span>180</span> {t("userAccount.profile.profileInfoBlock.content2")}</div>
+                    <div className={s.contentBlock__text}><span>15</span> {t("userAccount.profile.profileInfoBlock.content3")}</div>
                     <div className={s.contentBlock__socialMediaIcons}>
-                        <a href="#">
+                        <a href={instagramUrl}>
                             <div className={s.contentBlock__icon + " " + s.contentBlock__icon_instagram}>
                                 <img src={instagram} alt="instagram"/>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href={`https://t.me/${telegramUsername}`}>
                             <div className={s.contentBlock__icon + " " + s.contentBlock__icon_telegram}>
                                 <img src={telegram} alt="telegram"/>
                             </div>
@@ -41,7 +44,7 @@ const ProfileInfoBlock = () => {
                 </div>
             </div>
             <div className={s.profileInfoBlock__addButton}>
-                <ButtonGreen>Додати у друзі</ButtonGreen>
+                <ButtonGreen>{t("userAccount.profile.profileInfoBlock.addToFriends")}</ButtonGreen>
             </div>
         </div>
     );

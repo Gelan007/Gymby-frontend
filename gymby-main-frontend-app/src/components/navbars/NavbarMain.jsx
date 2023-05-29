@@ -17,8 +17,11 @@ import {useTranslation} from "react-i18next";
 
 const NavbarMain = ({toggleBurgerMenu, menuBody,
                         isActiveUABtn, isActiveENGBtn,
-                        UAButtonStateHandler, ENGButtonStateHandler}) => {
+                        UAButtonStateHandler, ENGButtonStateHandler, ...props}) => {
     const {t} = useTranslation();
+
+
+
 
     return (
         <header className={s.header}>
