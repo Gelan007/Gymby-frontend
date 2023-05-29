@@ -5,9 +5,9 @@ import {connect} from "react-redux";
 import {useOidcFetch} from "@axa-fr/react-oidc";
 
 const MeasurementsHandContainer = (props) => {
-    // const { fetch } = useOidcFetch();
+
     useEffect(() => {
-        profileAPI.getMeasurements(fetch).then(data => console.log(data))
+        profileAPI.getMeasurements().then(data => console.log(data))
     }, [])
 
     return (

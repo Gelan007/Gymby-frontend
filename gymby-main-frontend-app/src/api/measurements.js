@@ -1,6 +1,6 @@
 import {$authHost} from './main'
 
-/*export const profileAPI = {
+export const profileAPI = {
     async getMeasurements(token) {
         const response = await $authHost.get('api/Measurements', {
             method: "GET",
@@ -11,10 +11,10 @@ import {$authHost} from './main'
         })
         return response.data;
     }
-}*/
+}
 
-export const profileAPI = {
-    async getMeasurements(fetch) {
+/*export const profileAPI = {
+    async getMeasurements() {
         const response = await fetch('https://gymby-api.azurewebsites.net/api/Measurements', {
             method: 'GET',
             headers: {
@@ -31,4 +31,4 @@ export const profileAPI = {
             });
         return response.data;
     }
-}
+}*/
