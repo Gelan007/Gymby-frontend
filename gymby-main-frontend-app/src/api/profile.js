@@ -1,14 +1,23 @@
 import {$authHost} from './main'
 
 export const profileAPI = {
-    async getProfile() {
-        const response = await $authHost.get('api/Quest/Popular')
-        return response.data;
+    async getMyProfile() {
+        const response = await $authHost.get('/api/profile')
+        return response;
     },
-    async getProfile2() {
-        const response = await $authHost.get('api/Quest/Popular')
-        return response.data;
+    async updateProfile(username, email, firstName,
+                        lastName, description, photoAvatarPath,
+                        instagramUrl, facebookUrl, telegramUserName, profileId) {
+
+        const response = await $authHost.post('api/profile/update',
+            {
+                username, email, firstName,
+                lastName, description, photoAvatarPath,
+                instagramUrl, facebookUrl, telegramUserName, profileId
+            })
+        return response;
     }
+
 }
 
 /*

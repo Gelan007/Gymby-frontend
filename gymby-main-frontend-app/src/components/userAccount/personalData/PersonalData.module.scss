@@ -1,4 +1,5 @@
 @import '../general/userAccount.module.scss';
+@import "../../../utils/styles/GymbyGeneralStyles.module.scss";
 
 %title {
   font-weight: 700;
@@ -16,6 +17,9 @@
 }
 
 
+$opacity: 0.9;
+
+
 .personalData {
   display: flex;
   &__body {
@@ -29,13 +33,80 @@
   display: flex;
   align-items: center;
   padding: 60px 0 0 0;
+
   &__image {
     @include avatarBlock(160px, 160px);
     margin-right: 20px;
+    position: relative;
     & img {
       @include avatarBlockImage();
+      cursor: initial;
+    }
+
+    &_text {
+      text-align: center;
+      background-color: $gymbyLightWhiteBlue;
+      color: black;
+     /* width: 100px;
+      height: 30px;*/
+      max-width: 100px;
+      padding: 5px 5px;
+      font-size: 14px;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 10%;
+      right: 19%;
+      opacity: 0;
+    }
+    &:hover &_text {
+      opacity: 0.9;
     }
   }
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    color: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  &__input::before {
+    content: 'Файл не выбран';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 4px 5px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+  }
+  &__input:hover::before {
+    border-color: black;
+  }
+  &__input:active {
+    outline: 0;
+  }
+  &__input::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+
+
+
+
   &__description {
     display: flex;
     flex-direction: column;
@@ -53,7 +124,10 @@
     line-height: 110%;
     color: #000000;
   }
+
   &__icon {}
+
+
   &__subscription {
     font-weight: 300;
     font-size: 18px;

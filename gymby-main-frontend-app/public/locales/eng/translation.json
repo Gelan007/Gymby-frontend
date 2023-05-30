@@ -173,6 +173,7 @@
     "personalData": {
       "withoutSubscription": "Without a subscription",
       "checkMyProfile": "Check my personal profile",
+      "uploadPhoto": "Upload a photo",
       "textInputs": {
         "name": "First name",
         "surname": "Last name",

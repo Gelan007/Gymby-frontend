@@ -26,8 +26,8 @@ const ProgramsCard = ({title, marks, isDeleteIcon= false, modalHandler, setSelec
                     {title}
                 </div>
                 <div className={s.marksBlock}>
-                    {marks.map(mark => (
-                        <ProgramsMark text={mark}/>
+                    {marks.map((mark, key) => (
+                        <ProgramsMark text={mark} key={key}/>
                     ))}
                 </div>
             </div>
