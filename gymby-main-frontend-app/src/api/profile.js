@@ -26,6 +26,14 @@ export const profileAPI = {
         const response = await $authHostWithoutHeaders.post('api/profile/update', formData)
         return response;
     },
+    async addProfilePhoto(photo) {
+        let formData = new FormData();
+        formData.append('photo', photo);
+
+        const response = await $authHostWithoutHeaders.post('api/photo/profile', formData)
+        return response;
+    },
+
    /* async updateProfile(username, email, firstName,
                         lastName, description, photoAvatarPath,
                         instagramUrl, facebookUrl, telegramUsername, profileId) {

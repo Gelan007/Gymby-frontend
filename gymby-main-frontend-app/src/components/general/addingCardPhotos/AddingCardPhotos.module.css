@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .pointsList__item {
   display: flex;
   align-items: baseline;
@@ -73,6 +74,7 @@
 
 /*----------------------------*/
 .addingCard {
+  position: relative;
   height: 200px;
   flex: 0 0 135px;
   background: #FFFFFF;
@@ -87,6 +89,47 @@
 .addingCard:hover {
   box-shadow: inset 6px 6px 6px #BDD5EA;
   border: 1px solid #BDD5EA;
+}
+.addingCard__input {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  color: transparent;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.addingCard__input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.addingCard__input::before {
+  content: "Файл не выбран";
+  color: black;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 4px 5px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.addingCard__input:hover::before {
+  border-color: black;
+}
+.addingCard__input:active {
+  outline: 0;
+}
+.addingCard__input::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 /*# sourceMappingURL=AddingCardPhotos.module.css.map */

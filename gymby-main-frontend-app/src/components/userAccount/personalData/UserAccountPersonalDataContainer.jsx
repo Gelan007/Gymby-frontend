@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import UserAccountPersonalData from "./UserAccountPersonalData";
 import {connect} from "react-redux";
-import {getMyProfile, updateProfile} from "../../../redux/reducers/user-account-reducer";
+import {getMyProfile, updateProfile, addProfilePhoto} from "../../../redux/reducers/user-account-reducer";
 import {useOidcAccessToken, useOidcIdToken, useOidcUser} from "@axa-fr/react-oidc";
 
 const UserAccountPersonalDataContainer = (props) => {
@@ -16,6 +16,7 @@ const UserAccountPersonalDataContainer = (props) => {
             <UserAccountPersonalData
                 myProfile={props.myProfile}
                 updateProfile={props.updateProfile}
+                addProfilePhoto={props.addProfilePhoto}
                 {...props}
             />
         </div>
@@ -29,4 +30,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {updateProfile, getMyProfile})(UserAccountPersonalDataContainer);
+export default connect(mapStateToProps, {updateProfile, getMyProfile, addProfilePhoto})(UserAccountPersonalDataContainer);

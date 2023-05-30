@@ -1,9 +1,11 @@
 import {profileAPI} from "../../api/profile";
+import {friendsAPI} from "../../api/friends";
 
 const SET_FIRST_NAME = 'SET_FIRST_NAME'
 const SET_LAST_NAME = 'SET_LAST_NAME'
 const SET_USERNAME = 'SET_USERNAME'
 const SET_MY_PROFILE = 'SET_MY_PROFILE'
+const SET_MY_PROFILE_PHOTO = 'SET_MY_PROFILE_PHOTO'
 const SET_MY_FRIENDS_LIST = 'SET_MY_FRIENDS_LIST'
 
 
@@ -23,7 +25,8 @@ let initialState = {
         isCoach: false,
         username: '',
         email: '',
-        photos: {}
+        photos: [],
+        photosPendingDeletion: []
     },
     profile: {
         profileId: 0,
@@ -84,7 +87,16 @@ const userAccountReducer = (state = initialState, action) => {
                     instagramUrl: action.instagramUrl,
                     facebookUrl: action.facebookUrl,
                     telegramUsername: action.telegramUsername,
-                    profileId: action.profileId
+                    profileId: action.profileId,
+                    photos: [...action.photos.map(photo => photo.photoPath)]
+                }
+            }
+        case SET_MY_PROFILE_PHOTO:
+            return {
+                ...state,
+                myProfile: {
+                    ...state.myProfile,
+                    photos: [...action.photos.map(photo => photo.photoPath)]
                 }
             }
         case SET_MY_FRIENDS_LIST:
@@ -110,10 +122,11 @@ export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setFirstName = (firstName) => ({type: SET_FIRST_NAME, firstName})
 export const setMyProfile = (username, email, firstName,
                              lastName, description, photoAvatarPath,
-                             instagramUrl, facebookUrl, telegramUsername, profileId) => ({type: SET_MY_PROFILE,
+                             instagramUrl, facebookUrl, telegramUsername, profileId, photos) => ({type: SET_MY_PROFILE,
     username, email, firstName,
     lastName, description, photoAvatarPath,
-    instagramUrl, facebookUrl, telegramUsername, profileId})
+    instagramUrl, facebookUrl, telegramUsername, profileId, photos})
+export const setMyProfilePhoto = (photo) => ({type: SET_MY_PROFILE_PHOTO, photo})
 
 export const updateProfile = (username, email, firstName,
                               lastName, description, photoAvatarPath,
@@ -143,7 +156,32 @@ export const getMyProfile = () => {
                         response.data.username, response.data.email, response.data.firstName,
                         response.data.lastName, response.data.description, response.data.photoAvatarPath,
                         response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
-                        response.data.profileId
+                        response.data.profileId, response.data.photos
+                    ))
+                }
+            })
+    }
+}
+export const addProfilePhoto = (photo) => {
+    return (dispatch) => {
+        profileAPI.addProfilePhoto(photo)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setMyProfilePhoto(
+                        response.data
+                    ))
+                    console.log(response.data)
+                }
+            })
+    }
+}
+export const getMyFriendsList = () => {
+    return (dispatch) => {
+        friendsAPI.getMyFriendsList()
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setMyProfile(
+
                     ))
                 }
             })

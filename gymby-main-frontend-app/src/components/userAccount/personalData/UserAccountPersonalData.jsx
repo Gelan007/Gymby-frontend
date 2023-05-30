@@ -14,25 +14,41 @@ import { useTranslation } from 'react-i18next';
 
 
 
-const UserAccountPersonalData = ({myProfile, updateProfile, ...props}) => {
+const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, ...props}) => {
 
     const {t} = useTranslation()
     const [userData, setUserData] = useState(myProfile);
     const [temporaryPhotoPath, setTemporaryPhotoPath] = useState()
+    const [temporaryPhotosList, setTemporaryPhotosList] = useState([])
+    const [finalPhotosDisplayingArray, setFinalPhotosDisplayingArray] = useState([])
+    const [chosenUserPhotoFilesForRequest, setChosenUserPhotoFilesForRequest] = useState([])
 
     useEffect(() => {
         setUserData(myProfile)
+        /*!userData.photos && setUserData({...userData, photos:[]})
+        console.log(myProfile)*/
     }, [myProfile])
 
     useEffect(() => {
         setTemporaryPhotoPath(userData.photoAvatarPath)
     }, [userData.photoAvatarPath])
 
+    useEffect(() => {
+        /*!userData.photos ? setTemporaryPhotosList([]) : setTemporaryPhotosList(userData.photos)*/
+        setFinalPhotosDisplayingArray([...userData.photos])
+    }, [userData?.photos])
+
+    useEffect(() => {
+        setFinalPhotosDisplayingArray([...temporaryPhotosList])
+    }, [temporaryPhotosList])
+
+
     const buttonHandler = () => {
         try {
             updateProfile(userData.username, userData.email, userData.firstName,
                 userData.lastName, userData.description, userData.photoAvatarPath,
                 userData.instagramUrl, userData.facebookUrl, userData.telegramUsername, myProfile.profileId)
+            chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
         } catch {
             alert('Something went wrong')
         }
@@ -50,6 +66,21 @@ const UserAccountPersonalData = ({myProfile, updateProfile, ...props}) => {
         if (file) {
             fileReader.readAsDataURL(file);
             setUserData({ ...userData, photoAvatarPath: file});
+        }
+    };
+    const handleUserPhotosChange = (e) => {
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+
+        fileReader.onload = () => {
+            //setTemporaryPhotosList([...temporaryPhotosList, fileReader.result]);
+            setFinalPhotosDisplayingArray([...finalPhotosDisplayingArray, fileReader.result]);
+        };
+
+        if (file) {
+            fileReader.readAsDataURL(file);
+            setChosenUserPhotoFilesForRequest([...chosenUserPhotoFilesForRequest, file]);
+            //setUserData({...userData, photos: [...userData.photos, file]});
         }
     };
 
@@ -106,7 +137,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, ...props}) => {
                         <h4 className={s.photoCards__title}>{t("userAccount.personalData.certificatesBlock.title")}</h4>
                         <span className={s.photoCards__subtitle}>{t("userAccount.personalData.certificatesBlock.subtitle")}</span>
                     </div>
-                    <AddingCardPhotos/>
+                    <AddingCardPhotos photos={finalPhotosDisplayingArray} handleAddingCardFileChange={handleUserPhotosChange}/>
                 </div>
                 <div className={s.description}>
                     <div className={s.description__textBlock}>
