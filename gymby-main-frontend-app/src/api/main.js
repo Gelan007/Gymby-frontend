@@ -19,7 +19,11 @@ const $authHost = axios.create({
         'Content-Type': 'application/json'
     }
 })
+const $authHostWithoutHeaders = axios.create({
+    baseURL: 'https://gymby-api.azurewebsites.net/'
+})
 
 export {
-    $authHost
+    $authHost,
+    $authHostWithoutHeaders
 }

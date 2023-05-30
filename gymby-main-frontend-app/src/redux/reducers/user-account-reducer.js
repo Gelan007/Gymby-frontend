@@ -4,6 +4,8 @@ const SET_FIRST_NAME = 'SET_FIRST_NAME'
 const SET_LAST_NAME = 'SET_LAST_NAME'
 const SET_USERNAME = 'SET_USERNAME'
 const SET_MY_PROFILE = 'SET_MY_PROFILE'
+const SET_MY_FRIENDS_LIST = 'SET_MY_FRIENDS_LIST'
+
 
 //Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
 let initialState = {
@@ -85,6 +87,14 @@ const userAccountReducer = (state = initialState, action) => {
                     profileId: action.profileId
                 }
             }
+        case SET_MY_FRIENDS_LIST:
+            return {
+                ...state,
+                profiles: [
+                    ...state.profiles,
+
+                ]
+            }
         case SET_USERNAME:
             return {
                 ...state,
@@ -100,24 +110,24 @@ export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setFirstName = (firstName) => ({type: SET_FIRST_NAME, firstName})
 export const setMyProfile = (username, email, firstName,
                              lastName, description, photoAvatarPath,
-                             instagramUrl, facebookUrl, telegramUserName, profileId) => ({type: SET_MY_PROFILE,
+                             instagramUrl, facebookUrl, telegramUsername, profileId) => ({type: SET_MY_PROFILE,
     username, email, firstName,
     lastName, description, photoAvatarPath,
-    instagramUrl, facebookUrl, telegramUserName, profileId})
+    instagramUrl, facebookUrl, telegramUsername, profileId})
 
 export const updateProfile = (username, email, firstName,
                               lastName, description, photoAvatarPath,
-                              instagramUrl, facebookUrl, telegramUserName, profileId) => {
+                              instagramUrl, facebookUrl, telegramUsername, profileId) => {
     return (dispatch) => {
         profileAPI.updateProfile(username, email, firstName,
             lastName, description, photoAvatarPath,
-            instagramUrl, facebookUrl, telegramUserName, profileId)
+            instagramUrl, facebookUrl, telegramUsername, profileId)
             .then((response) => {
                 if(response.status >= 200 && response.status <= 204) {
                     dispatch(setMyProfile(
                         response.data.username, response.data.email, response.data.firstName,
                         response.data.lastName, response.data.description, response.data.photoAvatarPath,
-                        response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUserName,
+                        response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
                         response.data.profileId
                     ))
                 }
@@ -132,7 +142,7 @@ export const getMyProfile = () => {
                     dispatch(setMyProfile(
                         response.data.username, response.data.email, response.data.firstName,
                         response.data.lastName, response.data.description, response.data.photoAvatarPath,
-                        response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUserName,
+                        response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
                         response.data.profileId
                     ))
                 }

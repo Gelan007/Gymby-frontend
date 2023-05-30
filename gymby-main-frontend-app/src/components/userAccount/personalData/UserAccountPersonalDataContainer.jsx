@@ -10,6 +10,7 @@ const UserAccountPersonalDataContainer = (props) => {
         props.getMyProfile()
     }, [])
 
+
     return (
         <div>
             <UserAccountPersonalData

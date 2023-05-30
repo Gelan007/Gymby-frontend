@@ -10,13 +10,14 @@ import fourthImage from '../../../assets/images/userCabinet/personalData/Elrond4
 import fifthImage from '../../../assets/images/userCabinet/personalData/Revan.jpg';
 import ButtonExit from "../../UI/buttons/ButtonExit";
 import {useTranslation} from "react-i18next";
+import {useNavigate} from "react-router-dom";
 
 
 
 
 const UserAccountProfile = ({myProfile, ...props}) => {
     const {t} = useTranslation()
-
+    const navigate = useNavigate()
     return (
         <div className={s.userAccountProfile}>
             <div className={s.userAccountProfile__body}>
@@ -52,7 +53,7 @@ const UserAccountProfile = ({myProfile, ...props}) => {
                         </CarouselProfile>
                     </div>
                 </div>
-                <div className={s.backBlock}>
+                <div className={s.backBlock} onClick={() => navigate(-1)}>
                     <ButtonExit text={t("userAccount.profile.backButton")}/>
                 </div>
             </div>
