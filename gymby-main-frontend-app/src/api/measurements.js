@@ -1,6 +1,6 @@
 import {$authHost} from './main'
 
-export const profileAPI = {
+export const measurementsAPI = {
     async getMeasurements(token) {
         const response = await $authHost.get('api/Measurements', {
             method: "GET",

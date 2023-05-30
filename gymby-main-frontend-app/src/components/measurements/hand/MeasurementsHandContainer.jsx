@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import MeasurementsHand from "./MeasurementsHand";
-import {profileAPI} from "../../../api/measurements";
+import {measurementsAPI} from "../../../api/measurements";
 import {connect} from "react-redux";
 import {useOidcFetch} from "@axa-fr/react-oidc";
 
 const MeasurementsHandContainer = (props) => {
 
     useEffect(() => {
-        profileAPI.getMeasurements().then(data => console.log(data))
+        measurementsAPI.getMeasurements().then(data => console.log(data))
     }, [])
 
     return (

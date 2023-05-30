@@ -1,6 +1,9 @@
+import {profileAPI} from "../../api/profile";
+
 const SET_FIRST_NAME = 'SET_FIRST_NAME'
 const SET_LAST_NAME = 'SET_LAST_NAME'
 const SET_USERNAME = 'SET_USERNAME'
+const SET_MY_PROFILE = 'SET_MY_PROFILE'
 
 //Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
 let initialState = {
@@ -8,16 +11,16 @@ let initialState = {
     userName: 'Ivan Ruslanovich',
     myProfile: {
         profileId: '',
-        firstName: 'Ivan',
-        lastName: 'Ruslanovich',
-        description: 'Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії. Я тренер з 10-річним стажем то допоможу вам побудувати тіло своєї мрії.',
+        firstName: '',
+        lastName: '',
+        description: '',
         photoAvatarPath: null,
-        instagramUrl: 'https://www.instagram.com/',
-        facebookUrl: 'https://uk-ua.facebook.com/',
-        telegramUsername: '@the_korobov',
+        instagramUrl: '',
+        facebookUrl: '',
+        telegramUsername: '',
         isCoach: false,
-        username: '@the_korovob1',
-        email: 'ivan.korobov@nure.ua',
+        username: '',
+        email: '',
         photos: {}
     },
     profile: {
@@ -65,12 +68,21 @@ let initialState = {
 
 const userAccountReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_FIRST_NAME:
+        case SET_MY_PROFILE:
             return {
                 ...state,
                 myProfile: {
                     ...state.myProfile,
-                    firstName: action.firstName
+                    username: action.username,
+                    email: action.email,
+                    firstName: action.firstName,
+                    lastName: action.lastName,
+                    description: action.description,
+                    photoAvatarPath: action.photoAvatarPath,
+                    instagramUrl: action.instagramUrl,
+                    facebookUrl: action.facebookUrl,
+                    telegramUsername: action.telegramUsername,
+                    profileId: action.profileId
                 }
             }
         case SET_USERNAME:
@@ -86,7 +98,47 @@ const userAccountReducer = (state = initialState, action) => {
 //export const setUsersAC = (userId) => ({type: SET_USERS, userId})
 export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setFirstName = (firstName) => ({type: SET_FIRST_NAME, firstName})
+export const setMyProfile = (username, email, firstName,
+                             lastName, description, photoAvatarPath,
+                             instagramUrl, facebookUrl, telegramUserName, profileId) => ({type: SET_MY_PROFILE,
+    username, email, firstName,
+    lastName, description, photoAvatarPath,
+    instagramUrl, facebookUrl, telegramUserName, profileId})
 
+export const updateProfile = (username, email, firstName,
+                              lastName, description, photoAvatarPath,
+                              instagramUrl, facebookUrl, telegramUserName, profileId) => {
+    return (dispatch) => {
+        profileAPI.updateProfile(username, email, firstName,
+            lastName, description, photoAvatarPath,
+            instagramUrl, facebookUrl, telegramUserName, profileId)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setMyProfile(
+                        response.data.username, response.data.email, response.data.firstName,
+                        response.data.lastName, response.data.description, response.data.photoAvatarPath,
+                        response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUserName,
+                        response.data.profileId
+                    ))
+                }
+            })
+    }
+}
+export const getMyProfile = () => {
+    return (dispatch) => {
+        profileAPI.getMyProfile()
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setMyProfile(
+                        response.data.username, response.data.email, response.data.firstName,
+                        response.data.lastName, response.data.description, response.data.photoAvatarPath,
+                        response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUserName,
+                        response.data.profileId
+                    ))
+                }
+            })
+    }
+}
 export const getUserNameThunkCreator = () => {
     return (dispatch) => {
 

@@ -13,14 +13,29 @@ import ButtonGreen from "../../UI/buttons/ButtonGreen";
 import {useOidcAccessToken, useOidcUser, UserStatus} from "@axa-fr/react-oidc";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 import { useTranslation } from 'react-i18next';
-import {setFirstName} from "../../../redux/reducers/user-account-reducer";
+import {setFirstName, updateProfile} from "../../../redux/reducers/user-account-reducer";
 
 
-const UserAccountPersonalData = ({myProfile, ...props}) => {
-    const { oidcUser, oidcUserLoadingState } = useOidcUser();
-    const { accessToken, accessTokenPayload } = useOidcAccessToken();
+const UserAccountPersonalData = ({myProfile, updateProfile, ...props}) => {
+
     const {t} = useTranslation()
     const [userData, setUserData] = useState(myProfile);
+
+    useEffect(() => {
+        setUserData(myProfile)
+        console.log(userData.photoAvatarPath)
+    }, [myProfile])
+
+    const buttonHandler = () => {
+        try {
+            updateProfile(userData.username, userData.email, userData.firstName,
+                userData.lastName, userData.description, myProfile.photoAvatarPath,
+                userData.instagramUrl, userData.facebookUrl, userData.telegramUserName, myProfile.profileId)
+        } catch {
+            alert('Something went wrong')
+        }
+
+    }
 
     return (
         <div className={s.personalData}>
@@ -28,18 +43,17 @@ const UserAccountPersonalData = ({myProfile, ...props}) => {
             <div className={s.personalData__body}>
                 <div className={s.avatarBlock}>
                     <div className={s.avatarBlock__image}>
-                        <img src={zaglushka} alt="avatar"/>
+                        <img src={!userData.photoAvatarPath ? zaglushka : userData.photoAvatarPath} alt="avatar"/>
+                        <input type="file" onChange={e => setUserData({...userData, photoAvatarPath: e.target.files[0]})} className={s.avatarBlock__input}/>
                     </div>
                     <div className={s.avatarBlock__description}>
                         <div className={s.avatarBlock__titleBlock}>
                             <span className={s.avatarBlock__name}>
                                 {`${myProfile.firstName} ${myProfile.lastName}`}
-                                {/*{oidcUser && <div>{JSON.stringify(oidcUser)}</div> }*/}
-                                {/*{oidcUser && <div>{JSON.stringify(accessTokenPayload)}</div> }*/}
                             </span>
-                            <div className={s.avatarBlock__icon}>
-                                <img src={trainerIcon} alt="trainerIcon"/>
-                            </div>
+                                <div className={s.avatarBlock__icon}>
+                                    <img src={trainerIcon} alt="trainerIcon"/>
+                                </div>
                         </div>
                         <span className={s.avatarBlock__subscription}>
                             {t("userAccount.personalData.withoutSubscription")}
@@ -99,7 +113,7 @@ const UserAccountPersonalData = ({myProfile, ...props}) => {
                 </div>
                 <div className={s.buttonSave}>
                     <div className={s.buttonSave__container}>
-                        <ButtonGreen style={{height: '50px'}}>{t("userAccount.personalData.save")}</ButtonGreen>
+                        <ButtonGreen style={{height: '50px'}} onClick={buttonHandler}>{t("userAccount.personalData.save")}</ButtonGreen>
                     </div>
                 </div>
             </div>
