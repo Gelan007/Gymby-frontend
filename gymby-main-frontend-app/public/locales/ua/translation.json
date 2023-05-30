@@ -173,6 +173,7 @@
       "personalData": {
         "withoutSubscription": "Без підписки",
         "checkMyProfile": "Переглянути особистий профіль",
+        "uploadPhoto": "Завантажити фото",
         "textInputs": {
           "name": "Ім’я",
           "surname": "Прізвище",

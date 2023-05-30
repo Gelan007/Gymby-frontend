@@ -43,6 +43,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, ...props}) => {
             <div className={s.personalData__body}>
                 <div className={s.avatarBlock}>
                     <div className={s.avatarBlock__image}>
+                        <div className={s.avatarBlock__image_text}>{t("userAccount.personalData.uploadPhoto")}</div>
                         <img src={!userData.photoAvatarPath ? zaglushka : userData.photoAvatarPath} alt="avatar"/>
                         <input type="file" onChange={e => setUserData({...userData, photoAvatarPath: e.target.files[0]})} className={s.avatarBlock__input}/>
                     </div>

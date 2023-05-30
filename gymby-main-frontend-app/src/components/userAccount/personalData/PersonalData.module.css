@@ -114,6 +114,24 @@
   border-bottom: 2px solid rgba(0, 0, 0, 0.06);
 }
 
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
 .socialMedia__title, .description__title, .photoCards__title {
   font-weight: 700;
   font-size: 23px;
@@ -158,12 +176,30 @@
   cursor: pointer;
   cursor: initial;
 }
+.avatarBlock__image_text {
+  text-align: center;
+  background-color: #F7F7FF;
+  color: black;
+  /* width: 100px;
+   height: 30px;*/
+  max-width: 100px;
+  padding: 5px 5px;
+  font-size: 14px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10%;
+  right: 19%;
+  opacity: 0;
+}
+.avatarBlock__image:hover .avatarBlock__image_text {
+  opacity: 0.9;
+}
 .avatarBlock__input {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  opacity: 1;
+  opacity: 0;
   width: 100%;
   height: 100%;
   cursor: pointer;

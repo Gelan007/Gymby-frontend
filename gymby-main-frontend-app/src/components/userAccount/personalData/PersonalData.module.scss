@@ -1,4 +1,5 @@
 @import '../general/userAccount.module.scss';
+@import "../../../utils/styles/GymbyGeneralStyles.module.scss";
 
 %title {
   font-weight: 700;
@@ -16,6 +17,9 @@
 }
 
 
+$opacity: 0.9;
+
+
 .personalData {
   display: flex;
   &__body {
@@ -29,6 +33,7 @@
   display: flex;
   align-items: center;
   padding: 60px 0 0 0;
+
   &__image {
     @include avatarBlock(160px, 160px);
     margin-right: 20px;
@@ -37,13 +42,32 @@
       @include avatarBlockImage();
       cursor: initial;
     }
+
+    &_text {
+      text-align: center;
+      background-color: $gymbyLightWhiteBlue;
+      color: black;
+     /* width: 100px;
+      height: 30px;*/
+      max-width: 100px;
+      padding: 5px 5px;
+      font-size: 14px;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 10%;
+      right: 19%;
+      opacity: 0;
+    }
+    &:hover &_text {
+      opacity: 0.9;
+    }
   }
   &__input {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    opacity: 1;
+    opacity: 0;
     width: 100%;
     height: 100%;
     cursor: pointer;
