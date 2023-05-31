@@ -45,6 +45,7 @@ const UserAccountProfile = ({myProfile, ...props}) => {
                     <div className={s.carousel}>
                         <CarouselProfile>
                             {/*можно добавить условие, что если нету элементов, то добавить новый стиль, чтоб было больше margin-top у carousel, когда нету фоток*/}
+
                             <div className={s.carousel__image}><img src={firstImage} alt=""/></div>
                             <div className={s.carousel__image}><img src={secondImage} alt=""/></div>
                             <div className={s.carousel__image}><img src={thirdImage} alt=""/></div>

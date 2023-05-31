@@ -25,8 +25,7 @@ let initialState = {
         isCoach: false,
         username: '',
         email: '',
-        photos: [],
-        photosPendingDeletion: []
+        photos: []
     },
     profile: {
         profileId: 0,
@@ -54,6 +53,8 @@ let initialState = {
             isCoach: false,
             username: '@techis3501',
             email: '',
+            photos: []
+
         },
         {
             profileId: 0,
@@ -67,6 +68,7 @@ let initialState = {
             isCoach: false,
             username: '@IvanChiftein',
             email: 'ivan.korobov@gmail.com',
+            photos: []
         }
     ]
 }
@@ -104,17 +106,17 @@ const userAccountReducer = (state = initialState, action) => {
                 ...state,
                 profiles: [
                     ...state.profiles,
-
-                ]
-            }
-        case SET_USERNAME:
-            return {
-                ...state,
-                userName: action.userName
-            }
-        default:
-            return state;
+                    action.profiles
+]
+}
+case SET_USERNAME:
+    return {
+        ...state,
+        userName: action.userName
     }
+default:
+return state;
+}
 }
 
 //export const setUsersAC = (userId) => ({type: SET_USERS, userId})
@@ -127,6 +129,7 @@ export const setMyProfile = (username, email, firstName,
     lastName, description, photoAvatarPath,
     instagramUrl, facebookUrl, telegramUsername, profileId, photos})
 export const setMyProfilePhoto = (photo) => ({type: SET_MY_PROFILE_PHOTO, photo})
+export const setMyFriendsList = (profiles) => ({type: SET_MY_FRIENDS_LIST, profiles})
 
 export const updateProfile = (username, email, firstName,
                               lastName, description, photoAvatarPath,
@@ -192,7 +195,7 @@ export const getMyFriendsList = () => {
             .then((response) => {
                 if(response.status >= 200 && response.status <= 204) {
                     dispatch(setMyProfile(
-
+                        response.data.profile
                     ))
                 }
             })
