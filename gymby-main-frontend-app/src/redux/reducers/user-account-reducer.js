@@ -88,7 +88,7 @@ const userAccountReducer = (state = initialState, action) => {
                     facebookUrl: action.facebookUrl,
                     telegramUsername: action.telegramUsername,
                     profileId: action.profileId,
-                    photos: [...action.photos.map(photo => photo.photoPath)]
+                    photos: [...action.photos.map(photo => ({photoPath: photo.photoPath, photoId: photo.id}))]
                 }
             }
         case SET_MY_PROFILE_PHOTO:
@@ -96,7 +96,7 @@ const userAccountReducer = (state = initialState, action) => {
                 ...state,
                 myProfile: {
                     ...state.myProfile,
-                    photos: [...action.photos.map(photo => photo.photoPath)]
+                    photos: [...action.photos.map(photo => ({photoPath: photo.photoPath, photoId: photo.id}))]
                 }
             }
         case SET_MY_FRIENDS_LIST:
@@ -170,7 +170,18 @@ export const addProfilePhoto = (photo) => {
                     dispatch(setMyProfilePhoto(
                         response.data
                     ))
-                    console.log(response.data)
+                }
+            })
+    }
+}
+export const deleteProfilePhoto = (photoId) => {
+    return (dispatch) => {
+        profileAPI.deleteProfilePhoto(photoId)
+            .then(response => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setMyProfilePhoto(
+                        response.data
+                    ))
                 }
             })
     }

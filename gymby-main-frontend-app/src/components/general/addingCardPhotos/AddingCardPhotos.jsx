@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from './AddingCardPhotos.module.scss'
 import PhotoCard from "./PhotoCard";
 import AddingCard from "./AddingCard";
-const AddingCardPhotos = ({photos, handleAddingCardFileChange}) => {
+const AddingCardPhotos = ({photos, handleAddingCardFileChange, handlePhotoDelete, isUserAccount = false}) => {
     return (
         <div className={s.addingCardPhotos}>
-            {photos?.map((photo, index) => (
-                <PhotoCard photo={photo} key={index}/>
-            ))}
+            {isUserAccount &&
+                photos?.map((photo, index) => (
+                    <PhotoCard allPhotoData={photo} photoToDisplaying={photo.photoPath ? photo.photoPath : photo} key={index}
+                               handlePhotoDelete={handlePhotoDelete}/>
+                ))
+            ||
+                photos?.map((photo, index) => (
+                    <PhotoCard allPhotoData={photo} photoToDisplay={photo} key={index}
+                               handlePhotoDelete={handlePhotoDelete}/>
+                ))
+            }
             <AddingCard handleFileChange={handleAddingCardFileChange}/>
         </div>
     );

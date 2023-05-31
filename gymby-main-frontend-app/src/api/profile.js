@@ -33,36 +33,14 @@ export const profileAPI = {
         const response = await $authHostWithoutHeaders.post('api/photo/profile', formData)
         return response;
     },
-
-   /* async updateProfile(username, email, firstName,
-                        lastName, description, photoAvatarPath,
-                        instagramUrl, facebookUrl, telegramUsername, profileId) {
+    async deleteProfilePhoto(photoId) {
         let formData = new FormData();
-        formData.append('ProfileId', profileId);
-        formData.append('username', username);
-        formData.append('firstName', firstName);
-        formData.append('lastName', lastName);
-        formData.append('description', description);
-        formData.append('photoAvatarPath', null);
-        formData.append('instagramUrl', instagramUrl);
-        formData.append('facebookUrl', facebookUrl);
-        formData.append('telegramUsername', telegramUsername);
-        formData.append('Email', email);
+        formData.append('photoId', photoId);
 
+        const response = await $authHostWithoutHeaders.post('api/photo/profile/delete', formData)
+        return response;
+    },
 
-        const response = await fetch('https://gymby-api.azurewebsites.net/api/profile/update', {
-            method: 'POST',
-            body: formData,
-
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-            });
-        return response.data;
-    }*/
     /*async updateProfile(username, email, firstName,
                         lastName, description, photoAvatarPath,
                         instagramUrl, facebookUrl, telegramUsername, profileId) {

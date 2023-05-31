@@ -14,19 +14,19 @@ import { useTranslation } from 'react-i18next';
 
 
 
-const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, ...props}) => {
+const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, deleteProfilePhoto, ...props}) => {
 
     const {t} = useTranslation()
     const [userData, setUserData] = useState(myProfile);
     const [temporaryPhotoPath, setTemporaryPhotoPath] = useState()
-    const [temporaryPhotosList, setTemporaryPhotosList] = useState([])
+    /*const [temporaryPhotosList, setTemporaryPhotosList] = useState([])*/
     const [finalPhotosDisplayingArray, setFinalPhotosDisplayingArray] = useState([])
     const [chosenUserPhotoFilesForRequest, setChosenUserPhotoFilesForRequest] = useState([])
+    const [chosenUserPhotoPathsForDeleteRequest, setChosenUserPhotoPathsForDeleteRequest] = useState([])
+    const [photosPendingDeletion, setPhotosPendingDeletion] = useState([])
 
     useEffect(() => {
         setUserData(myProfile)
-        /*!userData.photos && setUserData({...userData, photos:[]})
-        console.log(myProfile)*/
     }, [myProfile])
 
     useEffect(() => {
@@ -34,21 +34,41 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, ...
     }, [userData.photoAvatarPath])
 
     useEffect(() => {
-        /*!userData.photos ? setTemporaryPhotosList([]) : setTemporaryPhotosList(userData.photos)*/
         setFinalPhotosDisplayingArray([...userData.photos])
     }, [userData?.photos])
 
     useEffect(() => {
-        setFinalPhotosDisplayingArray([...temporaryPhotosList])
-    }, [temporaryPhotosList])
+               photosPendingDeletion.forEach(photoForDeletion => {
+            setFinalPhotosDisplayingArray(finalPhotosDisplayingArray.filter(photo => photo.photoPath !== photoForDeletion.photoPath))
+        })
 
+        if(chosenUserPhotoFilesForRequest.length > 0) {
+            photosPendingDeletion.forEach(photoForDeletion => {
+                finalPhotosDisplayingArray.forEach(photo => {
+                    photo.fileAndDataURLFile?.forEach(photoFile => {
+                        if(photoForDeletion == photoFile.fileReaderData) {
+                            chosenUserPhotoFilesForRequest.forEach(i => console.log(i))
+                            setChosenUserPhotoFilesForRequest(chosenUserPhotoFilesForRequest.filter(item => item != photoFile.file))
+                        }
+                    })
+
+                })
+            })
+        }
+    }, [photosPendingDeletion])
 
     const buttonHandler = () => {
         try {
             updateProfile(userData.username, userData.email, userData.firstName,
                 userData.lastName, userData.description, userData.photoAvatarPath,
                 userData.instagramUrl, userData.facebookUrl, userData.telegramUsername, myProfile.profileId)
-            chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
+            if(chosenUserPhotoFilesForRequest.length > 0) {
+                chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
+            }
+            if(chosenUserPhotoPathsForDeleteRequest.length > 0) {
+                chosenUserPhotoPathsForDeleteRequest.forEach(photoId => deleteProfilePhoto(photoId))
+            }
+            //console.log(chosenUserPhotoFilesForRequest)
         } catch {
             alert('Something went wrong')
         }
@@ -73,16 +93,24 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, ...
         const fileReader = new FileReader();
 
         fileReader.onload = () => {
-            //setTemporaryPhotosList([...temporaryPhotosList, fileReader.result]);
-            setFinalPhotosDisplayingArray([...finalPhotosDisplayingArray, fileReader.result]);
+            setFinalPhotosDisplayingArray([...finalPhotosDisplayingArray, {fileAndDataURLFile: [{fileReaderData: fileReader.result, file}]} ]);
         };
 
         if (file) {
             fileReader.readAsDataURL(file);
             setChosenUserPhotoFilesForRequest([...chosenUserPhotoFilesForRequest, file]);
-            //setUserData({...userData, photos: [...userData.photos, file]});
         }
     };
+
+
+    const handleUserPhotoDelete = (photo) => {
+        userData.photos.forEach(initialPhotoPath => {
+            if(initialPhotoPath.photoPath === photo.photoPath) {
+                setChosenUserPhotoPathsForDeleteRequest([...chosenUserPhotoPathsForDeleteRequest, photo.photoId])
+            }
+        } )
+        setPhotosPendingDeletion([...photosPendingDeletion, photo])
+    }
 
 
     return (
@@ -137,7 +165,18 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, ...
                         <h4 className={s.photoCards__title}>{t("userAccount.personalData.certificatesBlock.title")}</h4>
                         <span className={s.photoCards__subtitle}>{t("userAccount.personalData.certificatesBlock.subtitle")}</span>
                     </div>
-                    <AddingCardPhotos photos={finalPhotosDisplayingArray} handleAddingCardFileChange={handleUserPhotosChange}/>
+                    <AddingCardPhotos photos={finalPhotosDisplayingArray?.map((item) => {
+                        if (item.photoId && item.photoPath) {
+                            return { photoId: item.photoId, photoPath: item.photoPath };
+                        } else if (item.fileAndDataURLFile && Array.isArray(item.fileAndDataURLFile)) {
+                            return item.fileAndDataURLFile.map((fileData) => fileData.fileReaderData);
+                        }
+                        return [];
+                    })}
+                                      handleAddingCardFileChange={handleUserPhotosChange}
+                                      handlePhotoDelete={handleUserPhotoDelete}
+                                      isUserAccount={true}
+                    />
                 </div>
                 <div className={s.description}>
                     <div className={s.description__textBlock}>
