@@ -2,11 +2,22 @@ import MainPage from "../../pages/mainLandingPage/MainPage";
 import {
     DIARY_ROUTE,
     HOME_ROUTE,
+    MEASUREMENTS_CHEST_ROUTE,
+    MEASUREMENTS_FAT_PERCENTAGE_ROUTE,
+    MEASUREMENTS_FOREARMS_ROUTE,
     MEASUREMENTS_HAND_ROUTE,
-    MEASUREMENTS_ROUTE, PROGRAMS_FAVORITES_ROUTE,
+    MEASUREMENTS_NECK_ROUTE,
+    MEASUREMENTS_ROUTE,
+    MEASUREMENTS_SHOULDERS_ROUTE,
+    MEASUREMENTS_THIGH_ROUTE,
+    MEASUREMENTS_WAIST_ROUTE, MEASUREMENTS_WEIGHT_ROUTE,
+    PROGRAMS_FAVORITES_ROUTE,
     PROGRAMS_FREE_ROUTE,
-    PROGRAMS_PERSONAL_ROUTE, PROGRAMS_PROGRAM_PROFILE_ROUTE,
-    PROGRAMS_ROUTE, PROGRAMS_TRAINER_BASED_ROUTE, STATISTICS_ROUTE,
+    PROGRAMS_PERSONAL_ROUTE,
+    PROGRAMS_PROGRAM_PROFILE_ROUTE,
+    PROGRAMS_ROUTE,
+    PROGRAMS_TRAINER_BASED_ROUTE,
+    STATISTICS_ROUTE,
     USER_ACCOUNT_COACHING_ROUTE,
     USER_ACCOUNT_FRIENDS_LIST_ROUTE,
     USER_ACCOUNT_INSTRUCTION_ROUTE,
@@ -39,6 +50,15 @@ import ProgramsProgramProfile from "../../components/programs/programProfile/Pro
 import ProgramsProgramProfileContainer from "../../components/programs/programProfile/ProgramsProgramProfileContainer";
 import StatisticsContainer from "../../components/statistics/main/StatisticsContainer";
 import UserAccountProfileContainer from "../../components/userAccount/profiles/UserAccountProfileContainer";
+import MeasurementWaistContainer from "../../components/measurements/waist/MeasurementWaistContainer";
+import MeasurementThighContainer from "../../components/measurements/thigh/MeasurementThighContainer";
+import MeasurementChestContainer from "../../components/measurements/chest/MeasurementChestContainer";
+import MeasurementFatPercentageContainer
+    from "../../components/measurements/fatPercentage/MeasurementFatPercentageContainer";
+import MeasurementForearmsContainer from "../../components/measurements/forearms/MeasurementForearmsContainer";
+import MeasurementNeckContainer from "../../components/measurements/neck/MeasurementNeckContainer";
+import MeasurementShouldersContainer from "../../components/measurements/shoulders/MeasurementShouldersContainer";
+import MeasurementWeightContainer from "../../components/measurements/weight/MeasurementWeightContainer";
 
 export const publicRoutes = [
    /* {
@@ -85,6 +105,7 @@ export const authRoutes = [
         Component: <UserAccountProfileContainer/>
     },
 
+
     {
         path: MEASUREMENTS_ROUTE,
         Component: <MeasurementsPage/>
@@ -93,11 +114,45 @@ export const authRoutes = [
         path: MEASUREMENTS_HAND_ROUTE,
         Component: <MeasurementsHandContainer/>
     },
+    {
+        path: MEASUREMENTS_WAIST_ROUTE,
+        Component: <MeasurementWaistContainer/>
+    },
+    {
+        path: MEASUREMENTS_THIGH_ROUTE,
+        Component: <MeasurementThighContainer/>
+    },
+    {
+        path: MEASUREMENTS_CHEST_ROUTE,
+        Component: <MeasurementChestContainer/>
+    },
+    {
+        path: MEASUREMENTS_FAT_PERCENTAGE_ROUTE,
+        Component: <MeasurementFatPercentageContainer/>
+    },
+    {
+        path: MEASUREMENTS_FOREARMS_ROUTE,
+        Component: <MeasurementForearmsContainer/>
+    },
+    {
+        path: MEASUREMENTS_NECK_ROUTE,
+        Component: <MeasurementNeckContainer/>
+    },
+    {
+        path: MEASUREMENTS_SHOULDERS_ROUTE,
+        Component: <MeasurementShouldersContainer/>
+    },
+    {
+        path: MEASUREMENTS_WEIGHT_ROUTE,
+        Component: <MeasurementWeightContainer/>
+    },
+
 
     {
         path: DIARY_ROUTE,
         Component: <Diary/>
     },
+
 
     {
         path: PROGRAMS_ROUTE,
