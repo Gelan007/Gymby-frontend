@@ -6,15 +6,15 @@ import UserAccountSearchItem from "../search/UserAccountSearchItem";
 import UserAccountFriendsListItem from "./items/UserAccountFriendsListItem";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 import { useTranslation } from 'react-i18next';
+import {USER_ACCOUNT_ROUTE} from "../../../utils/routes/consts";
+import {NavLink} from "react-router-dom";
 
 
-const UserAccountFriendsList = ({profiles}) => {
+const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selectedOption, setSelectedOption}) => {
 
-    const FRIENDS = 'friends';
-    const REQUESTS = 'requests';
-    const [selectedOption, setSelectedOption] = useState(FRIENDS);
-    const friendsOptionHandle = () => setSelectedOption(FRIENDS);
-    const requestsOptionHandle = () => setSelectedOption(REQUESTS);
+
+    const friendsOptionHandle = () => setSelectedOption(friendsValue);
+    const requestsOptionHandle = () => setSelectedOption(requestsValue);
     const {t} = useTranslation()
 
     return (
@@ -26,11 +26,11 @@ const UserAccountFriendsList = ({profiles}) => {
                         <InputGreySearch placeholder="Пошук"/>
                     </div>
                     <div className={s.navBlock__options}>
-                        <span className={selectedOption === FRIENDS ?
+                        <span className={selectedOption === friendsValue ?
                             `${s.navBlock__option} ${s.navBlock__option_red}` : s.navBlock__option}
                               onClick={friendsOptionHandle}>{t("userAccount.friendsList.friends")}</span>
 
-                        <span className={selectedOption === REQUESTS ?
+                        <span className={selectedOption === requestsValue ?
                             `${s.navBlock__option} ${s.navBlock__option_line} ${s.navBlock__option_red}` :
                             `${s.navBlock__option} ${s.navBlock__option_line}`}
                               onClick={requestsOptionHandle}>{t("userAccount.friendsList.requests")}</span>
@@ -38,14 +38,16 @@ const UserAccountFriendsList = ({profiles}) => {
                 </div>
                 <div className={s.itemsList}>
                     {profiles?.map(profile => (
-                        <UserAccountFriendsListItem
-                            username={profile.username}
-                            firstName={profile.firstName}
-                            lastName={profile.lastName}
-                            selectedOption={selectedOption}
-                            friendsValue={FRIENDS}
-                            requestsValue={REQUESTS}
-                        />
+                        <NavLink to={`${USER_ACCOUNT_ROUTE}/profile/${profile.username}`} key={profile.profileId}>
+                            <UserAccountFriendsListItem
+                                username={profile.username}
+                                firstName={profile.firstName}
+                                lastName={profile.lastName}
+                                selectedOption={selectedOption}
+                                friendsValue={friendsValue}
+                                requestsValue={requestsValue}
+                            />
+                        </NavLink>
                     ))}
                 </div>
             </div>

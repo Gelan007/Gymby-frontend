@@ -4,6 +4,7 @@ $cardWidth: 135px;
 
 .addingCardPhotos {
   display: flex;
+  overflow: auto;
   &>*:not(:last-child) {
     margin-right: 20px;
   }

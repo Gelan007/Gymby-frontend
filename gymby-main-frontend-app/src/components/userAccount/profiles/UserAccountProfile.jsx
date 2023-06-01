@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProfileInfoBlock from "./infoBlock/ProfileInfoBlock";
 import s from './Profile.module.scss'
 import CarouselProfile from "../../general/carousels/profile/CarouselProfile";
@@ -15,22 +15,28 @@ import {useNavigate} from "react-router-dom";
 
 
 
-const UserAccountProfile = ({myProfile, ...props}) => {
+const UserAccountProfile = ({profile, isRequestCompleted, ...props}) => {
     const {t} = useTranslation()
     const navigate = useNavigate()
+
+    useEffect(() => {
+
+    }, [profile])
+
+
     return (
         <div className={s.userAccountProfile}>
             <div className={s.userAccountProfile__body}>
-                <ProfileInfoBlock firstName={myProfile.firstName} lastName={myProfile.lastName}
-                                  telegramUsername={myProfile.telegramUsername} username={myProfile.username}
-                                  instagramUrl={myProfile.instagramUrl}
+                <ProfileInfoBlock firstName={profile.firstName} lastName={profile.lastName}
+                                  telegramUsername={profile.telegramUsername} username={profile.username}
+                                  instagramUrl={profile.instagramUrl}
                 />
                 <div className={s.userDescriptionBlock}>
                     <div className={s.userDescriptionBlock__title + " " + s.userAccountProfile__title}>
                         {t("userAccount.profile.userInfo")}
                     </div>
                     <div className={s.userDescriptionBlock__text}>
-                        {myProfile.description}
+                        {profile.description}
                     </div>
                 </div>
                 <div className={s.photosBlock}>
@@ -43,14 +49,18 @@ const UserAccountProfile = ({myProfile, ...props}) => {
                         </div>
                     </div>
                     <div className={s.carousel}>
-                        <CarouselProfile>
-                            {/*можно добавить условие, что если нету элементов, то добавить новый стиль, чтоб было больше margin-top у carousel, когда нету фоток*/}
-                            <div className={s.carousel__image}><img src={firstImage} alt=""/></div>
-                            <div className={s.carousel__image}><img src={secondImage} alt=""/></div>
-                            <div className={s.carousel__image}><img src={thirdImage} alt=""/></div>
-                            <div className={s.carousel__image}><img src={fourthImage} alt=""/></div>
-                            <div className={s.carousel__image}><img src={fifthImage} alt=""/></div>
-                        </CarouselProfile>
+                        {isRequestCompleted ?  (
+                            <CarouselProfile>
+                                {/*можно добавить условие, что если нету элементов, то добавить новый стиль, чтоб было больше margin-top у carousel, когда нету фоток*/}
+                                {profile.photos.map(photo => (
+                                    <div className={s.carousel__image} key={photo.photoId}>
+                                        <img src={photo.photoPath} alt="profile photo"/>
+                                    </div>
+                                ))}
+                            </CarouselProfile>
+                        ) : (
+                            <div>Loading...</div>
+                        )}
                     </div>
                 </div>
                 <div className={s.backBlock} onClick={() => navigate(-1)}>

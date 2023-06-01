@@ -7,7 +7,7 @@ import AddingCardPhotos from "../../general/addingCardPhotos/AddingCardPhotos";
 import TextareaGrey from "../../UI/textareas/TextareaGrey";
 import ButtonOrange from "../../UI/buttons/ButtonOrange";
 import {NavLink} from "react-router-dom";
-import {USER_ACCOUNT_PROFILE_ROUTE} from "../../../utils/routes/consts";
+import {USER_ACCOUNT_PROFILE_ROUTE, USER_ACCOUNT_ROUTE} from "../../../utils/routes/consts";
 import ButtonGreen from "../../UI/buttons/ButtonGreen";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 import { useTranslation } from 'react-i18next';
@@ -135,7 +135,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                         <span className={s.avatarBlock__subscription}>
                             {t("userAccount.personalData.withoutSubscription")}
                         </span>
-                        <NavLink to={USER_ACCOUNT_PROFILE_ROUTE} className={s.avatarBlock__profileOverview}>{t("userAccount.personalData.checkMyProfile")}</NavLink>
+                        <NavLink to={`${USER_ACCOUNT_ROUTE}/profile/${myProfile.username}`} className={s.avatarBlock__profileOverview}>{t("userAccount.personalData.checkMyProfile")}</NavLink>
                     </div>
                 </div>
                 <div className={s.inputData}>

@@ -40,6 +40,11 @@ export const profileAPI = {
         const response = await $authHostWithoutHeaders.post('api/photo/profile/delete', formData)
         return response;
     },
+    async getProfileByUserName(userName) {
+        const response = await $authHostWithoutHeaders.get(`api/profile/${userName}`)
+        console.log(response)
+        return response;
+    },
 
     /*async updateProfile(username, email, firstName,
                         lastName, description, photoAvatarPath,
