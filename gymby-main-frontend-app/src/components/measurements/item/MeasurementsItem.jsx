@@ -15,10 +15,13 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
     const {t} = useTranslation()
     const [isEditMode, setIsEditMode] = useState(false)
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
+    const newDate = new Date(date);
+    const formattedDate = newDate.toISOString().slice(0, 10);
+
 
     const getMeasurementUnitForDisplaying = () => {
         if(measurementUnit === 0) {
-            return 'кг'
+            return t("measurements.item.kilogram")
         } else if (measurementUnit === 1) {
             return t("measurements.item.centimeter")
         } else if (measurementUnit === 2) {
@@ -51,7 +54,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
                 {isEditMode ?
                     <div className={s.fullDate}><input type="date"/></div>
                     :
-                    <div className={s.fullDate}>{date}</div>
+                    <div className={s.fullDate}>{formattedDate}</div>
                 }
                 
                 <div className={s.days}>{days} {t("measurements.item.daysAgo")}</div>

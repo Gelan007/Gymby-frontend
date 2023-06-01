@@ -6,7 +6,7 @@ import MeasurementsItem from "../item/MeasurementsItem";
 import biceps from "../../../assets/images/measurements/biceps.svg";
 import { useTranslation } from 'react-i18next';
 
-const MeasurementsMainItem = () => {
+const MeasurementsMainItem = ({measurementsData, icon}) => {
 
     const {t} = useTranslation()
     const LIST = 'list';
@@ -36,8 +36,11 @@ const MeasurementsMainItem = () => {
                     </div>
                 </div>
                 <div className={s.itemsList}>
-                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'} measurementUnit={1}/>
-                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'} measurementUnit={1}/>
+                    {measurementsData?.map((measurement) => (
+                        <MeasurementsItem icon={biceps} measurements={measurement.value}
+                                          changesValue={'+1,2'} date={measurement.date}
+                                          days={'31'} measurementUnit={measurement.unit}/>
+                    ))}
                 </div>
             </div>
         </div>
