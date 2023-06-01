@@ -1,1 +1,6 @@
 @import '../../general/leftPanelStyles/LeftPanelList.module.scss';
+.icon {
+  & img  {
+    width: 70%;
+  }
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import s from "./MeasurementsLeftPanelList.module.scss";
-import userIcon from "../../../assets/images/userCabinet/leftPanel/user.svg";
 import {NavLink} from "react-router-dom";
 import {
     MEASUREMENTS_HAND_ROUTE,
@@ -8,11 +7,18 @@ import {
     USER_ACCOUNT_FRIENDS_LIST_ROUTE, USER_ACCOUNT_INSTRUCTION_ROUTE,
     USER_ACCOUNT_PERSONAL_DATA_ROUTE, USER_ACCOUNT_SEARCH_ROUTE, USER_ACCOUNT_SUBSCRIBES_ROUTE
 } from "../../../utils/routes/consts";
-import documentIcon from "../../../assets/images/userCabinet/leftPanel/document.svg";
-import usersThreeIcon from "../../../assets/images/userCabinet/leftPanel/usersThree.svg";
-import infoIcon from "../../../assets/images/userCabinet/leftPanel/info.svg";
-import dollarIcon from "../../../assets/images/userCabinet/leftPanel/dollar.svg";
-import searchIcon from "../../../assets/images/userCabinet/leftPanel/search.svg";
+import bicepsIcon from "../../../assets/images/measurements/biceps.svg";
+import chestIcon from "../../../assets/images/measurements/Chest.svg";
+import forearmIcon from "../../../assets/images/measurements/forearm.svg";
+import neckIcon from "../../../assets/images/measurements/neck.svg";
+import photoIcon from "../../../assets/images/measurements/photo.svg";
+import percentageIcon from "../../../assets/images/measurements/percentage.svg";
+import shoulderIcon from "../../../assets/images/measurements/shoulder.svg";
+import thighsIcon from "../../../assets/images/measurements/thighs.svg";
+import waistAndRulerIcon from "../../../assets/images/measurements/waistAndRuler.svg";
+import weightIcon from "../../../assets/images/measurements/weight.svg";
+
+
 import { useTranslation } from 'react-i18next';
 
 const MeasurementsLeftPanelList = () => {
@@ -25,70 +31,70 @@ const MeasurementsLeftPanelList = () => {
             <nav className={s.navigation__container}>
                 <ul className={s.list}>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={userIcon} alt="userIcon"/></div>
+                        <div className={s.icon}><img src={weightIcon} alt="weightIcon"/></div>
                         <NavLink to={USER_ACCOUNT_PERSONAL_DATA_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.weight")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={documentIcon} alt="documentIcon"/></div>
+                        <div className={s.icon}><img src={percentageIcon} alt="percentageIcon"/></div>
                         <NavLink to={USER_ACCOUNT_COACHING_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.fatPersent")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={usersThreeIcon} alt="usersThreeIcon"/></div>
+                        <div className={s.icon}><img src={neckIcon} alt="neckIcon"/></div>
                         <NavLink to={USER_ACCOUNT_FRIENDS_LIST_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.neck")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={infoIcon} alt="infoIcon"/></div>
+                        <div className={s.icon}><img src={shoulderIcon} alt="shoulderIcon"/></div>
                         <NavLink to={USER_ACCOUNT_INSTRUCTION_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.shoulders")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={dollarIcon} alt="dollarIcon"/></div>
+                        <div className={s.icon}><img src={forearmIcon} alt="forearmIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SUBSCRIBES_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                            {t("measurements.leftPanel.forearms")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
+                        <div className={s.icon}><img src={chestIcon} alt="chestIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.chest")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
+                        <div className={s.icon}><img src={waistAndRulerIcon} alt="waistAndRulerIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.waist")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
+                        <div className={s.icon}><img src={thighsIcon} alt="thighsIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.thigh")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
+                        <div className={s.icon}><img src={bicepsIcon} alt="bicepsIcon"/></div>
                         <NavLink to={MEASUREMENTS_HAND_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.hand")}
                         </NavLink>
                     </li>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
+                        <div className={s.icon}><img src={photoIcon} alt="photoIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("measurements.leftPanel.photos")}
