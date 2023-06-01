@@ -1,34 +1,9 @@
-import {$authHost} from './main'
+import {$authHost, $authHostWithoutHeaders} from './main'
 
 export const measurementsAPI = {
-    async getMeasurements(token) {
-        const response = await $authHost.get('api/Measurements', {
-            method: "GET",
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Authorization': `${token}`
-            },
-        })
-        return response.data;
-    }
+    async getMeasurements() {
+        const response = await $authHost.get(`api/measurement`)
+        return response;
+    },
 }
 
-/*export const profileAPI = {
-    async getMeasurements() {
-        const response = await fetch('https://gymby-api.azurewebsites.net/api/Measurements', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            withCredentials: true
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-            });
-        return response.data;
-    }
-}*/

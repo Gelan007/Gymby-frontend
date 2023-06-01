@@ -150,6 +150,7 @@
     },
     "item": {
       "centimeter": "cm",
+      "kilogram": "kg",
       "daysAgo": "days ago"
     },
     "list": "List",

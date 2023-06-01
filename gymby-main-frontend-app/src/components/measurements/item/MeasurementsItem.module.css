@@ -79,6 +79,17 @@
   max-width: 90%;
 }
 
+.applyButton {
+  cursor: pointer;
+  width: 30px;
+}
+.applyButton:hover {
+  filter: drop-shadow(0px 8px 8px rgba(0, 246, 10, 0.9));
+}
+.applyButton img {
+  max-width: 90%;
+}
+
 .deleteButton {
   cursor: pointer;
 }
@@ -86,6 +97,14 @@
   filter: drop-shadow(0px 8px 8px #FE5F55);
 }
 .deleteButton img {
+  max-width: 90%;
+}
+
+.defaultBasketOpacity {
+  cursor: initial;
+  opacity: 0.4;
+}
+.defaultBasketOpacity img {
   max-width: 90%;
 }
 

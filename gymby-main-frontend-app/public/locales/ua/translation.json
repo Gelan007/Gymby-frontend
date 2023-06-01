@@ -150,6 +150,7 @@
       },
       "item": {
         "centimeter": "см",
+        "kilogram": "кг",
         "daysAgo": "днів тому"
       },
       "list": "Список",

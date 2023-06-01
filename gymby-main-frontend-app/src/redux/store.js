@@ -4,13 +4,15 @@ import authReducer from "./reducers/auth-reducer";
 import {configureStore} from "@reduxjs/toolkit";
 import languageSlice from './slices/language-slice'
 import profileSlice from './slices/profile-slice'
+import measurementSlice from './slices/measurements-slice'
 
 export const store = configureStore({
     reducer: {
         userAccountPage: userAccountReducer,
         auth: authReducer,
         language: languageSlice,
-        profile: profileSlice
+        profile: profileSlice,
+        measurements: measurementSlice
     },
     devTools: true
 })

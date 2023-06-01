@@ -2,22 +2,22 @@ import React, {useEffect} from 'react';
 import MeasurementsHand from "./MeasurementsHand";
 import {measurementsAPI} from "../../../api/measurements";
 import {connect} from "react-redux";
-import {useOidcFetch} from "@axa-fr/react-oidc";
+import {getMeasurements} from "../../../redux/slices/measurements-slice";
 
 const MeasurementsHandContainer = (props) => {
 
     useEffect(() => {
-        measurementsAPI.getMeasurements().then(data => console.log(data))
+        props.getMeasurements()
     }, [])
 
     return (
-        <MeasurementsHand/>
+        <MeasurementsHand measurementsData={props.measurementsData}/>
     );
 };
 const mapStateToProps = (state) => {
     return {
-        accessToken: state.auth.accessToken
+        measurementsData: state.measurements.hand
     }
 }
 
-export default connect(mapStateToProps,{})(MeasurementsHandContainer);
+export default connect(mapStateToProps,{getMeasurements})(MeasurementsHandContainer);
