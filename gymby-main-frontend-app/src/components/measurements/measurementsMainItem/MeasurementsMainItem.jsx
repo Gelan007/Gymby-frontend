@@ -24,20 +24,20 @@ const MeasurementsMainItem = () => {
                     <div className={s.navBlock__options}>
                         <span className={selectedOption === LIST ?
                             `${s.navBlock__option} ${s.navBlock__option_red}` : s.navBlock__option}
-                              onClick={listOptionHandle}>{t("measurements.chart")}</span>
+                              onClick={listOptionHandle}>{t("measurements.list")}</span>
 
                         <span className={selectedOption === CHART ?
                             `${s.navBlock__option} ${s.navBlock__option_line} ${s.navBlock__option_red}` :
                             `${s.navBlock__option} ${s.navBlock__option_line}`}
-                              onClick={chartOptionHandle}>{t("measurements.list")}</span>
+                              onClick={chartOptionHandle}>{t("measurements.chart")}</span>
                     </div>
                     <div className={s.navBlock__button}>
                         <ButtonGreen>{t("measurements.add")}</ButtonGreen>
                     </div>
                 </div>
                 <div className={s.itemsList}>
-                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'}/>
-                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'}/>
+                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'} measurementUnit={1}/>
+                    <MeasurementsItem icon={biceps} measurements={'34'} changesValue={'+1,2'} date={'16.09.2022'} days={'31'} measurementUnit={1}/>
                 </div>
             </div>
         </div>
