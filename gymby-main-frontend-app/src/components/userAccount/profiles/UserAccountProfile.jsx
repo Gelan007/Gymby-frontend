@@ -22,7 +22,7 @@ const UserAccountProfile = ({profile, isRequestCompleted, ...props}) => {
     useEffect(() => {
 
     }, [profile])
-    console.log(profile.photos)
+
 
     return (
         <div className={s.userAccountProfile}>

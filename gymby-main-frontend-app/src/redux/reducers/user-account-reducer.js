@@ -7,7 +7,7 @@ const SET_USERNAME = 'SET_USERNAME'
 const SET_MY_PROFILE = 'SET_MY_PROFILE'
 const SET_PROFILE = 'SET_PROFILE'
 const SET_MY_PROFILE_PHOTO = 'SET_MY_PROFILE_PHOTO'
-const SET_MY_FRIENDS_LIST = 'SET_MY_FRIENDS_LIST'
+const SET_PROFILES_LIST = 'SET_PROFILES_LIST'
 
 
 //Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
@@ -43,37 +43,7 @@ let initialState = {
         photos: [],
         isRequestCompleted: false
     },
-    profiles: [
-        {
-            profileId: 0,
-            firstName: 'Тимур',
-            lastName: 'Травоманович',
-            description: '',
-            photoAvatarPath: null,
-            instagramUrl: '',
-            facebookUrl: '',
-            telegramUsername: '',
-            isCoach: false,
-            username: '@techis3501',
-            email: '',
-            photos: []
-
-        },
-        {
-            profileId: 0,
-            firstName: 'Ivan',
-            lastName: 'Korobov',
-            description: 'Best trainer WOT in the world!',
-            photoAvatarPath: null,
-            instagramUrl: '',
-            facebookUrl: '',
-            telegramUsername: '',
-            isCoach: false,
-            username: '@IvanChiftein',
-            email: 'ivan.korobov@gmail.com',
-            photos: []
-        }
-    ]
+    profiles: [{}]
 }
 
 const userAccountReducer = (state = initialState, action) => {
@@ -123,13 +93,12 @@ const userAccountReducer = (state = initialState, action) => {
                     isRequestCompleted: action.isRequestCompleted
                 }
             }
-        case SET_MY_FRIENDS_LIST:
+        case SET_PROFILES_LIST:
             return {
                 ...state,
                 profiles: [
-                    ...state.profiles,
-                    action.profiles
-]
+                    ...action.profiles
+                ]
 }
 case SET_USERNAME:
     return {
@@ -157,7 +126,7 @@ export const setProfile = (username, email, firstName,
     lastName, description, photoAvatarPath,
     instagramUrl, facebookUrl, telegramUsername, profileId, photos, isRequestCompleted})
 export const setMyProfilePhoto = (photo) => ({type: SET_MY_PROFILE_PHOTO, photo})
-export const setMyFriendsList = (profiles) => ({type: SET_MY_FRIENDS_LIST, profiles})
+export const setProfilesList = (profiles) => ({type: SET_PROFILES_LIST, profiles})
 
 export const updateProfile = (username, email, firstName,
                               lastName, description, photoAvatarPath,
@@ -239,8 +208,20 @@ export const getMyFriendsList = () => {
         friendsAPI.getMyFriendsList()
             .then((response) => {
                 if(response.status >= 200 && response.status <= 204) {
-                    dispatch(setMyProfile(
-                        response.data.profile
+                    dispatch(setProfilesList(
+                        response.data
+                    ))
+                }
+            })
+    }
+}
+export const getMyPendingFriendsList = () => {
+    return (dispatch) => {
+        friendsAPI.getMyPendingFriendsList()
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setProfilesList(
+                        response.data
                     ))
                 }
             })

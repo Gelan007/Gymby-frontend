@@ -42,6 +42,7 @@ export const profileAPI = {
     },
     async getProfileByUserName(userName) {
         const response = await $authHostWithoutHeaders.get(`api/profile/${userName}`)
+        console.log(response)
         return response;
     },
 

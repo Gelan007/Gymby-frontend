@@ -6,7 +6,7 @@ import {useParams} from "react-router-dom";
 
 const UserAccountProfileContainer = (props) => {
     const {username} = useParams()
-    //const [isRequestCompleted, setIsRequestCompleted] = useState(false)
+
     useEffect(() => {
         props.getProfileByUserName(username)
     }, [])
