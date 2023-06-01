@@ -1,10 +1,10 @@
 import React from 'react';
+import MeasurementsMainItem from "../measurementsMainItem/MeasurementsMainItem";
+import weight from "../../../assets/images/measurements/weight.svg";
 
-const MeasurementWeight = () => {
+const MeasurementWeight = ({measurementsData}) => {
     return (
-        <div>
-            
-        </div>
+        <MeasurementsMainItem measurementsData={measurementsData} icon={weight}/>
     );
 };
 

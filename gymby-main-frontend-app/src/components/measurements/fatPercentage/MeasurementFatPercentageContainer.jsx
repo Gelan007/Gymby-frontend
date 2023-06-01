@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import MeasurementChest from "../chest/MeasurementChest";
+import {connect} from "react-redux";
+import {getMeasurements} from "../../../redux/slices/measurements-slice";
 
-const MeasurementFatPercentageContainer = () => {
+const MeasurementFatPercentageContainer = (props) => {
+    useEffect(() => {
+        props.getMeasurements()
+    }, [])
+
     return (
-        <div>
-
-        </div>
+        <MeasurementChest measurementsData={props.measurementsData}/>
     );
 };
+const mapStateToProps = (state) => {
+    return {
+        measurementsData: state.measurements.fatPercentage
+    }
+}
 
-export default MeasurementFatPercentageContainer;
+export default connect(mapStateToProps,{getMeasurements})(MeasurementFatPercentageContainer);

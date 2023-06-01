@@ -6,7 +6,7 @@ import {
     MEASUREMENTS_FAT_PERCENTAGE_ROUTE,
     MEASUREMENTS_FOREARMS_ROUTE,
     MEASUREMENTS_HAND_ROUTE,
-    MEASUREMENTS_NECK_ROUTE,
+    MEASUREMENTS_NECK_ROUTE, MEASUREMENTS_PHOTOS_ROUTE,
     MEASUREMENTS_ROUTE,
     MEASUREMENTS_SHOULDERS_ROUTE,
     MEASUREMENTS_THIGH_ROUTE,
@@ -59,6 +59,7 @@ import MeasurementForearmsContainer from "../../components/measurements/forearms
 import MeasurementNeckContainer from "../../components/measurements/neck/MeasurementNeckContainer";
 import MeasurementShouldersContainer from "../../components/measurements/shoulders/MeasurementShouldersContainer";
 import MeasurementWeightContainer from "../../components/measurements/weight/MeasurementWeightContainer";
+import MeasurementPhotosContainer from "../../components/measurements/photos/MeasurementPhotosContainer";
 
 export const publicRoutes = [
    /* {
@@ -145,6 +146,10 @@ export const authRoutes = [
     {
         path: MEASUREMENTS_WEIGHT_ROUTE,
         Component: <MeasurementWeightContainer/>
+    },
+    {
+        path: MEASUREMENTS_PHOTOS_ROUTE,
+        Component: <MeasurementPhotosContainer/>
     },
 
 

@@ -1,10 +1,10 @@
 import React from 'react';
+import MeasurementsMainItem from "../measurementsMainItem/MeasurementsMainItem";
+import chest from "../../../assets/images/measurements/Chest.svg";
 
-const MeasurementChest = () => {
+const MeasurementChest = ({measurementsData}) => {
     return (
-        <div>
-
-        </div>
+        <MeasurementsMainItem measurementsData={measurementsData} icon={chest}/>
     );
 };
 
