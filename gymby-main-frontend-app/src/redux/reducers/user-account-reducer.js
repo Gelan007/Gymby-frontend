@@ -5,6 +5,7 @@ const SET_FIRST_NAME = 'SET_FIRST_NAME'
 const SET_LAST_NAME = 'SET_LAST_NAME'
 const SET_USERNAME = 'SET_USERNAME'
 const SET_MY_PROFILE = 'SET_MY_PROFILE'
+const SET_PROFILE = 'SET_PROFILE'
 const SET_MY_PROFILE_PHOTO = 'SET_MY_PROFILE_PHOTO'
 const SET_MY_FRIENDS_LIST = 'SET_MY_FRIENDS_LIST'
 
@@ -28,17 +29,19 @@ let initialState = {
         photos: []
     },
     profile: {
-        profileId: 0,
-        firstName: 'firstName',
-        lastName: 'lastName',
+        profileId: '',
+        firstName: '',
+        lastName: '',
         description: '',
         photoAvatarPath: null,
         instagramUrl: '',
         facebookUrl: '',
         telegramUsername: '',
         isCoach: false,
-        username: 'userName',
+        username: '',
         email: '',
+        photos: [],
+        isRequestCompleted: false
     },
     profiles: [
         {
@@ -101,6 +104,25 @@ const userAccountReducer = (state = initialState, action) => {
                     photos: [...action.photos.map(photo => ({photoPath: photo.photoPath, photoId: photo.id}))]
                 }
             }
+        case SET_PROFILE:
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    username: action.username,
+                    email: action.email,
+                    firstName: action.firstName,
+                    lastName: action.lastName,
+                    description: action.description,
+                    photoAvatarPath: action.photoAvatarPath,
+                    instagramUrl: action.instagramUrl,
+                    facebookUrl: action.facebookUrl,
+                    telegramUsername: action.telegramUsername,
+                    profileId: action.profileId,
+                    photos: [...action.photos.map(photo => ({photoPath: photo.photoPath, photoId: photo.id}))],
+                    isRequestCompleted: action.isRequestCompleted
+                }
+            }
         case SET_MY_FRIENDS_LIST:
             return {
                 ...state,
@@ -128,6 +150,12 @@ export const setMyProfile = (username, email, firstName,
     username, email, firstName,
     lastName, description, photoAvatarPath,
     instagramUrl, facebookUrl, telegramUsername, profileId, photos})
+export const setProfile = (username, email, firstName,
+                             lastName, description, photoAvatarPath,
+                             instagramUrl, facebookUrl, telegramUsername, profileId, photos, isRequestCompleted) => ({type: SET_PROFILE,
+    username, email, firstName,
+    lastName, description, photoAvatarPath,
+    instagramUrl, facebookUrl, telegramUsername, profileId, photos, isRequestCompleted})
 export const setMyProfilePhoto = (photo) => ({type: SET_MY_PROFILE_PHOTO, photo})
 export const setMyFriendsList = (profiles) => ({type: SET_MY_FRIENDS_LIST, profiles})
 
@@ -185,6 +213,23 @@ export const deleteProfilePhoto = (photoId) => {
                     dispatch(setMyProfilePhoto(
                         response.data
                     ))
+                }
+            })
+    }
+}
+export const getProfileByUserName = (userName) => {
+    return (dispatch) => {
+        profileAPI.getProfileByUserName(userName)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    const isRequestCompleted = true
+                    dispatch(setProfile(
+                        response.data.username, response.data.email, response.data.firstName,
+                        response.data.lastName, response.data.description, response.data.photoAvatarPath,
+                        response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
+                        response.data.profileId, response.data.photos, isRequestCompleted
+                    ))
+
                 }
             })
     }

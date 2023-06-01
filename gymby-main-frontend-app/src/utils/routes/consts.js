@@ -8,7 +8,7 @@ export const USER_ACCOUNT_FRIENDS_LIST_ROUTE = USER_ACCOUNT_ROUTE + "/friendsLis
 export const USER_ACCOUNT_INSTRUCTION_ROUTE = USER_ACCOUNT_ROUTE + "/instruction";
 export const USER_ACCOUNT_SUBSCRIBES_ROUTE = USER_ACCOUNT_ROUTE + "/subscribes";
 export const USER_ACCOUNT_SEARCH_ROUTE = USER_ACCOUNT_ROUTE + "/search";
-export const USER_ACCOUNT_PROFILE_ROUTE = USER_ACCOUNT_ROUTE + "/profile";
+export const USER_ACCOUNT_PROFILE_ROUTE = USER_ACCOUNT_ROUTE + "/profile/:username";
 
 
 export const MEASUREMENTS_ROUTE = "/measurements";
