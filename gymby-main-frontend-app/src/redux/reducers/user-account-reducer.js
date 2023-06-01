@@ -93,6 +93,14 @@ const userAccountReducer = (state = initialState, action) => {
                     isRequestCompleted: action.isRequestCompleted
                 }
             }
+        case SET_PROFILE:
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    isRequestCompleted: action.isRequestCompleted
+                }
+            }
         case SET_PROFILES_LIST:
             return {
                 ...state,
@@ -125,6 +133,7 @@ export const setProfile = (username, email, firstName,
     username, email, firstName,
     lastName, description, photoAvatarPath,
     instagramUrl, facebookUrl, telegramUsername, profileId, photos, isRequestCompleted})
+
 export const setMyProfilePhoto = (photo) => ({type: SET_MY_PROFILE_PHOTO, photo})
 export const setProfilesList = (profiles) => ({type: SET_PROFILES_LIST, profiles})
 
