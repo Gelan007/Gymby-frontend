@@ -20,7 +20,6 @@ const UserAccountProfile = ({profile, isRequestCompleted, ...props}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-
     }, [profile])
 
 
