@@ -57,6 +57,7 @@ const measurementsSlice = createSlice({
             state.waist = [];
             state.thigh = [];
             state.hand = [];
+            state.photos.push(action.payload.photos)
 
             measurements.forEach((measurement) => {
                 const { type, ...measurementData } = measurement;
