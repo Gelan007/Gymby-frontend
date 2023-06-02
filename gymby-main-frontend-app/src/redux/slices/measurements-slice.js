@@ -17,7 +17,6 @@ const MeasurementType = {
 export const getMeasurements = createAsyncThunk('measurements/getMeasurements', async () => {
     const response = await measurementsAPI.getMeasurements();
     if (response.status >= 200 && response.status <= 204) {
-        console.log(response.data)
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');

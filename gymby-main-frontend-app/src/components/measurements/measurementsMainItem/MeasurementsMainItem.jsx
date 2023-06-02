@@ -37,7 +37,7 @@ const MeasurementsMainItem = ({measurementsData, icon}) => {
                 </div>
                 <div className={s.itemsList}>
                     {measurementsData?.map((measurement) => (
-                        <MeasurementsItem icon={icon} measurements={measurement.value}
+                        <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
                                           changesValue={'+1,2'} date={measurement.date}
                                           days={'31'} measurementUnit={measurement.unit}/>
                     ))}

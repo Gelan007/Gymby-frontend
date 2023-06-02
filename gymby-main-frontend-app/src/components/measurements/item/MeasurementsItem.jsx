@@ -14,10 +14,18 @@ import SelectSimple from "../../UI/select/SelectSimple";
 const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue, date, days, measurementUnit, ...props}) => {
     const {t} = useTranslation()
     const [isEditMode, setIsEditMode] = useState(false)
+    const [measurementsUserInput, setMeasurementsUserInput] = useState({value: '', date: ''})
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
-    const newDate = new Date(date);
-    const formattedDate = newDate.toISOString().slice(0, 10);
+    const newDateConverter = (newDate) => new Date(newDate);
+    const formattedInitialDate = newDateConverter(date).toISOString().slice(0, 10);
 
+    useEffect(() => {
+        setMeasurementsUserInput({value: measurements, date: date, formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
+    }, [measurements, date])
+
+    useEffect(() => {
+        console.log(measurementsUserInput.date)
+    }, [measurementsUserInput])
 
     const getMeasurementUnitForDisplaying = () => {
         if(measurementUnit === 0) {
@@ -29,6 +37,12 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
         }
     }
 
+    const handleInputDateChange = (event) => {
+        const newDate = newDateConverter(event.target.value)
+        const isoDate = newDate.toISOString();
+        setMeasurementsUserInput({...measurementsUserInput, date: isoDate, formattedDate: event.target.value});
+    };
+
     return (
         <div className={s.measurementsItem}>
             <div className={s.measurementsItem__body}>
@@ -37,7 +51,8 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
                 </div>
                 {isEditMode ?
                     <div className={s.measurements}>
-                        <InputGrey value={measurements}
+                        <InputGrey value={measurementsUserInput.value}
+                                   onChange={(e) => setMeasurementsUserInput({...measurementsUserInput, value: e.target.value})}
                                    style={{height: "35px", minWidth: "80px", maxWidth: "100px"}}
                         />
                         <span>{getMeasurementUnitForDisplaying()}</span>
@@ -52,9 +67,14 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
                     {changesValue} {t("measurements.item.centimeter")} 
                 </div>
                 {isEditMode ?
-                    <div className={s.fullDate}><input type="date"/></div>
+                    <div className={s.fullDate}>
+                        <input type="date"
+                               value={measurementsUserInput.formattedDate}
+                               onChange={(e) => handleInputDateChange(e)}
+                        />
+                    </div>
                     :
-                    <div className={s.fullDate}>{formattedDate}</div>
+                    <div className={s.fullDate}>{formattedInitialDate}</div>
                 }
                 
                 <div className={s.days}>{days} {t("measurements.item.daysAgo")}</div>

@@ -5,5 +5,9 @@ export const measurementsAPI = {
         const response = await $authHost.get(`api/measurement`)
         return response;
     },
+    async addMeasurement(date, type, value, unit) {
+        const response = await $authHost.post(`api/measurement/create`, {date, type, value, unit})
+        return response;
+    },
 }
 
