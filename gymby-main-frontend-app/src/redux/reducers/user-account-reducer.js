@@ -26,7 +26,8 @@ let initialState = {
         isCoach: false,
         username: '',
         email: '',
-        photos: []
+        photos: [],
+        isRequestCompleted: false
     },
     profile: {
         profileId: '',
@@ -63,7 +64,9 @@ const userAccountReducer = (state = initialState, action) => {
                     facebookUrl: action.facebookUrl,
                     telegramUsername: action.telegramUsername,
                     profileId: action.profileId,
-                    photos: [...action.photos.map(photo => ({photoPath: photo.photoPath, photoId: photo.id}))]
+                    isCoach: action.isCoach,
+                    photos: [...action.photos.map(photo => ({photoPath: photo.photoPath, photoId: photo.id}))],
+                    isRequestCompleted: action.isRequestCompleted
                 }
             }
         case SET_MY_PROFILE_PHOTO:
@@ -89,6 +92,7 @@ const userAccountReducer = (state = initialState, action) => {
                     facebookUrl: action.facebookUrl,
                     telegramUsername: action.telegramUsername,
                     profileId: action.profileId,
+                    isCoach: action.isCoach,
                     photos: [...action.photos.map(photo => ({photoPath: photo.photoPath, photoId: photo.id}))],
                     isRequestCompleted: action.isRequestCompleted
                 }
@@ -123,16 +127,16 @@ export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setFirstName = (firstName) => ({type: SET_FIRST_NAME, firstName})
 export const setMyProfile = (username, email, firstName,
                              lastName, description, photoAvatarPath,
-                             instagramUrl, facebookUrl, telegramUsername, profileId, photos) => ({type: SET_MY_PROFILE,
+                             instagramUrl, facebookUrl, telegramUsername, profileId, isCoach, photos, isRequestCompleted) => ({type: SET_MY_PROFILE,
     username, email, firstName,
     lastName, description, photoAvatarPath,
-    instagramUrl, facebookUrl, telegramUsername, profileId, photos})
+    instagramUrl, facebookUrl, telegramUsername, profileId, isCoach, photos, isRequestCompleted})
 export const setProfile = (username, email, firstName,
                              lastName, description, photoAvatarPath,
-                             instagramUrl, facebookUrl, telegramUsername, profileId, photos, isRequestCompleted) => ({type: SET_PROFILE,
+                             instagramUrl, facebookUrl, telegramUsername, profileId, isCoach, photos, isRequestCompleted) => ({type: SET_PROFILE,
     username, email, firstName,
     lastName, description, photoAvatarPath,
-    instagramUrl, facebookUrl, telegramUsername, profileId, photos, isRequestCompleted})
+    instagramUrl, facebookUrl, telegramUsername, profileId, isCoach, photos, isRequestCompleted})
 
 export const setMyProfilePhoto = (photo) => ({type: SET_MY_PROFILE_PHOTO, photo})
 export const setProfilesList = (profiles) => ({type: SET_PROFILES_LIST, profiles})
@@ -161,11 +165,12 @@ export const getMyProfile = () => {
         profileAPI.getMyProfile()
             .then((response) => {
                 if(response.status >= 200 && response.status <= 204) {
+                    const isRequestCompleted = true
                     dispatch(setMyProfile(
                         response.data.username, response.data.email, response.data.firstName,
                         response.data.lastName, response.data.description, response.data.photoAvatarPath,
                         response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
-                        response.data.profileId, response.data.photos
+                        response.data.profileId, response.data.isCoach, response.data.photos, isRequestCompleted
                     ))
                 }
             })
@@ -205,7 +210,7 @@ export const getProfileByUserName = (userName) => {
                         response.data.username, response.data.email, response.data.firstName,
                         response.data.lastName, response.data.description, response.data.photoAvatarPath,
                         response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
-                        response.data.profileId, response.data.photos, isRequestCompleted
+                        response.data.profileId, response.data.isCoach, response.data.photos, isRequestCompleted
                     ))
 
                 }

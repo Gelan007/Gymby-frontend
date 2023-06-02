@@ -4,16 +4,22 @@ import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import {setSelectedDay} from '../../../redux/slices/profile-slice'
 import {getProgramById} from '../../../redux/slices/program-slice'
+import NotFound from "../../notFound/NotFound";
+import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 
 const ProgramsProgramProfileContainer = (props) => {
+
+
+    useEffect(() => {
+        props.getMyProfile()
+    }, [])
+
 
     useEffect(() => {
         props.getProgramById()
     }, [])
 
-    /*useEffect(() => {
-        console.log(props.program)
-    }, [props.program])*/
+  
 
     /*подставлять в запрос потом*/
     const {programId} = useParams()
@@ -35,15 +41,36 @@ const ProgramsProgramProfileContainer = (props) => {
         ]
     }
     return (
-        <ProgramsProgramProfile program={programProfilePlug} programId={programId} selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}/>
+        <div>
+            {
+                props.myProfile.isRequestCompleted ? (
+
+                props.myProfile.isCoach && programId === 'creation' ?
+                    <ProgramsProgramProfile program={programProfilePlug} programId={programId}
+                                            selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
+                                            isProgramCreation={true}
+                    />
+                    :
+                    programId && programId !== 'creation' ?
+                        <ProgramsProgramProfile program={programProfilePlug} programId={programId}
+                                                        selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
+                                                        isProgramCreation={false}
+                        />
+                        :
+                    <NotFound/>
+                ) :
+                    <div>Loading</div>
+            }
+        </div>
     );
 };
 
 let mapStateToProps = (state) => {
     return {
         selectedDay: state.profile.selectedDay,
-        program: state.program.program
+        program: state.program.program,
+        myProfile: state.userAccountPage.myProfile
     }
 }
 
-export default connect(mapStateToProps, {setSelectedDay, getProgramById})(ProgramsProgramProfileContainer);
+export default connect(mapStateToProps, {setSelectedDay, getProgramById, getMyProfile})(ProgramsProgramProfileContainer);

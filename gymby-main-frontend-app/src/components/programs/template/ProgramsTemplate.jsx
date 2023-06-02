@@ -37,7 +37,9 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= fa
                         <InputGreySearch placeholder="Пошук"/>
                     </div>
                     <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}>
-                        <ButtonGreen>{t("programs.createProgram")}</ButtonGreen>
+                        <NavLink to={`${PROGRAMS_ROUTE}/creation`}>
+                            <ButtonGreen>{t("programs.createProgram")}</ButtonGreen>
+                        </NavLink>
                     </div>
                 </div>
                 <div className={s.cards}>
@@ -61,7 +63,6 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= fa
                                      setActive={setIsModalActive}
                                      titleText={modalWindowTitleText}
             >
-                {/*чтоб смочь выделить при переводе i18n, просто разбить на 2 разные части*/}
                 {t("programs.modalWindow.text")} <span>{selectedProgram}</span> ?
             </ConfirmationModalWindow>
         </div>
