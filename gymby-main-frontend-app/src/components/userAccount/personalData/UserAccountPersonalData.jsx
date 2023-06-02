@@ -64,6 +64,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                 userData.instagramUrl, userData.facebookUrl, userData.telegramUsername, myProfile.profileId)
             if(chosenUserPhotoFilesForRequest.length > 0) {
                 chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
+                setChosenUserPhotoFilesForRequest([])
             }
             if(chosenUserPhotoPathsForDeleteRequest.length > 0) {
                 chosenUserPhotoPathsForDeleteRequest.forEach(photoId => deleteProfilePhoto(photoId))
