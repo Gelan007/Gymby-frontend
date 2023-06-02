@@ -6,7 +6,7 @@ import {PROGRAMS_FREE_ROUTE} from "../../../utils/routes/consts";
 const ProgramsFree = ({programs}) => {
     return (
         <div>
-            <ProgramsTemplate programRoute={PROGRAMS_FREE_ROUTE} programs={programs}/>
+            <ProgramsTemplate programs={programs}/>
         </div>
     );
 };

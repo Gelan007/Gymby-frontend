@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProgramsTrainerBased from "./ProgramsTrainerBased";
+import ProgramsFree from "../free/ProgramsFree";
+import {connect} from "react-redux";
+import {getSharedPrograms} from "../../../redux/slices/program-slice";
 
-const ProgramsTrainerBasedContainer = () => {
+const ProgramsTrainerBasedContainer = (props) => {
+    useEffect(() => {
+        props.getSharedPrograms()
+    }, [])
+
     return (
-        <ProgramsTrainerBased/>
+        <ProgramsTrainerBased programs={props.programs}/>
     );
 };
 
-export default ProgramsTrainerBasedContainer;
+const mapStateToProps = (state) => {
+    return {
+        programs: state.program.programs
+    }
+}
+export default connect(mapStateToProps, {getSharedPrograms})(ProgramsTrainerBasedContainer);

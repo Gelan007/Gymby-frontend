@@ -9,6 +9,14 @@ export const programsAPI = {
         const response = await $authHost.get(`api/programs/free`)
         return response;
     },
+    async getSharedPrograms() {
+        const response = await $authHost.get(`api/programs/shared`)
+        return response;
+    },
+    async getPersonalPrograms() {
+        const response = await $authHost.get(`api/programs/personal`)
+        return response;
+    },
     async createProgram(programData) {
         const response = await $authHost.post(`api/program/create`, programData)
         return response;

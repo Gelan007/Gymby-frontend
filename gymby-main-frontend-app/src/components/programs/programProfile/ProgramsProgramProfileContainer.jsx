@@ -9,21 +9,30 @@ import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 import {urlPathForProgramCreation} from "../../../utils/routes/consts";
 
 const ProgramsProgramProfileContainer = (props) => {
-
     useEffect(() => {
         props.getMyProfile()
     }, [])
 
     useEffect(() => {
-        props.getProgramById()
+        if('/' + programId !== urlPathForProgramCreation) {
+            props.getProgramById({programId})
+        }
     }, [])
 
 
+    useEffect(() => {
+        console.log(props.program)
+    }, [props.program])
 
-
-
-    /*подставлять в запрос потом*/
     const {programId} = useParams()
+
+    const checkIfEditProgram = props.myProfile.isCoach && '/' + programId === urlPathForProgramCreation
+    const checkIfProgramViewing = programId && programId !== urlPathForProgramCreation
+
+
+
+
+
 
     /*в этой компоненте запрос, записать в стор, и через пропсы прокинуть
     * презентационной компоненте ProgramsProgramProfile, а презентационная
@@ -47,13 +56,13 @@ const ProgramsProgramProfileContainer = (props) => {
             {
                 props.myProfile.isRequestCompleted ? (
 
-                props.myProfile.isCoach && '/' + programId === urlPathForProgramCreation ?
+                        checkIfEditProgram ?
                     <ProgramsProgramProfile program={programProfilePlug} programId={programId}
                                             selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
                                             isProgramCreation={true}
                     />
                     :
-                    programId && programId !== urlPathForProgramCreation ?
+                            checkIfProgramViewing ?
                         <ProgramsProgramProfile program={programProfilePlug} programId={programId}
                                                         selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
                                                         isProgramCreation={false}

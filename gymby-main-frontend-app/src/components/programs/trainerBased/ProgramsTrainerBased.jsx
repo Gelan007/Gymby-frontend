@@ -2,10 +2,10 @@ import React from 'react';
 import ProgramsTemplate from "../template/ProgramsTemplate";
 import ProgramsCard from "../card/ProgramsCard";
 
-const ProgramsTrainerBased = () => {
+const ProgramsTrainerBased = ({programs}) => {
     return (
         <div>
-            <ProgramsTemplate isDeleteIcon={true}/>
+            <ProgramsTemplate isDeleteIcon={true} programs={programs}/>
         </div>
     );
 };

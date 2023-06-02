@@ -8,10 +8,6 @@ const ProgramsFreeContainer = (props) => {
         props.getFreePrograms()
     }, [])
 
-    useEffect(() => {
-        console.log(props.programs)
-    }, [props.programs])
-
     return (
         <ProgramsFree programs={props.programs}/>
     );
