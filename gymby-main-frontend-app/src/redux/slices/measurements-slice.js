@@ -74,8 +74,18 @@ export const getMeasurements = createAsyncThunk('measurements/getMeasurements', 
 });
 
 export const addMeasurement = createAsyncThunk('measurements/addMeasurement', async (payload) => {
-    const {date, type, value, unit} = payload
-    const response = await measurementsAPI.addMeasurement(date, type, value, unit);
+    const {date, type, value, unit, id} = payload
+    const response = await measurementsAPI.addMeasurement(date, type, value, unit, id);
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
+export const editMeasurement = createAsyncThunk('measurements/editMeasurement', async (payload) => {
+    const {date, type, value, unit, id} = payload
+    const response = await measurementsAPI.editMeasurement(id, date, type, value, unit);
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
@@ -118,6 +128,7 @@ const measurementsSlice = createSlice({
             .addCase(getMeasurements.fulfilled, handleMeasurementsFulfilled)
             .addCase(addMeasurement.fulfilled, handleMeasurementsFulfilled)
             .addCase(deleteMeasurement.fulfilled, handleMeasurementsFulfilled)
+            .addCase(editMeasurement.fulfilled, handleMeasurementsFulfilled)
             /*.addCase(addMeasurement.fulfilled, (state, action) => {})*/
     }
 })

@@ -13,8 +13,9 @@ import SelectSimple from "../../UI/select/SelectSimple";
 
 const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
                               changesValue, date,
-                              days, measurementUnit,
-                              deleteMeasurement, measurementId, ...props}) => {
+                              days, measurementUnit,measurementType,
+                              deleteMeasurement, measurementId,
+                              editMeasurement, ...props}) => {
     const {t} = useTranslation()
     const [isEditMode, setIsEditMode] = useState(false)
     const [measurementsUserInput, setMeasurementsUserInput] = useState({value: '', date: ''})
@@ -44,6 +45,14 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
     };
 
     const handleDeleteButton = () => deleteMeasurement({id: measurementId})
+    const handleApplyButton = () => {
+        editMeasurement({
+            date: measurementsUserInput.date, type: measurementType,
+            value: measurementsUserInput.value, unit: measurementUnit,
+            id:measurementId
+        })
+        editModeHandler()
+    }
 
     return (
         <div className={s.measurementsItem}>
@@ -82,7 +91,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
                 <div className={s.days}>{days} {t("measurements.item.daysAgo")}</div>
                 <div className={s.buttonsBlock}>
                     {isEditMode ?
-                        <div className={s.applyButton} onClick={editModeHandler}>
+                        <div className={s.applyButton} onClick={handleApplyButton}>
                             <img src={applyIcon} alt="applyButton"/>
                         </div>
                         :

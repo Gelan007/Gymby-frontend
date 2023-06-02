@@ -5,9 +5,8 @@ import ButtonGreen from "../../UI/buttons/ButtonGreen";
 import MeasurementsItem from "../item/MeasurementsItem";
 import biceps from "../../../assets/images/measurements/biceps.svg";
 import { useTranslation } from 'react-i18next';
-import {deleteMeasurement} from "../../../redux/slices/measurements-slice";
 
-const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMeasurement, type, unit = 1}) => {
+const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMeasurement,editMeasurement, type, unit = 1}) => {
 
     const {t} = useTranslation()
     const LIST = 'list';
@@ -47,9 +46,9 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
                     {measurementsData?.map((measurement) => (
                         <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
                                           changesValue={'+1,2'} date={measurement.date}
-                                          days={'31'} measurementUnit={measurement.unit}
+                                          days={'31'} measurementUnit={measurement.unit} measurementType={type}
                                           addMeasurement={addMeasurement} deleteMeasurement={deleteMeasurement}
-                                          measurementId={measurement.id}
+                                          measurementId={measurement.id} editMeasurement={editMeasurement}
                         />
                     ))}
                 </div>
