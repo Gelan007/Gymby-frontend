@@ -85,9 +85,9 @@ const programSlice = createSlice({
         },
     },
     reducers: {
-        /*setSelectedDay: (state, action) => {
-            state.selectedDay = action.payload
-        },*/
+        setPrograms: (state, action) => {
+            state.programs = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -123,5 +123,5 @@ const programSlice = createSlice({
     },
 })
 
-export const {} = programSlice.actions;
+export const {setPrograms} = programSlice.actions;
 export default programSlice.reducer;

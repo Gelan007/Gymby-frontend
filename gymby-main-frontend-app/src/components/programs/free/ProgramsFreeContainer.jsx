@@ -1,11 +1,14 @@
 import React, {useEffect} from 'react';
 import ProgramsFree from "./ProgramsFree";
 import {connect} from "react-redux";
-import {getFreePrograms} from "../../../redux/slices/program-slice";
+import {getFreePrograms, setPrograms} from "../../../redux/slices/program-slice";
 
 const ProgramsFreeContainer = (props) => {
     useEffect(() => {
         props.getFreePrograms()
+        return () => {
+            props.setPrograms([])
+        }
     }, [])
 
     return (
@@ -18,4 +21,4 @@ const mapStateToProps = (state) => {
         programs: state.program.programs
     }
 }
-export default connect(mapStateToProps, {getFreePrograms})(ProgramsFreeContainer);
+export default connect(mapStateToProps, {getFreePrograms, setPrograms})(ProgramsFreeContainer);
