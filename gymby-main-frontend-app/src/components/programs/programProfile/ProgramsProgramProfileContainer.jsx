@@ -14,9 +14,9 @@ const ProgramsProgramProfileContainer = (props) => {
     }, [])
 
     useEffect(() => {
-        if('/' + programId !== urlPathForProgramCreation) {
+        /*if('/' + programId !== urlPathForProgramCreation) {*/
             props.getProgramById({programId})
-        }
+        /*}*/
     }, [])
 
 

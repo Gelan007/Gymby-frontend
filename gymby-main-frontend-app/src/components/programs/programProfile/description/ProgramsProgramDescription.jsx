@@ -46,7 +46,7 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                             {t("programs.programDescription.subTitle")}
                             </div>
                             <div className={s.mainBlock__marks}>
-                                {program.marks.map((mark, key) => (
+                                {program.marks?.map((mark, key) => (
                                     <ProgramsMark text={mark} key={key} isBlackTextColor={true}/>
                                 ))}
                                {/* <ProgramsMark text={"набір маси"} isBlackTextColor={true}/>
