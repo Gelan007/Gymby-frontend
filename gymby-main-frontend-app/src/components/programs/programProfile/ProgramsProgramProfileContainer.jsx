@@ -20,10 +20,6 @@ const ProgramsProgramProfileContainer = (props) => {
     }, [])
 
 
-    useEffect(() => {
-        console.log(props.program)
-    }, [props.program])
-
     const {programId} = useParams()
 
     const checkIfEditProgram = props.myProfile.isCoach && '/' + programId === urlPathForProgramCreation
@@ -57,13 +53,13 @@ const ProgramsProgramProfileContainer = (props) => {
                 props.myProfile.isRequestCompleted ? (
 
                         checkIfEditProgram ?
-                    <ProgramsProgramProfile program={programProfilePlug} programId={programId}
+                    <ProgramsProgramProfile program={props.program} programId={programId}
                                             selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
                                             isProgramCreation={true}
                     />
                     :
                             checkIfProgramViewing ?
-                        <ProgramsProgramProfile program={programProfilePlug} programId={programId}
+                        <ProgramsProgramProfile program={props.program} programId={programId}
                                                         selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
                                                         isProgramCreation={false}
                         />

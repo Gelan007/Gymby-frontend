@@ -15,13 +15,13 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                 </div>
                 :
                 <div className={s.program__title}>
-                    {program?.title}
+                    {program?.name}
                 </div>
             }
 
             <div className={s.hrContainer}><hr className={s.hr}/></div>
             <div className={s.program__container}>
-                <ProgramsProgramLeftPanel daysCount={program?.days.length} programId={programId}
+                <ProgramsProgramLeftPanel daysCount={program?.programDays.length} programId={programId}
                                           selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                                           isProgramCreation={isProgramCreation}
                 />

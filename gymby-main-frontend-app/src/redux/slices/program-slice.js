@@ -94,11 +94,12 @@ const programSlice = createSlice({
             .addCase(getProgramById.fulfilled, (state, action) => {
             const programData = action.payload;
             state.program = {
-                programId: programData.programId,
+                programId: programData.id,
                 name: programData.name,
                 description: programData.description,
                 level: programData.level,
                 type: programData.type,
+                marks: [programData.level, programData.type],
                 programDays: programData.programDays.map((programDay) => ({
                     programDayId: programDay.programDayId,
                     name: programDay.name,

@@ -3,6 +3,7 @@ import {$authHost, $authHostWithoutHeaders} from './main'
 export const programsAPI = {
     async getProgramById(id) {
         const response = await $authHost.get(`api/program/${id}`)
+        console.log(response)
         return response;
     },
     async getFreePrograms() {
