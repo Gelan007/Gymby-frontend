@@ -31,6 +31,7 @@ export const PROGRAMS_FAVORITES_ROUTE = PROGRAMS_ROUTE + "/favorites";
 export const PROGRAMS_PERSONAL_ROUTE = PROGRAMS_ROUTE + "/personal";
 export const PROGRAMS_TRAINER_BASED_ROUTE = PROGRAMS_ROUTE + "/trainerBased";
 export const PROGRAMS_PROGRAM_PROFILE_ROUTE = PROGRAMS_ROUTE + "/:programId";
+export const urlPathForProgramCreation = '/creation';
 
 export const STATISTICS_ROUTE = "/statistics";
 

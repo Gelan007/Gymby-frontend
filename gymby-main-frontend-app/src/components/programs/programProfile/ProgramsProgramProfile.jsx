@@ -8,14 +8,14 @@ import ButtonOrange from "../../UI/buttons/ButtonOrange";
 import ProgramsProgramDescription from "./description/ProgramsProgramDescription";
 import ProgramsProgramDay from "./day/ProgramsProgramDay";
 
-const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, ...props}) => {
+const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramCreation, ...props}) => {
 
     return (
         <div>
         {selectedDay === 0 ?
-            <ProgramsProgramDescription program={program} programId={programId} selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
+            <ProgramsProgramDescription program={program} programId={programId} selectedDay={selectedDay} setSelectedDay={setSelectedDay} isProgramCreation={isProgramCreation}/>
             :
-            <ProgramsProgramDay program={program} selectedDay={selectedDay} setSelectedDay={setSelectedDay} programId={programId}/>
+            <ProgramsProgramDay program={program} selectedDay={selectedDay} setSelectedDay={setSelectedDay} programId={programId} isProgramCreation={isProgramCreation}/>
         }
         </div>
     );

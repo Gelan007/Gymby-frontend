@@ -3,10 +3,10 @@ import ProgramsTemplate from "../template/ProgramsTemplate";
 import ProgramsCard from "../card/ProgramsCard";
 import {PROGRAMS_FREE_ROUTE} from "../../../utils/routes/consts";
 
-const ProgramsFree = () => {
+const ProgramsFree = ({programs}) => {
     return (
         <div>
-            <ProgramsTemplate programRoute={PROGRAMS_FREE_ROUTE}/>
+            <ProgramsTemplate programs={programs}/>
         </div>
     );
 };

@@ -1,12 +1,35 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import {setSelectedDay} from '../../../redux/slices/profile-slice'
+import {getProgramById} from '../../../redux/slices/program-slice'
+import NotFound from "../../notFound/NotFound";
+import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
+import {urlPathForProgramCreation} from "../../../utils/routes/consts";
 
 const ProgramsProgramProfileContainer = (props) => {
-    /*подставлять в запрос потом*/
+    useEffect(() => {
+        props.getMyProfile()
+    }, [])
+
+    useEffect(() => {
+        if('/' + programId !== urlPathForProgramCreation) {
+            props.getProgramById({programId})
+        }
+    }, [])
+
+
     const {programId} = useParams()
+
+    const checkIfEditProgram = props.myProfile.isCoach && '/' + programId === urlPathForProgramCreation
+    const checkIfProgramViewing = programId && programId !== urlPathForProgramCreation
+
+
+
+
+
+
     /*в этой компоненте запрос, записать в стор, и через пропсы прокинуть
     * презентационной компоненте ProgramsProgramProfile, а презентационная
     * в свою очередь прокинет уже в свой leftPanel для отрисовки дней и тд*/
@@ -25,14 +48,36 @@ const ProgramsProgramProfileContainer = (props) => {
         ]
     }
     return (
-        <ProgramsProgramProfile program={programProfilePlug} programId={programId} selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}/>
+        <div>
+            {
+                props.myProfile.isRequestCompleted ? (
+
+                        checkIfEditProgram ?
+                    <ProgramsProgramProfile program={props.program} programId={programId}
+                                            selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
+                                            isProgramCreation={true}
+                    />
+                    :
+                            checkIfProgramViewing ?
+                        <ProgramsProgramProfile program={props.program} programId={programId}
+                                                        selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
+                                                        isProgramCreation={false}
+                        />
+                        :
+                    <NotFound/>
+                ) :
+                    <div>Loading</div>
+            }
+        </div>
     );
 };
 
 let mapStateToProps = (state) => {
     return {
-        selectedDay: state.profile.selectedDay
+        selectedDay: state.profile.selectedDay,
+        program: state.program.program,
+        myProfile: state.userAccountPage.myProfile
     }
 }
 
-export default connect(mapStateToProps, {setSelectedDay})(ProgramsProgramProfileContainer);
+export default connect(mapStateToProps, {setSelectedDay, getProgramById, getMyProfile})(ProgramsProgramProfileContainer);

@@ -3,6 +3,8 @@ import s from "./ProgramsProgramLeftPanelList.module.scss";
 import {NavLink} from "react-router-dom";
 import dumbbellIcon from '../../../../assets/images/programs/dumbbell.svg'
 import spellIcon from '../../../../assets/images/programs/spell.svg'
+import plusIcon from '../../../../assets/images/general/icons/plus.svg'
+import deleteIcon from '../../../../assets/images/general/icons/basketWhiteBackground2.svg'
 
 import {
     PROGRAMS_FAVORITES_ROUTE,
@@ -11,14 +13,22 @@ import {
 } from "../../../../utils/routes/consts";
 import {useTranslation} from "react-i18next";
 
-const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay}) => {
+const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay, isProgramCreation}) => {
     
     const {t} = useTranslation()
     const days = Array.from({ length: daysCount }, (_, index) => index + 1);
 
     return (
         <div className={s.navigation}>
-            <h5 className={s.title}>{t("programs.programDescription.leftPanel.title")}</h5>
+            {isProgramCreation ?
+                <div className={s.navigation__title}>
+                    <h5 className={s.title}>{t("programs.programDescription.leftPanel.title")}</h5>
+                    <div className={s.navigation__title__image}><img src={plusIcon} alt="add"/></div>
+                </div>
+                :
+                <h5 className={s.title}>{t("programs.programDescription.leftPanel.title")}</h5>
+            }
+
             <nav className={s.navigation__container}>
                 <ul className={s.list}>
                     <li className={s.item}>
@@ -39,6 +49,12 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                             >
                                     {t("programs.programDescription.leftPanel.day")} {day}
                             </div>
+                            {isProgramCreation ?
+                                <div className={s.basketIcon}><img src={deleteIcon} alt="deleteIcon"/></div>
+                                :
+                                <span></span>
+                            }
+
                         </li>
                     ))}
                 </ul>

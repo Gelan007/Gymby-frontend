@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProgramsPersonal from "./ProgramsPersonal";
+import ProgramsFree from "../free/ProgramsFree";
+import {connect} from "react-redux";
+import {getPersonalPrograms} from "../../../redux/slices/program-slice";
 
-const ProgramsPersonalContainer = () => {
+const ProgramsPersonalContainer = (props) => {
+    useEffect(() => {
+        props.getPersonalPrograms()
+    }, [])
+
     return (
-        <ProgramsPersonal/>
+        <ProgramsPersonal programs={props.programs}/>
     );
 };
 
-export default ProgramsPersonalContainer;
+const mapStateToProps = (state) => {
+    return {
+        programs: state.program.programs
+    }
+}
+export default connect(mapStateToProps, {getPersonalPrograms})(ProgramsPersonalContainer);

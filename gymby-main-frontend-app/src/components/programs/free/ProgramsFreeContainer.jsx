@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProgramsFree from "./ProgramsFree";
+import {connect} from "react-redux";
+import {getFreePrograms} from "../../../redux/slices/program-slice";
 
-const ProgramsFreeContainer = () => {
+const ProgramsFreeContainer = (props) => {
+    useEffect(() => {
+        props.getFreePrograms()
+    }, [])
+
     return (
-        <ProgramsFree/>
+        <ProgramsFree programs={props.programs}/>
     );
 };
 
-export default ProgramsFreeContainer;
+const mapStateToProps = (state) => {
+    return {
+        programs: state.program.programs
+    }
+}
+export default connect(mapStateToProps, {getFreePrograms})(ProgramsFreeContainer);

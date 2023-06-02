@@ -3,6 +3,15 @@
 
 .program {
   &__title {}
+  &__titleEdit {
+    padding: 21px 0;
+    margin-left: 25%;
+    display: flex;
+    align-items: center;
+    &>*:not(:last-child) {
+      margin-right: 50px;
+    }
+  }
   &__container {}
   &__body {
     display: flex;

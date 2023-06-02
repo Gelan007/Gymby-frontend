@@ -5,19 +5,34 @@ import defaultProgramPhoto from "../../../../assets/images/programs/man.png";
 import ProgramsMark from "../../card/programsMark/ProgramsMark";
 import ButtonOrange from "../../../UI/buttons/ButtonOrange";
 import { useTranslation } from 'react-i18next';
+import InputGrey from "../../../UI/inputs/InputGrey";
+import TextareaGrey from "../../../UI/textareas/TextareaGrey";
+import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay}) => {
+const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramCreation}) => {
 
-    const {t} = useTranslation() 
+    const {t} = useTranslation()
 
     return (
         <div className={s.program}>
-            <div className={s.program__title}>
-                {program?.title}
-            </div>
+            {isProgramCreation ?
+                <div className={s.program__titleEdit}>
+                    <InputGrey style={{maxWidth: '550px', fontSize: '20px'}}/>
+                    <div><ButtonGreen>Завершити редагування</ButtonGreen></div>
+                </div>
+                :
+                <div className={s.program__title}>
+                    {program?.name}
+                </div>
+            }
+
             <div className={s.hrContainer}><hr className={s.hr}/></div>
             <div className={s.program__container}>
-                <ProgramsProgramLeftPanel daysCount={program?.days.length} programId={programId} selectedDay={selectedDay} setSelectedDay={setSelectedDay}/>
+                <ProgramsProgramLeftPanel
+                    daysCount={program?.programDays.length} programId={programId}
+                    selectedDay={selectedDay} setSelectedDay={setSelectedDay}
+                    isProgramCreation={isProgramCreation}
+                />
                 <div className={s.program__body}>
                     <div className={s.photoBlock}>
                         <div className={s.photoBlock__photo}>
@@ -31,14 +46,24 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                             {t("programs.programDescription.subTitle")}
                             </div>
                             <div className={s.mainBlock__marks}>
-                                <ProgramsMark text={"набір маси"} isBlackTextColor={true}/>
+                                {program.marks.map((mark, key) => (
+                                    <ProgramsMark text={mark} key={key} isBlackTextColor={true}/>
+                                ))}
+                               {/* <ProgramsMark text={"набір маси"} isBlackTextColor={true}/>
                                 <ProgramsMark text={"ектоморф"} isBlackTextColor={true}/>
-                                <ProgramsMark text={"середній"} isBlackTextColor={true}/>
+                                <ProgramsMark text={"середній"} isBlackTextColor={true}/>*/}
                             </div>
                         </div>
-                        <div className={s.mainBlock__description}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                        </div>
+                        {isProgramCreation ?
+                            <div className={s.mainBlock__description} style={{maxWidth: '700px'}}>
+                                <TextareaGrey/>
+                            </div>
+                            :
+                            <div className={s.mainBlock__description}>
+                                {program.description}
+                            </div>
+                        }
+
                         <div className={s.mainBlock__button}>
                             <ButtonOrange>{t("programs.programDescription.addToFavorite")}</ButtonOrange>
                         </div>

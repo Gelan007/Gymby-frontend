@@ -1,1 +1,29 @@
 @import '../../../general/leftPanelStyles/LeftPanelList.module.scss';
+@import '../../../../utils/styles/GymbyGeneralStyles.module.scss';
+
+.navigation {
+  &__title {
+    display: flex;
+    &>*:not(:last-child) {
+      margin-right: 20px;
+    }
+    &__image {
+      cursor: pointer;
+      max-width: 28px;
+      &:hover {
+        filter: drop-shadow(0px 8px 8px rgba(41, 97, 217, 0.84));
+      }
+      & img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.basketIcon {
+  margin-left: 20px;
+  cursor: pointer;
+  &:hover {
+    filter: drop-shadow(0px 8px 8px rgba(232, 32, 32, 0.84));
+  }
+}
