@@ -5,5 +5,17 @@ export const measurementsAPI = {
         const response = await $authHost.get(`api/measurement`)
         return response;
     },
+    async addMeasurement(date, type, value, unit) {
+        const response = await $authHost.post(`api/measurement/create`, {date, type, value, unit})
+        return response;
+    },
+    async editMeasurement(id, date, type, value, unit) {
+        const response = await $authHost.post(`api/measurement/edit`, {id, date, type, value, unit})
+        return response;
+    },
+    async deleteMeasurement(id) {
+        const response = await $authHost.post(`api/measurement/delete`, {id})
+        return response;
+    },
 }
 

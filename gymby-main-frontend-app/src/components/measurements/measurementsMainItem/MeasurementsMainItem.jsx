@@ -6,7 +6,7 @@ import MeasurementsItem from "../item/MeasurementsItem";
 import biceps from "../../../assets/images/measurements/biceps.svg";
 import { useTranslation } from 'react-i18next';
 
-const MeasurementsMainItem = ({measurementsData, icon}) => {
+const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMeasurement,editMeasurement, type, unit = 1}) => {
 
     const {t} = useTranslation()
     const LIST = 'list';
@@ -14,6 +14,13 @@ const MeasurementsMainItem = ({measurementsData, icon}) => {
     const [selectedOption, setSelectedOption] = useState(LIST);
     const listOptionHandle = () => setSelectedOption(LIST);
     const chartOptionHandle = () => setSelectedOption(CHART);
+
+    const handleAddButton = () => {
+        const date = new Date()
+        const isoDate = date.toISOString();
+        addMeasurement({date: isoDate, type, value: '0', unit})
+    }
+
 
     return (
         <div className={s.measurementsMainItem}>
@@ -32,14 +39,17 @@ const MeasurementsMainItem = ({measurementsData, icon}) => {
                               onClick={chartOptionHandle}>{t("measurements.chart")}</span>
                     </div>
                     <div className={s.navBlock__button}>
-                        <ButtonGreen>{t("measurements.add")}</ButtonGreen>
+                        <ButtonGreen onClick={(() => handleAddButton())}>{t("measurements.add")}</ButtonGreen>
                     </div>
                 </div>
                 <div className={s.itemsList}>
                     {measurementsData?.map((measurement) => (
-                        <MeasurementsItem icon={icon} measurements={measurement.value}
+                        <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
                                           changesValue={'+1,2'} date={measurement.date}
-                                          days={'31'} measurementUnit={measurement.unit}/>
+                                          days={'31'} measurementUnit={measurement.unit} measurementType={type}
+                                          addMeasurement={addMeasurement} deleteMeasurement={deleteMeasurement}
+                                          measurementId={measurement.id} editMeasurement={editMeasurement}
+                        />
                     ))}
                 </div>
             </div>
