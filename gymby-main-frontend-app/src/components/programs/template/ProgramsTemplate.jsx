@@ -7,7 +7,7 @@ import ProgramsCard from "../card/ProgramsCard";
 import {Grid} from "@mui/material";
 import ConfirmationModalWindow from "../../general/modalWindow/confirmation/ConfirmationModalWindow";
 import {NavLink} from "react-router-dom";
-import {PROGRAMS_PROGRAM_PROFILE_ROUTE, PROGRAMS_ROUTE} from "../../../utils/routes/consts";
+import {PROGRAMS_PROGRAM_PROFILE_ROUTE, PROGRAMS_ROUTE, urlPathForProgramCreation} from "../../../utils/routes/consts";
 import { useTranslation } from 'react-i18next';
 
 
@@ -37,7 +37,7 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= fa
                         <InputGreySearch placeholder="Пошук"/>
                     </div>
                     <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}>
-                        <NavLink to={`${PROGRAMS_ROUTE}/creation`}>
+                        <NavLink to={`${PROGRAMS_ROUTE}${urlPathForProgramCreation}`}>
                             <ButtonGreen>{t("programs.createProgram")}</ButtonGreen>
                         </NavLink>
                     </div>
