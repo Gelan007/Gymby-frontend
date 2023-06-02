@@ -5,6 +5,7 @@ import {configureStore} from "@reduxjs/toolkit";
 import languageSlice from './slices/language-slice'
 import profileSlice from './slices/profile-slice'
 import measurementSlice from './slices/measurements-slice'
+import programSlice from './slices/program-slice'
 
 export const store = configureStore({
     reducer: {
@@ -12,7 +13,8 @@ export const store = configureStore({
         auth: authReducer,
         language: languageSlice,
         profile: profileSlice,
-        measurements: measurementSlice
+        measurements: measurementSlice,
+        program: programSlice
     },
     devTools: true
 })

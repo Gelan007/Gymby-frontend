@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import {setSelectedDay} from '../../../redux/slices/profile-slice'
+import {getProgramById} from '../../../redux/slices/program-slice'
 
 const ProgramsProgramProfileContainer = (props) => {
+
+    useEffect(() => {
+        props.getProgramById()
+    }, [])
+
+    /*useEffect(() => {
+        console.log(props.program)
+    }, [props.program])*/
+
     /*подставлять в запрос потом*/
     const {programId} = useParams()
     /*в этой компоненте запрос, записать в стор, и через пропсы прокинуть
@@ -31,8 +41,9 @@ const ProgramsProgramProfileContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        selectedDay: state.profile.selectedDay
+        selectedDay: state.profile.selectedDay,
+        program: state.program.program
     }
 }
 
-export default connect(mapStateToProps, {setSelectedDay})(ProgramsProgramProfileContainer);
+export default connect(mapStateToProps, {setSelectedDay, getProgramById})(ProgramsProgramProfileContainer);
