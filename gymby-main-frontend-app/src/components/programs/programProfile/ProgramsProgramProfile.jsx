@@ -9,7 +9,7 @@ import ProgramsProgramDescription from "./description/ProgramsProgramDescription
 import ProgramsProgramDay from "./day/ProgramsProgramDay";
 
 const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramCreation, ...props}) => {
-    console.log(isProgramCreation)
+
     return (
         <div>
         {selectedDay === 0 ?

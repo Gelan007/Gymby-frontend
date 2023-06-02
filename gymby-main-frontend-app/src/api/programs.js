@@ -5,6 +5,10 @@ export const programsAPI = {
         const response = await $authHost.get(`api/program/${id}`)
         return response;
     },
+    async getFreePrograms() {
+        const response = await $authHost.get(`api/programs/free`)
+        return response;
+    },
     async createProgram(programData) {
         const response = await $authHost.post(`api/program/create`, programData)
         return response;

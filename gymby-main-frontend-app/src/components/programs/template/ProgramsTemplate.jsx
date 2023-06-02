@@ -18,7 +18,7 @@ const defaultTestProgramsArray = [
     {id: 13, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
     {id: 14, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
 ]
-const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= false, isDeleteIcon}) => {
+const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon}) => {
     const {t} = useTranslation();
     const [isModalActive, setIsModalActive] = useState(false);
     const modalHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
@@ -46,13 +46,13 @@ const ProgramsTemplate = ({programs = defaultTestProgramsArray, isButtonShow= fa
                     <Grid container spacing={2}>
                         {programs?.map(((program, index) => (
                             <Grid item xs={12} sm={6} md={4} key={index}>
-                                <NavLink to={`${PROGRAMS_ROUTE}/${program.id}`}>
-                                <ProgramsCard isDeleteIcon={isDeleteIcon}
-                                              title={program.title}
-                                              marks={program.marks}
-                                              modalHandler={modalHandler}
-                                              setSelectedProgram={setSelectedProgram}
-                                />
+                                <NavLink to={`${PROGRAMS_ROUTE}/${program.programId}`}>
+                                    <ProgramsCard isDeleteIcon={isDeleteIcon}
+                                                  title={program.name}
+                                                  marks={program.marks}
+                                                  modalHandler={modalHandler}
+                                                  setSelectedProgram={setSelectedProgram}
+                                    />
                                 </NavLink>
                             </Grid>
                         )))}

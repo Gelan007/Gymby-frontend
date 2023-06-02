@@ -10,6 +10,15 @@ export const getProgramById = createAsyncThunk('programs/getProgramById', async 
     }
 });
 
+export const getFreePrograms = createAsyncThunk('programs/getFreePrograms', async () => {
+    const response = await programsAPI.getFreePrograms();
+    console.log(response)
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 
 const programSlice = createSlice({
     name: 'program',
@@ -50,7 +59,8 @@ const programSlice = createSlice({
         },*/
     },
     extraReducers: (builder) => {
-        builder.addCase(getProgramById.fulfilled, (state, action) => {
+        builder
+            .addCase(getProgramById.fulfilled, (state, action) => {
             const programData = action.payload;
             state.program = {
                 programId: programData.programId,
@@ -74,7 +84,21 @@ const programSlice = createSlice({
                     })),
                 })),
             };
-        });
+        })
+            .addCase(getFreePrograms.fulfilled, (state, action) => {
+                const programData = action.payload;
+                const formattedPrograms = programData.map(program => ({
+                    programId: program.id,
+                    name: program.name,
+                    description: program.description,
+                    level: program.level,
+                    type: program.type,
+                    isPublic: program.isPublic,
+                    marks: [program.level, program.type]
+                }));
+
+                state.programs = formattedPrograms;
+            })
     },
 })
 
