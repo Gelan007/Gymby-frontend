@@ -1,10 +1,11 @@
 import React from 'react';
 import MeasurementsMainItem from "../measurementsMainItem/MeasurementsMainItem";
 import forearm from "../../../assets/images/measurements/forearm.svg";
+import MeasurementsMainItemContainer from "../measurementsMainItem/MeasurementsMainItemContainer";
 
-const MeasurementForearms = ({measurementsData}) => {
+const MeasurementForearms = ({measurementsData, type, unit}) => {
     return (
-        <MeasurementsMainItem measurementsData={measurementsData} icon={forearm}/>
+        <MeasurementsMainItemContainer measurementsData={measurementsData} icon={forearm} type={type} unit={unit}/>
     );
 };
 

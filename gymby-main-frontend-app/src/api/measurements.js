@@ -9,5 +9,9 @@ export const measurementsAPI = {
         const response = await $authHost.post(`api/measurement/create`, {date, type, value, unit})
         return response;
     },
+    async deleteMeasurement(id) {
+        const response = await $authHost.post(`api/measurement/delete`, {id})
+        return response;
+    },
 }
 

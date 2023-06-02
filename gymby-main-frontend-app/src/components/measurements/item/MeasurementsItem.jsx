@@ -11,7 +11,10 @@ import SelectSimple from "../../UI/select/SelectSimple";
 
 
 
-const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue, date, days, measurementUnit, ...props}) => {
+const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
+                              changesValue, date,
+                              days, measurementUnit,
+                              deleteMeasurement, measurementId, ...props}) => {
     const {t} = useTranslation()
     const [isEditMode, setIsEditMode] = useState(false)
     const [measurementsUserInput, setMeasurementsUserInput] = useState({value: '', date: ''})
@@ -19,13 +22,10 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
     const newDateConverter = (newDate) => new Date(newDate);
     const formattedInitialDate = newDateConverter(date).toISOString().slice(0, 10);
 
+
     useEffect(() => {
         setMeasurementsUserInput({value: measurements, date: date, formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
     }, [measurements, date])
-
-    useEffect(() => {
-        console.log(measurementsUserInput.date)
-    }, [measurementsUserInput])
 
     const getMeasurementUnitForDisplaying = () => {
         if(measurementUnit === 0) {
@@ -43,6 +43,8 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
         setMeasurementsUserInput({...measurementsUserInput, date: isoDate, formattedDate: event.target.value});
     };
 
+    const handleDeleteButton = () => deleteMeasurement({id: measurementId})
+
     return (
         <div className={s.measurementsItem}>
             <div className={s.measurementsItem__body}>
@@ -59,7 +61,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
                     </div>
                     :
                     <div className={s.measurements}>
-                        {measurements} {t("measurements.item.centimeter")}
+                        {measurements} {getMeasurementUnitForDisplaying()}
                     </div>
                 }
 
@@ -89,7 +91,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements , changesValue,
                         </div>
                     }
                     {isEditMode ?
-                        <div className={s.deleteButton} onClick={() => {}}>
+                        <div className={s.deleteButton} onClick={handleDeleteButton}>
                             <img src={deleteIcon} alt="deleteButton"/>
                         </div>
                         :
