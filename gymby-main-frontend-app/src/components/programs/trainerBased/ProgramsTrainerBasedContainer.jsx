@@ -13,13 +13,22 @@ const ProgramsTrainerBasedContainer = (props) => {
     }, [])
 
     return (
-        <ProgramsTrainerBased programs={props.programs}/>
+        <div>
+            {props.isLoading ?
+                <span>Loading...</span>
+                :
+                <ProgramsTrainerBased programs={props.programs}/>
+            }
+
+        </div>
+
     );
 };
 
 const mapStateToProps = (state) => {
     return {
-        programs: state.program.programs
+        programs: state.program.programs,
+        isLoading: state.program.isLoading
     }
 }
 export default connect(mapStateToProps, {getSharedPrograms, setPrograms})(ProgramsTrainerBasedContainer);

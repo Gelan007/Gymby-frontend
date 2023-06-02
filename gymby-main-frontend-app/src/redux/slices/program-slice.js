@@ -11,10 +11,11 @@ const handleProgramsFulfilled = (state, action) => {
         level: program.level,
         type: program.type,
         isPublic: program.isPublic,
-        marks: [program.level, program.type]
+        marks: [program.level, program.type],
     }));
 
     state.programs = formattedPrograms;
+
 }
 
 export const getProgramById = createAsyncThunk('programs/getProgramById', async (payload) => {
@@ -55,6 +56,7 @@ const programSlice = createSlice({
     name: 'program',
     initialState : {
         programs: [],
+        isLoading: false,
         program: {
             programId: '',
             name: '',
@@ -117,10 +119,37 @@ const programSlice = createSlice({
                 })),
             };
         })
-            .addCase(getFreePrograms.fulfilled, handleProgramsFulfilled)
-            .addCase(getPersonalPrograms.fulfilled, handleProgramsFulfilled)
-            .addCase(getSharedPrograms.fulfilled, handleProgramsFulfilled)
-    },
+            .addCase(getFreePrograms.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getPersonalPrograms.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getSharedPrograms.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getFreePrograms.fulfilled, (state, action) => {
+                handleProgramsFulfilled(state, action);
+                state.isLoading = false;
+            })
+            .addCase(getPersonalPrograms.fulfilled, (state, action) => {
+                handleProgramsFulfilled(state, action);
+                state.isLoading = false;
+            })
+            .addCase(getSharedPrograms.fulfilled, (state, action) => {
+                handleProgramsFulfilled(state, action);
+                state.isLoading = false;
+            })
+            .addCase(getFreePrograms.rejected, (state) => {
+                state.isLoading = false;
+            })
+            .addCase(getPersonalPrograms.rejected, (state) => {
+                state.isLoading = false;
+            })
+            .addCase(getSharedPrograms.rejected, (state) => {
+                state.isLoading = false;
+            });
+    }
 })
 
 export const {setPrograms} = programSlice.actions;
