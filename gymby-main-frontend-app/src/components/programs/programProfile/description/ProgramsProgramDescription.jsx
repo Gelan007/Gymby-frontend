@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./ProgramsProgramDescription.module.scss";
 import ProgramsProgramLeftPanel from "../leftPanel/ProgramsProgramLeftPanel";
 import defaultProgramPhoto from "../../../../assets/images/programs/man.png";
@@ -9,18 +9,31 @@ import InputGrey from "../../../UI/inputs/InputGrey";
 import TextareaGrey from "../../../UI/textareas/TextareaGrey";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramCreation}) => {
+const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
+                                        isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay, getProgramById}) => {
 
     const {t} = useTranslation()
+    const handleStartEditing = () => setIsProgramEditing(true)
+    const handleEndEditing = () => {
+        setIsProgramEditing(false)
+    }
 
     return (
         <div className={s.program}>
-            {isProgramCreation ?
+            {isProgramAccessibleToEdit && (
+            isProgramEditing ?
                 <div className={s.program__titleEdit}>
                     <InputGrey style={{maxWidth: '550px', fontSize: '20px'}}/>
-                    <div><ButtonGreen>Завершити редагування</ButtonGreen></div>
+                    <div><ButtonGreen onClick={() => handleEndEditing()}>Завершити редагування</ButtonGreen></div>
                 </div>
                 :
+                <div className={s.program__titleEdit_default}>
+                    <div className={s.program__title}>
+                        {program?.name}
+                    </div>
+                    <div><ButtonGreen onClick={() => handleStartEditing()}>Редагувати</ButtonGreen></div>
+                </div>
+            ) ||
                 <div className={s.program__title}>
                     {program?.name}
                 </div>
@@ -31,7 +44,8 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                 <ProgramsProgramLeftPanel
                     daysCount={program?.programDays.length} programId={programId}
                     selectedDay={selectedDay} setSelectedDay={setSelectedDay}
-                    isProgramCreation={isProgramCreation}
+                    isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
+                    getProgramById={getProgramById}
                 />
                 <div className={s.program__body}>
                     <div className={s.photoBlock}>
@@ -54,7 +68,7 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                                 <ProgramsMark text={"середній"} isBlackTextColor={true}/>*/}
                             </div>
                         </div>
-                        {isProgramCreation ?
+                        {isProgramEditing ?
                             <div className={s.mainBlock__description} style={{maxWidth: '700px'}}>
                                 <TextareaGrey/>
                             </div>

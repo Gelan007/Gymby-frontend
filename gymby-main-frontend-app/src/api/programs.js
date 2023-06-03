@@ -21,6 +21,10 @@ export const programsAPI = {
         const response = await $authHost.post(`api/program/create`, programData)
         return response;
     },
+    async createProgramDay(programId, name) {
+        const response = await $authHost.post(`api/program/day/create`, {programId, name})
+        return response;
+    },
     /*async deleteMeasurement(id) {
         const response = await $authHost.post(`api/measurement/delete`, {id})
         return response;

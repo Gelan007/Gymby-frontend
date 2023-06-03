@@ -18,7 +18,8 @@ const defaultTestProgramsArray = [
     {id: 13, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
     {id: 14, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
 ]
-const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon}) => {
+const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createProgram, userName}) => {
+
     const {t} = useTranslation();
     const [isModalActive, setIsModalActive] = useState(false);
     const modalHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
@@ -26,7 +27,9 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon}) => {
 
     /*надо будет заменить на store*/
     const [selectedProgram, setSelectedProgram] = useState('');
-    
+
+    const handleCreateProgramButton = () => createProgram({userName, userProgramsCount: programs?.length, dayName: t("programs.programDescription.leftPanel.day")})
+
 
     return (
         <div className={s.programs}>
@@ -36,10 +39,11 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon}) => {
                     <div className={s.navBlock__input}>
                         <InputGreySearch placeholder="Пошук"/>
                     </div>
-                    <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}>
-                        <NavLink to={`${PROGRAMS_ROUTE}${urlPathForProgramCreation}`}>
+                    <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}
+                         onClick={() => handleCreateProgramButton()}>
+                        {/*<NavLink to={`${PROGRAMS_ROUTE}${urlPathForProgramCreation}`}>*/}
                             <ButtonGreen>{t("programs.createProgram")}</ButtonGreen>
-                        </NavLink>
+                       {/* </NavLink>*/}
                     </div>
                 </div>
                 <div className={s.cards}>

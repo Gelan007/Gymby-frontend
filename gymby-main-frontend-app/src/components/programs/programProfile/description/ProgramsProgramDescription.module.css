@@ -52,6 +52,13 @@
 .program__titleEdit > *:not(:last-child) {
   margin-right: 50px;
 }
+.program__titleEdit_default {
+  display: flex;
+  align-items: center;
+}
+.program__titleEdit_default > *:not(:last-child) {
+  margin-right: 50px;
+}
 .program__body {
   display: flex;
   padding: 25px 50px 40px 30px;

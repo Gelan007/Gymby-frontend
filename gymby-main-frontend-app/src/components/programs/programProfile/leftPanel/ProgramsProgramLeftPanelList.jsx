@@ -13,17 +13,29 @@ import {
 } from "../../../../utils/routes/consts";
 import {useTranslation} from "react-i18next";
 
-const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay, isProgramCreation}) => {
+const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay, isProgramEditing,
+                                          createProgramDay, getProgramById}) => {
     
     const {t} = useTranslation()
-    const days = Array.from({ length: daysCount }, (_, index) => index + 1);
+    let days = Array.from({ length: daysCount }, (_, index) => index + 1);
+    useEffect(() => {
+        days = Array.from({ length: daysCount }, (_, index) => index + 1);
+    }, [daysCount])
 
+    const handleCreateProgramDay = () => {
+        createProgramDay({programId, name: `${t("programs.programDescription.leftPanel.day")} ${daysCount + 1}`})
+        getProgramById({programId})
+    }
     return (
         <div className={s.navigation}>
-            {isProgramCreation ?
+            {isProgramEditing ?
                 <div className={s.navigation__title}>
                     <h5 className={s.title}>{t("programs.programDescription.leftPanel.title")}</h5>
-                    <div className={s.navigation__title__image}><img src={plusIcon} alt="add"/></div>
+                    <div className={s.navigation__title__image}
+                         onClick={() => handleCreateProgramDay()}
+                    >
+                        <img src={plusIcon} alt="add"/>
+                    </div>
                 </div>
                 :
                 <h5 className={s.title}>{t("programs.programDescription.leftPanel.title")}</h5>
@@ -40,8 +52,8 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                             {t("programs.programDescription.leftPanel.description")}
                         </div>
                     </li>
-                    {days?.map((day) => (
-                        <li className={s.item}>
+                    {days?.map((day, index) => (
+                        <li className={s.item} key={index}>
                             <div className={s.icon}><img src={dumbbellIcon} alt="dumbbellIcon"/></div>
                             <div className={selectedDay === day ? s.active : s.text}
                                  onClick={() => setSelectedDay(day)}
@@ -49,7 +61,7 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                             >
                                     {t("programs.programDescription.leftPanel.day")} {day}
                             </div>
-                            {isProgramCreation ?
+                            {isProgramEditing ?
                                 <div className={s.basketIcon}><img src={deleteIcon} alt="deleteIcon"/></div>
                                 :
                                 <span></span>
