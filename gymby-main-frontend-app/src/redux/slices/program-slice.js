@@ -57,6 +57,7 @@ const programSlice = createSlice({
     initialState : {
         programs: [],
         isLoading: false,
+        selectedDay: 0,
         program: {
             programId: '',
             name: '',
@@ -90,6 +91,9 @@ const programSlice = createSlice({
         setPrograms: (state, action) => {
             state.programs = action.payload
         },
+        setSelectedDay: (state, action) => {
+            state.selectedDay = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -103,14 +107,14 @@ const programSlice = createSlice({
                 type: programData.type,
                 marks: [programData.level, programData.type],
                 programDays: programData.programDays.map((programDay) => ({
-                    programDayId: programDay.programDayId,
+                    programDayId: programDay.id,
                     name: programDay.name,
                     exercises: programDay.exercises.map((exercise) => ({
-                        exerciseId: exercise.exerciseId,
+                        exerciseId: exercise.id,
                         name: exercise.name,
                         exercisePrototypeId: exercise.exercisePrototypeId,
                         approaches: exercise.approaches.map((approach) => ({
-                            approachId: approach.approachId,
+                            approachId: approach.id,
                             repeats: approach.repeats,
                             weight: approach.weight,
                             creationDate: approach.creationDate,
@@ -152,5 +156,5 @@ const programSlice = createSlice({
     }
 })
 
-export const {setPrograms} = programSlice.actions;
+export const {setPrograms, setSelectedDay} = programSlice.actions;
 export default programSlice.reducer;

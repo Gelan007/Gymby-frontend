@@ -10,7 +10,9 @@ import checkboxEnabled from '../../../../assets/images/approach/checkBoxEnabled.
 /*когда буду добавлять состояние для checkbox добавить условие, что если false то тогда
 * отображаем checkboxDisabled иначе checkboxEnabled*/
 /*onClick для стрелочек вешать на само изображение а не на блок*/
-const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numeration = 1, isEditMode, isDrawControlIcons}) => {
+const ApproachItem = ({isWeight = false, isMark = false,
+                          isBasket = false, numeration = 1,
+                          isEditMode, isDrawControlIcons, approach}) => {
     return (
         <div className={s.approachItem}>
             <div className={`${s.numeration} ${s.text}`}>
@@ -19,7 +21,7 @@ const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numer
             <div className={s.customizableBlock}>
                 <div className={isWeight ? `${s.customizableBlock__content}` : `${s.customizableBlock__content} ${s.invisibility}`}>
                     <div className={`${s.customizableBlock__value} ${s.text}`}>
-                        100 кг
+                        {approach.weight}
                     </div>
                     {isDrawControlIcons &&
                         <div className={s.customizableBlock__arrowsBlock}>
@@ -35,7 +37,7 @@ const ApproachItem = ({isWeight = false, isMark = false, isBasket = false, numer
                 </div>
                 <div className={s.customizableBlock__content}>
                     <div className={`${s.customizableBlock__value} ${s.text}`}>
-                        12 пвт
+                        {approach.repeats} пвт
                     </div>
                     {isDrawControlIcons &&
                         <div className={s.customizableBlock__arrowsBlock}>

@@ -17,7 +17,6 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
     
     const {t} = useTranslation()
     const days = Array.from({ length: daysCount }, (_, index) => index + 1);
-
     return (
         <div className={s.navigation}>
             {isProgramCreation ?
@@ -40,8 +39,8 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                             {t("programs.programDescription.leftPanel.description")}
                         </div>
                     </li>
-                    {days?.map((day) => (
-                        <li className={s.item}>
+                    {days?.map((day, index) => (
+                        <li className={s.item} key={index}>
                             <div className={s.icon}><img src={dumbbellIcon} alt="dumbbellIcon"/></div>
                             <div className={selectedDay === day ? s.active : s.text}
                                  onClick={() => setSelectedDay(day)}

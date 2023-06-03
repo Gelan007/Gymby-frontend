@@ -12,7 +12,6 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramCreation}) => {
 
     const {t} = useTranslation()
-
     return (
         <div className={s.program}>
             {isProgramCreation ?

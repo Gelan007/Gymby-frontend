@@ -2,8 +2,7 @@ import React, {useEffect} from 'react';
 import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
-import {setSelectedDay} from '../../../redux/slices/profile-slice'
-import {getProgramById} from '../../../redux/slices/program-slice'
+import {getProgramById, setSelectedDay} from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 import {urlPathForProgramCreation} from "../../../utils/routes/consts";
@@ -22,7 +21,9 @@ const ProgramsProgramProfileContainer = (props) => {
     }, [])
 
 
-
+    useEffect(() => {
+        console.log(props.program?.programDays.length)
+    }, [])
 
     const checkIfEditProgram = props.myProfile.isCoach && '/' + programId === urlPathForProgramCreation
     const checkIfProgramViewing = programId && '/' + programId !== urlPathForProgramCreation
@@ -49,6 +50,8 @@ const ProgramsProgramProfileContainer = (props) => {
             {approachTitle: "Жим гантель ", weight: 25, repeats: 15},
         ]
     }
+
+
     return (
         <div>
             {
@@ -76,7 +79,7 @@ const ProgramsProgramProfileContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        selectedDay: state.profile.selectedDay,
+        selectedDay: state.program.selectedDay,
         program: state.program.program,
         myProfile: state.userAccountPage.myProfile
     }

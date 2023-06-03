@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ApproachItem from "./item/ApproachItem";
 import plug from '../../../assets/images/measurements/biceps.svg';
 import basket from '../../../assets/images/general/icons/basketWhiteBackground2.svg'
 import editIcon from '../../../assets/images/general/icons/editIcon.png'
 import s from './Approach.module.scss'
 
-const Approach = ({isDrawControlIcons = true, isWeight = true, isMark = true, isBasket = true}) => {
+const Approach = ({isDrawControlIcons = true, isWeight = true,
+                      isMark = true, isBasket = true, exercise, exerciseName, exerciseId}) =>
+{
     const [isEditMode, setIsEditMode] = useState(false);
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
-
 
 
     return (
@@ -18,7 +19,7 @@ const Approach = ({isDrawControlIcons = true, isWeight = true, isMark = true, is
                     <img src={plug} alt="icon"/>
                 </div>
                 <div className={s.title}>
-                    Жим штанги лежачи - накл
+                    {exerciseName}
                 </div>
                 {isDrawControlIcons &&
                     <div className={s.iconsControl}>
@@ -41,9 +42,16 @@ const Approach = ({isDrawControlIcons = true, isWeight = true, isMark = true, is
                 }
             </div>
             <div className={s.itemsBlock}>
-                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
-                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
-                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
+                {
+                    exercise?.approaches?.map((approach) => (
+                        <ApproachItem isWeight={isWeight} isMark={isMark}
+                                      isBasket={isBasket} isEditMode={isEditMode}
+                                      isDrawControlIcons={isDrawControlIcons} approach={approach}
+                        />
+                    ))
+                }
+                {/*<ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
+                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>*/}
             </div>
         </div>
     );

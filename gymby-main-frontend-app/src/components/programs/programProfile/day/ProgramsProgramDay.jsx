@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./ProgramsProgramDay.module.scss";
 import ProgramsProgramLeftPanel from "../leftPanel/ProgramsProgramLeftPanel";
 import ButtonOrange from "../../../UI/buttons/ButtonOrange";
@@ -7,6 +7,7 @@ import InputGrey from "../../../UI/inputs/InputGrey";
 import ButtonBlue from "../../../UI/buttons/ButtonBlue";
 
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramCreation}) => {
+
     return (
         <div className={s.program}>
             {isProgramCreation ?
@@ -35,9 +36,23 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                     }
 
                     <div className={s.approaches}>
-                        <Approach isDrawControlIcons={false} isWeight={false} isMark={false}/>
-                        <Approach isDrawControlIcons={false} isWeight={false} isMark={false}/>
-                        <Approach isDrawControlIcons={false} isWeight={false} isMark={false}/>
+                        {program.programDays?.map((programDay, index) => {
+                             if(index === selectedDay - 1) {
+                                 return programDay.exercises?.map((exercise, i) => {
+                                    return (
+                                        <Approach  key={programDay.programDayId} isDrawControlIcons={false}
+                                                       isWeight={false} isMark={false}
+                                                       exercise={exercise} exerciseName={programDay.name}
+                                                       exerciseId={programDay.programDayId}
+                                        />
+
+                                    )
+
+                                })
+                            }
+                            return null;
+                        })
+                        }
                     </div>
                 </div>
             </div>
