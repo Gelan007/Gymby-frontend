@@ -9,6 +9,8 @@ import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 import {urlPathForProgramCreation} from "../../../utils/routes/consts";
 
 const ProgramsProgramProfileContainer = (props) => {
+    const {programId} = useParams()
+
     useEffect(() => {
         props.getMyProfile()
     }, [])
@@ -20,10 +22,10 @@ const ProgramsProgramProfileContainer = (props) => {
     }, [])
 
 
-    const {programId} = useParams()
+
 
     const checkIfEditProgram = props.myProfile.isCoach && '/' + programId === urlPathForProgramCreation
-    const checkIfProgramViewing = programId && programId !== urlPathForProgramCreation
+    const checkIfProgramViewing = programId && '/' + programId !== urlPathForProgramCreation
 
 
 
