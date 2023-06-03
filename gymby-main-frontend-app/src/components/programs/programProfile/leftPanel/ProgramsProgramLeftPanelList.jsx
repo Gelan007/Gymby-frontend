@@ -12,20 +12,35 @@ import {
     PROGRAMS_TRAINER_BASED_ROUTE
 } from "../../../../utils/routes/consts";
 import {useTranslation} from "react-i18next";
+import InputGrey from "../../../UI/inputs/InputGrey";
 
 const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay, isProgramEditing,
-                                          createProgramDay, getProgramById}) => {
+                                          createProgramDay, getProgramById, deleteProgramDay, program}) => {
     
     const {t} = useTranslation()
-    let days = Array.from({ length: daysCount }, (_, index) => index + 1);
+    const [dayName, setDayName] = useState()
+    /*let days = Array.from({ length: daysCount }, (_, index) => index + 1);
     useEffect(() => {
         days = Array.from({ length: daysCount }, (_, index) => index + 1);
-    }, [daysCount])
+    }, [daysCount])*/
+
 
     const handleCreateProgramDay = () => {
-        createProgramDay({programId, name: `${t("programs.programDescription.leftPanel.day")} ${daysCount + 1}`})
-        getProgramById({programId})
+        createProgramDay({programId, name: `${t("programs.programDescription.leftPanel.day")} ${daysCount + 1}`}).then(() => {
+            getProgramById({programId})
+        })
+
     }
+    const handleDeleteProgramDay = (day) => {
+        program.programDays?.forEach((programDay, index) => {
+            if(index === day)
+                deleteProgramDay({programDayId: programDay.programDayId, programId}).then(() => {
+                    getProgramById({programId})
+                })
+                return
+        })
+    }
+
     return (
         <div className={s.navigation}>
             {isProgramEditing ?
@@ -52,17 +67,19 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                             {t("programs.programDescription.leftPanel.description")}
                         </div>
                     </li>
-                    {days?.map((day, index) => (
+                    {program.programDays?.map((day, index) => (
                         <li className={s.item} key={index}>
                             <div className={s.icon}><img src={dumbbellIcon} alt="dumbbellIcon"/></div>
-                            <div className={selectedDay === day ? s.active : s.text}
-                                 onClick={() => setSelectedDay(day)}
-                                 style={{cursor: "pointer"}}
-                            >
-                                    {t("programs.programDescription.leftPanel.day")} {day}
-                            </div>
+
+                                <div className={selectedDay === index + 1 ? s.active : s.text}
+                                     onClick={() => setSelectedDay(index + 1)}
+                                     style={{cursor: "pointer"}}
+                                >
+                                    {day.name}
+                                </div>
+
                             {isProgramEditing ?
-                                <div className={s.basketIcon}><img src={deleteIcon} alt="deleteIcon"/></div>
+                                <div className={s.basketIcon} onClick={() => handleDeleteProgramDay(index)}><img src={deleteIcon} alt="deleteIcon"/></div>
                                 :
                                 <span></span>
                             }
