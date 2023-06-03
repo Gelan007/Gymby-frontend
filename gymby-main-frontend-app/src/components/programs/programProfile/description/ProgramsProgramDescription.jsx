@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./ProgramsProgramDescription.module.scss";
 import ProgramsProgramLeftPanel from "../leftPanel/ProgramsProgramLeftPanel";
 import defaultProgramPhoto from "../../../../assets/images/programs/man.png";
@@ -10,7 +10,7 @@ import TextareaGrey from "../../../UI/textareas/TextareaGrey";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
 const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
-                                        isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay}) => {
+                                        isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay, getProgramById}) => {
 
     const {t} = useTranslation()
     const handleStartEditing = () => setIsProgramEditing(true)
@@ -45,6 +45,7 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                     daysCount={program?.programDays.length} programId={programId}
                     selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                     isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
+                    getProgramById={getProgramById}
                 />
                 <div className={s.program__body}>
                     <div className={s.photoBlock}>

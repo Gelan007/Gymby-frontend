@@ -30,13 +30,14 @@ const ProgramsProgramProfileContainer = (props) => {
 
     useEffect(() => {
         if(props.isLoading) {
-            props.programs?.map(program => {
+            props.programs?.forEach(program => {
                 if (program.programId === programId) {
                     props.setIsProgramAccessibleToEdit(true)
                 }
             })
         }
     }, [props.isLoading])
+
 
 
 
@@ -61,7 +62,7 @@ const ProgramsProgramProfileContainer = (props) => {
                                                 selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
                                                 isProgramEditing={props.isProgramEditing} createProgramDay={props.createProgramDay}
                                                 setIsProgramEditing={props.setIsProgramEditing}
-                                                isProgramAccessibleToEdit={props.isProgramAccessibleToEdit}
+                                                isProgramAccessibleToEdit={props.isProgramAccessibleToEdit} getProgramById={props.getProgramById}
                         />
                         :
                     <NotFound/>

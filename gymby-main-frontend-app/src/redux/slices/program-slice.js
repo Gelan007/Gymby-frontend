@@ -128,7 +128,6 @@ export const getPersonalPrograms = createAsyncThunk('programs/getPersonalProgram
 export const createProgramDay = createAsyncThunk('programs/createProgramDay', async (payload) => {
     const response = await programsAPI.createProgramDay(payload.programId, payload.name);
     if (response.status >= 200 && response.status <= 204) {
-        console.log(response.data)
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');
@@ -227,8 +226,7 @@ const programSlice = createSlice({
             .addCase(getSharedPrograms.rejected, (state) => {
                 state.isLoading = false;
             })
-            .addCase(createProgramDay.fulfilled, (state) => {
-
+            .addCase(createProgramDay.fulfilled, (state, action) => {
                 state.isLoading = false;
             })
     }

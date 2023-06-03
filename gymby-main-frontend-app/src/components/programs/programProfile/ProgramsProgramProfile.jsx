@@ -9,7 +9,7 @@ import ProgramsProgramDescription from "./description/ProgramsProgramDescription
 import ProgramsProgramDay from "./day/ProgramsProgramDay";
 
 const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
-                                    setIsProgramEditing, isProgramAccessibleToEdit, createProgramDay, ...props}) => {
+                                    setIsProgramEditing, isProgramAccessibleToEdit, createProgramDay, getProgramById, ...props}) => {
 
     return (
         <div>
@@ -18,12 +18,14 @@ const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay
                                         programId={programId} selectedDay={selectedDay}
                                         setIsProgramEditing={setIsProgramEditing} setSelectedDay={setSelectedDay}
                                         isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
+                                        getProgramById={getProgramById}
             />
             :
             <ProgramsProgramDay isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program}
                                 selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                                 setIsProgramEditing={setIsProgramEditing} programId={programId}
                                 isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
+                                getProgramById={getProgramById}
             />
         }
         </div>

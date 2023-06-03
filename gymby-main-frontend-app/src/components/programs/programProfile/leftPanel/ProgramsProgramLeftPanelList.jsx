@@ -13,18 +13,26 @@ import {
 } from "../../../../utils/routes/consts";
 import {useTranslation} from "react-i18next";
 
-const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay, isProgramEditing, createProgramDay}) => {
+const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay, isProgramEditing,
+                                          createProgramDay, getProgramById}) => {
     
     const {t} = useTranslation()
-    const days = Array.from({ length: daysCount }, (_, index) => index + 1);
+    let days = Array.from({ length: daysCount }, (_, index) => index + 1);
+    useEffect(() => {
+        days = Array.from({ length: daysCount }, (_, index) => index + 1);
+    }, [daysCount])
+
+    const handleCreateProgramDay = () => {
+        createProgramDay({programId, name: `${t("programs.programDescription.leftPanel.day")} ${daysCount + 1}`})
+        getProgramById({programId})
+    }
     return (
         <div className={s.navigation}>
             {isProgramEditing ?
                 <div className={s.navigation__title}>
                     <h5 className={s.title}>{t("programs.programDescription.leftPanel.title")}</h5>
                     <div className={s.navigation__title__image}
-                         onClick={() => createProgramDay({programId,
-                             name: `${t("programs.programDescription.leftPanel.day")} ${daysCount + 1}`})}
+                         onClick={() => handleCreateProgramDay()}
                     >
                         <img src={plusIcon} alt="add"/>
                     </div>

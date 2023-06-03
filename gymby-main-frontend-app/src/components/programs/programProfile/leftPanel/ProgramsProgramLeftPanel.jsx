@@ -3,7 +3,8 @@ import s from "./ProgramsProgramLeftPanel.module.scss";
 import ProgramsProgramLeftPanelList from "./ProgramsProgramLeftPanelList";
 
 
-const ProgramsProgramLeftPanel = ({daysCount, programId, setSelectedDay, selectedDay, isProgramEditing, createProgramDay}) => {
+const ProgramsProgramLeftPanel = ({daysCount, programId, setSelectedDay, selectedDay, isProgramEditing,
+                                      createProgramDay, getProgramById}) => {
     return (
         <div className={s.leftPanel}>
             <div className={s.leftPanel__container}>
@@ -11,6 +12,7 @@ const ProgramsProgramLeftPanel = ({daysCount, programId, setSelectedDay, selecte
                     <ProgramsProgramLeftPanelList daysCount={daysCount} programId={programId}
                                                   selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                                                   isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
+                                                  getProgramById={getProgramById}
                     />
                 </div>
             </div>
