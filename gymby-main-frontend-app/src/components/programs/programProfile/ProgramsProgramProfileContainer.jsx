@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
-import {getProgramById, setSelectedDay, setIsProgramEditing} from '../../../redux/slices/program-slice'
+import {getProgramById, setSelectedDay, setIsProgramEditing, createProgramDay, getPersonalPrograms, setIsProgramAccessibleToEdit} from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 import {urlPathForProgramCreation} from "../../../utils/routes/consts";
@@ -12,6 +12,7 @@ const ProgramsProgramProfileContainer = (props) => {
 
     useEffect(() => {
         props.getMyProfile()
+        props.getPersonalPrograms()
     }, [])
 
     useEffect(() => {
@@ -23,57 +24,44 @@ const ProgramsProgramProfileContainer = (props) => {
     useEffect(() => {
         return () => {
             props.setIsProgramEditing(false)
+            props.setIsProgramAccessibleToEdit(false)
         }
     }, [])
 
-
     useEffect(() => {
-        console.log(props.program?.programDays.length)
-    }, [])
+        if(props.isLoading) {
+            props.programs?.map(program => {
+                if (program.programId === programId) {
+                    props.setIsProgramAccessibleToEdit(true)
+                }
+            })
+        }
+    }, [props.isLoading])
+
+
+
 
     const checkIfEditProgram = props.myProfile.isCoach && '/' + programId === urlPathForProgramCreation
     const checkIfProgramViewing = programId && '/' + programId !== urlPathForProgramCreation
-
-
-
-
-
-
-    /*в этой компоненте запрос, записать в стор, и через пропсы прокинуть
-    * презентационной компоненте ProgramsProgramProfile, а презентационная
-    * в свою очередь прокинет уже в свой leftPanel для отрисовки дней и тд*/
-
-    /*ЗАГЛУШКА ДЛЯ ТЕСТА! ПОТОМ НА СТОР ЗАМЕНИТЬ*/
-    /*Не забыть selectedDay в store записать вместо leftPanelList, и тут его через пропсы передавать потом в ProgramsProgramProfile*/
-    const programProfilePlug = {
-        id: 11,
-        title: '4-недільна програма на масу від Івана',
-        marks: ['ектоморф', 'набір маси', 'середній'],
-        days: [
-            {approachTitle: "Жим штанги лежачи", weight: 40, repeats: 10},
-            {approachTitle: "Присідання зі штангою", weight: 20, repeats: 25},
-            {approachTitle: "Звичайні присідання", weight: 0, repeats: 50},
-            {approachTitle: "Жим гантель ", weight: 25, repeats: 15},
-        ]
-    }
 
 
     return (
         <div>
             {
                 props.myProfile.isRequestCompleted ? (
-                        checkIfEditProgram ?
+                      /*  checkIfEditProgram ?
                     <ProgramsProgramProfile program={props.program} programId={programId}
                                             selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
                                             isProgramEditing={props.isProgramEditing}
                                             setIsProgramEditing={props.setIsProgramEditing} isProgramAccessibleToEdit={props.isProgramAccessibleToEdit}
                     />
-                    :
+                    :*/
                             checkIfProgramViewing ?
                         <ProgramsProgramProfile program={props.program} programId={programId}
-                                                        selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
-                                                isProgramEditing={props.isProgramEditing}
-                                                setIsProgramEditing={props.setIsProgramEditing} isProgramAccessibleToEdit={props.isProgramAccessibleToEdit}
+                                                selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
+                                                isProgramEditing={props.isProgramEditing} createProgramDay={props.createProgramDay}
+                                                setIsProgramEditing={props.setIsProgramEditing}
+                                                isProgramAccessibleToEdit={props.isProgramAccessibleToEdit}
                         />
                         :
                     <NotFound/>
@@ -90,8 +78,14 @@ let mapStateToProps = (state) => {
         program: state.program.program,
         myProfile: state.userAccountPage.myProfile,
         isProgramEditing: state.program.isProgramEditing,
-        isProgramAccessibleToEdit: state.program.isProgramAccessibleToEdit
+        isProgramAccessibleToEdit: state.program.isProgramAccessibleToEdit,
+        programs: state.program.programs,
+        isLoading: state.program.isLoading,
+        isProgramLoading: state.program.program.isLoading
     }
 }
 
-export default connect(mapStateToProps, {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing})(ProgramsProgramProfileContainer);
+export default connect(mapStateToProps,
+    {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing, createProgramDay,
+        getPersonalPrograms, setIsProgramAccessibleToEdit })
+(ProgramsProgramProfileContainer);

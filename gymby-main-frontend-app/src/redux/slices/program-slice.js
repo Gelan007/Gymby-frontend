@@ -48,7 +48,7 @@ const handleProgramFulfilled = (state, action) => {
 
 
 
-const createInitialProgramData = (userName, userProgramsCount) => {
+const createInitialProgramData = (userName, userProgramsCount, dayName) => {
     const programData = {
         name: `Program from ${userName} ${userProgramsCount + 1}` ,
         description: "Program description",
@@ -56,7 +56,7 @@ const createInitialProgramData = (userName, userProgramsCount) => {
         type: 1,
         programDays: [
             {
-                name: "Day 1",
+                name: `${dayName} 1`,
                 exercises: [
                    /* {
                         programDayId: "your_program_day_id",
@@ -81,7 +81,7 @@ const createInitialProgramData = (userName, userProgramsCount) => {
 };
 
 export const createProgram = createAsyncThunk('programs/createProgram', async (payload) => {
-    const programData = createInitialProgramData(payload.userName, payload.userProgramsCount);
+    const programData = createInitialProgramData(payload.userName, payload.userProgramsCount, payload.dayName);
     const response = await programsAPI.createProgram(programData);
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
@@ -125,6 +125,16 @@ export const getPersonalPrograms = createAsyncThunk('programs/getPersonalProgram
     }
 });
 
+export const createProgramDay = createAsyncThunk('programs/createProgramDay', async (payload) => {
+    const response = await programsAPI.createProgramDay(payload.programId, payload.name);
+    if (response.status >= 200 && response.status <= 204) {
+        console.log(response.data)
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
 const programSlice = createSlice({
     name: 'program',
     initialState : {
@@ -134,6 +144,7 @@ const programSlice = createSlice({
         isProgramEditing: false,
         isProgramAccessibleToEdit: false,
         program: {
+            isProgramLoading: false,
             programId: '',
             name: '',
             description: '',
@@ -180,7 +191,7 @@ const programSlice = createSlice({
         builder
             .addCase(getProgramById.fulfilled, (state, action) => {
                 handleProgramFulfilled(state, action)
-                state.isLoading = false;
+                state.isLoading = true;
             })
             .addCase(createProgram.fulfilled, (state, action) => {
                 handleProgramFulfilled(state, action)
@@ -198,17 +209,14 @@ const programSlice = createSlice({
             .addCase(getFreePrograms.fulfilled, (state, action) => {
                 handleProgramsFulfilled(state, action);
                 state.isLoading = false;
-                state.isProgramAccessibleToEdit = false;
             })
             .addCase(getPersonalPrograms.fulfilled, (state, action) => {
                 handleProgramsFulfilled(state, action);
                 state.isLoading = false;
-                state.isProgramAccessibleToEdit = true;
             })
             .addCase(getSharedPrograms.fulfilled, (state, action) => {
                 handleProgramsFulfilled(state, action);
                 state.isLoading = false;
-                state.isProgramAccessibleToEdit = false;
             })
             .addCase(getFreePrograms.rejected, (state) => {
                 state.isLoading = false;
@@ -218,7 +226,11 @@ const programSlice = createSlice({
             })
             .addCase(getSharedPrograms.rejected, (state) => {
                 state.isLoading = false;
-            });
+            })
+            .addCase(createProgramDay.fulfilled, (state) => {
+
+                state.isLoading = false;
+            })
     }
 })
 

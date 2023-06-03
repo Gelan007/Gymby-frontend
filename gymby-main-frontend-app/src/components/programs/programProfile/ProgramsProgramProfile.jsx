@@ -8,14 +8,23 @@ import ButtonOrange from "../../UI/buttons/ButtonOrange";
 import ProgramsProgramDescription from "./description/ProgramsProgramDescription";
 import ProgramsProgramDay from "./day/ProgramsProgramDay";
 
-const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing, setIsProgramEditing, isProgramAccessibleToEdit, ...props}) => {
+const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
+                                    setIsProgramEditing, isProgramAccessibleToEdit, createProgramDay, ...props}) => {
 
     return (
         <div>
         {selectedDay === 0 ?
-            <ProgramsProgramDescription isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program} programId={programId} selectedDay={selectedDay} setIsProgramEditing={setIsProgramEditing} setSelectedDay={setSelectedDay} isProgramEditing={isProgramEditing}/>
+            <ProgramsProgramDescription isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program}
+                                        programId={programId} selectedDay={selectedDay}
+                                        setIsProgramEditing={setIsProgramEditing} setSelectedDay={setSelectedDay}
+                                        isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
+            />
             :
-            <ProgramsProgramDay isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program} selectedDay={selectedDay} setSelectedDay={setSelectedDay} setIsProgramEditing={setIsProgramEditing} programId={programId} isProgramEditing={isProgramEditing}/>
+            <ProgramsProgramDay isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program}
+                                selectedDay={selectedDay} setSelectedDay={setSelectedDay}
+                                setIsProgramEditing={setIsProgramEditing} programId={programId}
+                                isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
+            />
         }
         </div>
     );

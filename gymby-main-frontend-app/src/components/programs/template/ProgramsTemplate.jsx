@@ -28,7 +28,7 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createPr
     /*надо будет заменить на store*/
     const [selectedProgram, setSelectedProgram] = useState('');
 
-    const handleCreateProgramButton = () => createProgram({userName, userProgramsCount: programs?.length})
+    const handleCreateProgramButton = () => createProgram({userName, userProgramsCount: programs?.length, dayName: t("programs.programDescription.leftPanel.day")})
 
 
     return (

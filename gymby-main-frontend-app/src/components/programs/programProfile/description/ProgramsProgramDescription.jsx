@@ -9,7 +9,8 @@ import InputGrey from "../../../UI/inputs/InputGrey";
 import TextareaGrey from "../../../UI/textareas/TextareaGrey";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing, isProgramAccessibleToEdit, setIsProgramEditing}) => {
+const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
+                                        isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay}) => {
 
     const {t} = useTranslation()
     const handleStartEditing = () => setIsProgramEditing(true)
@@ -43,7 +44,7 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                 <ProgramsProgramLeftPanel
                     daysCount={program?.programDays.length} programId={programId}
                     selectedDay={selectedDay} setSelectedDay={setSelectedDay}
-                    isProgramEditing={isProgramEditing}
+                    isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
                 />
                 <div className={s.program__body}>
                     <div className={s.photoBlock}>

@@ -7,7 +7,8 @@ import InputGrey from "../../../UI/inputs/InputGrey";
 import ButtonBlue from "../../../UI/buttons/ButtonBlue";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing, setIsProgramEditing, isProgramAccessibleToEdit}) => {
+const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
+                                setIsProgramEditing, isProgramAccessibleToEdit}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -16,18 +17,22 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
 
     return (
         <div className={s.program}>
-            {isProgramAccessibleToEdit &&
-            isProgramEditing ?
-                <div className={s.program__titleEdit}>
-                    <InputGrey style={{maxWidth: '550px', fontSize: '20px'}}/>
-                    <div><ButtonGreen onClick={() => handleEndEditing()}>Завершити редагування</ButtonGreen></div>
-                </div>
-                :
-                <div className={s.program__titleEdit_default}>
-                    <div className={s.program__title}>
-                        {program?.name}
-                    </div>
-                    <div><ButtonGreen onClick={() => handleStartEditing()}>Редагувати</ButtonGreen></div>
+            {isProgramAccessibleToEdit && (
+                    isProgramEditing ?
+                        <div className={s.program__titleEdit}>
+                            <InputGrey style={{maxWidth: '550px', fontSize: '20px'}}/>
+                            <div><ButtonGreen onClick={() => handleEndEditing()}>Завершити редагування</ButtonGreen></div>
+                        </div>
+                        :
+                        <div className={s.program__titleEdit_default}>
+                            <div className={s.program__title}>
+                                {program?.name}
+                            </div>
+                            <div><ButtonGreen onClick={() => handleStartEditing()}>Редагувати</ButtonGreen></div>
+                        </div>
+                ) ||
+                <div className={s.program__title}>
+                    {program?.name}
                 </div>
             }
 
