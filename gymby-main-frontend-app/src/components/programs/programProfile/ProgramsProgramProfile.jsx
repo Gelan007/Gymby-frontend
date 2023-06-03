@@ -8,14 +8,14 @@ import ButtonOrange from "../../UI/buttons/ButtonOrange";
 import ProgramsProgramDescription from "./description/ProgramsProgramDescription";
 import ProgramsProgramDay from "./day/ProgramsProgramDay";
 
-const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramCreation, ...props}) => {
+const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing, setIsProgramEditing, isProgramAccessibleToEdit, ...props}) => {
 
     return (
         <div>
         {selectedDay === 0 ?
-            <ProgramsProgramDescription program={program} programId={programId} selectedDay={selectedDay} setSelectedDay={setSelectedDay} isProgramCreation={isProgramCreation}/>
+            <ProgramsProgramDescription isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program} programId={programId} selectedDay={selectedDay} setIsProgramEditing={setIsProgramEditing} setSelectedDay={setSelectedDay} isProgramEditing={isProgramEditing}/>
             :
-            <ProgramsProgramDay program={program} selectedDay={selectedDay} setSelectedDay={setSelectedDay} programId={programId} isProgramCreation={isProgramCreation}/>
+            <ProgramsProgramDay isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program} selectedDay={selectedDay} setSelectedDay={setSelectedDay} setIsProgramEditing={setIsProgramEditing} programId={programId} isProgramEditing={isProgramEditing}/>
         }
         </div>
     );

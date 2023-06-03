@@ -19,6 +19,7 @@ const defaultTestProgramsArray = [
     {id: 14, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
 ]
 const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createProgram, userName}) => {
+
     const {t} = useTranslation();
     const [isModalActive, setIsModalActive] = useState(false);
     const modalHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)

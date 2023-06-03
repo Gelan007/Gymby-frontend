@@ -131,6 +131,8 @@ const programSlice = createSlice({
         programs: [],
         isLoading: false,
         selectedDay: 0,
+        isProgramEditing: false,
+        isProgramAccessibleToEdit: false,
         program: {
             programId: '',
             name: '',
@@ -167,6 +169,12 @@ const programSlice = createSlice({
         setSelectedDay: (state, action) => {
             state.selectedDay = action.payload
         },
+        setIsProgramEditing: (state, action) => {
+            state.isProgramEditing = action.payload
+        },
+        setIsProgramAccessibleToEdit: (state, action) => {
+            state.isProgramAccessibleToEdit = action.payload
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -190,14 +198,17 @@ const programSlice = createSlice({
             .addCase(getFreePrograms.fulfilled, (state, action) => {
                 handleProgramsFulfilled(state, action);
                 state.isLoading = false;
+                state.isProgramAccessibleToEdit = false;
             })
             .addCase(getPersonalPrograms.fulfilled, (state, action) => {
                 handleProgramsFulfilled(state, action);
                 state.isLoading = false;
+                state.isProgramAccessibleToEdit = true;
             })
             .addCase(getSharedPrograms.fulfilled, (state, action) => {
                 handleProgramsFulfilled(state, action);
                 state.isLoading = false;
+                state.isProgramAccessibleToEdit = false;
             })
             .addCase(getFreePrograms.rejected, (state) => {
                 state.isLoading = false;
@@ -211,5 +222,5 @@ const programSlice = createSlice({
     }
 })
 
-export const {setPrograms, setSelectedDay} = programSlice.actions;
+export const {setPrograms, setSelectedDay, setIsProgramEditing, setIsProgramAccessibleToEdit} = programSlice.actions;
 export default programSlice.reducer;

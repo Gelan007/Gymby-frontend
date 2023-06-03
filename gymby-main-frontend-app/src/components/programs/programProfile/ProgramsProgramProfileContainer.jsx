@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
-import {getProgramById, setSelectedDay} from '../../../redux/slices/program-slice'
+import {getProgramById, setSelectedDay, setIsProgramEditing} from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 import {urlPathForProgramCreation} from "../../../utils/routes/consts";
@@ -18,6 +18,12 @@ const ProgramsProgramProfileContainer = (props) => {
         /*if('/' + programId !== urlPathForProgramCreation) {*/
             props.getProgramById({programId})
         /*}*/
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            props.setIsProgramEditing(false)
+        }
     }, [])
 
 
@@ -56,17 +62,18 @@ const ProgramsProgramProfileContainer = (props) => {
         <div>
             {
                 props.myProfile.isRequestCompleted ? (
-
                         checkIfEditProgram ?
                     <ProgramsProgramProfile program={props.program} programId={programId}
                                             selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
-                                            isProgramCreation={true}
+                                            isProgramEditing={props.isProgramEditing}
+                                            setIsProgramEditing={props.setIsProgramEditing} isProgramAccessibleToEdit={props.isProgramAccessibleToEdit}
                     />
                     :
                             checkIfProgramViewing ?
                         <ProgramsProgramProfile program={props.program} programId={programId}
                                                         selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
-                                                        isProgramCreation={false}
+                                                isProgramEditing={props.isProgramEditing}
+                                                setIsProgramEditing={props.setIsProgramEditing} isProgramAccessibleToEdit={props.isProgramAccessibleToEdit}
                         />
                         :
                     <NotFound/>
@@ -81,8 +88,10 @@ let mapStateToProps = (state) => {
     return {
         selectedDay: state.program.selectedDay,
         program: state.program.program,
-        myProfile: state.userAccountPage.myProfile
+        myProfile: state.userAccountPage.myProfile,
+        isProgramEditing: state.program.isProgramEditing,
+        isProgramAccessibleToEdit: state.program.isProgramAccessibleToEdit
     }
 }
 
-export default connect(mapStateToProps, {setSelectedDay, getProgramById, getMyProfile})(ProgramsProgramProfileContainer);
+export default connect(mapStateToProps, {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing})(ProgramsProgramProfileContainer);
