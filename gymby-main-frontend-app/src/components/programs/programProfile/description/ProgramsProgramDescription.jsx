@@ -10,7 +10,8 @@ import TextareaGrey from "../../../UI/textareas/TextareaGrey";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
 const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
-                                        isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay, getProgramById}) => {
+                                        isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay, getProgramById,
+                                        deleteProgramDay}) => {
 
     const {t} = useTranslation()
     const handleStartEditing = () => setIsProgramEditing(true)
@@ -45,7 +46,8 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                     daysCount={program?.programDays.length} programId={programId}
                     selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                     isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
-                    getProgramById={getProgramById}
+                    getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
+                    program={program}
                 />
                 <div className={s.program__body}>
                     <div className={s.photoBlock}>

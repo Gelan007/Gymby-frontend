@@ -133,6 +133,14 @@ export const createProgramDay = createAsyncThunk('programs/createProgramDay', as
         throw new Error('Failed to fetch measurements');
     }
 });
+export const deleteProgramDay = createAsyncThunk('programs/deleteProgramDay', async (payload) => {
+    const response = await programsAPI.deleteProgramDay(payload.programDayId, payload.programId);
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 
 const programSlice = createSlice({
     name: 'program',

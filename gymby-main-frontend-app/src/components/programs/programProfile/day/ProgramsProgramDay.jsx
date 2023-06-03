@@ -9,7 +9,7 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 import {createProgramDay} from "../../../../redux/slices/program-slice";
 
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
-                                setIsProgramEditing, isProgramAccessibleToEdit, getProgramById}) => {
+                                setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -42,7 +42,8 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                 <ProgramsProgramLeftPanel daysCount={program?.programDays.length} programId={programId}
                                           selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                                           isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
-                                          getProgramById={getProgramById}
+                                          getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
+                                          program={program}
                 />
                 <div className={s.program__body}>
                     {isProgramEditing ?
