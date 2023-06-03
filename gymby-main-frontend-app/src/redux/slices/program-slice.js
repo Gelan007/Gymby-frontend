@@ -18,6 +18,79 @@ const handleProgramsFulfilled = (state, action) => {
 
 }
 
+const handleProgramFulfilled = (state, action) => {
+    const programData = action.payload;
+    state.program = {
+        programId: programData.id,
+        name: programData.name,
+        description: programData.description,
+        level: programData.level,
+        type: programData.type,
+        marks: [programData.level, programData.type],
+        programDays: programData.programDays.map((programDay) => ({
+            programDayId: programDay.id,
+            name: programDay.name,
+            exercises: programDay.exercises.map((exercise) => ({
+                exerciseId: exercise.id,
+                name: exercise.name,
+                exercisePrototypeId: exercise.exercisePrototypeId,
+                approaches: exercise.approaches.map((approach) => ({
+                    approachId: approach.id,
+                    repeats: approach.repeats,
+                    weight: approach.weight,
+                    creationDate: approach.creationDate,
+                })),
+            })),
+        })),
+    };
+
+}
+
+
+
+const createInitialProgramData = (userName, userProgramsCount) => {
+    const programData = {
+        name: `Program from ${userName} ${userProgramsCount + 1}` ,
+        description: "Program description",
+        level: 1,
+        type: 1,
+        programDays: [
+            {
+                name: "Day 1",
+                exercises: [
+                   /* {
+                        programDayId: "your_program_day_id",
+                        date: "your_date_time",
+                        name: "your_exercise_name",
+                        exercisePrototypeId: "your_exercise_prototype_id",
+                        approaches: [
+                            {
+                                repeats: 10,
+                                weight: 20.5,
+                                isDone: true,
+                                creationDate: "your_date_time",
+                            },
+                        ],
+                    },*/
+                ],
+            },
+        ],
+    };
+
+    return programData;
+};
+
+export const createProgram = createAsyncThunk('programs/createProgram', async (payload) => {
+    const programData = createInitialProgramData(payload.userName, payload.userProgramsCount);
+    const response = await programsAPI.createProgram(programData);
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
+
 export const getProgramById = createAsyncThunk('programs/getProgramById', async (payload) => {
     const response = await programsAPI.getProgramById(payload.programId);
     if (response.status >= 200 && response.status <= 204) {
@@ -98,31 +171,13 @@ const programSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getProgramById.fulfilled, (state, action) => {
-            const programData = action.payload;
-            state.program = {
-                programId: programData.id,
-                name: programData.name,
-                description: programData.description,
-                level: programData.level,
-                type: programData.type,
-                marks: [programData.level, programData.type],
-                programDays: programData.programDays.map((programDay) => ({
-                    programDayId: programDay.id,
-                    name: programDay.name,
-                    exercises: programDay.exercises.map((exercise) => ({
-                        exerciseId: exercise.id,
-                        name: exercise.name,
-                        exercisePrototypeId: exercise.exercisePrototypeId,
-                        approaches: exercise.approaches.map((approach) => ({
-                            approachId: approach.id,
-                            repeats: approach.repeats,
-                            weight: approach.weight,
-                            creationDate: approach.creationDate,
-                        })),
-                    })),
-                })),
-            };
-        })
+                handleProgramFulfilled(state, action)
+                state.isLoading = false;
+            })
+            .addCase(createProgram.fulfilled, (state, action) => {
+                handleProgramFulfilled(state, action)
+                state.isLoading = false;
+            })
             .addCase(getFreePrograms.pending, (state) => {
                 state.isLoading = true;
             })
