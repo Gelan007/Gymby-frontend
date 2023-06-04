@@ -13,7 +13,7 @@ const ProgramsMark = ({text, isBlackTextColor = false}) => {
     const isYellowStyles = systemYellowMarks.includes(text)
     const isRedStyles =  systemRedMarks.includes(text)
     const isGreenStyles = systemGreenMarks.includes(text)
-    
+
     const textMap = {
         Beginner: t("programs.marks.beginner"),
         Advanced: t("programs.marks.advanced"),
@@ -31,7 +31,7 @@ const ProgramsMark = ({text, isBlackTextColor = false}) => {
             || s.defaultStyles
         }
              style={isBlackTextColor ? {color: '#000000'} : {color: '#FFFFFF'}}>
-            {textMap[text]}
+            {textMap[text] ? textMap[text] : text}
         </div>
     );
 };
