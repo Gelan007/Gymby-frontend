@@ -46,6 +46,7 @@ const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selected
                                 selectedOption={selectedOption}
                                 friendsValue={friendsValue}
                                 requestsValue={requestsValue}
+                                isCoach={profile.isCoach}
                             />
                         </NavLink>
                     ))}

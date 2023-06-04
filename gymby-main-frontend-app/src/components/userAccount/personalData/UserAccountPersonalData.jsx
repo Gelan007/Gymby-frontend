@@ -129,9 +129,14 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                             <span className={s.avatarBlock__name}>
                                 {`${myProfile.firstName} ${myProfile.lastName}`}
                             </span>
+                            {myProfile.isCoach ?
                                 <div className={s.avatarBlock__icon}>
                                     <img src={trainerIcon} alt="trainerIcon"/>
                                 </div>
+                                :
+                                <div></div>
+                            }
+
                         </div>
                         <span className={s.avatarBlock__subscription}>
                             {t("userAccount.personalData.withoutSubscription")}

@@ -44,6 +44,7 @@ const UserAccountSearch = ({profiles, everybodyValue,trainersValue,selectedOptio
                                 username={profile.username}
                                 firstName={profile.firstName}
                                 lastName={profile.lastName}
+                                isCoach={profile.isCoach}
                             />
                         </NavLink>
                     ))}

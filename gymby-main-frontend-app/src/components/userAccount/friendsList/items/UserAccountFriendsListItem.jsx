@@ -8,7 +8,7 @@ import applyIcon from "../../../../assets/images/general/icons/applyGreen.svg";
 import closeIcon from "../../../../assets/images/general/icons/closeRed.svg";
 
 const UserAccountFriendsListItem = ({username, firstName, lastName,
-                                        selectedOption, friendsValue}, ...props) => {
+                                        selectedOption, friendsValue, isCoach}) => {
     return (
         <div className={s.friendsListItem + " " + s.userAccountItem}>
             <div className={s.friendsListItem__body + " " + s.userAccountItem__body}>
@@ -20,9 +20,13 @@ const UserAccountFriendsListItem = ({username, firstName, lastName,
                         <span className={s.infoBlock__name}>{firstName} {lastName}</span>
                         <span className={s.infoBlock__username}>({username})</span>
                     </div>
-                    <div className={s.trainerIcon}>
-                        <img src={trainerIcon} alt="trainer"/>
-                    </div>
+                    {isCoach ?
+                        <div className={s.trainerIcon}>
+                            <img src={trainerIcon} alt="trainer"/>
+                        </div>
+                        :
+                        <div></div>
+                    }
                 </div>
                 {selectedOption === friendsValue ?
                     <div className={s.iconsBlock}>
