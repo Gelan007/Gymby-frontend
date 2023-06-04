@@ -10,7 +10,7 @@ import ProgramsProgramDay from "./day/ProgramsProgramDay";
 
 const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                     setIsProgramEditing, isProgramAccessibleToEdit, createProgramDay, getProgramById,
-                                    deleteProgramDay, ...props}) => {
+                                    deleteProgramDay, updateProgramDay, ...props}) => {
 
     return (
         <div>
@@ -20,6 +20,7 @@ const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay
                                         setIsProgramEditing={setIsProgramEditing} setSelectedDay={setSelectedDay}
                                         isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
                                         getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
+                                        updateProgramDay={updateProgramDay}
             />
             :
             <ProgramsProgramDay isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program}
@@ -27,6 +28,7 @@ const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay
                                 setIsProgramEditing={setIsProgramEditing} programId={programId}
                                 isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
                                 getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
+                                updateProgramDay={updateProgramDay}
             />
         }
         </div>

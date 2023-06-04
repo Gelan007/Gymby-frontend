@@ -4,7 +4,7 @@ import ProgramsProgramLeftPanelList from "./ProgramsProgramLeftPanelList";
 
 
 const ProgramsProgramLeftPanel = ({daysCount, programId, setSelectedDay, selectedDay, isProgramEditing,
-                                      createProgramDay, getProgramById, deleteProgramDay, program}) => {
+                                      createProgramDay, getProgramById, deleteProgramDay, program, updateProgramDay}) => {
     return (
         <div className={s.leftPanel}>
             <div className={s.leftPanel__container}>
@@ -13,7 +13,7 @@ const ProgramsProgramLeftPanel = ({daysCount, programId, setSelectedDay, selecte
                                                   selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                                                   isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
                                                   getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
-                                                  program={program}
+                                                  program={program} updateProgramDay={updateProgramDay}
                     />
                 </div>
             </div>

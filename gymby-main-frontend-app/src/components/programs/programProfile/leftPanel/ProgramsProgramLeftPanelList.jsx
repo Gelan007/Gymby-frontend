@@ -15,15 +15,23 @@ import {useTranslation} from "react-i18next";
 import InputGrey from "../../../UI/inputs/InputGrey";
 
 const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSelectedDay, isProgramEditing,
-                                          createProgramDay, getProgramById, deleteProgramDay, program}) => {
+                                          createProgramDay, getProgramById, deleteProgramDay, program, updateProgramDay}) => {
     
     const {t} = useTranslation()
-    const [dayName, setDayName] = useState()
-    /*let days = Array.from({ length: daysCount }, (_, index) => index + 1);
-    useEffect(() => {
-        days = Array.from({ length: daysCount }, (_, index) => index + 1);
-    }, [daysCount])*/
+    const [dayNames, setDayNames] = useState(program.programDays?.map((day) => day.name) || []);
 
+    useEffect(() => {
+        setDayNames(program.programDays?.map((day) => day.name) || [])
+        return () => {
+            setDayNames([])
+        }
+    }, [program])
+
+    const handleInputChange = (index, value) => {
+        const updatedDayNames = [...dayNames];
+        updatedDayNames[index] = value;
+        setDayNames(updatedDayNames);
+    };
 
     const handleCreateProgramDay = () => {
         createProgramDay({programId, name: `${t("programs.programDescription.leftPanel.day")} ${daysCount + 1}`}).then(() => {
@@ -38,6 +46,15 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                     getProgramById({programId})
                 })
                 return
+        })
+    }
+    const handleUpdateProgramDay = (day) => {
+        program.programDays?.forEach((programDay, index) => {
+            if(index === day)
+                updateProgramDay({programDayId: programDay.programDayId, programId, name: dayNames[day]}).then(() => {
+                    getProgramById({programId})
+                })
+            return
         })
     }
 
@@ -59,7 +76,7 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
             <nav className={s.navigation__container}>
                 <ul className={s.list}>
                     <li className={s.item}>
-                        <div className={s.icon}><img src={spellIcon} alt="spellIcon"/></div>
+                        <div className={s.icon} onClick={() => setSelectedDay(0)}><img src={spellIcon} alt="spellIcon"/></div>
                         <div className={selectedDay === 0 ? s.active : s.text}
                              style={{cursor: "pointer"}}
                              onClick={() => setSelectedDay(0)}
@@ -69,14 +86,28 @@ const ProgramsProgramLeftPanelList = ({daysCount, programId, selectedDay, setSel
                     </li>
                     {program.programDays?.map((day, index) => (
                         <li className={s.item} key={index}>
-                            <div className={s.icon}><img src={dumbbellIcon} alt="dumbbellIcon"/></div>
+                            <div className={s.icon} onClick={() => setSelectedDay(index + 1)}><img src={dumbbellIcon} alt="dumbbellIcon"/></div>
 
+                            {isProgramEditing ?
+                                <div className={selectedDay === index + 1 ? s.active : s.text}
+                                     onClick={() => setSelectedDay(index + 1)}
+                                     style={{cursor: "pointer"}}
+                                >
+                                    <InputGrey type="text"
+                                               value={dayNames[index]}
+                                               onChange={(e) => handleInputChange(index, e.target.value)}
+                                               onBlur={() => handleUpdateProgramDay(index)}
+                                               style={{maxHeight: '40px', maxWidth: '160px'}}
+                                    />
+                                </div>
+                                :
                                 <div className={selectedDay === index + 1 ? s.active : s.text}
                                      onClick={() => setSelectedDay(index + 1)}
                                      style={{cursor: "pointer"}}
                                 >
                                     {day.name}
                                 </div>
+                            }
 
                             {isProgramEditing ?
                                 <div className={s.basketIcon} onClick={() => handleDeleteProgramDay(index)}><img src={deleteIcon} alt="deleteIcon"/></div>
