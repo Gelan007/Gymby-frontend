@@ -43,17 +43,15 @@ const handleProgramFulfilled = (state, action) => {
             })),
         })),
     };
-
 }
-
 
 
 const createInitialProgramData = (userName, userProgramsCount, dayName) => {
     const programData = {
         name: `Program from ${userName} ${userProgramsCount + 1}` ,
         description: "Program description",
-        level: 1,
-        type: 1,
+        level: 'Intermediate',
+        type: 'Endurance',
         programDays: [
             {
                 name: `${dayName} 1`,
