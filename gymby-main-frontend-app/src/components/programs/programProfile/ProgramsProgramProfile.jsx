@@ -11,7 +11,8 @@ import {getAllExercisesPrototype} from "../../../redux/slices/program-slice";
 
 const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                     setIsProgramEditing, isProgramAccessibleToEdit, createProgramDay, getProgramById,
-                                    deleteProgramDay, updateProgramDay,createExercise, getAllExercisesPrototype, exercisesPrototype, ...props}) => {
+                                    deleteProgramDay, updateProgramDay,createExercise, getAllExercisesPrototype, exercisesPrototype,
+                                    exerciseCreationData, setExerciseCreationData, ...props}) => {
 
     return (
         <div>
@@ -31,6 +32,7 @@ const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay
                                 getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
                                 updateProgramDay={updateProgramDay} createExercise={createExercise}
                                 getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
+                                exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
             />
         }
         </div>

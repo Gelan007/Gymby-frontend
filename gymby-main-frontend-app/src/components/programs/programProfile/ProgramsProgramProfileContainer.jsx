@@ -13,7 +13,8 @@ import {
     updateProgramDay,
     setProgramWithEmptyValues,
     createExercise,
-    getAllExercisesPrototype
+    getAllExercisesPrototype,
+    setExerciseCreationData
 }
     from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
@@ -75,8 +76,9 @@ const ProgramsProgramProfileContainer = (props) => {
                                                 setIsProgramEditing={props.setIsProgramEditing}
                                                 isProgramAccessibleToEdit={props.isProgramAccessibleToEdit} getProgramById={props.getProgramById}
                                                 deleteProgramDay={props.deleteProgramDay} updateProgramDay={props.updateProgramDay}
-                                                createExercise={createExercise} getAllExercisesPrototype={props.getAllExercisesPrototype}
+                                                createExercise={props.createExercise} getAllExercisesPrototype={props.getAllExercisesPrototype}
                                                 exercisesPrototype={props.exercisesPrototype}
+                                                setExerciseCreationData={props.setExerciseCreationData} exerciseCreationData={props.exerciseCreationData}
                         />
                         :
                     <NotFound/>
@@ -97,12 +99,13 @@ let mapStateToProps = (state) => {
         programs: state.program.programs,
         isLoading: state.program.isLoading,
         isProgramLoading: state.program.program.isLoading,
-        exercisesPrototype: state.program.exercisesPrototype
+        exercisesPrototype: state.program.exercisesPrototype,
+        exerciseCreationData: state.program.exerciseCreationData
     }
 }
 
 export default connect(mapStateToProps,
     {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing, createProgramDay,
         getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues,
-        createExercise, getAllExercisesPrototype})
+        createExercise, getAllExercisesPrototype, setExerciseCreationData})
 (ProgramsProgramProfileContainer);

@@ -3,24 +3,19 @@ import ExerciseCreationModalWindowTemplate from "../template/ExerciseCreationMod
 import ExerciseCreationModalProgramsListItem from "./ExerciseCreationModalProgramsListItem";
 import s from './ExerciseCreationModalProgramsList.module.scss'
 
-const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, createExercise, getAllExercisesPrototype, exercisesPrototype}) => {
+const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, createExercise, getAllExercisesPrototype,
+                                               exercisesPrototype, setExerciseCreationData, exerciseCreationData}) => {
     const [selectedExerciseName, setSelectedExerciseName] = useState()
     useEffect(() => {
         getAllExercisesPrototype()
     }, [])
-    useEffect(() => {
-        console.log(exercisesPrototype)
-    }, [exercisesPrototype])
 
-    // Создаем объект для группировки по категориям
+
     const exercisesByCategory = exercisesPrototype?.reduce((acc, exercise) => {
         const { category } = exercise;
-
-        // Если категория уже существует, добавляем объект в соответствующий массив
         if (acc[category]) {
             acc[category].push(exercise);
         } else {
-            // Если категория не существует, создаем новый массив с объектом
             acc[category] = [exercise];
         }
 
@@ -32,12 +27,15 @@ const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, cre
     return (
         <ExerciseCreationModalWindowTemplate isActive={isActive} setActive={setActive}
                                              buttonName={buttonName} createExercise={createExercise}
+                                             creationData={exerciseCreationData} setCreationData={setExerciseCreationData}
 
         >
             <div className={s.programListItems}>
                 {exercisesByCategory && Object.entries(exercisesByCategory)?.map(([category, exercises]) => (
                     <ExerciseCreationModalProgramsListItem isExpand={false} category={category}
-                                                           exercises={exercises} setSelectedExercise={setSelectedExerciseName}/>
+                                                           exercises={exercises} setSelectedExercise={setSelectedExerciseName}
+                                                           setExerciseCreationData={setExerciseCreationData}
+                    />
                 ))}
             </div>
         </ExerciseCreationModalWindowTemplate>

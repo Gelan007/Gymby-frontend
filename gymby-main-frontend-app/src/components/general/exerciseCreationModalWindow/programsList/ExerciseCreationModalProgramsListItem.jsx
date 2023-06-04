@@ -6,21 +6,29 @@ import SecondDegreeOfNestingExercise from "./SecondDegreeOfNestingExercise/Secon
 import {useTranslation} from "react-i18next";
 
 
-const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExerciseName, category, exercises}) => {
+const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExerciseName, category, exercises,
+                                                   setExerciseCreationData}) => {
     const [expand, setExpand] = useState(isExpand);
     const arrowExpandHandler = () => expand ? setExpand(false) : setExpand(true);
-    const [isChosen, setIsChosen] = useState()
+    const [exerciseName, setExerciseName] = useState()
     const {t} = useTranslation()
+
+    useEffect(() => {
+        exercises?.map((exercise) => {
+            if(exercise.name === exerciseName) {
+                setExerciseCreationData({
+                    exercisePrototypeId: exercise.id,
+                    name: exerciseName
+                })
+            }
+        })
+
+    }, [exerciseName])
 
     const textMap = {
         Arms: t("programs.categories.arms"),
         Legs: t("programs.categories.legs")
     };
-
-    useEffect(() => {
-        console.log(category)
-        console.log(exercises)
-    }, [category, exercises])
 
     return (
         <div className={expand ? `${s.exerciseItem} ${s.active}` : s.exerciseItem}>
@@ -41,7 +49,9 @@ const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExe
                 <div className={expand ? `${s.bottomBlock} ${s.active}` : `${s.bottomBlock}` }>
                     <div className={s.bottomBlock__daysBlock} >
                         {exercises.map(exercise => (
-                            <SecondDegreeOfNestingExercise key={exercise.id} isChosen={false} name={exercise.name}/>
+                            <SecondDegreeOfNestingExercise key={exercise.id} name={exercise.name}
+                                                           exerciseName={exerciseName}
+                                                           setExerciseName={setExerciseName}/>
                         ))}
                     </div>
                 </div>

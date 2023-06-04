@@ -5,9 +5,19 @@ import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add', createExercise}) => {
+const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add',
+                                                 createExercise, setCreationData, creationData}) => {
     const handleCreateButton = () => {
-        createExercise()
+        createExercise(creationData)
+        setCreationData(
+            {
+                programId: '',
+                exercisePrototypeId: '',
+                programDayId: '',
+                name: ''
+            }
+        )
+        setActive(false)
     }
     return (
         <ModalWindow isActive={isActive} setActive={setActive}>
@@ -26,7 +36,7 @@ const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, but
                     {children}
                 </div>
                 <div className={s.button}>
-                    <ButtonGreen>{buttonName}</ButtonGreen>
+                    <ButtonGreen onClick={handleCreateButton}>{buttonName}</ButtonGreen>
                 </div>
             </div>
         </ModalWindow>

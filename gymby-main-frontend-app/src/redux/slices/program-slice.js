@@ -158,10 +158,11 @@ export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (p
     }
 });
 
-export const createExercise = createAsyncThunk('programs/createExercise', async (payload) => {
+export const createExercise = createAsyncThunk('programs/createExercise', async (payload, {dispatch}) => {
     const response = await programsAPI.createExercise(payload.programId, payload.exercisePrototypeId, payload.programDayId, payload.name);
     if (response.status >= 200 && response.status <= 204) {
-        return response.data;
+        console.log(payload)
+        dispatch(getProgramById({programId: payload.programId}))
     } else {
         throw new Error('Failed to fetch measurements');
     }
@@ -210,8 +211,14 @@ const programSlice = createSlice({
                     ],
                 },
             ],
-            exercisesPrototype: []
         },
+        exercisesPrototype: [],
+        exerciseCreationData: {
+            programId: '',
+            exercisePrototypeId: '',
+            programDayId: '',
+            name: ''
+        }
 
     },
     reducers: {
@@ -226,6 +233,12 @@ const programSlice = createSlice({
         },
         setIsProgramAccessibleToEdit: (state, action) => {
             state.isProgramAccessibleToEdit = action.payload
+        },
+        setExerciseCreationData: (state, action) => {
+            state.exerciseCreationData = {
+                ...state.exerciseCreationData,
+                ...action.payload
+            };
         },
         setProgramWithEmptyValues: (state, action) => {
             const defaultValues = {
@@ -314,5 +327,6 @@ const programSlice = createSlice({
     }
 })
 
-export const {setPrograms, setSelectedDay, setIsProgramEditing, setIsProgramAccessibleToEdit, setProgramWithEmptyValues} = programSlice.actions;
+export const {setPrograms, setSelectedDay, setIsProgramEditing, setIsProgramAccessibleToEdit,
+    setProgramWithEmptyValues, setExerciseCreationData} = programSlice.actions;
 export default programSlice.reducer;

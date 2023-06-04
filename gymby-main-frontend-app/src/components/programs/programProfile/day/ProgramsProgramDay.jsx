@@ -13,7 +13,8 @@ import {useTranslation} from "react-i18next";
 
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                 setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
-                                updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype}) => {
+                                updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype,
+                                exerciseCreationData, setExerciseCreationData}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -22,6 +23,14 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
     const [isModalActive, setIsModalActive] = useState(false);
     const programImportHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
     const {t} = useTranslation()
+
+    useEffect(() => {
+        program.programDays?.map((day, index) => {
+            if(index === selectedDay - 1) {
+                setExerciseCreationData({programId, programDayId: day.programDayId})
+            }
+        }, [])
+    }, [selectedDay, programId])
 
     return (
         <div className={s.program}>
@@ -85,6 +94,7 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
             <ExerciseCreationModalProgramsList isActive={isModalActive} setActive={setIsModalActive}
                                                buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
                                                getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
+                                               exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
             />
 
         </div>
