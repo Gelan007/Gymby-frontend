@@ -33,8 +33,8 @@ export const programsAPI = {
         const response = await $authHost.post(`api/program/day/delete`, {programDayId, programId})
         return response;
     },
-    /*async deleteMeasurement(id) {
-        const response = await $authHost.post(`api/measurement/delete`, {id})
+        async deleteProgram(programId) {
+        const response = await $authHost.post(`api/program/delete`, {programId})
         return response;
-    },*/
+    }
 }

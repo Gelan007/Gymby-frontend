@@ -15,7 +15,6 @@ const handleProgramsFulfilled = (state, action) => {
     }));
 
     state.programs = formattedPrograms;
-
 }
 
 const handleProgramFulfilled = (state, action) => {
@@ -149,6 +148,14 @@ export const deleteProgramDay = createAsyncThunk('programs/deleteProgramDay', as
         throw new Error('Failed to fetch measurements');
     }
 });
+export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (payload, {dispatch}) => {
+    const response = await programsAPI.deleteProgram(payload);
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getPersonalPrograms())
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 
 const programSlice = createSlice({
     name: 'program',
@@ -276,6 +283,9 @@ const programSlice = createSlice({
                 state.isLoading = false;
             })
             .addCase(createProgramDay.fulfilled, (state, action) => {
+                state.isLoading = false;
+            })
+            .addCase(deleteProgram.fulfilled, (state, action) => {
                 state.isLoading = false;
             })
     }
