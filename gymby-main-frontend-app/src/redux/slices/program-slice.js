@@ -11,7 +11,7 @@ const handleProgramsFulfilled = (state, action) => {
         level: program.level,
         type: program.type,
         isPublic: program.isPublic,
-        marks: [program.level, program.type],
+        marks: program.coachUsername ? [program.level, program.type, program.coachUsername] : [program.level, program.type]
     }));
 
     state.programs = formattedPrograms;

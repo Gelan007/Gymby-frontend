@@ -20,16 +20,13 @@ const ProgramsProgramProfileContainer = (props) => {
     }, [])
 
     useEffect(() => {
-        /*if('/' + programId !== urlPathForProgramCreation) {*/
-            props.getProgramById({programId})
-        /*}*/
+        props.getProgramById({programId})
     }, [])
 
     useEffect(() => {
         return () => {
             props.setIsProgramEditing(false)
             props.setIsProgramAccessibleToEdit(false)
-            //props.setProgramWithEmptyValues()
         }
     }, [])
 

@@ -54,7 +54,9 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                         <div className={s.photoBlock__photo}>
                             <img src={defaultProgramPhoto} alt="programPhoto"/>
                         </div>
-                        <div className={s.photoBlock__description}>{t("programs.programDescription.programAuthor")}: <span>@Gymby_team</span></div>
+                        <div className={s.photoBlock__description}>
+                            {t("programs.programDescription.programAuthor")}: <span>@Gymby_team</span>
+                        </div>
                     </div>
                     <div className={s.mainBlock}>
                         <div className={s.mainBlock__titleBlock}>
@@ -65,9 +67,6 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                                 {program.marks?.map((mark, key) => (
                                     <ProgramsMark text={mark} key={key} isBlackTextColor={true}/>
                                 ))}
-                               {/* <ProgramsMark text={"набір маси"} isBlackTextColor={true}/>
-                                <ProgramsMark text={"ектоморф"} isBlackTextColor={true}/>
-                                <ProgramsMark text={"середній"} isBlackTextColor={true}/>*/}
                             </div>
                         </div>
                         {isProgramEditing ?
