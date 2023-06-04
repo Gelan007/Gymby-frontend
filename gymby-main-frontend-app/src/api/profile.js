@@ -44,6 +44,18 @@ export const profileAPI = {
         const response = await $authHostWithoutHeaders.get(`api/profile/${userName}`)
         return response;
     },
+    async getQueryProfile(type, query) {
+        let response = await $authHostWithoutHeaders.get(`/api/profile/search`)
+
+        if (type && query) {
+            response = await $authHostWithoutHeaders.get(`/api/profile/search?type=${type}&query=${query}`)
+        } else if (type) {
+            response = await $authHostWithoutHeaders.get(`/api/profile/search?type=${type}`)
+        } else if (query) {
+            response = await $authHostWithoutHeaders.get(`/api/profile/search?query=${query}`)
+        }
+        return response;
+    },
 
     /*async updateProfile(username, email, firstName,
                         lastName, description, photoAvatarPath,

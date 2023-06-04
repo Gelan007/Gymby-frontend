@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import UserAccountFriendsList from "./UserAccountFriendsList";
 import {connect} from "react-redux";
-import {getMyFriendsList, getMyPendingFriendsList} from "../../../redux/reducers/user-account-reducer";
+import {getMyFriendsList, getMyPendingFriendsList, acceptFriendship, rejectFriendship,deleteFriendship} from "../../../redux/reducers/user-account-reducer";
 
 
 const UserAccountFriendsListContainer = (props) => {
@@ -21,7 +21,8 @@ const UserAccountFriendsListContainer = (props) => {
         <UserAccountFriendsList
             profiles={props.profiles} friendsValue={FRIENDS}
             requestsValue={REQUESTS} selectedOption={selectedOption}
-            setSelectedOption={setSelectedOption}
+            setSelectedOption={setSelectedOption} acceptFriendship={props.acceptFriendship}
+            rejectFriendship={props.rejectFriendship} deleteFriendship={props.deleteFriendship}
         />
     );
 };
@@ -32,4 +33,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {getMyFriendsList, getMyPendingFriendsList})(UserAccountFriendsListContainer);
+export default connect(mapStateToProps,
+    {getMyFriendsList, getMyPendingFriendsList, acceptFriendship, rejectFriendship, deleteFriendship})
+(UserAccountFriendsListContainer);

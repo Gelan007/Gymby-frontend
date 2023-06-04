@@ -19,7 +19,6 @@ const ProgramsTrainerBasedContainer = (props) => {
                 :
                 <ProgramsTrainerBased programs={props.programs}/>
             }
-
         </div>
 
     );

@@ -11,7 +11,7 @@ const handleProgramsFulfilled = (state, action) => {
         level: program.level,
         type: program.type,
         isPublic: program.isPublic,
-        marks: [program.level, program.type],
+        marks: program.coachUsername ? [program.level, program.type, program.coachUsername] : [program.level, program.type]
     }));
 
     state.programs = formattedPrograms;
@@ -133,6 +133,16 @@ export const createProgramDay = createAsyncThunk('programs/createProgramDay', as
         throw new Error('Failed to fetch measurements');
     }
 });
+
+export const updateProgramDay = createAsyncThunk('programs/updateProgramDay', async (payload) => {
+    const response = await programsAPI.updateProgramDay(payload.programDayId, payload.programId, payload.name);
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
 export const deleteProgramDay = createAsyncThunk('programs/deleteProgramDay', async (payload) => {
     const response = await programsAPI.deleteProgramDay(payload.programDayId, payload.programId);
     if (response.status >= 200 && response.status <= 204) {
@@ -192,6 +202,39 @@ const programSlice = createSlice({
         },
         setIsProgramAccessibleToEdit: (state, action) => {
             state.isProgramAccessibleToEdit = action.payload
+        },
+        setProgramWithEmptyValues: (state, action) => {
+            const defaultValues = {
+                isProgramLoading: false,
+                programId: '',
+                name: '',
+                description: '',
+                level: '',
+                type: '',
+                programDays: [
+                    {
+                        programDayId: '',
+                        name: '',
+                        exercises: [
+                            {
+                                exerciseId: '',
+                                name: '',
+                                exercisePrototypeId: '',
+                                approaches: [
+                                    {
+                                        approachId: '',
+                                        repeats: 0,
+                                        weight: 0.0,
+                                        creationDate: '',
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            }
+
+            state.program = defaultValues
         }
     },
     extraReducers: (builder) => {
@@ -240,5 +283,5 @@ const programSlice = createSlice({
     }
 })
 
-export const {setPrograms, setSelectedDay, setIsProgramEditing, setIsProgramAccessibleToEdit} = programSlice.actions;
+export const {setPrograms, setSelectedDay, setIsProgramEditing, setIsProgramAccessibleToEdit, setProgramWithEmptyValues} = programSlice.actions;
 export default programSlice.reducer;

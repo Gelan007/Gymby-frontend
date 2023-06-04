@@ -233,9 +233,68 @@ export const getMyPendingFriendsList = () => {
             })
     }
 }
-export const getUserNameThunkCreator = () => {
+export const getQueryProfile = (type, query) => {
     return (dispatch) => {
-
+        profileAPI.getQueryProfile(type, query)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setProfilesList(
+                        response.data
+                    ))
+                }
+            })
     }
 }
+
+export const inviteFriend = (username) => {
+    return (dispatch) => {
+        friendsAPI.inviteFriend(username)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                   /* dispatch(setProfilesList(
+                        response.data
+                    ))*/
+                }
+            })
+    }
+}
+
+export const acceptFriendship = (username) => {
+    return (dispatch) => {
+        friendsAPI.acceptFriendship(username)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                     dispatch(setProfilesList(
+                        response.data
+                    ))
+                }
+            })
+    }
+}
+export const rejectFriendship = (username) => {
+    return (dispatch) => {
+        friendsAPI.rejectFriendship(username)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setProfilesList(
+                        response.data
+                    ))
+                }
+            })
+    }
+}
+export const deleteFriendship = (username) => {
+    return (dispatch) => {
+        friendsAPI.deleteFriendship(username)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setProfilesList(
+                        response.data
+                    ))
+                }
+            })
+    }
+}
+
+
 export default userAccountReducer;

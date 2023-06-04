@@ -28,7 +28,7 @@ const UserAccountProfile = ({profile, isRequestCompleted, ...props}) => {
             <div className={s.userAccountProfile__body}>
                 <ProfileInfoBlock firstName={profile.firstName} lastName={profile.lastName}
                                   telegramUsername={profile.telegramUsername} username={profile.username}
-                                  instagramUrl={profile.instagramUrl}
+                                  instagramUrl={profile.instagramUrl} isCoach={profile.isCoach}
                 />
                 <div className={s.userDescriptionBlock}>
                     <div className={s.userDescriptionBlock__title + " " + s.userAccountProfile__title}>

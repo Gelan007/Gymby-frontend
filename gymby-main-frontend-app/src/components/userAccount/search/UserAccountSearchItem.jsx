@@ -5,7 +5,11 @@ import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
 import addUserIcon from '../../../assets/images/general/icons/addUser_icon.svg'
 
 
-const UserAccountSearchItem = ({username, firstName, lastName}) => {
+const UserAccountSearchItem = ({username, firstName, lastName, isCoach, inviteFriend}) => {
+    const handleAddFriend = (e) => {
+        e.preventDefault()
+        inviteFriend(username)
+    }
 
     return (
         <div className={s.searchItem + " " + s.userAccountItem}>
@@ -18,11 +22,15 @@ const UserAccountSearchItem = ({username, firstName, lastName}) => {
                         <span className={s.infoBlock__name}>{firstName} {lastName}</span>
                         <span className={s.infoBlock__username}>({username})</span>
                     </div>
-                    <div className={s.trainerIcon}>
-                        <img src={trainerIcon} alt="trainer"/>
-                    </div>
+                    {isCoach ?
+                        <div className={s.trainerIcon}>
+                            <img src={trainerIcon} alt="trainer"/>
+                        </div>
+                        :
+                        <div></div>
+                    }
                 </div>
-                <div className={s.addIcon}>
+                <div className={s.addIcon} onClick={(e) => handleAddFriend(e)}>
                     <img src={addUserIcon} alt="addUserIcon"/>
                 </div>
             </div>

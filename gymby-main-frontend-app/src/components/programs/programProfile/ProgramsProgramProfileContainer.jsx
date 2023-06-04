@@ -2,8 +2,10 @@ import React, {useEffect} from 'react';
 import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
-import {getProgramById, setSelectedDay, setIsProgramEditing, createProgramDay, getPersonalPrograms,
-    setIsProgramAccessibleToEdit, deleteProgramDay}
+import {
+    getProgramById, setSelectedDay, setIsProgramEditing, createProgramDay, getPersonalPrograms,
+    setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues
+}
     from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
@@ -18,9 +20,7 @@ const ProgramsProgramProfileContainer = (props) => {
     }, [])
 
     useEffect(() => {
-        /*if('/' + programId !== urlPathForProgramCreation) {*/
-            props.getProgramById({programId})
-        /*}*/
+        props.getProgramById({programId})
     }, [])
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const ProgramsProgramProfileContainer = (props) => {
                                                 isProgramEditing={props.isProgramEditing} createProgramDay={props.createProgramDay}
                                                 setIsProgramEditing={props.setIsProgramEditing}
                                                 isProgramAccessibleToEdit={props.isProgramAccessibleToEdit} getProgramById={props.getProgramById}
-                                                deleteProgramDay={props.deleteProgramDay}
+                                                deleteProgramDay={props.deleteProgramDay} updateProgramDay={props.updateProgramDay}
                         />
                         :
                     <NotFound/>
@@ -91,5 +91,5 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,
     {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing, createProgramDay,
-        getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay })
+        getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues })
 (ProgramsProgramProfileContainer);

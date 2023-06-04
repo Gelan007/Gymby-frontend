@@ -13,6 +13,19 @@ export const friendsAPI = {
         const response = await $authHost.post('api/friend/accept-request', {username} )
         return response;
     },
+    async rejectFriendship(username) {
+        const response = await $authHost.post('api/friend/reject-request', {username})
+        return response;
+    },
+    async deleteFriendship(username) {
+        const response = await $authHost.post('api/friend/delete-request', {username})
+        return response;
+    },
+    async inviteFriend(username) {
+        const response = await $authHost.post('api/friend/invite', {username})
+        return response;
+    },
+
 }
 
 

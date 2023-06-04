@@ -11,7 +11,7 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
 const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                         isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay, getProgramById,
-                                        deleteProgramDay}) => {
+                                        deleteProgramDay, updateProgramDay}) => {
 
     const {t} = useTranslation()
     const handleStartEditing = () => setIsProgramEditing(true)
@@ -47,14 +47,16 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                     selectedDay={selectedDay} setSelectedDay={setSelectedDay}
                     isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
                     getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
-                    program={program}
+                    program={program} updateProgramDay={updateProgramDay}
                 />
                 <div className={s.program__body}>
                     <div className={s.photoBlock}>
                         <div className={s.photoBlock__photo}>
                             <img src={defaultProgramPhoto} alt="programPhoto"/>
                         </div>
-                        <div className={s.photoBlock__description}>{t("programs.programDescription.programAuthor")}: <span>@Gymby_team</span></div>
+                        <div className={s.photoBlock__description}>
+                            {t("programs.programDescription.programAuthor")}: <span>@Gymby_team</span>
+                        </div>
                     </div>
                     <div className={s.mainBlock}>
                         <div className={s.mainBlock__titleBlock}>
@@ -65,9 +67,6 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                                 {program.marks?.map((mark, key) => (
                                     <ProgramsMark text={mark} key={key} isBlackTextColor={true}/>
                                 ))}
-                               {/* <ProgramsMark text={"набір маси"} isBlackTextColor={true}/>
-                                <ProgramsMark text={"ектоморф"} isBlackTextColor={true}/>
-                                <ProgramsMark text={"середній"} isBlackTextColor={true}/>*/}
                             </div>
                         </div>
                         {isProgramEditing ?

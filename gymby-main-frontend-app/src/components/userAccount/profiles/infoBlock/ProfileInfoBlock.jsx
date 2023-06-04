@@ -8,7 +8,7 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 import {useTranslation} from "react-i18next";
 
 
-const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, instagramUrl}) => {
+const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, instagramUrl, isCoach}) => {
     const {t} = useTranslation()
 
     return (
@@ -23,9 +23,14 @@ const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, inst
                 <div className={s.contentBlock}>
                     <div className={s.contentBlock__fullNameBlock}>
                         <span className={s.contentBlock__fullName}>{`${firstName} ${lastName}`}</span>
-                        <div className={s.contentBlock__trainerIcon}>
-                            <img src={trainerIcon} alt="trainerIcon"/>
-                        </div>
+                        {isCoach ?
+                            <div className={s.contentBlock__trainerIcon}>
+                                <img src={trainerIcon} alt="trainerIcon"/>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
                     </div>
                     <div className={s.contentBlock__text}>{t("userAccount.profile.profileInfoBlock.content1")} <span>180</span> {t("userAccount.profile.profileInfoBlock.content2")}</div>
                     <div className={s.contentBlock__text}><span>15</span> {t("userAccount.profile.profileInfoBlock.content3")}</div>
