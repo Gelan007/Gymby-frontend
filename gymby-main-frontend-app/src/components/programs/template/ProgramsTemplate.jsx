@@ -11,14 +11,8 @@ import {PROGRAMS_PROGRAM_PROFILE_ROUTE, PROGRAMS_ROUTE, urlPathForProgramCreatio
 import { useTranslation } from 'react-i18next';
 
 
-//*Этот массив вообще удалить потом, и оставить просто programs = [] - НО НАВЕРНОЕ ВСЕ ТАКИ ПРОСТО programs И ВСЁ*
-const defaultTestProgramsArray = [
-    {id: 11, title: '4-недільна програма на масу від Івана', marks: ['ектоморф', 'набір маси', 'середній']},
-    {id: 12, title: '5-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'просунутий', 'параметр']},
-    {id: 13, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
-    {id: 14, title: '6-недільна програма на масу', marks: ['ектоморф', 'набір маси', 'середній']},
-]
-const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createProgram, userName}) => {
+const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createProgram,
+                              userName, deleteProgram, getPersonalPrograms}) => {
 
     const {t} = useTranslation();
     const [isModalActive, setIsModalActive] = useState(false);
@@ -27,8 +21,10 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createPr
 
     /*надо будет заменить на store*/
     const [selectedProgram, setSelectedProgram] = useState('');
-
-    const handleCreateProgramButton = () => createProgram({userName, userProgramsCount: programs?.length, dayName: t("programs.programDescription.leftPanel.day")})
+    const [selectedProgramId, setSelectedProgramId] = useState('');
+    const handleCreateProgramButton = () => {
+        createProgram({userName, userProgramsCount: programs?.length, dayName: t("programs.programDescription.leftPanel.day")})
+    }
 
 
     return (
@@ -56,6 +52,9 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createPr
                                                   marks={program.marks}
                                                   modalHandler={modalHandler}
                                                   setSelectedProgram={setSelectedProgram}
+                                                  setSelectedProgramId={setSelectedProgramId}
+                                                  programId={program.programId}
+                                                  getPersonalPrograms={getPersonalPrograms}
                                     />
                                 </NavLink>
                             </Grid>
@@ -66,6 +65,8 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createPr
             <ConfirmationModalWindow isActive={isModalActive}
                                      setActive={setIsModalActive}
                                      titleText={modalWindowTitleText}
+                                     applyButtonRequest={deleteProgram}
+                                     firstParameterForApplyButton={selectedProgramId}
             >
                 {t("programs.modalWindow.text")} <span>{selectedProgram}</span> ?
             </ConfirmationModalWindow>

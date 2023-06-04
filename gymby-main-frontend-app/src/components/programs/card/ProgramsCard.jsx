@@ -5,13 +5,15 @@ import closeIcon from '../../../assets/images/general/icons/closeWhite.svg'
 import ConfirmationModalWindow from "../../general/modalWindow/confirmation/ConfirmationModalWindow";
 
 
-const ProgramsCard = ({title, marks, isDeleteIcon= false, modalHandler, setSelectedProgram}) => {
+const ProgramsCard = ({title, marks, isDeleteIcon= false, modalHandler, setSelectedProgram,
+                          setSelectedProgramId, programId,getPersonalPrograms}) => {
 
     const deleteHandler = (e) => {
         e.preventDefault()
         // e.stopPropagation()
         modalHandler();
         setSelectedProgram(title)
+        setSelectedProgramId(programId)
     }
 
     return (

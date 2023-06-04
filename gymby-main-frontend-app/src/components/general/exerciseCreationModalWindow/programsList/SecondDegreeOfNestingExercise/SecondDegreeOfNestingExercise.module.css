@@ -1,0 +1,47 @@
+.pointsList__item {
+  display: flex;
+  align-items: baseline;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 136.8421052632%;
+  color: #000000;
+}
+.pointsList__item:before {
+  content: "";
+  min-width: 9px;
+  height: 9px;
+  background: #FE5F55;
+  border-radius: 2px;
+  margin-right: 7px;
+}
+
+.secondDegreeOfNestingExercise {
+  width: 100%;
+  padding-left: 10%;
+  border-top: 2px solid rgba(0, 0, 0, 0.07);
+  background-color: #F7F7FF;
+  cursor: pointer;
+}
+.secondDegreeOfNestingExercise:hover {
+  background-color: #BDD5EA;
+}
+
+.mainBlock {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+.mainBlock > *:not(:last-child) {
+  margin-right: 5px;
+}
+
+.exerciseIcon img {
+  max-width: 77%;
+}
+
+.chosen {
+  background-color: #BDD5EA;
+}
+
+/*# sourceMappingURL=SecondDegreeOfNestingExercise.module.css.map */

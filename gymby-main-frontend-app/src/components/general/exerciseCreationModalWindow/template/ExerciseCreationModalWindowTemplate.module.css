@@ -16,7 +16,7 @@
   margin-right: 7px;
 }
 
-.diaryModalWindowTemplate {
+.exerciseCreationModalWindowTemplate {
   display: flex;
   flex-direction: column;
 }

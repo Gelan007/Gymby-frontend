@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ProgramsPersonal from "./ProgramsPersonal";
 import ProgramsFree from "../free/ProgramsFree";
 import {connect} from "react-redux";
-import {createProgram, getPersonalPrograms, setPrograms, setIsProgramAccessibleToEdit} from "../../../redux/slices/program-slice";
+import {createProgram, getPersonalPrograms, setPrograms, setIsProgramAccessibleToEdit, deleteProgram} from "../../../redux/slices/program-slice";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 
 const ProgramsPersonalContainer = (props) => {
@@ -21,7 +21,8 @@ const ProgramsPersonalContainer = (props) => {
                     <span>Loading...</span>
                     :
                 <ProgramsPersonal programs={props.programs} createProgram={props.createProgram}
-                                  userName={props.userName}
+                                  userName={props.userName} deleteProgram={props.deleteProgram}
+                                  getPersonalPrograms={props.getPersonalPrograms}
                 />
             }
         </div>
@@ -39,4 +40,4 @@ const mapStateToProps = (state) => {
 
     }
 }
-export default connect(mapStateToProps, {getPersonalPrograms, setPrograms, createProgram, getMyProfile})(ProgramsPersonalContainer);
+export default connect(mapStateToProps, {getPersonalPrograms, setPrograms, createProgram, getMyProfile, deleteProgram})(ProgramsPersonalContainer);

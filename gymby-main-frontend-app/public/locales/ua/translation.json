@@ -125,8 +125,21 @@
         "title": "Видалення програми",
         "text": "Ви дійсно бажаєте видалити"
       },
-      "createProgram": "Створити програму"
+      "createProgram": "Створити програму",
+      "marks": {
+        "beginner": "початковий",
+        "advanced": "просунутий",
+        "intermediate": "середній",
+        "weightGain": "набір маси",
+        "endurance": "витривалість",
+        "weightLoss": "схуднення"
+      },
+      "categories": {
+        "legs": "Ноги",
+        "arms": "Руки"
+      }
     },
+
     "statistics": {
       "cards": {
         "card1": "Кількість виконаних вправ",

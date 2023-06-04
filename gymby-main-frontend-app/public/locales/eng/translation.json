@@ -125,7 +125,19 @@
       "title": "Program deletion",
       "text": "Are you sure that you want to delete the"
     },
-    "createProgram": "Create the program"
+    "createProgram": "Create the program",
+    "marks": {
+      "beginner": "beginner",
+      "advanced": "advanced",
+      "intermediate": "intermediate",
+      "weightGain": "weight gain",
+      "endurance": "endurance",
+      "weightLoss": "weight loss"
+    },
+    "categories": {
+      "legs": "Legs",
+      "arms": "Arms"
+    }
   },
   "statistics": {
     "cards": {

@@ -3,8 +3,18 @@ import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import {
-    getProgramById, setSelectedDay, setIsProgramEditing, createProgramDay, getPersonalPrograms,
-    setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues
+    getProgramById,
+    setSelectedDay,
+    setIsProgramEditing,
+    createProgramDay,
+    getPersonalPrograms,
+    setIsProgramAccessibleToEdit,
+    deleteProgramDay,
+    updateProgramDay,
+    setProgramWithEmptyValues,
+    createExercise,
+    getAllExercisesPrototype,
+    setExerciseCreationData
 }
     from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
@@ -66,6 +76,9 @@ const ProgramsProgramProfileContainer = (props) => {
                                                 setIsProgramEditing={props.setIsProgramEditing}
                                                 isProgramAccessibleToEdit={props.isProgramAccessibleToEdit} getProgramById={props.getProgramById}
                                                 deleteProgramDay={props.deleteProgramDay} updateProgramDay={props.updateProgramDay}
+                                                createExercise={props.createExercise} getAllExercisesPrototype={props.getAllExercisesPrototype}
+                                                exercisesPrototype={props.exercisesPrototype}
+                                                setExerciseCreationData={props.setExerciseCreationData} exerciseCreationData={props.exerciseCreationData}
                         />
                         :
                     <NotFound/>
@@ -85,11 +98,14 @@ let mapStateToProps = (state) => {
         isProgramAccessibleToEdit: state.program.isProgramAccessibleToEdit,
         programs: state.program.programs,
         isLoading: state.program.isLoading,
-        isProgramLoading: state.program.program.isLoading
+        isProgramLoading: state.program.program.isLoading,
+        exercisesPrototype: state.program.exercisesPrototype,
+        exerciseCreationData: state.program.exerciseCreationData
     }
 }
 
 export default connect(mapStateToProps,
     {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing, createProgramDay,
-        getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues })
+        getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues,
+        createExercise, getAllExercisesPrototype, setExerciseCreationData})
 (ProgramsProgramProfileContainer);

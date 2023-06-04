@@ -15,7 +15,6 @@ const handleProgramsFulfilled = (state, action) => {
     }));
 
     state.programs = formattedPrograms;
-
 }
 
 const handleProgramFulfilled = (state, action) => {
@@ -43,17 +42,15 @@ const handleProgramFulfilled = (state, action) => {
             })),
         })),
     };
-
 }
-
 
 
 const createInitialProgramData = (userName, userProgramsCount, dayName) => {
     const programData = {
         name: `Program from ${userName} ${userProgramsCount + 1}` ,
         description: "Program description",
-        level: 1,
-        type: 1,
+        level: 'Intermediate',
+        type: 'Endurance',
         programDays: [
             {
                 name: `${dayName} 1`,
@@ -80,10 +77,11 @@ const createInitialProgramData = (userName, userProgramsCount, dayName) => {
     return programData;
 };
 
-export const createProgram = createAsyncThunk('programs/createProgram', async (payload) => {
+export const createProgram = createAsyncThunk('programs/createProgram', async (payload, {dispatch}) => {
     const programData = createInitialProgramData(payload.userName, payload.userProgramsCount, payload.dayName);
     const response = await programsAPI.createProgram(programData);
     if (response.status >= 200 && response.status <= 204) {
+        dispatch(getPersonalPrograms())
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');
@@ -151,7 +149,32 @@ export const deleteProgramDay = createAsyncThunk('programs/deleteProgramDay', as
         throw new Error('Failed to fetch measurements');
     }
 });
+export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (payload, {dispatch}) => {
+    const response = await programsAPI.deleteProgram(payload);
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getPersonalPrograms())
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 
+export const createExercise = createAsyncThunk('programs/createExercise', async (payload, {dispatch}) => {
+    const response = await programsAPI.createExercise(payload.programId, payload.exercisePrototypeId, payload.programDayId, payload.name);
+    if (response.status >= 200 && response.status <= 204) {
+        console.log(payload)
+        dispatch(getProgramById({programId: payload.programId}))
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercisesPrototype', async (payload) => {
+    const response = await programsAPI.getAllExercisesPrototype();
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 const programSlice = createSlice({
     name: 'program',
     initialState : {
@@ -189,6 +212,14 @@ const programSlice = createSlice({
                 },
             ],
         },
+        exercisesPrototype: [],
+        exerciseCreationData: {
+            programId: '',
+            exercisePrototypeId: '',
+            programDayId: '',
+            name: ''
+        }
+
     },
     reducers: {
         setPrograms: (state, action) => {
@@ -202,6 +233,12 @@ const programSlice = createSlice({
         },
         setIsProgramAccessibleToEdit: (state, action) => {
             state.isProgramAccessibleToEdit = action.payload
+        },
+        setExerciseCreationData: (state, action) => {
+            state.exerciseCreationData = {
+                ...state.exerciseCreationData,
+                ...action.payload
+            };
         },
         setProgramWithEmptyValues: (state, action) => {
             const defaultValues = {
@@ -280,8 +317,16 @@ const programSlice = createSlice({
             .addCase(createProgramDay.fulfilled, (state, action) => {
                 state.isLoading = false;
             })
+            .addCase(deleteProgram.fulfilled, (state, action) => {
+                state.isLoading = false;
+            })
+            .addCase(getAllExercisesPrototype.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.exercisesPrototype = action.payload;
+            })
     }
 })
 
-export const {setPrograms, setSelectedDay, setIsProgramEditing, setIsProgramAccessibleToEdit, setProgramWithEmptyValues} = programSlice.actions;
+export const {setPrograms, setSelectedDay, setIsProgramEditing, setIsProgramAccessibleToEdit,
+    setProgramWithEmptyValues, setExerciseCreationData} = programSlice.actions;
 export default programSlice.reducer;

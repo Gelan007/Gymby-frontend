@@ -8,13 +8,12 @@ import ButtonRed from "../../../UI/buttons/ButtonRed";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 import { useTranslation } from 'react-i18next';
 
-const ConfirmationModalWindow = ({isActive, setActive, titleText, titleIcon = dumbbell, children, applyButtonRequest}) => {
+const ConfirmationModalWindow = ({isActive, setActive, titleText, titleIcon = dumbbell, children, applyButtonRequest, firstParameterForApplyButton}) => {
     const {t} = useTranslation();
     
     const applyButtonHandler = () => {
         setActive(false);
-        /*запрос на сервер для удаления*/
-        // applyButtonRequest();
+        applyButtonRequest(firstParameterForApplyButton);
     }
 
     return (
