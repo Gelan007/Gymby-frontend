@@ -77,7 +77,7 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                                     return (
                                         <Approach key={programDay.programDayId} isDrawControlIcons={false}
                                                        isWeight={false} isMark={false}
-                                                       exercise={exercise} exerciseName={programDay.name}
+                                                       exercise={exercise} exerciseName={exercise.name}
                                                        exerciseId={programDay.programDayId}
                                         />
 
