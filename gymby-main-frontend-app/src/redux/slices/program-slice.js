@@ -77,10 +77,11 @@ const createInitialProgramData = (userName, userProgramsCount, dayName) => {
     return programData;
 };
 
-export const createProgram = createAsyncThunk('programs/createProgram', async (payload) => {
+export const createProgram = createAsyncThunk('programs/createProgram', async (payload, {dispatch}) => {
     const programData = createInitialProgramData(payload.userName, payload.userProgramsCount, payload.dayName);
     const response = await programsAPI.createProgram(programData);
     if (response.status >= 200 && response.status <= 204) {
+        dispatch(getPersonalPrograms())
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');
