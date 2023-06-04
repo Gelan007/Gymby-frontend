@@ -97,14 +97,6 @@ const userAccountReducer = (state = initialState, action) => {
                     isRequestCompleted: action.isRequestCompleted
                 }
             }
-        case SET_PROFILE:
-            return {
-                ...state,
-                profile: {
-                    ...state.profile,
-                    isRequestCompleted: action.isRequestCompleted
-                }
-            }
         case SET_PROFILES_LIST:
             return {
                 ...state,
@@ -112,14 +104,14 @@ const userAccountReducer = (state = initialState, action) => {
                     ...action.profiles
                 ]
 }
-case SET_USERNAME:
-    return {
-        ...state,
-        userName: action.userName
+        case SET_USERNAME:
+            return {
+                ...state,
+                userName: action.userName
+            }
+        default:
+            return state;
     }
-default:
-return state;
-}
 }
 
 //export const setUsersAC = (userId) => ({type: SET_USERS, userId})

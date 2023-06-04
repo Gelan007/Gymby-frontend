@@ -13,7 +13,7 @@ const UserAccountProfileContainer = (props) => {
         return () => {
             props.setProfile('', '', '',
                 '', '', '',
-                '', '', '', '', [], false)
+                '', '', '', '', [], [], false)
         }
     }, [])
 
