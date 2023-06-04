@@ -1,14 +1,26 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./ExerciseCreationModalProgramsList.module.scss";
 import plug from "../../../../assets/images/measurements/biceps.svg";
 import arrowIcon from "../../../../assets/images/modal/bottomArrow.svg";
 import SecondDegreeOfNestingExercise from "./SecondDegreeOfNestingExercise/SecondDegreeOfNestingExercise";
+import {useTranslation} from "react-i18next";
 
 
-const ExerciseCreationModalProgramsListItem = ({isExpand = false}) => {
+const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExerciseName, category, exercises}) => {
     const [expand, setExpand] = useState(isExpand);
     const arrowExpandHandler = () => expand ? setExpand(false) : setExpand(true);
     const [isChosen, setIsChosen] = useState()
+    const {t} = useTranslation()
+
+    const textMap = {
+        Arms: t("programs.categories.arms"),
+        Legs: t("programs.categories.legs")
+    };
+
+    useEffect(() => {
+        console.log(category)
+        console.log(exercises)
+    }, [category, exercises])
 
     return (
         <div className={expand ? `${s.exerciseItem} ${s.active}` : s.exerciseItem}>
@@ -18,7 +30,7 @@ const ExerciseCreationModalProgramsListItem = ({isExpand = false}) => {
                         <img src={plug} alt="icon"/>
                     </div>
                     <div className={s.titleBlock}>
-                        <div className={s.title}>Груди</div>
+                        <div className={s.title}> {textMap[category] ? textMap[category] : category}</div>
                     </div>
                     <div className={expand ? `${s.arrowIcon} ${s.rotate}` : s.arrowIcon}
                          onClick={arrowExpandHandler}
@@ -27,9 +39,10 @@ const ExerciseCreationModalProgramsListItem = ({isExpand = false}) => {
                     </div>
                 </div>
                 <div className={expand ? `${s.bottomBlock} ${s.active}` : `${s.bottomBlock}` }>
-                    <div className={s.bottomBlock__daysBlock}>
-                        <SecondDegreeOfNestingExercise isChosen={false}/>
-                        <SecondDegreeOfNestingExercise isChosen={false}/>
+                    <div className={s.bottomBlock__daysBlock} >
+                        {exercises.map(exercise => (
+                            <SecondDegreeOfNestingExercise key={exercise.id} isChosen={false} name={exercise.name}/>
+                        ))}
                     </div>
                 </div>
             </div>

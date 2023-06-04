@@ -3,8 +3,17 @@ import ProgramsProgramProfile from "./ProgramsProgramProfile";
 import {useParams} from "react-router-dom";
 import {connect} from "react-redux";
 import {
-    getProgramById, setSelectedDay, setIsProgramEditing, createProgramDay, getPersonalPrograms,
-    setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues
+    getProgramById,
+    setSelectedDay,
+    setIsProgramEditing,
+    createProgramDay,
+    getPersonalPrograms,
+    setIsProgramAccessibleToEdit,
+    deleteProgramDay,
+    updateProgramDay,
+    setProgramWithEmptyValues,
+    createExercise,
+    getAllExercisesPrototype
 }
     from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
@@ -66,6 +75,8 @@ const ProgramsProgramProfileContainer = (props) => {
                                                 setIsProgramEditing={props.setIsProgramEditing}
                                                 isProgramAccessibleToEdit={props.isProgramAccessibleToEdit} getProgramById={props.getProgramById}
                                                 deleteProgramDay={props.deleteProgramDay} updateProgramDay={props.updateProgramDay}
+                                                createExercise={createExercise} getAllExercisesPrototype={props.getAllExercisesPrototype}
+                                                exercisesPrototype={props.exercisesPrototype}
                         />
                         :
                     <NotFound/>
@@ -85,11 +96,13 @@ let mapStateToProps = (state) => {
         isProgramAccessibleToEdit: state.program.isProgramAccessibleToEdit,
         programs: state.program.programs,
         isLoading: state.program.isLoading,
-        isProgramLoading: state.program.program.isLoading
+        isProgramLoading: state.program.program.isLoading,
+        exercisesPrototype: state.program.exercisesPrototype
     }
 }
 
 export default connect(mapStateToProps,
     {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing, createProgramDay,
-        getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues })
+        getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues,
+        createExercise, getAllExercisesPrototype})
 (ProgramsProgramProfileContainer);

@@ -33,8 +33,16 @@ export const programsAPI = {
         const response = await $authHost.post(`api/program/day/delete`, {programDayId, programId})
         return response;
     },
-        async deleteProgram(programId) {
+    async deleteProgram(programId) {
         const response = await $authHost.post(`api/program/delete`, {programId})
         return response;
-    }
+    },
+    async createExercise(programId, exercisePrototypeId, programDayId, name) {
+        const response = await $authHost.post(`api/program/exercise/create`, {programId, exercisePrototypeId, programDayId, name})
+        return response;
+    },
+    async getAllExercisesPrototype() {
+        const response = await $authHost.get(`api/diary/exercise-prototypes`)
+        return response;
+    },
 }

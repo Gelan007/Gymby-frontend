@@ -133,6 +133,10 @@
       "weightGain": "weight gain",
       "endurance": "endurance",
       "weightLoss": "weight loss"
+    },
+    "categories": {
+      "legs": "Legs",
+      "arms": "Arms"
     }
   },
   "statistics": {

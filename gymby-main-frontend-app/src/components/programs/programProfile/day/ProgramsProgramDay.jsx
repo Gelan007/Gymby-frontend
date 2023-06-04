@@ -6,13 +6,14 @@ import Approach from "../../../general/approach/Approach";
 import InputGrey from "../../../UI/inputs/InputGrey";
 import ButtonBlue from "../../../UI/buttons/ButtonBlue";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
-import {createProgramDay} from "../../../../redux/slices/program-slice";
+import {createProgramDay, getAllExercisesPrototype} from "../../../../redux/slices/program-slice";
 import ExerciseCreationModalProgramsList
     from "../../../general/exerciseCreationModalWindow/programsList/ExerciseCreationModalProgramsList";
 import {useTranslation} from "react-i18next";
 
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
-                                setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay, updateProgramDay}) => {
+                                setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
+                                updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -81,7 +82,10 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                     </div>
                 </div>
             </div>
-            <ExerciseCreationModalProgramsList isActive={isModalActive} setActive={setIsModalActive} buttonName={t("diary.buttons.addModal")}/>
+            <ExerciseCreationModalProgramsList isActive={isModalActive} setActive={setIsModalActive}
+                                               buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
+                                               getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
+            />
 
         </div>
     );

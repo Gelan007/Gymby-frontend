@@ -133,6 +133,10 @@
         "weightGain": "набір маси",
         "endurance": "витривалість",
         "weightLoss": "схуднення"
+      },
+      "categories": {
+        "legs": "Ноги",
+        "arms": "Руки"
       }
     },
 

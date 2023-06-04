@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from './ExerciseCreationModalWindowTemplate.module.scss'
 import ModalWindow from "../../../general/modalWindow/ModalWindow";
 import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add'}) => {
+const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add', createExercise}) => {
+    const handleCreateButton = () => {
+        createExercise()
+    }
     return (
         <ModalWindow isActive={isActive} setActive={setActive}>
             <div className={s.exerciseCreationModalWindowTemplate}>

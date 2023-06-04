@@ -158,6 +158,22 @@ export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (p
     }
 });
 
+export const createExercise = createAsyncThunk('programs/createExercise', async (payload) => {
+    const response = await programsAPI.createExercise(payload.programId, payload.exercisePrototypeId, payload.programDayId, payload.name);
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercisesPrototype', async (payload) => {
+    const response = await programsAPI.getAllExercisesPrototype();
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 const programSlice = createSlice({
     name: 'program',
     initialState : {
@@ -194,7 +210,9 @@ const programSlice = createSlice({
                     ],
                 },
             ],
+            exercisesPrototype: []
         },
+
     },
     reducers: {
         setPrograms: (state, action) => {
@@ -288,6 +306,10 @@ const programSlice = createSlice({
             })
             .addCase(deleteProgram.fulfilled, (state, action) => {
                 state.isLoading = false;
+            })
+            .addCase(getAllExercisesPrototype.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.exercisesPrototype = action.payload;
             })
     }
 })
