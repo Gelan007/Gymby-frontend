@@ -233,9 +233,18 @@ export const getMyPendingFriendsList = () => {
             })
     }
 }
-export const getUserNameThunkCreator = () => {
+export const getQueryProfile = (type, query) => {
     return (dispatch) => {
-
+        profileAPI.getQueryProfile(type, query)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setProfilesList(
+                        response.data
+                    ))
+                }
+            })
     }
 }
+
+
 export default userAccountReducer;
