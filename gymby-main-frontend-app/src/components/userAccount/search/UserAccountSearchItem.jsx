@@ -5,7 +5,11 @@ import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
 import addUserIcon from '../../../assets/images/general/icons/addUser_icon.svg'
 
 
-const UserAccountSearchItem = ({username, firstName, lastName, isCoach}) => {
+const UserAccountSearchItem = ({username, firstName, lastName, isCoach, inviteFriend}) => {
+    const handleAddFriend = (e) => {
+        e.preventDefault()
+        inviteFriend(username)
+    }
 
     return (
         <div className={s.searchItem + " " + s.userAccountItem}>
@@ -26,7 +30,7 @@ const UserAccountSearchItem = ({username, firstName, lastName, isCoach}) => {
                         <div></div>
                     }
                 </div>
-                <div className={s.addIcon}>
+                <div className={s.addIcon} onClick={(e) => handleAddFriend(e)}>
                     <img src={addUserIcon} alt="addUserIcon"/>
                 </div>
             </div>

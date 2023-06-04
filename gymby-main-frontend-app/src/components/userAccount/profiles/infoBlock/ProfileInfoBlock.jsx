@@ -30,7 +30,7 @@ const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, inst
                             :
                             <div></div>
                         }
-                      
+
                     </div>
                     <div className={s.contentBlock__text}>{t("userAccount.profile.profileInfoBlock.content1")} <span>180</span> {t("userAccount.profile.profileInfoBlock.content2")}</div>
                     <div className={s.contentBlock__text}><span>15</span> {t("userAccount.profile.profileInfoBlock.content3")}</div>

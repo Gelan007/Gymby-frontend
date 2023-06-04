@@ -10,7 +10,8 @@ import {USER_ACCOUNT_ROUTE} from "../../../utils/routes/consts";
 import {NavLink} from "react-router-dom";
 
 
-const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selectedOption, setSelectedOption}) => {
+const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selectedOption, setSelectedOption,
+                                    acceptFriendship, rejectFriendship, deleteFriendship}) => {
 
 
     const friendsOptionHandle = () => setSelectedOption(friendsValue);
@@ -47,6 +48,9 @@ const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selected
                                 friendsValue={friendsValue}
                                 requestsValue={requestsValue}
                                 isCoach={profile.isCoach}
+                                acceptFriendship={acceptFriendship}
+                                rejectFriendship={rejectFriendship}
+                                deleteFriendship={deleteFriendship}
                             />
                         </NavLink>
                     ))}

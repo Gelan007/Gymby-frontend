@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import UserAccountSearch from "./UserAccountSearch";
 import {connect} from "react-redux";
-import {getMyFriendsList, getMyPendingFriendsList, getQueryProfile} from "../../../redux/reducers/user-account-reducer";
+import {getMyFriendsList, getMyPendingFriendsList, getQueryProfile, inviteFriend} from "../../../redux/reducers/user-account-reducer";
 
 const UserAccountSearchContainer = (props) => {
 
@@ -32,7 +32,7 @@ const UserAccountSearchContainer = (props) => {
         <UserAccountSearch profiles={props.profiles} trainersValue={TRAINERS}
                            everybodyValue={EVERYBODY} selectedOption={selectedOption}
                            setSelectedOption={setSelectedOption} userSearchData={userSearchData}
-                           handleUserSearch={handleUserSearch}
+                           handleUserSearch={handleUserSearch} inviteFriend={props.inviteFriend}
         />
     );
 };
@@ -43,4 +43,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {getMyFriendsList, getMyPendingFriendsList, getQueryProfile})(UserAccountSearchContainer);
+export default connect(mapStateToProps, {getMyFriendsList, getMyPendingFriendsList, getQueryProfile, inviteFriend})(UserAccountSearchContainer);

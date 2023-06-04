@@ -8,7 +8,21 @@ import applyIcon from "../../../../assets/images/general/icons/applyGreen.svg";
 import closeIcon from "../../../../assets/images/general/icons/closeRed.svg";
 
 const UserAccountFriendsListItem = ({username, firstName, lastName,
-                                        selectedOption, friendsValue, isCoach}) => {
+                                        selectedOption, friendsValue, isCoach, acceptFriendship, rejectFriendship, deleteFriendship}) => {
+
+    const handleAcceptFriendship = (e) => {
+        e.preventDefault()
+        acceptFriendship(username)
+    }
+    const handleRejectFriendship = (e) => {
+        e.preventDefault()
+        rejectFriendship(username)
+    }
+    const handleDeleteFriendship = (e) => {
+        e.preventDefault()
+        deleteFriendship(username)
+    }
+
     return (
         <div className={s.friendsListItem + " " + s.userAccountItem}>
             <div className={s.friendsListItem__body + " " + s.userAccountItem__body}>
@@ -33,16 +47,16 @@ const UserAccountFriendsListItem = ({username, firstName, lastName,
                         <div className={s.iconsBlock__sendIcon}>
                             <img src={sendIcon} alt="sendIcon"/>
                         </div>
-                        <div className={s.iconsBlock__basketIcon}>
+                        <div className={s.iconsBlock__basketIcon} onClick={handleDeleteFriendship}>
                             <img src={basketIcon} alt="basketIcon"/>
                         </div>
                     </div>
                     :
                     <div className={s.iconsBlock}>
-                        <div className={s.iconsBlock__applyIcon}>
+                        <div className={s.iconsBlock__applyIcon} onClick={handleAcceptFriendship}>
                             <img src={applyIcon} alt="applyIcon"/>
                         </div>
-                        <div className={s.iconsBlock__closeIcon}>
+                        <div className={s.iconsBlock__closeIcon} onClick={handleRejectFriendship}>
                             <img src={closeIcon} alt="closeIcon"/>
                         </div>
                     </div>

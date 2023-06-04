@@ -8,15 +8,12 @@ import { useTranslation } from 'react-i18next';
 import {NavLink} from "react-router-dom";
 import {USER_ACCOUNT_ROUTE} from "../../../utils/routes/consts";
 
-const UserAccountSearch = ({profiles, everybodyValue,trainersValue,selectedOption,setSelectedOption, userSearchData, handleUserSearch}) => {
+const UserAccountSearch = ({profiles, everybodyValue,trainersValue,selectedOption,setSelectedOption,
+                               userSearchData, handleUserSearch, inviteFriend}) => {
 
     const trainersOptionHandle = () => setSelectedOption(trainersValue);
     const everybodyOptionHandle = () => setSelectedOption(everybodyValue);
     const {t} = useTranslation()
-
-    useEffect(() => {
-        console.log(profiles)
-    }, [profiles])
 
     return (
         <div className={s.userAccountSearch}>
@@ -45,6 +42,7 @@ const UserAccountSearch = ({profiles, everybodyValue,trainersValue,selectedOptio
                                 firstName={profile.firstName}
                                 lastName={profile.lastName}
                                 isCoach={profile.isCoach}
+                                inviteFriend={inviteFriend}
                             />
                         </NavLink>
                     ))}
