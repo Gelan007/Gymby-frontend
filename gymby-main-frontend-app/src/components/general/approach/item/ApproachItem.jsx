@@ -159,11 +159,10 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 date:diaryDate, diaryId
             })
         }
-        console.log(inputData.isDone)
     }
 
     return (
-        <div className={s.approachItem}>
+        <div className={inputData.isDone && `${s.approachItem} ${s.approachItem_done}` ||  s.approachItem}>
             <div className={inputData.isDone && `${s.numeration} ${s.text} ${s.textDone}` || `${s.numeration} ${s.text}`}>
                 {numeration}.
             </div>
@@ -179,7 +178,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                         </div>
                         :
                         <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
-                            {inputData.weight}
+                            {inputData.weight} кг
                         </div>
                     }
 
@@ -205,7 +204,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                             />  пвт
                         </div>
                         :
-                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                        <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
                             {inputData.repeats} пвт
                         </div>
                     }
@@ -220,7 +219,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                         </div>
                     }
                 </div>
-                <div className={`${s.customizableBlock__time} ${s.text}`}> 1мин. 30сек.</div>
+                {/*<div className={`${s.customizableBlock__time} ${s.text}`}> 1мин. 30сек.</div>*/}
             </div>
 
                 <div className={s.iconsBlock}>

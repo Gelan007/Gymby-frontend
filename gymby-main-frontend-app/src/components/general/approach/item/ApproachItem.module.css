@@ -29,12 +29,22 @@
 .approachItem:hover {
   background-color: #FFFFFF;
 }
+.approachItem_done {
+  background: #d0f4de;
+}
+.approachItem_done:hover {
+  background-color: rgba(230, 255, 229, 0.63);
+}
 
 .text {
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
   color: #000000;
+}
+
+.textDone {
+  opacity: 0.4;
 }
 
 .numeration {

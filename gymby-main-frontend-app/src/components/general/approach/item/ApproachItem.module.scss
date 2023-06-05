@@ -13,6 +13,13 @@
   &:hover {
     background-color: #FFFFFF;
   }
+
+  &_done {
+    background: #d0f4de;
+    &:hover {
+      background-color: rgba(230, 255, 229, 0.63);
+    }
+  }
 }
 
 .text {
@@ -22,7 +29,7 @@
   color: #000000;
 }
 .textDone {
-  text-decoration: ;
+  opacity: 0.4;
 }
 
 .numeration {
