@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './ApproachItem.module.scss'
 import topArrow from '../../../../assets/images/approach/topArrow.svg'
 import bottomArrow from '../../../../assets/images/approach/bottomArrow.svg'
 import basket from '../../../../assets/images/general/icons/basketWhiteBackground2.svg'
 import checkboxDisabled from '../../../../assets/images/approach/checkBoxDisabled.svg'
 import checkboxEnabled from '../../../../assets/images/approach/checkBoxEnabled.svg'
+import InputGrey from "../../../UI/inputs/InputGrey";
 
 
 /*когда буду добавлять состояние для checkbox добавить условие, что если false то тогда
@@ -12,7 +13,13 @@ import checkboxEnabled from '../../../../assets/images/approach/checkBoxEnabled.
 /*onClick для стрелочек вешать на само изображение а не на блок*/
 const ApproachItem = ({isWeight = false, isMark = false,
                           isBasket = false, numeration = 1,
-                          isEditMode, isDrawControlIcons, approach, deleteApproach, exerciseId, programId}) => {
+                          isEditMode, isDrawControlIcons, approach, deleteApproach, exerciseId, programId, updateApproach}) => {
+
+    const [inputData, setInputData] = useState({repeats: 0, weight: 0, isDone: false})
+
+    useEffect(() => {
+        setInputData({...inputData, repeats: approach.repeats, weight: approach.weight,isDone: approach.isDone})
+    }, [approach.repeats,approach.weight,approach.isDone ])
 
     const deleteApproachItemHandler = () => {
         deleteApproach({
@@ -20,6 +27,90 @@ const ApproachItem = ({isWeight = false, isMark = false,
             programId,
             approachId: approach.approachId
         })
+    }
+    const updateApproachItemHandler = (repeats, weight) => {
+        if(repeats && inputData.repeats <= 2000) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: approach.approachId,
+                repeats: inputData.repeats,
+                weight: inputData.weight,
+                isDone: inputData.isDone
+            })
+        } else if (weight && inputData.weight <= 1000) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: approach.approachId,
+                repeats:inputData.repeats,
+                weight: inputData.weight,
+                isDone: inputData.isDone
+            })
+        }
+    }
+    const updateApproachItemTopArrowHandler = (repeats, weight) => {
+        if(repeats && inputData.repeats <= 2000) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: approach.approachId,
+                repeats:inputData.repeats + 1,
+                weight: inputData.weight,
+                isDone: inputData.isDone
+            })
+        } else if (weight && inputData.weight <= 1000) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: approach.approachId,
+                repeats:inputData.repeats,
+                weight: inputData.weight + 1,
+                isDone: inputData.isDone
+            })
+        }
+    }
+    const updateApproachItemBottomArrowHandler = (repeats, weight) => {
+        if(repeats && inputData.repeats > 0) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: approach.approachId,
+                repeats:inputData.repeats - 1,
+                weight: inputData.weight,
+                isDone: inputData.isDone
+            })
+        } else if (weight && inputData.weight > 0) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: approach.approachId,
+                repeats:inputData.repeats,
+                weight: inputData.weight - 1,
+                isDone: inputData.isDone
+            })
+        }
+    }
+
+    const weightInputChangeHandler = (e) => {
+        const numbers = /^[0-9\b]+$/; // Регулярное выражение для проверки на цифры
+        const inputValue = e.target.value;
+
+        if (inputValue === '' || numbers.test(inputValue) && inputData.weight <= 1000) {
+            setInputData({...inputData, weight: inputValue})
+        }
+    }
+    const repeatsInputChangeHandler = (e) => {
+        const decimalNumbers = /^\d*\.?\d*$/; // Регулярное выражение для проверки на числа с десятичной точкой
+        const inputValue = e.target.value;
+
+        if (inputValue === '' || decimalNumbers.test(inputValue)) {
+            if(inputData.repeats <= 2000) {
+                setInputData({...inputData, repeats: inputValue})
+            } else if (inputData.repeats >= 2000){
+                setInputData({...inputData, repeats: approach.repeats})
+            }
+        }
     }
 
     return (
@@ -29,15 +120,26 @@ const ApproachItem = ({isWeight = false, isMark = false,
             </div>
             <div className={s.customizableBlock}>
                 <div className={isWeight ? `${s.customizableBlock__content}` : `${s.customizableBlock__content} ${s.invisibility}`}>
-                    <div className={`${s.customizableBlock__value} ${s.text}`}>
-                        {approach.weight}
-                    </div>
+                    {isEditMode ?
+                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                            <InputGrey style={{height: '30px', width: '70px'}}
+                                       onChange={(e) => weightInputChangeHandler(e)}
+                                       value={inputData.weight}
+                                       onBlur={() => updateApproachItemHandler(false, true)}
+                            />
+                        </div>
+                        :
+                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                            {inputData.weight}
+                        </div>
+                    }
+
                     {isDrawControlIcons &&
                         <div className={s.customizableBlock__arrowsBlock}>
-                            <div className={s.topArrow}>
+                            <div className={s.topArrow} onClick={() => updateApproachItemTopArrowHandler(false, true)}>
                                 <img src={topArrow} alt="top arrow"/>
                             </div>
-                            <div className={s.bottomArrow}>
+                            <div className={s.bottomArrow} onClick={() => updateApproachItemBottomArrowHandler(false, true)}>
                                 <img src={bottomArrow} alt="bottom arrow"/>
                             </div>
                         </div>
@@ -45,15 +147,25 @@ const ApproachItem = ({isWeight = false, isMark = false,
 
                 </div>
                 <div className={s.customizableBlock__content}>
-                    <div className={`${s.customizableBlock__value} ${s.text}`}>
-                        {approach.repeats} пвт
-                    </div>
+                    {isEditMode ?
+                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                            <InputGrey style={{height: '30px', width: '70px'}}
+                                       onChange={(e) => repeatsInputChangeHandler(e)}
+                                       value={inputData.repeats}
+                                       onBlur={() => updateApproachItemHandler(true, false)}
+                            />  пвт
+                        </div>
+                        :
+                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                            {inputData.repeats} пвт
+                        </div>
+                    }
                     {isDrawControlIcons &&
                         <div className={s.customizableBlock__arrowsBlock}>
-                            <div className={s.topArrow}>
+                            <div className={s.topArrow} onClick={() => updateApproachItemTopArrowHandler(true, false)}>
                                 <img src={topArrow} alt="top arrow"/>
                             </div>
-                            <div className={s.bottomArrow}>
+                            <div className={s.bottomArrow} onClick={() => updateApproachItemBottomArrowHandler(true, false)}>
                                 <img src={bottomArrow} alt="bottom arrow"/>
                             </div>
                         </div>

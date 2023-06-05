@@ -6,9 +6,10 @@ import editIcon from '../../../assets/images/general/icons/editIcon.png'
 import plusIcon from '../../../assets/images/general/icons/plus.svg'
 import s from './Approach.module.scss'
 
+
 const Approach = ({isDrawControlIcons = true, isWeight = true,
                       isMark = true, isBasket = true, exercise, exerciseName,
-                      exerciseId, programId, createApproach, deleteApproach}) =>
+                      exerciseId, programId, createApproach, deleteApproach, updateApproach}) =>
 {
     const [isEditMode, setIsEditMode] = useState(false);
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
@@ -60,7 +61,7 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
                                       isBasket={isBasket} isEditMode={isEditMode}
                                       isDrawControlIcons={isDrawControlIcons} approach={approach}
                                       numeration={index + 1} deleteApproach={deleteApproach}
-                                      exerciseId={exerciseId} programId={programId}
+                                      exerciseId={exerciseId} programId={programId} updateApproach={updateApproach}
                         />
                     ))
                 }

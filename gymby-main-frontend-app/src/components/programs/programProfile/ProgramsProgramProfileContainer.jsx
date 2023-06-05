@@ -14,7 +14,7 @@ import {
     setProgramWithEmptyValues,
     createExercise,
     getAllExercisesPrototype,
-    setExerciseCreationData, createApproach, deleteApproach
+    setExerciseCreationData, createApproach, deleteApproach, updateApproach
 }
     from '../../../redux/slices/program-slice'
 import NotFound from "../../notFound/NotFound";
@@ -108,5 +108,5 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps,
     {setSelectedDay, getProgramById, getMyProfile, setIsProgramEditing, createProgramDay,
         getPersonalPrograms, setIsProgramAccessibleToEdit, deleteProgramDay, updateProgramDay, setProgramWithEmptyValues,
-        createExercise, getAllExercisesPrototype, setExerciseCreationData, createApproach, deleteApproach})
+        createExercise, getAllExercisesPrototype, setExerciseCreationData, createApproach, deleteApproach, updateApproach})
 (ProgramsProgramProfileContainer);

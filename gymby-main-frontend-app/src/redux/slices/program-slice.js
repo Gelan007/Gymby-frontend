@@ -209,6 +209,16 @@ export const deleteApproach = createAsyncThunk('programs/deleteApproach', async 
         throw new Error('Failed to fetch measurements');
     }
 });
+export const updateApproach = createAsyncThunk('programs/updateApproach', async (payload, {dispatch}) => {
+
+    const response = await programsAPI.updateApproach(payload.programId, payload.exerciseId, payload.approachId, payload.repeats, payload.weight, payload.isDone);
+
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getProgramById({programId: payload.programId}))
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 
 const programSlice = createSlice({
     name: 'program',

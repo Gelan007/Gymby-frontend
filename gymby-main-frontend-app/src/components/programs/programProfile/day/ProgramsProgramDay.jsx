@@ -6,7 +6,6 @@ import Approach from "../../../general/approach/Approach";
 import InputGrey from "../../../UI/inputs/InputGrey";
 import ButtonBlue from "../../../UI/buttons/ButtonBlue";
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
-import {createProgramDay, getAllExercisesPrototype} from "../../../../redux/slices/program-slice";
 import ExerciseCreationModalProgramsList
     from "../../../general/exerciseCreationModalWindow/programsList/ExerciseCreationModalProgramsList";
 import {useTranslation} from "react-i18next";
@@ -14,7 +13,7 @@ import {useTranslation} from "react-i18next";
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                 setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
                                 updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype,
-                                exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach, deleteApproach}) => {
+                                exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach, deleteApproach, updateApproach}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -82,14 +81,14 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                                                       isWeight={false} isMark={false}
                                                       exercise={exercise} exerciseName={exercise.name}
                                                       exerciseId={exercise.exerciseId} createApproach={createApproach}
-                                                      programId={programId} deleteApproach={deleteApproach}
+                                                      programId={programId} deleteApproach={deleteApproach} updateApproach={updateApproach}
                                             />
                                             :
                                             <Approach key={programDay.programDayId} isDrawControlIcons={false}
                                                       isWeight={false} isMark={false}
                                                       exercise={exercise} exerciseName={exercise.name}
                                                       exerciseId={exercise.exerciseId} createApproach={createApproach}
-                                                      programId={programId} deleteApproach={deleteApproach}
+                                                      programId={programId} deleteApproach={deleteApproach} updateApproach={updateApproach}
                                             />
 
                                     )
