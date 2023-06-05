@@ -13,7 +13,8 @@ import {useTranslation} from "react-i18next";
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                 setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
                                 updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype,
-                                exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach, deleteApproach, updateApproach}) => {
+                                exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach,
+                                deleteApproach, updateApproach, deleteExercise}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -82,6 +83,7 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                                                       exercise={exercise} exerciseName={exercise.name}
                                                       exerciseId={exercise.exerciseId} createApproach={createApproach}
                                                       programId={programId} deleteApproach={deleteApproach} updateApproach={updateApproach}
+                                                      deleteExercise={deleteExercise}
                                             />
                                             :
                                             <Approach key={programDay.programDayId} isDrawControlIcons={false}
@@ -89,6 +91,7 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                                                       exercise={exercise} exerciseName={exercise.name}
                                                       exerciseId={exercise.exerciseId} createApproach={createApproach}
                                                       programId={programId} deleteApproach={deleteApproach} updateApproach={updateApproach}
+                                                      deleteExercise={deleteExercise}
                                             />
 
                                     )

@@ -9,7 +9,7 @@ import s from './Approach.module.scss'
 
 const Approach = ({isDrawControlIcons = true, isWeight = true,
                       isMark = true, isBasket = true, exercise, exerciseName,
-                      exerciseId, programId, createApproach, deleteApproach, updateApproach}) =>
+                      exerciseId, programId, createApproach, deleteApproach, updateApproach, deleteExercise}) =>
 {
     const [isEditMode, setIsEditMode] = useState(false);
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
@@ -20,6 +20,13 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
             programId
         })
     }
+    const deleteApproachHandler = () => {
+        deleteExercise({
+            exerciseId,
+            programId
+        })
+    }
+
 
     return (
         <div className={s.approach}>
@@ -42,7 +49,7 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
                         </div>
                         {isEditMode ?
                             <div className={s.basket}
-                                 onClick={() => {}}
+                                 onClick={() => deleteApproachHandler()}
                             >
                                 <img src={basket} alt="basket"/>
                             </div>
@@ -65,8 +72,6 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
                         />
                     ))
                 }
-                {/*<ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>
-                <ApproachItem isWeight={isWeight} isMark={isMark} isBasket={isBasket} isEditMode={isEditMode} isDrawControlIcons={isDrawControlIcons}/>*/}
             </div>
         </div>
     );

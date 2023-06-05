@@ -172,7 +172,15 @@ export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (p
 export const createExercise = createAsyncThunk('programs/createExercise', async (payload, {dispatch}) => {
     const response = await programsAPI.createExercise(payload.programId, payload.exercisePrototypeId, payload.programDayId, payload.name);
     if (response.status >= 200 && response.status <= 204) {
-        console.log(payload)
+        dispatch(getProgramById({programId: payload.programId}))
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
+export const deleteExercise = createAsyncThunk('programs/deleteExercise', async (payload, {dispatch}) => {
+    const response = await programsAPI.deleteExercise(payload.programId, payload.exerciseId);
+    if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
         throw new Error('Failed to fetch measurements');
@@ -219,6 +227,8 @@ export const updateApproach = createAsyncThunk('programs/updateApproach', async 
         throw new Error('Failed to fetch measurements');
     }
 });
+
+
 
 const programSlice = createSlice({
     name: 'program',
