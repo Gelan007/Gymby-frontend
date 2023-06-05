@@ -2,7 +2,7 @@ import React from 'react';
 import s from './ModalWindow.module.scss'
 
 
-const ModalWindow = ({isActive = false, setActive = false, children, transitionDuration= '0.5', widthVW = 50}) => {
+const ModalWindow = ({isActive = false, setActive, children, transitionDuration= '0.5', widthVW = 50}) => {
     return (
         <div className={isActive ? `${s.modal} ${s.active}` : `${s.modal}`}
              onClick={() => setActive(false)}

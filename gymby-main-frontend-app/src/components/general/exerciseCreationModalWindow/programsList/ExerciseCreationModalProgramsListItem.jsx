@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 
 
 const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExerciseName, category, exercises,
-                                                   setExerciseCreationData}) => {
+                                                   setExerciseCreationData, isActiveModal}) => {
     const [expand, setExpand] = useState(isExpand);
     const arrowExpandHandler = () => expand ? setExpand(false) : setExpand(true);
     const [exerciseName, setExerciseName] = useState()
@@ -24,6 +24,10 @@ const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExe
         })
 
     }, [exerciseName])
+
+    useEffect(() => {
+        setExpand(false)
+    }, [isActiveModal])
 
     const textMap = {
         Arms: t("programs.categories.arms"),

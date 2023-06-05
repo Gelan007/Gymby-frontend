@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                 setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
                                 updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype,
-                                exerciseCreationData, setExerciseCreationData}) => {
+                                exerciseCreationData, setExerciseCreationData,createProgramDay}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {

@@ -34,7 +34,7 @@ const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, cre
                 {exercisesByCategory && Object.entries(exercisesByCategory)?.map(([category, exercises]) => (
                     <ExerciseCreationModalProgramsListItem isExpand={false} category={category}
                                                            exercises={exercises} setSelectedExercise={setSelectedExerciseName}
-                                                           setExerciseCreationData={setExerciseCreationData}
+                                                           setExerciseCreationData={setExerciseCreationData} isActiveModal={isActive}
                     />
                 ))}
             </div>
