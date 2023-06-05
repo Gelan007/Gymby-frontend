@@ -9,11 +9,16 @@ const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, but
                                                  createExercise, setCreationData, creationData}) => {
     const handleCreateButton = () => {
         createExercise(creationData)
-        setCreationData(
+        /*setCreationData(
             {
                 programId: '',
                 exercisePrototypeId: '',
                 programDayId: '',
+                name: ''
+            }
+        )*/
+        setCreationData(
+            {
                 name: ''
             }
         )
