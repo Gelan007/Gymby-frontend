@@ -119,7 +119,11 @@
       },
       "subTitle": "General program description",
       "programAuthor": "Program by",
-      "addToFavorite": "Add to favorite"
+      "addToFavorite": "Add to favorite",
+      "selectOptions": {
+        "difficult": "Difficult",
+        "type": "Type"
+      }
     },
     "modalWindow": {
       "title": "Program deletion",

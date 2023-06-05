@@ -5,7 +5,8 @@ import s from './ExerciseCreationModalProgramsList.module.scss'
 
 const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, createExercise, getAllExercisesPrototype,
                                                exercisesPrototype, setExerciseCreationData, exerciseCreationData}) => {
-    const [selectedExerciseName, setSelectedExerciseName] = useState()
+    const [exerciseName, setExerciseName] = useState()
+    const [selectedExerciseId, setSelectedExerciseId] = useState('')
     useEffect(() => {
         getAllExercisesPrototype()
     }, [])
@@ -33,8 +34,9 @@ const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, cre
             <div className={s.programListItems}>
                 {exercisesByCategory && Object.entries(exercisesByCategory)?.map(([category, exercises]) => (
                     <ExerciseCreationModalProgramsListItem isExpand={false} category={category}
-                                                           exercises={exercises} setSelectedExercise={setSelectedExerciseName}
-                                                           setExerciseCreationData={setExerciseCreationData}
+                                                           exercises={exercises} setExerciseCreationData={setExerciseCreationData} isActiveModal={isActive}
+                                                           setExerciseName={setExerciseName} exerciseName={exerciseName}
+                                                           setSelectedExerciseId={setSelectedExerciseId} selectedExerciseId={selectedExerciseId}
                     />
                 ))}
             </div>

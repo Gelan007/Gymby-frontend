@@ -54,6 +54,19 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
         editModeHandler()
     }
 
+    const valueInputChangeHandler = (e) => {
+        const decimalNumbers = /^\d*\.?\d*$/; // Регулярное выражение для проверки на числа с десятичной точкой
+        const inputValue = e.target.value;
+
+        if (inputValue === '' || decimalNumbers.test(inputValue)) {
+            if(measurementsUserInput.value <= 3000) {
+                setMeasurementsUserInput({...measurementsUserInput, value: inputValue})
+            } else if (measurementsUserInput.value >= 3000){
+                setMeasurementsUserInput({...measurementsUserInput, value: measurements})
+            }
+        }
+    }
+
     return (
         <div className={s.measurementsItem}>
             <div className={s.measurementsItem__body}>
@@ -63,7 +76,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
                 {isEditMode ?
                     <div className={s.measurements}>
                         <InputGrey value={measurementsUserInput.value}
-                                   onChange={(e) => setMeasurementsUserInput({...measurementsUserInput, value: e.target.value})}
+                                   onChange={(e) => valueInputChangeHandler(e)}
                                    style={{height: "35px", minWidth: "80px", maxWidth: "100px"}}
                         />
                         <span>{getMeasurementUnitForDisplaying()}</span>

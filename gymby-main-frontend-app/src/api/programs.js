@@ -37,12 +37,32 @@ export const programsAPI = {
         const response = await $authHost.post(`api/program/delete`, {programId})
         return response;
     },
+    async updateProgram(programId, name, description, level, type) {
+        const response = await $authHost.post(`api/program/update`, {programId, name, description, level, type})
+        return response;
+    },
     async createExercise(programId, exercisePrototypeId, programDayId, name) {
         const response = await $authHost.post(`api/program/exercise/create`, {programId, exercisePrototypeId, programDayId, name})
         return response;
     },
+    async deleteExercise(programId, exerciseId) {
+        const response = await $authHost.post(`api/program/exercise/delete`, {programId, exerciseId})
+        return response;
+    },
     async getAllExercisesPrototype() {
         const response = await $authHost.get(`api/diary/exercise-prototypes`)
+        return response;
+    },
+    async createApproach(programId, exerciseId, repeats, weight) {
+        const response = await $authHost.post(`api/program/approach/create`, {programId, exerciseId, repeats, weight})
+        return response;
+    },
+    async deleteApproach(programId, exerciseId, approachId) {
+        const response = await $authHost.post(`api/program/approach/delete`, {programId, exerciseId, approachId})
+        return response;
+    },
+    async updateApproach(programId, exerciseId, approachId, repeats, weight, isDone) {
+        const response = await $authHost.post(`api/program/approach/update`, {programId, approachId, exerciseId,repeats,weight,isDone})
         return response;
     },
 }
