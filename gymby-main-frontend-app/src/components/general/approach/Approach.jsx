@@ -3,13 +3,22 @@ import ApproachItem from "./item/ApproachItem";
 import plug from '../../../assets/images/measurements/biceps.svg';
 import basket from '../../../assets/images/general/icons/basketWhiteBackground2.svg'
 import editIcon from '../../../assets/images/general/icons/editIcon.png'
+import plusIcon from '../../../assets/images/general/icons/plus.svg'
 import s from './Approach.module.scss'
 
 const Approach = ({isDrawControlIcons = true, isWeight = true,
-                      isMark = true, isBasket = true, exercise, exerciseName, exerciseId}) =>
+                      isMark = true, isBasket = true, exercise, exerciseName,
+                      exerciseId, programId, createApproach}) =>
 {
     const [isEditMode, setIsEditMode] = useState(false);
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
+
+    const addApproachItemHandler = () => {
+        createApproach({
+            exerciseId,
+            programId
+        })
+    }
 
 
     return (
@@ -27,6 +36,10 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
                              onClick={editModeHandler}>
                             <img src={editIcon} alt="edit"/>
                         </div>
+                        <div className={`${s.plusButton}`}
+                             onClick={addApproachItemHandler}>
+                            <img src={plusIcon} alt="edit"/>
+                        </div>
                         {isEditMode ?
                             <div className={s.basket}
                                  onClick={() => {}}
@@ -43,10 +56,11 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
             </div>
             <div className={s.itemsBlock}>
                 {
-                    exercise?.approaches?.map((approach) => (
+                    exercise?.approaches?.map((approach, index) => (
                         <ApproachItem isWeight={isWeight} isMark={isMark}
                                       isBasket={isBasket} isEditMode={isEditMode}
                                       isDrawControlIcons={isDrawControlIcons} approach={approach}
+                                      numeration={index + 1}
                         />
                     ))
                 }

@@ -45,4 +45,8 @@ export const programsAPI = {
         const response = await $authHost.get(`api/diary/exercise-prototypes`)
         return response;
     },
+    async createApproach(programId, exerciseId, repeats, weight) {
+        const response = await $authHost.post(`api/program/approach/create`, {programId, exerciseId, repeats, weight})
+        return response;
+    },
 }

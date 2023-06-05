@@ -33,6 +33,7 @@ const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay
                                 updateProgramDay={updateProgramDay} createExercise={createExercise}
                                 getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
                                 exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
+                                {...props}
             />
         }
         </div>

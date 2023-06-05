@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                 setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
                                 updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype,
-                                exerciseCreationData, setExerciseCreationData,createProgramDay}) => {
+                                exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -31,6 +31,7 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
             }
         }, [])
     }, [selectedDay, programId])
+
 
     return (
         <div className={s.program}>
@@ -71,18 +72,27 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                     }
 
                     <div className={s.approaches}>
+
                         {program.programDays?.map((programDay, index) => {
                              if(index === selectedDay - 1) {
                                  return programDay.exercises?.map((exercise, i) => {
                                     return (
-                                        <Approach key={programDay.programDayId} isDrawControlIcons={false}
-                                                       isWeight={false} isMark={false}
-                                                       exercise={exercise} exerciseName={exercise.name}
-                                                       exerciseId={programDay.programDayId}
-                                        />
+                                        isProgramEditing ?
+                                            <Approach key={programDay.programDayId} isDrawControlIcons={true}
+                                                      isWeight={false} isMark={false}
+                                                      exercise={exercise} exerciseName={exercise.name}
+                                                      exerciseId={exercise.exerciseId} createApproach={createApproach}
+                                                      programId={programId}
+                                            />
+                                            :
+                                            <Approach key={programDay.programDayId} isDrawControlIcons={false}
+                                                      isWeight={false} isMark={false}
+                                                      exercise={exercise} exerciseName={exercise.name}
+                                                      exerciseId={exercise.exerciseId} createApproach={createApproach}
+                                                      programId={programId}
+                                            />
 
                                     )
-
                                 })
                             }
                             return null;

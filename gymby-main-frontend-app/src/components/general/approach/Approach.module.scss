@@ -41,6 +41,16 @@
     filter: drop-shadow(0px 8px 8px rgba(0, 102, 255, 0.99))
   }
 }
+.plusButton {
+  cursor: pointer;
+  width: 30px;
+  &:hover {
+    filter: drop-shadow(0px 8px 8px rgba(0, 246, 10, 0.99));
+  }
+  & img {
+    max-width: 90%;
+  }
+}
 .basket {
   cursor: pointer;
   &:hover {

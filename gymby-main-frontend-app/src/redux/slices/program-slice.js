@@ -77,6 +77,17 @@ const createInitialProgramData = (userName, userProgramsCount, dayName) => {
     return programData;
 };
 
+const createApproachInitialData = (programId, exerciseId) => {
+    const data = {
+        programId,
+        exerciseId,
+        repeats: 0,
+        weight: 0
+    };
+
+    return data;
+};
+
 export const createProgram = createAsyncThunk('programs/createProgram', async (payload, {dispatch}) => {
     const programData = createInitialProgramData(payload.userName, payload.userProgramsCount, payload.dayName);
     const response = await programsAPI.createProgram(programData);
@@ -175,6 +186,19 @@ export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercis
         throw new Error('Failed to fetch measurements');
     }
 });
+
+export const createApproach = createAsyncThunk('programs/createApproach', async (payload, {dispatch}) => {
+    const approachData = createApproachInitialData(payload.programId, payload.exerciseId)
+    const response = await programsAPI.createApproach
+    (approachData.programId, approachData.exerciseId,approachData.repeats,approachData.weight);
+
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getProgramById({programId: payload.programId}))
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
 const programSlice = createSlice({
     name: 'program',
     initialState : {
