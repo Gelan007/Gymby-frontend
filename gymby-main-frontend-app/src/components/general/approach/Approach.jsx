@@ -8,7 +8,7 @@ import s from './Approach.module.scss'
 
 const Approach = ({isDrawControlIcons = true, isWeight = true,
                       isMark = true, isBasket = true, exercise, exerciseName,
-                      exerciseId, programId, createApproach}) =>
+                      exerciseId, programId, createApproach, deleteApproach}) =>
 {
     const [isEditMode, setIsEditMode] = useState(false);
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
@@ -19,7 +19,6 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
             programId
         })
     }
-
 
     return (
         <div className={s.approach}>
@@ -60,7 +59,8 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
                         <ApproachItem isWeight={isWeight} isMark={isMark}
                                       isBasket={isBasket} isEditMode={isEditMode}
                                       isDrawControlIcons={isDrawControlIcons} approach={approach}
-                                      numeration={index + 1}
+                                      numeration={index + 1} deleteApproach={deleteApproach}
+                                      exerciseId={exerciseId} programId={programId}
                         />
                     ))
                 }

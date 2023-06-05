@@ -199,6 +199,17 @@ export const createApproach = createAsyncThunk('programs/createApproach', async 
     }
 });
 
+export const deleteApproach = createAsyncThunk('programs/deleteApproach', async (payload, {dispatch}) => {
+
+    const response = await programsAPI.deleteApproach(payload.programId, payload.exerciseId, payload.approachId);
+
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getProgramById({programId: payload.programId}))
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
 const programSlice = createSlice({
     name: 'program',
     initialState : {

@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                 setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
                                 updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype,
-                                exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach}) => {
+                                exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach, deleteApproach}) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -82,14 +82,14 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                                                       isWeight={false} isMark={false}
                                                       exercise={exercise} exerciseName={exercise.name}
                                                       exerciseId={exercise.exerciseId} createApproach={createApproach}
-                                                      programId={programId}
+                                                      programId={programId} deleteApproach={deleteApproach}
                                             />
                                             :
                                             <Approach key={programDay.programDayId} isDrawControlIcons={false}
                                                       isWeight={false} isMark={false}
                                                       exercise={exercise} exerciseName={exercise.name}
                                                       exerciseId={exercise.exerciseId} createApproach={createApproach}
-                                                      programId={programId}
+                                                      programId={programId} deleteApproach={deleteApproach}
                                             />
 
                                     )

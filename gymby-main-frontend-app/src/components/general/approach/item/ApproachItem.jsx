@@ -12,7 +12,16 @@ import checkboxEnabled from '../../../../assets/images/approach/checkBoxEnabled.
 /*onClick для стрелочек вешать на само изображение а не на блок*/
 const ApproachItem = ({isWeight = false, isMark = false,
                           isBasket = false, numeration = 1,
-                          isEditMode, isDrawControlIcons, approach}) => {
+                          isEditMode, isDrawControlIcons, approach, deleteApproach, exerciseId, programId}) => {
+
+    const deleteApproachItemHandler = () => {
+        deleteApproach({
+            exerciseId,
+            programId,
+            approachId: approach.approachId
+        })
+    }
+
     return (
         <div className={s.approachItem}>
             <div className={`${s.numeration} ${s.text}`}>
@@ -60,6 +69,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                     {isEditMode ?
                         <div className={isBasket ? `${s.iconsBlock__basket}` : `${s.iconsBlock__basket} ${s.invisibility}`}
                         style={!isDrawControlIcons ? {display: 'none'} : {}}
+                             onClick={deleteApproachItemHandler}
                         >
                             <img src={basket} alt="basket"/>
                         </div>

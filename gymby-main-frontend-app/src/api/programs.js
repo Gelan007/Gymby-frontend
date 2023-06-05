@@ -49,4 +49,8 @@ export const programsAPI = {
         const response = await $authHost.post(`api/program/approach/create`, {programId, exerciseId, repeats, weight})
         return response;
     },
+    async deleteApproach(programId, exerciseId, approachId) {
+        const response = await $authHost.post(`api/program/approach/delete`, {programId, exerciseId, approachId})
+        return response;
+    },
 }
