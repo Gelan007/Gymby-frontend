@@ -2,10 +2,14 @@ import React from 'react';
 import s from './SecondDegreeOfNestingExercise.module.scss'
 import plug from "../../../../../assets/images/measurements/biceps.svg";
 
-const SecondDegreeOfNestingExercise = ({name, setExerciseName, exerciseName}) => {
+const SecondDegreeOfNestingExercise = ({name, setExerciseName, setSelectedExerciseId, selectedExerciseId, id}) => {
+    const handleExerciseSelection = () => {
+        setExerciseName(name)
+        setSelectedExerciseId(id)
+    }
     return (
-        <div className={exerciseName === name ? `${s.secondDegreeOfNestingExercise} ${s.chosen}` : s.secondDegreeOfNestingExercise}
-             onClick={() => setExerciseName(name)}
+        <div className={id === selectedExerciseId ? `${s.secondDegreeOfNestingExercise} ${s.chosen}` : s.secondDegreeOfNestingExercise}
+             onClick={() => handleExerciseSelection()}
         >
             <div className={s.mainBlock}>
                 <div className={s.exerciseIcon}>

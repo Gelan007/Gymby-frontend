@@ -7,10 +7,11 @@ import {useTranslation} from "react-i18next";
 
 
 const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExerciseName, category, exercises,
-                                                   setExerciseCreationData, isActiveModal}) => {
+                                                   setExerciseCreationData, isActiveModal, selectedExerciseId, setSelectedExerciseId, setExerciseName, exerciseName}) => {
     const [expand, setExpand] = useState(isExpand);
     const arrowExpandHandler = () => expand ? setExpand(false) : setExpand(true);
-    const [exerciseName, setExerciseName] = useState()
+
+
     const {t} = useTranslation()
 
     useEffect(() => {
@@ -54,8 +55,11 @@ const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExe
                     <div className={s.bottomBlock__daysBlock} >
                         {exercises.map(exercise => (
                             <SecondDegreeOfNestingExercise key={exercise.id} name={exercise.name}
-                                                           exerciseName={exerciseName}
-                                                           setExerciseName={setExerciseName}/>
+                                                           setExerciseName={setExerciseName}
+                                                           selectedExerciseId={selectedExerciseId}
+                                                           setSelectedExerciseId={setSelectedExerciseId}
+                                                           id={exercise.id}
+                            />
                         ))}
                     </div>
                 </div>
