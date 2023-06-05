@@ -119,7 +119,11 @@
         },
         "subTitle": "Загальний опис тренувальної програми",
         "programAuthor": "Програма від",
-        "addToFavorite": "Додати в обране"
+        "addToFavorite": "Додати в обране",
+        "selectOptions": {
+          "difficult": "Важкість",
+          "type": "Тип"
+        }
       },
       "modalWindow": {
         "title": "Видалення програми",

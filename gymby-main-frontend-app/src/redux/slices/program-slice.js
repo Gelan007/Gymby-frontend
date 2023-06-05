@@ -228,6 +228,15 @@ export const updateApproach = createAsyncThunk('programs/updateApproach', async 
     }
 });
 
+export const updateProgram = createAsyncThunk('programs/updateProgram', async (payload, {dispatch}) => {
+    const response = await programsAPI.updateProgram(payload.programId, payload.name, payload.description, payload.level, payload.type);
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getProgramById({programId: payload.programId}))
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
 
 
 const programSlice = createSlice({

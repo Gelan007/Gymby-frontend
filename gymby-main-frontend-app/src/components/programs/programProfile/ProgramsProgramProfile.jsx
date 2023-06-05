@@ -7,12 +7,12 @@ import ProgramsMark from "../card/programsMark/ProgramsMark";
 import ButtonOrange from "../../UI/buttons/ButtonOrange";
 import ProgramsProgramDescription from "./description/ProgramsProgramDescription";
 import ProgramsProgramDay from "./day/ProgramsProgramDay";
-import {getAllExercisesPrototype} from "../../../redux/slices/program-slice";
+import {getAllExercisesPrototype, updateProgram} from "../../../redux/slices/program-slice";
 
 const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                     setIsProgramEditing, isProgramAccessibleToEdit, createProgramDay, getProgramById,
                                     deleteProgramDay, updateProgramDay,createExercise, getAllExercisesPrototype, exercisesPrototype,
-                                    exerciseCreationData, setExerciseCreationData, ...props}) => {
+                                    exerciseCreationData, setExerciseCreationData, updateProgram, ...props}) => {
 
     return (
         <div>
@@ -22,7 +22,7 @@ const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay
                                         setIsProgramEditing={setIsProgramEditing} setSelectedDay={setSelectedDay}
                                         isProgramEditing={isProgramEditing} createProgramDay={createProgramDay}
                                         getProgramById={getProgramById} deleteProgramDay={deleteProgramDay}
-                                        updateProgramDay={updateProgramDay}
+                                        updateProgramDay={updateProgramDay} updateProgram={updateProgram}
             />
             :
             <ProgramsProgramDay isProgramAccessibleToEdit={isProgramAccessibleToEdit} program={program}
