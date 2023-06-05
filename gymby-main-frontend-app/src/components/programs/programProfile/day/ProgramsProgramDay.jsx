@@ -14,7 +14,7 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
                                 setIsProgramEditing, isProgramAccessibleToEdit, getProgramById, deleteProgramDay,
                                 updateProgramDay, createExercise, getAllExercisesPrototype, exercisesPrototype,
                                 exerciseCreationData, setExerciseCreationData,createProgramDay, createApproach,
-                                deleteApproach, updateApproach, deleteExercise}) => {
+                                deleteApproach, updateApproach, deleteExercise, inputUserData, setInputUserData, titleChangeHandler, updateProgram }) => {
 
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
@@ -23,6 +23,10 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
     const [isModalActive, setIsModalActive] = useState(false);
     const programImportHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
     const {t} = useTranslation()
+
+    const updateProgramInputHandler = () => {
+        updateProgram({programId, name: inputUserData.name, description:inputUserData.description, level:inputUserData.level, type:inputUserData.type})
+    }
 
     useEffect(() => {
         program.programDays?.map((day, index) => {
@@ -33,12 +37,21 @@ const ProgramsProgramDay = ({program, programId, selectedDay, setSelectedDay, is
     }, [selectedDay, programId])
 
 
+    useEffect(() => {
+        setInputUserData({...inputUserData, name: program.name, description: program.description, level: program.level, type: program.type})
+    }, [program])
+
+
+
     return (
         <div className={s.program}>
             {isProgramAccessibleToEdit && (
                     isProgramEditing ?
                         <div className={s.program__titleEdit}>
-                            <InputGrey style={{maxWidth: '550px', fontSize: '20px'}}/>
+                            <InputGrey style={{maxWidth: '550px', fontSize: '20px'}} value={inputUserData.name}
+                                       onChange={titleChangeHandler}
+                                       onBlur={updateProgramInputHandler}
+                            />
                             <div><ButtonGreen onClick={() => handleEndEditing()}>Завершити редагування</ButtonGreen></div>
                         </div>
                         :

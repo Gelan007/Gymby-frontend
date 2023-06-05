@@ -13,10 +13,11 @@ import SelectSimple from "../../../UI/select/SelectSimple";
 
 const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                         isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay, getProgramById,
-                                        deleteProgramDay, updateProgramDay, updateProgram}) => {
+                                        deleteProgramDay, updateProgramDay, updateProgram, inputUserData,
+                                        setInputUserData, titleChangeHandler}) => {
 
     const {t} = useTranslation()
-    const [inputUserData, setInputUserData] = useState({name:'', description:'', level: '', type: ''})
+
     const handleStartEditing = () => setIsProgramEditing(true)
     const handleEndEditing = () => {
         setIsProgramEditing(false)
@@ -36,10 +37,11 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
         setInputUserData({...inputUserData, name: program.name, description: program.description, level: program.level, type: program.type})
     }, [program])
 
-    const titleChangeHandler = (e) => {
+
+    const descriptionChangeHandler = (e) => {
         const inputValue = e.target.value;
-        if (inputValue.length <= 60) {
-            setInputUserData({...inputUserData, name: inputValue});
+        if (inputValue.length <= 500) {
+            setInputUserData({...inputUserData, description: inputValue});
         }
     }
 
@@ -56,6 +58,7 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
         }
 
     }
+
 
     return (
         <div className={s.program}>
@@ -141,7 +144,10 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                         </div>
                         {isProgramEditing ?
                             <div className={s.mainBlock__description} style={{maxWidth: '700px'}}>
-                                <TextareaGrey/>
+                                <TextareaGrey onChange={descriptionChangeHandler}
+                                              onBlur={updateProgramInputHandler}
+                                              value={inputUserData.description}
+                                />
                             </div>
                             :
                             <div className={s.mainBlock__description}>
