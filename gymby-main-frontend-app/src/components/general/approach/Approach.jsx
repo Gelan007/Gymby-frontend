@@ -9,7 +9,8 @@ import s from './Approach.module.scss'
 
 const Approach = ({isDrawControlIcons = true, isWeight = true,
                       isMark = true, isBasket = true, exercise, exerciseName,
-                      exerciseId, programId, createApproach, deleteApproach, updateApproach, deleteExercise}) =>
+                      exerciseId, programId, createApproach, deleteApproach, updateApproach, deleteExercise,
+                      diaryId, diaryDate}) =>
 {
     const [isEditMode, setIsEditMode] = useState(false);
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
@@ -17,16 +18,19 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
     const addApproachItemHandler = () => {
         createApproach({
             exerciseId,
-            programId
+            programId,
+            diaryId,
+            date:diaryDate
         })
     }
     const deleteApproachHandler = () => {
         deleteExercise({
             exerciseId,
-            programId
+            programId,
+            diaryId,
+            date:diaryDate
         })
     }
-
 
     return (
         <div className={s.approach}>
@@ -45,7 +49,7 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
                         </div>
                         <div className={`${s.plusButton}`}
                              onClick={addApproachItemHandler}>
-                            <img src={plusIcon} alt="edit"/>
+                            <img src={plusIcon} alt="add"/>
                         </div>
                         {isEditMode ?
                             <div className={s.basket}
@@ -69,6 +73,7 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
                                       isDrawControlIcons={isDrawControlIcons} approach={approach}
                                       numeration={index + 1} deleteApproach={deleteApproach}
                                       exerciseId={exerciseId} programId={programId} updateApproach={updateApproach}
+                                      diaryDate={diaryDate} diaryId={diaryId} diaryApproachId={approach.id}
                         />
                     ))
                 }

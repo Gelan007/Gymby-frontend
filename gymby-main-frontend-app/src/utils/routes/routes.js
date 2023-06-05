@@ -60,6 +60,7 @@ import MeasurementNeckContainer from "../../components/measurements/neck/Measure
 import MeasurementShouldersContainer from "../../components/measurements/shoulders/MeasurementShouldersContainer";
 import MeasurementWeightContainer from "../../components/measurements/weight/MeasurementWeightContainer";
 import MeasurementPhotosContainer from "../../components/measurements/photos/MeasurementPhotosContainer";
+import DiaryContainer from "../../components/diary/DiaryContainer";
 
 export const publicRoutes = [
    /* {
@@ -155,7 +156,7 @@ export const authRoutes = [
 
     {
         path: DIARY_ROUTE,
-        Component: <Diary/>
+        Component: <DiaryContainer/>
     },
 
 

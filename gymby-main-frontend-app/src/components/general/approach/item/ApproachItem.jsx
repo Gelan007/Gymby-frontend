@@ -13,39 +13,53 @@ import InputGrey from "../../../UI/inputs/InputGrey";
 /*onClick для стрелочек вешать на само изображение а не на блок*/
 const ApproachItem = ({isWeight = false, isMark = false,
                           isBasket = false, numeration = 1,
-                          isEditMode, isDrawControlIcons, approach, deleteApproach, exerciseId, programId, updateApproach}) => {
+                          isEditMode, isDrawControlIcons, approach, deleteApproach, exerciseId, programId,
+                          updateApproach, diaryDate, diaryId, diaryApproachId}) => {
 
     const [inputData, setInputData] = useState({repeats: 0, weight: 0, isDone: false})
+    const [finalApproachId, setFinalApproachId] = useState()
 
     useEffect(() => {
         setInputData({...inputData, repeats: approach.repeats, weight: approach.weight,isDone: approach.isDone})
     }, [approach.repeats,approach.weight,approach.isDone ])
 
+    useEffect(() => {
+        if(approach.approachId) {
+            setFinalApproachId(approach.approachId)
+        } else if (diaryApproachId) {
+            setFinalApproachId(diaryApproachId)
+        }
+
+    }, [diaryApproachId,approach.approachId])
+
     const deleteApproachItemHandler = () => {
         deleteApproach({
             exerciseId,
             programId,
-            approachId: approach.approachId
+            approachId: finalApproachId,
+            date: diaryDate, diaryId,
         })
     }
     const updateApproachItemHandler = (repeats, weight) => {
-        if(repeats && inputData.repeats <= 2000) {
+        if (repeats && inputData.repeats <= 2000) {
             updateApproach({
                 exerciseId,
                 programId,
-                approachId: approach.approachId,
+                approachId: finalApproachId,
                 repeats: inputData.repeats,
                 weight: inputData.weight,
-                isDone: inputData.isDone
+                isDone: inputData.isDone,
+                date: diaryDate, diaryId
             })
         } else if (weight && inputData.weight <= 1000) {
             updateApproach({
                 exerciseId,
                 programId,
-                approachId: approach.approachId,
-                repeats:inputData.repeats,
+                approachId: finalApproachId,
+                repeats: inputData.repeats,
                 weight: inputData.weight,
-                isDone: inputData.isDone
+                isDone: inputData.isDone,
+                date: diaryDate, diaryId
             })
         }
     }
@@ -54,19 +68,21 @@ const ApproachItem = ({isWeight = false, isMark = false,
             updateApproach({
                 exerciseId,
                 programId,
-                approachId: approach.approachId,
+                approachId: finalApproachId,
                 repeats:inputData.repeats + 1,
                 weight: inputData.weight,
-                isDone: inputData.isDone
+                isDone: inputData.isDone,
+                date:diaryDate, diaryId
             })
         } else if (weight && inputData.weight <= 1000) {
             updateApproach({
                 exerciseId,
                 programId,
-                approachId: approach.approachId,
+                approachId: finalApproachId,
                 repeats:inputData.repeats,
                 weight: inputData.weight + 1,
-                isDone: inputData.isDone
+                isDone: inputData.isDone,
+                date:diaryDate, diaryId
             })
         }
     }
@@ -75,19 +91,21 @@ const ApproachItem = ({isWeight = false, isMark = false,
             updateApproach({
                 exerciseId,
                 programId,
-                approachId: approach.approachId,
+                approachId: finalApproachId,
                 repeats:inputData.repeats - 1,
                 weight: inputData.weight,
-                isDone: inputData.isDone
+                isDone: inputData.isDone,
+                date:diaryDate, diaryId
             })
         } else if (weight && inputData.weight > 0) {
             updateApproach({
                 exerciseId,
                 programId,
-                approachId: approach.approachId,
+                approachId: finalApproachId,
                 repeats:inputData.repeats,
                 weight: inputData.weight - 1,
-                isDone: inputData.isDone
+                isDone: inputData.isDone,
+                date:diaryDate, diaryId
             })
         }
     }
@@ -96,8 +114,12 @@ const ApproachItem = ({isWeight = false, isMark = false,
         const numbers = /^[0-9\b]+$/; // Регулярное выражение для проверки на цифры
         const inputValue = e.target.value;
 
-        if (inputValue === '' || numbers.test(inputValue) && inputData.weight <= 1000) {
-            setInputData({...inputData, weight: inputValue})
+        if (inputValue === '' || numbers.test(inputValue)) {
+            if(inputData.weight <= 1000) {
+                setInputData({...inputData, weight: inputValue})
+            } else if (inputData.weight >= 1000){
+                setInputData({...inputData, weight: approach.weight})
+            }
         }
     }
     const repeatsInputChangeHandler = (e) => {
@@ -113,9 +135,36 @@ const ApproachItem = ({isWeight = false, isMark = false,
         }
     }
 
+    const checkBoxOnClickHandler = () => {
+        if(inputData.isDone) {
+            setInputData({...inputData, isDone: false})
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: finalApproachId,
+                repeats:inputData.repeats,
+                weight: inputData.weight,
+                isDone: false,
+                date:diaryDate, diaryId
+            })
+        } else if (!inputData.isDone) {
+            setInputData({...inputData, isDone: true})
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: finalApproachId,
+                repeats:inputData.repeats,
+                weight: inputData.weight,
+                isDone: true,
+                date:diaryDate, diaryId
+            })
+        }
+        console.log(inputData.isDone)
+    }
+
     return (
         <div className={s.approachItem}>
-            <div className={`${s.numeration} ${s.text}`}>
+            <div className={inputData.isDone && `${s.numeration} ${s.text} ${s.textDone}` || `${s.numeration} ${s.text}`}>
                 {numeration}.
             </div>
             <div className={s.customizableBlock}>
@@ -129,7 +178,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                             />
                         </div>
                         :
-                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                        <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
                             {inputData.weight}
                         </div>
                     }
@@ -148,7 +197,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 </div>
                 <div className={s.customizableBlock__content}>
                     {isEditMode ?
-                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                        <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
                             <InputGrey style={{height: '30px', width: '70px'}}
                                        onChange={(e) => repeatsInputChangeHandler(e)}
                                        value={inputData.repeats}
@@ -175,8 +224,10 @@ const ApproachItem = ({isWeight = false, isMark = false,
             </div>
 
                 <div className={s.iconsBlock}>
-                    <div className={isMark ? `${s.iconsBlock__checkbox}` : `${s.iconsBlock__checkbox} ${s.invisibility}`}>
-                        <img src={checkboxDisabled} alt="checkbox"/>
+                    <div className={isMark ? `${s.iconsBlock__checkbox}` : `${s.iconsBlock__checkbox} ${s.invisibility}`}
+                         onClick={checkBoxOnClickHandler}
+                    >
+                        <img src={!inputData.isDone ? checkboxDisabled : checkboxEnabled} alt="checkbox"/>
                     </div>
                     {isEditMode ?
                         <div className={isBasket ? `${s.iconsBlock__basket}` : `${s.iconsBlock__basket} ${s.invisibility}`}
