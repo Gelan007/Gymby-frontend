@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useTransition} from 'react';
 import s from './ApproachItem.module.scss'
 import topArrow from '../../../../assets/images/approach/topArrow.svg'
 import bottomArrow from '../../../../assets/images/approach/bottomArrow.svg'
@@ -6,6 +6,7 @@ import basket from '../../../../assets/images/general/icons/basketWhiteBackgroun
 import checkboxDisabled from '../../../../assets/images/approach/checkBoxDisabled.svg'
 import checkboxEnabled from '../../../../assets/images/approach/checkBoxEnabled.svg'
 import InputGrey from "../../../UI/inputs/InputGrey";
+import {useTranslation} from "react-i18next";
 
 
 /*когда буду добавлять состояние для checkbox добавить условие, что если false то тогда
@@ -18,6 +19,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
 
     const [inputData, setInputData] = useState({repeats: 0, weight: 0, isDone: false})
     const [finalApproachId, setFinalApproachId] = useState()
+    const {t} = useTranslation()
 
     useEffect(() => {
         setInputData({...inputData, repeats: approach.repeats, weight: approach.weight,isDone: approach.isDone})
@@ -174,11 +176,11 @@ const ApproachItem = ({isWeight = false, isMark = false,
                                        onChange={(e) => weightInputChangeHandler(e)}
                                        value={inputData.weight}
                                        onBlur={() => updateApproachItemHandler(false, true)}
-                            />
+                            /> кг
                         </div>
                         :
                         <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
-                            {inputData.weight} кг
+                            {inputData.weight} {t("approach.kg")}
                         </div>
                     }
 
@@ -196,16 +198,16 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 </div>
                 <div className={s.customizableBlock__content}>
                     {isEditMode ?
-                        <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
+                        <div className={`${s.customizableBlock__value} ${s.text}`}>
                             <InputGrey style={{height: '30px', width: '70px'}}
                                        onChange={(e) => repeatsInputChangeHandler(e)}
                                        value={inputData.repeats}
                                        onBlur={() => updateApproachItemHandler(true, false)}
-                            />  пвт
+                            />  {t("approach.repeats")}
                         </div>
                         :
                         <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
-                            {inputData.repeats} пвт
+                            {inputData.repeats} {t("approach.repeats")}
                         </div>
                     }
                     {isDrawControlIcons &&
