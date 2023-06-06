@@ -7,7 +7,8 @@ const createApproachInitialData = (exerciseId) => {
     const data = {
         exerciseId,
         repeats: 0,
-        weight: 0
+        weight: 0,
+        interval: 0
     };
 
     return data;
@@ -66,7 +67,7 @@ export const createApproach = createAsyncThunk('diary/createApproach', async (pa
     }
 });
 export const updateApproach = createAsyncThunk('diary/updateApproach', async (payload, {dispatch}) => {
-    const response = await diaryAPI.updateApproach(payload.exerciseId, payload.approachId, payload.repeats, payload.weight, payload.isDone);
+    const response = await diaryAPI.updateApproach(payload.exerciseId, payload.approachId, payload.repeats, payload.weight, payload.isDone, payload.interval);
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {

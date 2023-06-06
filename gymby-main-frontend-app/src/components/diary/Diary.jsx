@@ -108,6 +108,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                   exerciseId={exercise.id} createApproach={createApproach}
                                   programId={null} deleteApproach={deleteApproach} updateApproach={updateApproach}
                                   deleteExercise={deleteExercise} diaryDate={date} diaryId={diaryId} approachId={exercise.id}
+
                         />
                     ))}
                 </div>

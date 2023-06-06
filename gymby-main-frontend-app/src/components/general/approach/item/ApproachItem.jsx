@@ -17,13 +17,14 @@ const ApproachItem = ({isWeight = false, isMark = false,
                           isEditMode, isDrawControlIcons, approach, deleteApproach, exerciseId, programId,
                           updateApproach, diaryDate, diaryId, diaryApproachId}) => {
 
-    const [inputData, setInputData] = useState({repeats: 0, weight: 0, isDone: false})
+    const [inputData, setInputData] = useState({repeats: 0, weight: 0, interval: 0, isDone: false})
     const [finalApproachId, setFinalApproachId] = useState()
     const {t} = useTranslation()
 
     useEffect(() => {
-        setInputData({...inputData, repeats: approach.repeats, weight: approach.weight,isDone: approach.isDone})
-    }, [approach.repeats,approach.weight,approach.isDone ])
+        setInputData({...inputData, repeats: approach.repeats, weight: approach.weight,
+            interval: approach.interval,isDone: approach.isDone})
+    }, [approach])
 
     useEffect(() => {
         if(approach.approachId) {
@@ -42,7 +43,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
             date: diaryDate, diaryId,
         })
     }
-    const updateApproachItemHandler = (repeats, weight) => {
+    const updateApproachItemHandler = (repeats, weight, interval) => {
         if (repeats && inputData.repeats <= 2000) {
             updateApproach({
                 exerciseId,
@@ -51,6 +52,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 repeats: inputData.repeats,
                 weight: inputData.weight,
                 isDone: inputData.isDone,
+                interval: inputData.interval,
                 date: diaryDate, diaryId
             })
         } else if (weight && inputData.weight <= 1000) {
@@ -61,11 +63,23 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 repeats: inputData.repeats,
                 weight: inputData.weight,
                 isDone: inputData.isDone,
+                interval: inputData.interval,
+                date: diaryDate, diaryId
+            })
+        } else if (interval && inputData.interval <= 2000) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: finalApproachId,
+                repeats: inputData.repeats,
+                weight: inputData.weight,
+                isDone: inputData.isDone,
+                interval: inputData.interval,
                 date: diaryDate, diaryId
             })
         }
     }
-    const updateApproachItemTopArrowHandler = (repeats, weight) => {
+    const updateApproachItemTopArrowHandler = (repeats, weight, interval) => {
         if(repeats && inputData.repeats <= 2000) {
             updateApproach({
                 exerciseId,
@@ -74,6 +88,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 repeats:inputData.repeats + 1,
                 weight: inputData.weight,
                 isDone: inputData.isDone,
+                interval: inputData.interval,
                 date:diaryDate, diaryId
             })
         } else if (weight && inputData.weight <= 1000) {
@@ -84,11 +99,23 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 repeats:inputData.repeats,
                 weight: inputData.weight + 1,
                 isDone: inputData.isDone,
+                interval: inputData.interval,
+                date:diaryDate, diaryId
+            })
+        } else if (interval && inputData.interval <= 2000) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: finalApproachId,
+                repeats:inputData.repeats,
+                weight: inputData.weight,
+                isDone: inputData.isDone,
+                interval: inputData.interval + 1,
                 date:diaryDate, diaryId
             })
         }
     }
-    const updateApproachItemBottomArrowHandler = (repeats, weight) => {
+    const updateApproachItemBottomArrowHandler = (repeats, weight, interval) => {
         if(repeats && inputData.repeats > 0) {
             updateApproach({
                 exerciseId,
@@ -97,6 +124,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 repeats:inputData.repeats - 1,
                 weight: inputData.weight,
                 isDone: inputData.isDone,
+                interval: inputData.interval,
                 date:diaryDate, diaryId
             })
         } else if (weight && inputData.weight > 0) {
@@ -107,6 +135,18 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 repeats:inputData.repeats,
                 weight: inputData.weight - 1,
                 isDone: inputData.isDone,
+                interval: inputData.interval,
+                date:diaryDate, diaryId
+            })
+        } else if (interval && inputData.interval > 0) {
+            updateApproach({
+                exerciseId,
+                programId,
+                approachId: finalApproachId,
+                repeats:inputData.repeats,
+                weight: inputData.weight,
+                isDone: inputData.isDone,
+                interval: inputData.interval - 1,
                 date:diaryDate, diaryId
             })
         }
@@ -136,6 +176,18 @@ const ApproachItem = ({isWeight = false, isMark = false,
             }
         }
     }
+    const intervalInputChangeHandler = (e) => {
+        const numbers = /^[0-9\b]+$/;
+        const inputValue = e.target.value;
+
+        if (inputValue === '' || numbers.test(inputValue)) {
+            if(inputData.interval <= 2000) {
+                setInputData({...inputData, interval: inputValue})
+            } else if (inputData.interval >= 2000){
+                setInputData({...inputData, interval: approach.interval})
+            }
+        }
+    }
 
     const checkBoxOnClickHandler = () => {
         if(inputData.isDone) {
@@ -146,6 +198,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 approachId: finalApproachId,
                 repeats:inputData.repeats,
                 weight: inputData.weight,
+                interval: inputData.interval,
                 isDone: false,
                 date:diaryDate, diaryId
             })
@@ -157,6 +210,7 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 approachId: finalApproachId,
                 repeats:inputData.repeats,
                 weight: inputData.weight,
+                interval: inputData.interval,
                 isDone: true,
                 date:diaryDate, diaryId
             })
@@ -172,10 +226,10 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 <div className={isWeight ? `${s.customizableBlock__content}` : `${s.customizableBlock__content} ${s.invisibility}`}>
                     {isEditMode ?
                         <div className={`${s.customizableBlock__value} ${s.text}`}>
-                            <InputGrey style={{height: '30px', width: '70px'}}
+                            <InputGrey style={{height: '30px', width: '60px'}}
                                        onChange={(e) => weightInputChangeHandler(e)}
                                        value={inputData.weight}
-                                       onBlur={() => updateApproachItemHandler(false, true)}
+                                       onBlur={() => updateApproachItemHandler(false, true, false)}
                             /> кг
                         </div>
                         :
@@ -186,10 +240,10 @@ const ApproachItem = ({isWeight = false, isMark = false,
 
                     {isDrawControlIcons &&
                         <div className={s.customizableBlock__arrowsBlock}>
-                            <div className={s.topArrow} onClick={() => updateApproachItemTopArrowHandler(false, true)}>
+                            <div className={s.topArrow} onClick={() => updateApproachItemTopArrowHandler(false, true, false)}>
                                 <img src={topArrow} alt="top arrow"/>
                             </div>
-                            <div className={s.bottomArrow} onClick={() => updateApproachItemBottomArrowHandler(false, true)}>
+                            <div className={s.bottomArrow} onClick={() => updateApproachItemBottomArrowHandler(false, true, false)}>
                                 <img src={bottomArrow} alt="bottom arrow"/>
                             </div>
                         </div>
@@ -199,10 +253,10 @@ const ApproachItem = ({isWeight = false, isMark = false,
                 <div className={s.customizableBlock__content}>
                     {isEditMode ?
                         <div className={`${s.customizableBlock__value} ${s.text}`}>
-                            <InputGrey style={{height: '30px', width: '70px'}}
+                            <InputGrey style={{height: '30px', width: '60px'}}
                                        onChange={(e) => repeatsInputChangeHandler(e)}
                                        value={inputData.repeats}
-                                       onBlur={() => updateApproachItemHandler(true, false)}
+                                       onBlur={() => updateApproachItemHandler(true, false, false)}
                             />  {t("approach.repeats")}
                         </div>
                         :
@@ -212,16 +266,40 @@ const ApproachItem = ({isWeight = false, isMark = false,
                     }
                     {isDrawControlIcons &&
                         <div className={s.customizableBlock__arrowsBlock}>
-                            <div className={s.topArrow} onClick={() => updateApproachItemTopArrowHandler(true, false)}>
+                            <div className={s.topArrow} onClick={() => updateApproachItemTopArrowHandler(true, false, false)}>
                                 <img src={topArrow} alt="top arrow"/>
                             </div>
-                            <div className={s.bottomArrow} onClick={() => updateApproachItemBottomArrowHandler(true, false)}>
+                            <div className={s.bottomArrow} onClick={() => updateApproachItemBottomArrowHandler(true, false, false)}>
                                 <img src={bottomArrow} alt="bottom arrow"/>
                             </div>
                         </div>
                     }
                 </div>
-                {/*<div className={`${s.customizableBlock__time} ${s.text}`}> 1мин. 30сек.</div>*/}
+                <div className={s.customizableBlock__content}>
+                    {isEditMode ?
+                        <div className={`${s.customizableBlock__value} ${s.text}`}>
+                            <InputGrey style={{height: '30px', width: '60px'}}
+                                       onChange={(e) => intervalInputChangeHandler(e)}
+                                       value={inputData.interval}
+                                       onBlur={() => updateApproachItemHandler(false, false, true)}
+                            />  сек{/*{t("approach.repeats")}*/}
+                        </div>
+                        :
+                        <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
+                            {inputData.interval}  сек{/*{t("approach.repeats")}*/}
+                        </div>
+                    }
+                    {isDrawControlIcons &&
+                        <div className={s.customizableBlock__arrowsBlock}>
+                            <div className={s.topArrow} onClick={() => updateApproachItemTopArrowHandler(false, false, true)}>
+                                <img src={topArrow} alt="top arrow"/>
+                            </div>
+                            <div className={s.bottomArrow} onClick={() => updateApproachItemBottomArrowHandler(false, false, true)}>
+                                <img src={bottomArrow} alt="bottom arrow"/>
+                            </div>
+                        </div>
+                    }
+                </div>
             </div>
 
                 <div className={s.iconsBlock}>

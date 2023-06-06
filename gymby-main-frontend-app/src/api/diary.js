@@ -22,12 +22,12 @@ export const diaryAPI = {
         const response = await $authHost.post('api/diary/approach/delete', {approachId})
         return response;
     },
-    async createApproach(exerciseId, repeats, weight) {
-        const response = await $authHost.post('api/diary/approach/create', {exerciseId, repeats, weight})
+    async createApproach(exerciseId, repeats, weight, interval) {
+        const response = await $authHost.post('api/diary/approach/create', {exerciseId, repeats, weight, interval})
         return response;
     },
-    async updateApproach(exerciseId, approachId, repeats, weight, isDone) {
-        const response = await $authHost.post(`api/diary/approach/update`, {approachId, exerciseId,repeats,weight,isDone})
+    async updateApproach(exerciseId, approachId, repeats, weight, isDone, interval) {
+        const response = await $authHost.post(`api/diary/approach/update`, {approachId, exerciseId,repeats,weight,isDone, interval})
         return response;
     },
     async getAllProgramsInDiary() {

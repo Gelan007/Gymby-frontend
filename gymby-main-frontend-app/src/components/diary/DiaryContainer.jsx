@@ -30,9 +30,9 @@ const DiaryContainer = (props) => {
         props.getAllProgramsInDiary()
     }, [])
 
-    useEffect(() => {
+    /*useEffect(() => {
         console.log(props.allProgramsInDiary)
-    }, [props.allProgramsInDiary])
+    }, [props.allProgramsInDiary])*/
 
     return (
         <Diary {...props}/>
