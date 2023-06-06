@@ -96,6 +96,7 @@
     "buttons": {
       "addExercise": "Add an exercise",
       "importProgram": "Import a program",
+      "importProgramDay": "import program day",
       "addModal": "Add"
     },
     "modal": {

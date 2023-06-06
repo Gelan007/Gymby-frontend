@@ -63,6 +63,7 @@
 .programDescriptionItems {
   display: flex;
   justify-content: center;
+  margin-right: auto;
   flex-wrap: wrap;
 }
 .programDescriptionItems > *:not(:last-child) {

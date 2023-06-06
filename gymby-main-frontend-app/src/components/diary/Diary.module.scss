@@ -64,16 +64,23 @@
   &__calendar {
   }
   &__buttons {
-    display: flex;
     margin-top: 35px;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     &>*:not(:last-child) {
       margin-right: 15px;
     }
   }
   &__buttonAdd {
-    width: 170px;
+    width: 210px;
   }
   &__buttonImport {
    width: 230px;
+  }
+  &__buttonAddProgramDay {
+    flex: 0 0 100%;
   }
 }

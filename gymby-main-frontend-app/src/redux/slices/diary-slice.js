@@ -73,6 +73,22 @@ export const updateApproach = createAsyncThunk('diary/updateApproach', async (pa
         throw new Error('Failed to fetch diary');
     }
 });
+export const getAllProgramsInDiary = createAsyncThunk('diary/getAllProgramsInDiary', async (payload, {dispatch}) => {
+    const response = await diaryAPI.getAllProgramsInDiary();
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
+export const importProgramDay = createAsyncThunk('diary/importProgramDay', async (payload, {dispatch}) => {
+    const response = await diaryAPI.importProgramDay(payload.diaryId, payload.programId, payload.programDayId, payload.date);
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
 
 const diarySlice = createSlice({
     name: 'diary',
@@ -95,6 +111,9 @@ const diarySlice = createSlice({
             name: ''
         }
     },
+    allProgramsInDiary: [],
+    selectedProgramDay: '',
+    selectedProgramId: '',
     reducers: {
         setDiaryDay: (state, action) => {
             state.diaryDay = action.payload
@@ -107,6 +126,12 @@ const diarySlice = createSlice({
                 ...state.exerciseCreationData,
                 ...action.payload
             };
+        },
+        setSelectedProgramDay: (state, action) => {
+            state.selectedProgramDay = action.payload
+        },
+        setSelectedProgramId: (state, action) => {
+            state.selectedProgramId = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -123,9 +148,16 @@ const diarySlice = createSlice({
                 state.exercisesPrototype = action.payload;
                 state.loading = false;
             })
+            .addCase(getAllProgramsInDiary.fulfilled, (state, action) => {
+                state.allProgramsInDiary = action.payload;
+                action.payload.map((program,index) => {
+                    state.allProgramsInDiary[index].marks = [program.level, program.type];
+                })
+                state.loading = false;
+            });
 
     }
 })
 
-export const {setDiaryDay, setDate, setExerciseCreationData} = diarySlice.actions;
+export const {setDiaryDay, setDate, setExerciseCreationData, setSelectedProgramDay, setSelectedProgramId} = diarySlice.actions;
 export default diarySlice.reducer;

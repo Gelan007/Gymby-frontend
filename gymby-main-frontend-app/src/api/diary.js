@@ -30,5 +30,13 @@ export const diaryAPI = {
         const response = await $authHost.post(`api/diary/approach/update`, {approachId, exerciseId,repeats,weight,isDone})
         return response;
     },
+    async getAllProgramsInDiary() {
+        const response = await $authHost.get(`api/diary/all-programs`, )
+        return response;
+    },
+    async importProgramDay(diaryId, programId, programDayId, date) {
+        const response = await $authHost.post(`api/diary/import/program-day`, {diaryId, programId,programDayId,date})
+        return response;
+    },
 }
 

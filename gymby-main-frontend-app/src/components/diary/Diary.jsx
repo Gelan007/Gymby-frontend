@@ -16,10 +16,11 @@ import ExerciseCreationModalProgramsList
 
 const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercise,
                    getAllExercisesPrototype,exercisesPrototype, exerciseCreationData, setExerciseCreationData,
-                   deleteExercise, deleteApproach, createApproach, updateApproach, diaryId, ...props}) => {
+                   deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
+                   allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, ...props}) => {
 
-    const [isModalActive, setIsModalActive] = useState(false);
-    const programImportHandler = () => isModalActive ? setIsModalActive(false) : setIsModalActive(true)
+    const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
+    const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
     const {t} = useTranslation();
     const [isModalAddExerciseActive, setIsModalAddExerciseActive] = useState(false);
     const addProgramHandler = () => isModalAddExerciseActive ? setIsModalAddExerciseActive(false) : setIsModalAddExerciseActive(true)
@@ -85,13 +86,21 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                         />
                     </div>
                     <div className={s.calendarBlock__buttons}>
-                        <div className={s.calendarBlock__buttonAdd}>
-                            <ButtonOrange onClick={addProgramHandler}>{t("diary.buttons.addExercise")}</ButtonOrange>
+                        <div className={s.calendarBlock__row}>
+                            <div className={s.calendarBlock__buttonAdd}>
+                                <ButtonOrange onClick={addProgramHandler}>{t("diary.buttons.addExercise")}</ButtonOrange>
+                            </div>
+                            <div className={s.calendarBlock__buttonImport}
+                            >
+                                <ButtonOrange>{t("diary.buttons.importProgram")}</ButtonOrange>
+                            </div>
                         </div>
-                        <div className={s.calendarBlock__buttonImport}
-                             onClick={programImportHandler}
-                        >
-                            <ButtonOrange>{t("diary.buttons.importProgram")}</ButtonOrange>
+                        <div className={s.calendarBlock__row}>
+                            <div className={s.calendarBlock__buttonAddProgramDay}
+                                 onClick={programImportHandler}
+                            >
+                                <ButtonOrange>{t("diary.buttons.importProgramDay")}</ButtonOrange>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,11 +113,15 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                   deleteExercise={deleteExercise} diaryDate={date} diaryId={diaryId} approachId={exercise.id}
                         />
                     ))}
-                   {/*
-                     programId createApproach deleteApproach updateApproach deleteExercise*/}
                 </div>
             </div>
-            <DiaryModalProgramsList isActive={isModalActive} setActive={setIsModalActive} buttonName={t("diary.buttons.addModal")}/>
+            <DiaryModalProgramsList isActive={isModalProgramDayActive} setActive={setIsModalProgramDayActive}
+                                    buttonName={t("diary.buttons.addModal")} allProgramsInDiary={allProgramsInDiary}
+                                    setSelectedProgramDay={setSelectedProgramDay}
+                                    importProgramDay={props.importProgramDay}
+                                    diaryId={diaryId} selectedProgramDay={selectedProgramDay} date={date}
+                                    selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
+            />
             <ExerciseCreationModalProgramsList isActive={isModalAddExerciseActive} setActive={setIsModalAddExerciseActive}
                                                buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
                                                getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
