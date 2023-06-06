@@ -147,7 +147,7 @@ export const updateProfile = (username, email, firstName,
                         response.data.username, response.data.email, response.data.firstName,
                         response.data.lastName, response.data.description, response.data.photoAvatarPath,
                         response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
-                        response.data.profileId, response.data.isCoach,/* response.data.photos, isRequestCompleted*/
+                        response.data.profileId, response.data.isCoach, response.data.photos, isRequestCompleted
                     ))
                 }
             })
