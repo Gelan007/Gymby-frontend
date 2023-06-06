@@ -6,7 +6,7 @@ import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
 const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add',
-                                      importProgramDay, selectedProgramDay, date, diaryId, selectedProgramId}) => {
+                                      importProgramDay, selectedProgramDay, date, diaryId, selectedProgramId, isAutoImport}) => {
     const handleButtonAdd = () => {
         importProgramDay({diaryId, programId: selectedProgramId, programDayId: selectedProgramDay, date})
         setActive(false)

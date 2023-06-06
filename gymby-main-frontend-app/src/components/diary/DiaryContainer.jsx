@@ -13,6 +13,15 @@ import {
 
 const DiaryContainer = (props) => {
 
+
+    useEffect(() => {
+        const initializeDate = new Date();
+        initializeDate.setHours(0, 0, 0, 0);
+        const isoDate = initializeDate.toISOString();
+        props.setDate(isoDate);
+    }, [])
+
+
     useEffect(() => {
         props.getDiaryDay({date: props.date})
     }, [props.date])

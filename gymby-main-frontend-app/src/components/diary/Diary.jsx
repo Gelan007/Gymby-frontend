@@ -11,6 +11,7 @@ import DiaryModalProgramsList from "./modal/programsList/DiaryModalProgramsList"
 import { useTranslation } from 'react-i18next';
 import ExerciseCreationModalProgramsList
     from "../general/exerciseCreationModalWindow/programsList/ExerciseCreationModalProgramsList";
+import DiaryModalProgramsListAutoImport from "./modal/programsList/DiaryModalProgramsListAutoImport";
 
 
 
@@ -24,6 +25,8 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const {t} = useTranslation();
     const [isModalAddExerciseActive, setIsModalAddExerciseActive] = useState(false);
     const addProgramHandler = () => isModalAddExerciseActive ? setIsModalAddExerciseActive(false) : setIsModalAddExerciseActive(true)
+    const [isModalAutoImportActive, setIsModalAutoImportActive] = useState(false);
+    const modalAutoImportActiveHandler = () => isModalAutoImportActive ? setIsModalAutoImportActive(false) : setIsModalAutoImportActive(true)
 
     useEffect(() => {
         /*Когда будет создание упражнения в чужом дневнике, то надо будет передавать diaryId другое.
@@ -31,11 +34,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         setExerciseCreationData({diaryId, date})
     }, [date])
 
-    useEffect(() => {
-        const initializeDate = new Date();
-        const isoDate = initializeDate.toISOString();
-        setDate(isoDate);
-    }, [])
+
 
    /* useEffect(() => {
         console.log(exercisesPrototype)
@@ -55,10 +54,8 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                    onChange={() => {}}
                                    defaultName='Оберіть щоденник:'
                                    options={[
-                                       {value: 'popularity', name: 'За популярністю'},
-                                       {value: 'name', name: 'Назва'},
-                                       {value: 'price', name: 'Ціна'},
-                                       {value: 'category', name: 'Категорія'}
+                                       {value: 'popularity', name: 'Мій щоденник'},
+                                       {value: 'name', name: 'Щоденник @user_345'},
                                    ]}
                                    fontSize={28}
 
@@ -92,7 +89,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                             </div>
                             <div className={s.calendarBlock__buttonImport}
                             >
-                                <ButtonOrange>{t("diary.buttons.importProgram")}</ButtonOrange>
+                                <ButtonOrange onClick={modalAutoImportActiveHandler}>{t("diary.buttons.importProgram")}</ButtonOrange>
                             </div>
                         </div>
                         <div className={s.calendarBlock__row}>
@@ -126,6 +123,13 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                                buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
                                                getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
                                                exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}/>
+
+            <DiaryModalProgramsListAutoImport isActive={isModalAutoImportActive} setActive={setIsModalAutoImportActive}
+                                              buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
+                                              getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
+                                              exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
+                                              isAutoImport={true}
+            />
         </div>
     );
 };
