@@ -11,7 +11,7 @@ export const diaryAPI = {
         return response;
     },
     async createExercise(diaryId, exercisePrototypeId, date, name) {
-        const response = await $authHost.post('api/diary/exercise/create', {diaryId: "2b634173-4f78-492f-84a5-5268819f56ff", exercisePrototypeId, programDayId: null, date, name})
+        const response = await $authHost.post('api/diary/exercise/create', {diaryId, exercisePrototypeId, programDayId: null, date, name})
         return response;
     },
     async deleteExercise(exerciseId) {
