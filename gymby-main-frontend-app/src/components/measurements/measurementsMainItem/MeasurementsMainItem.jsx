@@ -6,7 +6,7 @@ import MeasurementsItem from "../item/MeasurementsItem";
 import biceps from "../../../assets/images/measurements/biceps.svg";
 import { useTranslation } from 'react-i18next';
 
-const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMeasurement,editMeasurement, type, unit = 1}) => {
+const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMeasurement,editMeasurement, type, unit = 1, titleName}) => {
 
     const {t} = useTranslation()
     const LIST = 'list';
@@ -27,8 +27,8 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
             <MeasurementsLeftPanel/>
             <div className={s.measurementsMainItem__body}>
                 <div className={s.navBlock}>
-                    <div className={s.navBlock__title}>Рука</div>
-                    <div className={s.navBlock__options}>
+                    <div className={s.navBlock__title}>{titleName}</div>
+                    {/*<div className={s.navBlock__options}>
                         <span className={selectedOption === LIST ?
                             `${s.navBlock__option} ${s.navBlock__option_red}` : s.navBlock__option}
                               onClick={listOptionHandle}>{t("measurements.list")}</span>
@@ -37,7 +37,7 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
                             `${s.navBlock__option} ${s.navBlock__option_line} ${s.navBlock__option_red}` :
                             `${s.navBlock__option} ${s.navBlock__option_line}`}
                               onClick={chartOptionHandle}>{t("measurements.chart")}</span>
-                    </div>
+                    </div>*/}
                     <div className={s.navBlock__button}>
                         <ButtonGreen onClick={(() => handleAddButton())}>{t("measurements.add")}</ButtonGreen>
                     </div>
