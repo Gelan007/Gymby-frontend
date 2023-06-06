@@ -96,6 +96,7 @@
     "buttons": {
       "addExercise": "Додати вправу",
       "importProgram": "Імпортувати програму",
+      "importProgramDay": "Імпортувати програмний день",
       "addModal": "Додати"
     },
     "modal": {

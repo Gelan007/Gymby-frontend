@@ -156,7 +156,7 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                         }
 
                         <div className={s.mainBlock__button}>
-                            <ButtonOrange>{t("programs.programDescription.addToFavorite")}</ButtonOrange>
+                            {/*<ButtonOrange>{t("programs.programDescription.addToFavorite")}</ButtonOrange>*/}
                         </div>
                     </div>
                 </div>

@@ -142,11 +142,12 @@ export const updateProfile = (username, email, firstName,
             instagramUrl, facebookUrl, telegramUsername, profileId)
             .then((response) => {
                 if(response.status >= 200 && response.status <= 204) {
+                    const isRequestCompleted = true
                     dispatch(setMyProfile(
                         response.data.username, response.data.email, response.data.firstName,
                         response.data.lastName, response.data.description, response.data.photoAvatarPath,
                         response.data.instagramUrl, response.data.facebookUrl, response.data.telegramUsername,
-                        response.data.profileId
+                        response.data.profileId, response.data.isCoach,/* response.data.photos, isRequestCompleted*/
                     ))
                 }
             })

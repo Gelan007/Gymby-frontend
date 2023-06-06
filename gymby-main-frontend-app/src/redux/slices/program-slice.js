@@ -197,9 +197,7 @@ export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercis
 
 export const createApproach = createAsyncThunk('programs/createApproach', async (payload, {dispatch}) => {
     const approachData = createApproachInitialData(payload.programId, payload.exerciseId)
-    const response = await programsAPI.createApproach
-    (approachData.programId, approachData.exerciseId,approachData.repeats,approachData.weight);
-
+    const response = await programsAPI.createApproach(approachData.programId, approachData.exerciseId,approachData.repeats,approachData.weight);
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {

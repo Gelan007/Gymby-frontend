@@ -48,9 +48,9 @@ const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, inst
                     </div>
                 </div>
             </div>
-            <div className={s.profileInfoBlock__addButton}>
+           {/* <div className={s.profileInfoBlock__addButton}>
                 <ButtonGreen>{t("userAccount.profile.profileInfoBlock.addToFriends")}</ButtonGreen>
-            </div>
+            </div>*/}
         </div>
     );
 };

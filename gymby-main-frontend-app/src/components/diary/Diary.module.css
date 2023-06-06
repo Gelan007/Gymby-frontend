@@ -54,17 +54,24 @@
   align-items: center;
 }
 .calendarBlock__buttons {
-  display: flex;
   margin-top: 35px;
 }
-.calendarBlock__buttons > *:not(:last-child) {
+.calendarBlock__row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.calendarBlock__row > *:not(:last-child) {
   margin-right: 15px;
 }
 .calendarBlock__buttonAdd {
-  width: 170px;
+  width: 210px;
 }
 .calendarBlock__buttonImport {
   width: 230px;
+}
+.calendarBlock__buttonAddProgramDay {
+  flex: 0 0 100%;
 }
 
 /*# sourceMappingURL=Diary.module.css.map */

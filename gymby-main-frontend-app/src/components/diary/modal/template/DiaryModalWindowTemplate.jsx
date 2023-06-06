@@ -5,7 +5,12 @@ import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
-const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add'}) => {
+const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add',
+                                      importProgramDay, selectedProgramDay, date, diaryId, selectedProgramId}) => {
+    const handleButtonAdd = () => {
+        importProgramDay({diaryId, programId: selectedProgramId, programDayId: selectedProgramDay, date})
+        setActive(false)
+    }
     return (
         <ModalWindow isActive={isActive} setActive={setActive}>
             <div className={s.diaryModalWindowTemplate}>
@@ -26,7 +31,7 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                     {children}
                 </div>
                 <div className={s.button}>
-                    <ButtonGreen>{buttonName}</ButtonGreen>
+                    <ButtonGreen onClick={() => handleButtonAdd()}>{buttonName}</ButtonGreen>
                 </div>
             </div>
         </ModalWindow>

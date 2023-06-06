@@ -6,6 +6,7 @@ import languageSlice from './slices/language-slice'
 import profileSlice from './slices/profile-slice'
 import measurementSlice from './slices/measurements-slice'
 import programSlice from './slices/program-slice'
+import diarySlice from './slices/diary-slice'
 
 export const store = configureStore({
     reducer: {
@@ -14,7 +15,8 @@ export const store = configureStore({
         language: languageSlice,
         profile: profileSlice,
         measurements: measurementSlice,
-        program: programSlice
+        program: programSlice,
+        diary: diarySlice
     },
     devTools: true
 })
