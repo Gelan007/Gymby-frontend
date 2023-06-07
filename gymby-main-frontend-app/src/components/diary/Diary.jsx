@@ -19,7 +19,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                    getAllExercisesPrototype,exercisesPrototype, exerciseCreationData, setExerciseCreationData,
                    deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
                    allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, autoImportUserData,
-                   setAutoImportUserData, importProgramAutomatically, ...props}) => {
+                   setAutoImportUserData, importProgramAutomatically, listOfMyTrainerFriends, takeAccessToMyDiaryByUserName,...props}) => {
 
     const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
     const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
@@ -28,7 +28,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const addProgramHandler = () => isModalAddExerciseActive ? setIsModalAddExerciseActive(false) : setIsModalAddExerciseActive(true)
     const [isModalAutoImportActive, setIsModalAutoImportActive] = useState(false);
     const modalAutoImportActiveHandler = () => isModalAutoImportActive ? setIsModalAutoImportActive(false) : setIsModalAutoImportActive(true)
-    
+    const [inputUserData, setInputUserData] = useState('')
 
     useEffect(() => {
         /*Когда будет создание упражнения в чужом дневнике, то надо будет передавать diaryId другое.
@@ -37,19 +37,22 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     }, [date])
 
     useEffect(() => {
+        console.log(inputUserData)
+    }, [inputUserData])
 
-    }, [])
 
-    /*const diarySelectHandler = (level, type) => {
-        if(level) {
-            setInputUserData({...inputUserData, level})
-            updateProgram({programId, name: inputUserData.name, description: inputUserData.description, level, type: inputUserData.type})
-        } else if(type) {
-            setInputUserData({...inputUserData, type})
-            updateProgram({programId, name: inputUserData.name, description: inputUserData.description, level: inputUserData.level, type})
+    const diarySelectHandler = (diary, access) => {
+        if(diary) {
+            setInputUserData({...inputUserData, diary})
+
+            //updateProgram({diary, type: inputUserData.type})
+        } else if(access) {
+            setInputUserData({...inputUserData, access})
+            takeAccessToMyDiaryByUserName({username: access})
+            //updateProgram({level: inputUserData.level, access})
         }
 
-    }*/
+    }
 
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
@@ -61,8 +64,8 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         <div className={s.diary}>
             <div className={s.diary__topBlock}>
                 <div className={s.topBlock__diarySelect}>
-                    <SelectSimple  value={'selectedSort'}
-                                   onChange={() => {}}
+                    <SelectSimple  value={inputUserData.diary}
+                                   onChange={(value) => diarySelectHandler(value, false)}
                                    defaultName='Оберіть щоденник:'
                                    options={[
                                        {value: 'popularity', name: 'Мій щоденник'},
@@ -73,15 +76,12 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                     />
                 </div>
                 <div className={s.topBlock__accessSelect}>
-                    <SelectSimple  value={'selectedSort'}
-                                   onChange={() => {}}
+                    <SelectSimple  value={inputUserData.access}
+                                   onChange={(value) => diarySelectHandler(false, value)}
                                    defaultName="Надати доступ:"
-                                   options={[
-                                       {value: 'popularity', name: 'За популярністю'},
-                                       {value: 'name', name: 'Назва'},
-                                       {value: 'price', name: 'Ціна'},
-                                       {value: 'category', name: 'Категорія'}
-                                   ]}/>
+                                   options={listOfMyTrainerFriends}
+                                   isDefaultValueEmpty={true}
+                    />
                 </div>
             </div>
             <div className={`${s.diary__bottomBlock} ${s.bottomBlock}`}>

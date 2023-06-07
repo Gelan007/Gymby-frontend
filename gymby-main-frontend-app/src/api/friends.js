@@ -26,8 +26,6 @@ export const friendsAPI = {
         return response;
     },
     async getQueryFriendsProfile(type, query) {
-        console.log(type)
-        console.log(query)
         let response = await $authHostWithoutHeaders.get(`api/profile/friends/search`)
 
         if (type && query) {

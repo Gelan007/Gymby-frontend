@@ -42,5 +42,12 @@ export const diaryAPI = {
         const response = await $authHost.post(`api/diary/import/program`, {diaryId, programId,startDate,daysOfWeek})
         return response;
     },
+    async accessToMyDiaryByUserName(username) {
+        console.log(username)
+        const response = await $authHost.post(`api/diary/access`, {username})
+        console.log(response)
+        return response;
+    },
+    
 }
 

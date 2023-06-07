@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {diaryAPI} from '../../api/diary'
 import {programsAPI} from "../../api/programs";
+import {friendsAPI} from "../../api/friends";
 
 
 const createApproachInitialData = (exerciseId) => {
@@ -98,6 +99,22 @@ export const importProgramAutomatically = createAsyncThunk('diary/importProgramA
         throw new Error('Failed to fetch diary');
     }
 });
+export const getAllFriendsTrainers = createAsyncThunk('diary/getAllFriendsTrainers', async (payload, {dispatch}) => {
+    const response = await friendsAPI.getQueryFriendsProfile('trainers', null)
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
+export const takeAccessToMyDiaryByUserName = createAsyncThunk('diary/takeAccessToMyDiaryByUserName', async (payload, {dispatch}) => {
+    const response = await diaryAPI.accessToMyDiaryByUserName(payload.username)
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
 
 const diarySlice = createSlice({
     name: 'diary',
@@ -118,16 +135,18 @@ const diarySlice = createSlice({
             exercisePrototypeId: '',
             programDayId: '',
             name: ''
-        }
+        },
+        allProgramsInDiary: [],
+        selectedProgramDay: '',
+        selectedProgramId: '',
+        autoImportUserData: {
+            date: new Date(),
+            formattedDate: new Date(),
+            daysOfWeek: []
+        },
+        listOfMyTrainerFriends: []
     },
-    allProgramsInDiary: [],
-    selectedProgramDay: '',
-    selectedProgramId: '',
-    autoImportUserData: {
-        date: new Date(),
-        formattedDate: new Date(),
-        daysOfWeek: []
-    },
+
     reducers: {
         setDiaryDay: (state, action) => {
             state.diaryDay = action.payload
@@ -171,7 +190,15 @@ const diarySlice = createSlice({
                     state.allProgramsInDiary[index].marks = [program.level, program.type];
                 })
                 state.loading = false;
-            });
+            })
+            .addCase(getAllFriendsTrainers.fulfilled, (state, action) => {
+                state.listOfMyTrainerFriends = action.payload.map((item) => ({
+                    value: item.username,
+                    name: item.username,
+                }));
+                state.loading = false;
+            })
+
 
     }
 })

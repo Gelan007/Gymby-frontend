@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Diary from "./Diary";
 import {connect} from "react-redux";
 import {
@@ -6,13 +6,24 @@ import {
     setDiaryDay,
     setDate,
     createExercise,
-    getAllExercisesPrototype, setExerciseCreationData,
-    deleteExercise, deleteApproach, createApproach, updateApproach, getAllProgramsInDiary, setSelectedProgramDay,
-    importProgramDay, setSelectedProgramId, setAutoImportUserData, importProgramAutomatically
+    getAllExercisesPrototype,
+    setExerciseCreationData,
+    deleteExercise,
+    deleteApproach,
+    createApproach,
+    updateApproach,
+    getAllProgramsInDiary,
+    setSelectedProgramDay,
+    importProgramDay,
+    setSelectedProgramId,
+    setAutoImportUserData,
+    importProgramAutomatically,
+    getAllFriendsTrainers,
+    takeAccessToMyDiaryByUserName
 } from "../../redux/slices/diary-slice";
 
-const DiaryContainer = (props) => {
 
+const DiaryContainer = (props) => {
 
     useEffect(() => {
         const initializeDate = new Date();
@@ -30,6 +41,13 @@ const DiaryContainer = (props) => {
         props.getAllProgramsInDiary()
     }, [])
 
+    useEffect(() => {
+        props.getAllFriendsTrainers()
+    }, [])
+
+    useEffect(() => {
+        console.log(props.listOfMyTrainerFriends)
+    }, [props.listOfMyTrainerFriends])
 
     return (
         <Diary {...props}/>
@@ -46,7 +64,8 @@ let mapStateToProps = (state) => {
         allProgramsInDiary: state.diary.allProgramsInDiary,
         selectedProgramDay: state.diary.selectedProgramDay,
         selectedProgramId: state.diary.selectedProgramId,
-        autoImportUserData: state.diary.autoImportUserData
+        autoImportUserData: state.diary.autoImportUserData,
+        listOfMyTrainerFriends: state.diary.listOfMyTrainerFriends
 
     }
 }
@@ -54,5 +73,6 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps,
     {getDiaryDay, setDiaryDay, setDate, createExercise, getAllExercisesPrototype, setExerciseCreationData,
         deleteExercise, deleteApproach, createApproach, updateApproach, getAllProgramsInDiary,
-        setSelectedProgramDay, importProgramDay,setSelectedProgramId,setAutoImportUserData, importProgramAutomatically })
+        setSelectedProgramDay, importProgramDay,setSelectedProgramId,setAutoImportUserData, importProgramAutomatically,getAllFriendsTrainers,
+        takeAccessToMyDiaryByUserName})
 (DiaryContainer);
