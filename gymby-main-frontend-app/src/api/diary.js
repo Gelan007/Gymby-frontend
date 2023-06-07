@@ -38,5 +38,11 @@ export const diaryAPI = {
         const response = await $authHost.post(`api/diary/import/program-day`, {diaryId, programId,programDayId,date})
         return response;
     },
+    async importProgramAutomatically(diaryId, programId, startDate, daysOfWeek) {
+        console.log(startDate)
+        console.log(daysOfWeek)
+        const response = await $authHost.post(`api/diary/import/program`, {diaryId, programId,startDate,daysOfWeek})
+        return response;
+    },
 }
 

@@ -90,6 +90,14 @@ export const importProgramDay = createAsyncThunk('diary/importProgramDay', async
         throw new Error('Failed to fetch diary');
     }
 });
+export const importProgramAutomatically = createAsyncThunk('diary/importProgramAutomatically', async (payload, {dispatch}) => {
+    const response = await diaryAPI.importProgramAutomatically(payload.diaryId, payload.programId,payload.startDate, payload.daysOfWeek);
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
 
 const diarySlice = createSlice({
     name: 'diary',
@@ -115,6 +123,11 @@ const diarySlice = createSlice({
     allProgramsInDiary: [],
     selectedProgramDay: '',
     selectedProgramId: '',
+    autoImportUserData: {
+        date: new Date(),
+        formattedDate: new Date(),
+        daysOfWeek: []
+    },
     reducers: {
         setDiaryDay: (state, action) => {
             state.diaryDay = action.payload
@@ -133,6 +146,9 @@ const diarySlice = createSlice({
         },
         setSelectedProgramId: (state, action) => {
             state.selectedProgramId = action.payload
+        },
+        setAutoImportUserData:  (state, action) => {
+            state.autoImportUserData = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -160,5 +176,5 @@ const diarySlice = createSlice({
     }
 })
 
-export const {setDiaryDay, setDate, setExerciseCreationData, setSelectedProgramDay, setSelectedProgramId} = diarySlice.actions;
+export const {setDiaryDay, setDate, setExerciseCreationData, setSelectedProgramDay, setSelectedProgramId, setAutoImportUserData} = diarySlice.actions;
 export default diarySlice.reducer;

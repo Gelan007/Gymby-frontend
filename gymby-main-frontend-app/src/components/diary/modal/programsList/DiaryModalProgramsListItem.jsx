@@ -18,7 +18,8 @@ const DiaryModalProgramsListItem = ({isExpand = false, program, setSelectedProgr
 
 
     return (
-        <div className={expand ? `${s.diaryItem} ${s.active}` : s.diaryItem}>
+        <div className={selectedProgramId === program.id && `${s.diaryItem} ${s.active__dark}` || expand ? `${s.diaryItem} ${s.active}` : s.diaryItem}
+             onClick={() => setSelectedProgramId(program.id)}>
             <div className={s.diaryItem__body}>
                 <div className={expand ? s.topBlock : `${s.topBlock} ${s.hidden}`}>
                     <div className={s.exerciseIcon}>

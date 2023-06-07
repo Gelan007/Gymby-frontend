@@ -18,7 +18,8 @@ import DiaryModalProgramsListAutoImport from "./modal/programsList/DiaryModalPro
 const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercise,
                    getAllExercisesPrototype,exercisesPrototype, exerciseCreationData, setExerciseCreationData,
                    deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
-                   allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, ...props}) => {
+                   allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, autoImportUserData,
+                   setAutoImportUserData, importProgramAutomatically, ...props}) => {
 
     const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
     const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
@@ -34,11 +35,6 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         setExerciseCreationData({diaryId, date})
     }, [date])
 
-
-
-   /* useEffect(() => {
-        console.log(exercisesPrototype)
-    }, [exercisesPrototype])*/
 
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
@@ -119,17 +115,22 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                     importProgramDay={props.importProgramDay}
                                     diaryId={diaryId} selectedProgramDay={selectedProgramDay} date={date}
                                     selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
+                                    setAutoImportUserData={setAutoImportUserData} autoImportUserData={autoImportUserData}
             />
             <ExerciseCreationModalProgramsList isActive={isModalAddExerciseActive} setActive={setIsModalAddExerciseActive}
                                                buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
                                                getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
-                                               exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}/>
+                                               exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
+            />
 
             <DiaryModalProgramsListAutoImport isActive={isModalAutoImportActive} setActive={setIsModalAutoImportActive}
-                                              buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
-                                              getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
-                                              exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
-                                              isAutoImport={true}
+                                              buttonName={t("diary.buttons.addModal")} allProgramsInDiary={allProgramsInDiary}
+                                              setSelectedProgramDay={setSelectedProgramDay}
+                                              importProgramDay={props.importProgramDay}
+                                              diaryId={diaryId} selectedProgramDay={selectedProgramDay} date={date}
+                                              selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
+                                              isAutoImport={isModalAutoImportActive} setAutoImportUserData={setAutoImportUserData} autoImportUserData={autoImportUserData}
+                                              importProgramAutomatically={importProgramAutomatically}
             />
         </div>
     );
