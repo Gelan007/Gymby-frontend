@@ -174,9 +174,10 @@ export const addProfilePhoto = (photo) => {
         profileAPI.addProfilePhoto(photo)
             .then((response) => {
                 if(response.status >= 200 && response.status <= 204) {
-                    dispatch(setMyProfilePhoto(
+                    /*dispatch(setMyProfilePhoto(
                         response.data
-                    ))
+                    ))*/
+                    dispatch(getMyProfile())
                 }
             })
     }
@@ -186,9 +187,10 @@ export const deleteProfilePhoto = (photoId) => {
         profileAPI.deleteProfilePhoto(photoId)
             .then(response => {
                 if(response.status >= 200 && response.status <= 204) {
-                    dispatch(setMyProfilePhoto(
+                    /*dispatch(setMyProfilePhoto(
                         response.data
-                    ))
+                    ))*/
+                    dispatch(getMyProfile())
                 }
             })
     }

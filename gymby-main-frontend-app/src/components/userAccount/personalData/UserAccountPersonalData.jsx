@@ -109,6 +109,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
             updateProfile(userData.username, userData.email, userData.firstName,
                 userData.lastName, userData.description, userData.photoAvatarPath,
                 userData.instagramUrl, userData.facebookUrl, userData.telegramUsername, myProfile.profileId)
+
             if(chosenUserPhotoFilesForRequest.length > 0) {
                 chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
                 setChosenUserPhotoFilesForRequest([])
@@ -116,6 +117,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
             if(chosenUserPhotoPathsForDeleteRequest.length > 0) {
                 chosenUserPhotoPathsForDeleteRequest.forEach(photoId => deleteProfilePhoto(photoId))
             }
+
             //console.log(chosenUserPhotoFilesForRequest)
         } catch {
             alert('Something went wrong')
