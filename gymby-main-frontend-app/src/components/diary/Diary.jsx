@@ -28,6 +28,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const addProgramHandler = () => isModalAddExerciseActive ? setIsModalAddExerciseActive(false) : setIsModalAddExerciseActive(true)
     const [isModalAutoImportActive, setIsModalAutoImportActive] = useState(false);
     const modalAutoImportActiveHandler = () => isModalAutoImportActive ? setIsModalAutoImportActive(false) : setIsModalAutoImportActive(true)
+    
 
     useEffect(() => {
         /*Когда будет создание упражнения в чужом дневнике, то надо будет передавать diaryId другое.
@@ -35,8 +36,20 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         setExerciseCreationData({diaryId, date})
     }, [date])
 
+    useEffect(() => {
 
+    }, [])
 
+    /*const diarySelectHandler = (level, type) => {
+        if(level) {
+            setInputUserData({...inputUserData, level})
+            updateProgram({programId, name: inputUserData.name, description: inputUserData.description, level, type: inputUserData.type})
+        } else if(type) {
+            setInputUserData({...inputUserData, type})
+            updateProgram({programId, name: inputUserData.name, description: inputUserData.description, level: inputUserData.level, type})
+        }
+
+    }*/
 
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
@@ -62,7 +75,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                 <div className={s.topBlock__accessSelect}>
                     <SelectSimple  value={'selectedSort'}
                                    onChange={() => {}}
-                                   defaultName="Надати доступ"
+                                   defaultName="Надати доступ:"
                                    options={[
                                        {value: 'popularity', name: 'За популярністю'},
                                        {value: 'name', name: 'Назва'},

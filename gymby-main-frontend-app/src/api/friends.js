@@ -1,4 +1,4 @@
-import {$authHost} from './main'
+import {$authHost, $authHostWithoutHeaders} from './main'
 
 export const friendsAPI = {
     async getMyFriendsList() {
@@ -23,6 +23,20 @@ export const friendsAPI = {
     },
     async inviteFriend(username) {
         const response = await $authHost.post('api/friend/invite', {username})
+        return response;
+    },
+    async getQueryFriendsProfile(type, query) {
+        console.log(type)
+        console.log(query)
+        let response = await $authHostWithoutHeaders.get(`api/profile/friends/search`)
+
+        if (type && query) {
+            response = await $authHostWithoutHeaders.get(`api/profile/friends/search?type=${type}&query=${query}`)
+        } else if (type) {
+            response = await $authHostWithoutHeaders.get(`api/profile/friends/search?type=${type}`)
+        } else if (query) {
+            response = await $authHostWithoutHeaders.get(`api/profile/friends/search?query=${query}`)
+        }
         return response;
     },
 

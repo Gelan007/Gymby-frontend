@@ -249,6 +249,19 @@ export const getQueryProfile = (type, query) => {
     }
 }
 
+export const getQueryFriendsProfile = (type, query) => {
+    return (dispatch) => {
+        friendsAPI.getQueryFriendsProfile(type, query)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+                    dispatch(setProfilesList(
+                        response.data
+                    ))
+                }
+            })
+    }
+}
+
 export const inviteFriend = (username) => {
     return (dispatch) => {
         friendsAPI.inviteFriend(username)
