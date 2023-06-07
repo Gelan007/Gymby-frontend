@@ -47,7 +47,9 @@
 
     margin-right: 55px;
   }
-  &__value {}
+  &__value {
+    display: flex;
+  }
   &__arrowsBlock {
     display: flex;
     flex-direction: column;

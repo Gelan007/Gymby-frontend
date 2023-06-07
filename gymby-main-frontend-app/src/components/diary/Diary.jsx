@@ -36,6 +36,8 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     }, [date])
 
 
+
+
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
         const isoDate = selectedDate.toISOString();

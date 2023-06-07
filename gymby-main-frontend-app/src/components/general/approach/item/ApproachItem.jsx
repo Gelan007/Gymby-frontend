@@ -230,7 +230,8 @@ const ApproachItem = ({isWeight = false, isMark = false,
                                        onChange={(e) => weightInputChangeHandler(e)}
                                        value={inputData.weight}
                                        onBlur={() => updateApproachItemHandler(false, true, false)}
-                            /> кг
+                            />
+                            <span>кг</span>
                         </div>
                         :
                         <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>

@@ -63,6 +63,9 @@
 .customizableBlock__content > *:not(:last-child) {
   margin-right: 8px;
 }
+.customizableBlock__value {
+  display: flex;
+}
 .customizableBlock__arrowsBlock {
   display: flex;
   flex-direction: column;

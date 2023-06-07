@@ -7,6 +7,7 @@ export const diaryAPI = {
             response = await $authHost.post(`api/diary/day`, {date, diaryId})
         } else {
             response = await $authHost.post(`api/diary/day`, {date, diaryId: null})
+            console.log(response)
         }
         return response;
     },
@@ -39,8 +40,6 @@ export const diaryAPI = {
         return response;
     },
     async importProgramAutomatically(diaryId, programId, startDate, daysOfWeek) {
-        console.log(startDate)
-        console.log(daysOfWeek)
         const response = await $authHost.post(`api/diary/import/program`, {diaryId, programId,startDate,daysOfWeek})
         return response;
     },
