@@ -4,9 +4,13 @@ export const diaryAPI = {
     async getDiaryDay(date, diaryId) {
         let response;
         if(date && diaryId) {
+            console.log(diaryId)
             response = await $authHost.post(`api/diary/day`, {date, diaryId})
+            console.log(response)
         } else {
+            console.log(diaryId)
             response = await $authHost.post(`api/diary/day`, {date, diaryId: null})
+            console.log(response)
         }
         return response;
     },
@@ -43,11 +47,12 @@ export const diaryAPI = {
         return response;
     },
     async accessToMyDiaryByUserName(username) {
-        console.log(username)
         const response = await $authHost.post(`api/diary/access`, {username})
-        console.log(response)
         return response;
     },
-    
+    async getAllAvailableDiaries() {
+        const response = await $authHost.get(`api/diary/available`)
+        return response;
+    },
 }
 
