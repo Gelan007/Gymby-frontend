@@ -19,7 +19,8 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                    getAllExercisesPrototype,exercisesPrototype, exerciseCreationData, setExerciseCreationData,
                    deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
                    allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, autoImportUserData,
-                   setAutoImportUserData, importProgramAutomatically, ...props}) => {
+                   setAutoImportUserData, importProgramAutomatically, listOfMyTrainerFriends, takeAccessToMyDiaryByUserName,
+                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, ...props}) => {
 
     const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
     const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
@@ -29,14 +30,25 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const [isModalAutoImportActive, setIsModalAutoImportActive] = useState(false);
     const modalAutoImportActiveHandler = () => isModalAutoImportActive ? setIsModalAutoImportActive(false) : setIsModalAutoImportActive(true)
 
+
     useEffect(() => {
         /*Когда будет создание упражнения в чужом дневнике, то надо будет передавать diaryId другое.
         * т.е. условие что если diaryId === null то тогда передавать налл, а иначе айди, или как то так*/
-        setExerciseCreationData({diaryId, date})
-    }, [date])
+            setExerciseCreationData({diaryId, date})
+    }, [date, diaryId])
 
 
+    const diarySelectHandler = (diary, access) => {
+        if(diary) {
+            setInputUserData({...inputUserData, diary})
+            setDiaryId(diary == "false" ? null : diary)
+        } else if(access) {
+            setInputUserData({...inputUserData, access})
+            takeAccessToMyDiaryByUserName({username: access})
+            //updateProgram({level: inputUserData.level, access})
+        }
 
+    }
 
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
@@ -48,27 +60,21 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         <div className={s.diary}>
             <div className={s.diary__topBlock}>
                 <div className={s.topBlock__diarySelect}>
-                    <SelectSimple  value={'selectedSort'}
-                                   onChange={() => {}}
+                    <SelectSimple  value={inputUserData.diary}
+                                   onChange={(value) => diarySelectHandler(value, false)}
                                    defaultName='Оберіть щоденник:'
-                                   options={[
-                                       {value: 'popularity', name: 'Мій щоденник'},
-                                       {value: 'name', name: 'Щоденник @user_345'},
-                                   ]}
+                                   options={allAvailableDiaries}
                                    fontSize={28}
 
                     />
                 </div>
                 <div className={s.topBlock__accessSelect}>
-                    <SelectSimple  value={'selectedSort'}
-                                   onChange={() => {}}
-                                   defaultName="Надати доступ"
-                                   options={[
-                                       {value: 'popularity', name: 'За популярністю'},
-                                       {value: 'name', name: 'Назва'},
-                                       {value: 'price', name: 'Ціна'},
-                                       {value: 'category', name: 'Категорія'}
-                                   ]}/>
+                    <SelectSimple  value={inputUserData.access}
+                                   onChange={(value) => diarySelectHandler(false, value)}
+                                   defaultName="Надати доступ:"
+                                   options={listOfMyTrainerFriends}
+                                   isDefaultValueEmpty={true}
+                    />
                 </div>
             </div>
             <div className={`${s.diary__bottomBlock} ${s.bottomBlock}`}>

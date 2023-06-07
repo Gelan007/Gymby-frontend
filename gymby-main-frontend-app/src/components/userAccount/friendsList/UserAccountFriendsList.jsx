@@ -11,7 +11,7 @@ import {NavLink} from "react-router-dom";
 
 
 const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selectedOption, setSelectedOption,
-                                    acceptFriendship, rejectFriendship, deleteFriendship}) => {
+                                    acceptFriendship, rejectFriendship, deleteFriendship, userSearchData, handleUserSearch}) => {
 
 
     const friendsOptionHandle = () => setSelectedOption(friendsValue);
@@ -24,7 +24,7 @@ const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selected
             <div className={s.userAccountFriendsList__body}>
                 <div className={s.navBlock}>
                     <div className={s.navBlock__input}>
-                        <InputGreySearch placeholder="Пошук"/>
+                        <InputGreySearch placeholder="Пошук" value={userSearchData} onChange={(e) => handleUserSearch(e)}/>
                     </div>
                     <div className={s.navBlock__options}>
                         <span className={selectedOption === friendsValue ?

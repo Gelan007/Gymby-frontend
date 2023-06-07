@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {diaryAPI} from '../../api/diary'
 import {programsAPI} from "../../api/programs";
+import {friendsAPI} from "../../api/friends";
 
 
 const createApproachInitialData = (exerciseId) => {
@@ -17,7 +18,7 @@ const createApproachInitialData = (exerciseId) => {
 
 
 export const getDiaryDay = createAsyncThunk('diary/getDiaryDay', async (payload) => {
-    const response = await diaryAPI.getDiaryDay(payload.date, payload.diaryDay);
+    const response = await diaryAPI.getDiaryDay(payload.date, payload.diaryId);
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
@@ -98,15 +99,38 @@ export const importProgramAutomatically = createAsyncThunk('diary/importProgramA
         throw new Error('Failed to fetch diary');
     }
 });
-
+export const getAllFriendsTrainers = createAsyncThunk('diary/getAllFriendsTrainers', async (payload, {dispatch}) => {
+    const response = await friendsAPI.getQueryFriendsProfile('trainers', null)
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
+export const takeAccessToMyDiaryByUserName = createAsyncThunk('diary/takeAccessToMyDiaryByUserName', async (payload, {dispatch}) => {
+    const response = await diaryAPI.accessToMyDiaryByUserName(payload.username)
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
+export const getAllAvailableDiaries = createAsyncThunk('diary/getAllAvailableDiaries', async (payload, {dispatch}) => {
+    const response = await diaryAPI.getAllAvailableDiaries()
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
 const diarySlice = createSlice({
     name: 'diary',
     initialState : {
         diaryDay: {
-            DiaryDayId: '',
-            ProgramDayId: '',
-            Date: '',
-            Exercises: [],
+            diaryDayId: '',
+            programDayId: '',
+            date: '',
+            exercises: [],
         },
         date: null,
         diaryId: null,
@@ -118,16 +142,19 @@ const diarySlice = createSlice({
             exercisePrototypeId: '',
             programDayId: '',
             name: ''
-        }
+        },
+        allProgramsInDiary: [],
+        selectedProgramDay: '',
+        selectedProgramId: '',
+        autoImportUserData: {
+            date: new Date(),
+            formattedDate: new Date(),
+            daysOfWeek: []
+        },
+        listOfMyTrainerFriends: [],
+        allAvailableDiaries: []
     },
-    allProgramsInDiary: [],
-    selectedProgramDay: '',
-    selectedProgramId: '',
-    autoImportUserData: {
-        date: new Date(),
-        formattedDate: new Date(),
-        daysOfWeek: []
-    },
+
     reducers: {
         setDiaryDay: (state, action) => {
             state.diaryDay = action.payload
@@ -150,6 +177,12 @@ const diarySlice = createSlice({
         setAutoImportUserData:  (state, action) => {
             state.autoImportUserData = action.payload
         },
+        setAllAvailableDiaries:  (state, action) => {
+            state.allAvailableDiaries = action.payload
+        },
+        setDiaryId:  (state, action) => {
+            state.diaryId = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -171,10 +204,28 @@ const diarySlice = createSlice({
                     state.allProgramsInDiary[index].marks = [program.level, program.type];
                 })
                 state.loading = false;
-            });
+            })
+            .addCase(getAllFriendsTrainers.fulfilled, (state, action) => {
+                state.listOfMyTrainerFriends = action.payload.map((item) => ({
+                    value: item.username,
+                    name: item.username,
+                }));
+                state.loading = false;
+            })
+            .addCase(getAllAvailableDiaries.fulfilled, (state, action) => {
+                const diaries = action.payload.map((item) => ({
+                    value: item.diaryId,
+                    name: item.name,
+                }));
+
+                diaries.unshift({ value: false, name: 'Мій щоденник' });
+
+                state.allAvailableDiaries = diaries;
+                state.loading = false;
+            })
 
     }
 })
 
-export const {setDiaryDay, setDate, setExerciseCreationData, setSelectedProgramDay, setSelectedProgramId, setAutoImportUserData} = diarySlice.actions;
+export const {setDiaryDay, setDate,setDiaryId, setExerciseCreationData, setSelectedProgramDay, setSelectedProgramId, setAutoImportUserData, setAllAvailableDiaries} = diarySlice.actions;
 export default diarySlice.reducer;

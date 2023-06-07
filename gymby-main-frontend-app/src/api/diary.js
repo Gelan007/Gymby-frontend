@@ -4,9 +4,13 @@ export const diaryAPI = {
     async getDiaryDay(date, diaryId) {
         let response;
         if(date && diaryId) {
+            console.log(diaryId)
             response = await $authHost.post(`api/diary/day`, {date, diaryId})
+            console.log(response)
         } else {
+            console.log(diaryId)
             response = await $authHost.post(`api/diary/day`, {date, diaryId: null})
+            console.log(response)
         }
         return response;
     },
@@ -40,6 +44,14 @@ export const diaryAPI = {
     },
     async importProgramAutomatically(diaryId, programId, startDate, daysOfWeek) {
         const response = await $authHost.post(`api/diary/import/program`, {diaryId, programId,startDate,daysOfWeek})
+        return response;
+    },
+    async accessToMyDiaryByUserName(username) {
+        const response = await $authHost.post(`api/diary/access`, {username})
+        return response;
+    },
+    async getAllAvailableDiaries() {
+        const response = await $authHost.get(`api/diary/available`)
         return response;
     },
 }
