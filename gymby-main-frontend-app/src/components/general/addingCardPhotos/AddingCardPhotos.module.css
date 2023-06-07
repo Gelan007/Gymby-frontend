@@ -19,10 +19,13 @@
 
 .addingCardPhotos {
   display: flex;
-  overflow: auto;
+  flex-wrap: wrap;
 }
 .addingCardPhotos > *:not(:last-child) {
   margin-right: 20px;
+}
+.addingCardPhotos > * {
+  margin-bottom: 15px;
 }
 
 /*---------------------------*/

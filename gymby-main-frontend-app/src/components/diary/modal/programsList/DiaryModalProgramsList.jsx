@@ -8,11 +8,14 @@ import DiaryModalProgramsListItem from "./DiaryModalProgramsListItem";
 
 const DiaryModalProgramsList = ({isActive, setActive, buttonName, allProgramsInDiary,
                                     setSelectedProgramDay, selectedProgramDay, importProgramDay, date,
-                                    diaryId, selectedProgramId, setSelectedProgramId}) => {
+                                    diaryId, selectedProgramId, setSelectedProgramId, autoImportUserData, setAutoImportUserData}) => {
     return (
         <DiaryModalWindowTemplate isActive={isActive} setActive={setActive}
                                   buttonName={buttonName} importProgramDay={importProgramDay}
-                                  date={date} diaryId={diaryId} selectedProgramDay={selectedProgramDay} selectedProgramId={selectedProgramId}>
+                                  date={date} diaryId={diaryId} selectedProgramDay={selectedProgramDay}
+                                  selectedProgramId={selectedProgramId} autoImportUserData={autoImportUserData}
+                                  setAutoImportUserData={setAutoImportUserData}
+        >
 
             <div className={s.programListItems}>
                 {allProgramsInDiary && allProgramsInDiary?.map((program, index) => (

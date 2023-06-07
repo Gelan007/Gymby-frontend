@@ -7,6 +7,7 @@ export const diaryAPI = {
             response = await $authHost.post(`api/diary/day`, {date, diaryId})
         } else {
             response = await $authHost.post(`api/diary/day`, {date, diaryId: null})
+            console.log(response)
         }
         return response;
     },
@@ -22,12 +23,12 @@ export const diaryAPI = {
         const response = await $authHost.post('api/diary/approach/delete', {approachId})
         return response;
     },
-    async createApproach(exerciseId, repeats, weight) {
-        const response = await $authHost.post('api/diary/approach/create', {exerciseId, repeats, weight})
+    async createApproach(exerciseId, repeats, weight, interval) {
+        const response = await $authHost.post('api/diary/approach/create', {exerciseId, repeats, weight, interval})
         return response;
     },
-    async updateApproach(exerciseId, approachId, repeats, weight, isDone) {
-        const response = await $authHost.post(`api/diary/approach/update`, {approachId, exerciseId,repeats,weight,isDone})
+    async updateApproach(exerciseId, approachId, repeats, weight, isDone, interval) {
+        const response = await $authHost.post(`api/diary/approach/update`, {approachId, exerciseId,repeats,weight,isDone, interval})
         return response;
     },
     async getAllProgramsInDiary() {
@@ -36,6 +37,10 @@ export const diaryAPI = {
     },
     async importProgramDay(diaryId, programId, programDayId, date) {
         const response = await $authHost.post(`api/diary/import/program-day`, {diaryId, programId,programDayId,date})
+        return response;
+    },
+    async importProgramAutomatically(diaryId, programId, startDate, daysOfWeek) {
+        const response = await $authHost.post(`api/diary/import/program`, {diaryId, programId,startDate,daysOfWeek})
         return response;
     },
 }

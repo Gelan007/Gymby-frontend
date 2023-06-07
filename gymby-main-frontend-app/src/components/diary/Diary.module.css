@@ -42,7 +42,7 @@
   flex: 0 0 430px;
 }
 .bottomBlock__approaches {
-  flex: 0 0 850px;
+  flex: 0 1 850px;
 }
 .bottomBlock__approaches > *:not(:last-child) {
   margin-bottom: 20px;
@@ -72,6 +72,65 @@
 }
 .calendarBlock__buttonAddProgramDay {
   flex: 0 0 100%;
+}
+
+@media (max-width: 1485px) {
+  .bottomBlock__calendarBlock {
+    margin-right: 15px;
+    flex: 0 1 auto;
+  }
+  .bottomBlock__approaches {
+    flex: 0 1 850px;
+  }
+  .bottomBlock__approaches > *:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 1350px) {
+  .diary {
+    padding: 40px 5px 50px;
+  }
+  .diary__topBlock {
+    margin: 0 auto 40px;
+  }
+  .calendarBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-right: 0;
+    margin-left: 10px;
+  }
+  .calendarBlock__buttons {
+    margin-top: 35px;
+    margin-left: 10px;
+  }
+  .calendarBlock__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .calendarBlock__row > *:not(:last-child) {
+    margin-right: 15px;
+  }
+  .calendarBlock__buttonAdd {
+    width: 210px;
+  }
+  .calendarBlock__buttonImport {
+    width: 230px;
+  }
+  .calendarBlock__buttonAddProgramDay {
+    flex: 0 0 100%;
+  }
+  .bottomBlock {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .bottomBlock__approaches {
+    max-width: 850px;
+    flex: 0 0 850px;
+    margin-top: 30px;
+    margin-right: 10px;
+  }
 }
 
 /*# sourceMappingURL=Diary.module.css.map */

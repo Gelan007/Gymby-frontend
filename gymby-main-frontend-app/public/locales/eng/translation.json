@@ -250,7 +250,10 @@
       "backButton": "Back"
     }
   },
-
+  "approach": {
+    "kg": "kg",
+    "repeats": "repeats"
+  },
   "general": {
     "confirmationModalWindow":  {
       "yes": "Yes",

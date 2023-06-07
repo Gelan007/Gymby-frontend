@@ -8,10 +8,19 @@ import {
     createExercise,
     getAllExercisesPrototype, setExerciseCreationData,
     deleteExercise, deleteApproach, createApproach, updateApproach, getAllProgramsInDiary, setSelectedProgramDay,
-    importProgramDay, setSelectedProgramId
+    importProgramDay, setSelectedProgramId, setAutoImportUserData, importProgramAutomatically
 } from "../../redux/slices/diary-slice";
 
 const DiaryContainer = (props) => {
+
+
+    useEffect(() => {
+        const initializeDate = new Date();
+        initializeDate.setHours(0, 0, 0, 0);
+        const isoDate = initializeDate.toISOString();
+        props.setDate(isoDate);
+    }, [])
+
 
     useEffect(() => {
         props.getDiaryDay({date: props.date})
@@ -21,9 +30,6 @@ const DiaryContainer = (props) => {
         props.getAllProgramsInDiary()
     }, [])
 
-    useEffect(() => {
-        console.log(props.allProgramsInDiary)
-    }, [props.allProgramsInDiary])
 
     return (
         <Diary {...props}/>
@@ -39,12 +45,14 @@ let mapStateToProps = (state) => {
         diaryId: state.diary.diaryId,
         allProgramsInDiary: state.diary.allProgramsInDiary,
         selectedProgramDay: state.diary.selectedProgramDay,
-        selectedProgramId: state.diary.selectedProgramId
+        selectedProgramId: state.diary.selectedProgramId,
+        autoImportUserData: state.diary.autoImportUserData
 
     }
 }
 
 export default connect(mapStateToProps,
     {getDiaryDay, setDiaryDay, setDate, createExercise, getAllExercisesPrototype, setExerciseCreationData,
-        deleteExercise, deleteApproach, createApproach, updateApproach, getAllProgramsInDiary, setSelectedProgramDay, importProgramDay,setSelectedProgramId  })
+        deleteExercise, deleteApproach, createApproach, updateApproach, getAllProgramsInDiary,
+        setSelectedProgramDay, importProgramDay,setSelectedProgramId,setAutoImportUserData, importProgramAutomatically })
 (DiaryContainer);

@@ -53,16 +53,16 @@ export const programsAPI = {
         const response = await $authHost.get(`api/diary/exercise-prototypes`)
         return response;
     },
-    async createApproach(programId, exerciseId, repeats, weight) {
-        const response = await $authHost.post(`api/program/approach/create`, {programId, exerciseId, repeats, weight})
+    async createApproach(programId, exerciseId, repeats, weight, interval) {
+        const response = await $authHost.post(`api/program/approach/create`, {programId, exerciseId, repeats, weight, interval})
         return response;
     },
     async deleteApproach(programId, exerciseId, approachId) {
         const response = await $authHost.post(`api/program/approach/delete`, {programId, exerciseId, approachId})
         return response;
     },
-    async updateApproach(programId, exerciseId, approachId, repeats, weight, isDone) {
-        const response = await $authHost.post(`api/program/approach/update`, {programId, approachId, exerciseId,repeats,weight,isDone})
+    async updateApproach(programId, exerciseId, approachId, repeats, weight, isDone, interval) {
+        const response = await $authHost.post(`api/program/approach/update`, {programId, approachId, exerciseId,repeats,weight,isDone, interval})
         return response;
     },
 }

@@ -37,6 +37,7 @@ const handleProgramFulfilled = (state, action) => {
                     approachId: approach.id,
                     repeats: approach.repeats,
                     weight: approach.weight,
+                    interval: approach.interval,
                     creationDate: approach.creationDate,
                 })),
             })),
@@ -54,22 +55,7 @@ const createInitialProgramData = (userName, userProgramsCount, dayName) => {
         programDays: [
             {
                 name: `${dayName} 1`,
-                exercises: [
-                   /* {
-                        programDayId: "your_program_day_id",
-                        date: "your_date_time",
-                        name: "your_exercise_name",
-                        exercisePrototypeId: "your_exercise_prototype_id",
-                        approaches: [
-                            {
-                                repeats: 10,
-                                weight: 20.5,
-                                isDone: true,
-                                creationDate: "your_date_time",
-                            },
-                        ],
-                    },*/
-                ],
+                exercises: [],
             },
         ],
     };
@@ -82,7 +68,8 @@ const createApproachInitialData = (programId, exerciseId) => {
         programId,
         exerciseId,
         repeats: 0,
-        weight: 0
+        weight: 0,
+        interval: 0
     };
 
     return data;
@@ -197,7 +184,7 @@ export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercis
 
 export const createApproach = createAsyncThunk('programs/createApproach', async (payload, {dispatch}) => {
     const approachData = createApproachInitialData(payload.programId, payload.exerciseId)
-    const response = await programsAPI.createApproach(approachData.programId, approachData.exerciseId,approachData.repeats,approachData.weight);
+    const response = await programsAPI.createApproach(approachData.programId, approachData.exerciseId,approachData.repeats,approachData.weight, approachData.interval);
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
@@ -216,9 +203,7 @@ export const deleteApproach = createAsyncThunk('programs/deleteApproach', async 
     }
 });
 export const updateApproach = createAsyncThunk('programs/updateApproach', async (payload, {dispatch}) => {
-
-    const response = await programsAPI.updateApproach(payload.programId, payload.exerciseId, payload.approachId, payload.repeats, payload.weight, payload.isDone);
-
+    const response = await programsAPI.updateApproach(payload.programId, payload.exerciseId, payload.approachId, payload.repeats, payload.weight, payload.isDone, payload.interval);
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
