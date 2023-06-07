@@ -7,7 +7,6 @@ export const diaryAPI = {
             response = await $authHost.post(`api/diary/day`, {date, diaryId})
         } else {
             response = await $authHost.post(`api/diary/day`, {date, diaryId: null})
-            console.log(response)
         }
         return response;
     },

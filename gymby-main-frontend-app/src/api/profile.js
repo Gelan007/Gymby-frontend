@@ -24,6 +24,7 @@ export const profileAPI = {
         formData.append('Email', email);
 
         const response = await $authHostWithoutHeaders.post('api/profile/update', formData)
+        console.log(response)
         return response;
     },
     async addProfilePhoto(photo) {

@@ -24,12 +24,13 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
             formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
     }, [date, isAutoImport])
 
-   /* useEffect(() => {
+    /*useEffect(() => {
         console.log(autoImportUserData)
     }, [autoImportUserData])*/
 
     const handleInputDateChange = (event) => {
         const newDate = newDateConverter(event.target.value)
+        //newDate.setHours(21, 0, 0, 0)
         const isoDate = newDate.toISOString();
         setAutoImportUserData({...autoImportUserData, date: isoDate, formattedDate: event.target.value});
     };
@@ -42,6 +43,7 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
             setActive(false)
         } else {
             importProgramDay({diaryId, programId: selectedProgramId, programDayId: selectedProgramDay, date})
+            //console.log(date)
             setActive(false)
         }
     }

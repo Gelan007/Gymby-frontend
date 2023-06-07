@@ -38,10 +38,57 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
     }, [userData?.photos])
 
     useEffect(() => {
-               photosPendingDeletion.forEach(photoForDeletion => {
-            setFinalPhotosDisplayingArray(finalPhotosDisplayingArray.filter(photo => photo.photoPath !== photoForDeletion.photoPath))
-        })
 
+        const updatedPhotosDisplayingArray = finalPhotosDisplayingArray.filter(photo => {
+            let shouldKeep = true;
+
+            const foundPhoto = photosPendingDeletion.find(photoForDeletion => {
+                if (Array.isArray(photoForDeletion)) {
+                    return photoForDeletion.some(item => {
+                        if (typeof item === 'string') {
+                            return (
+                                Array.isArray(photo.fileAndDataURLFile) &&
+                                photo.fileAndDataURLFile.some(file => file.fileReaderData === item)
+                            );
+                        } else {
+                            return (
+                                Array.isArray(photo.fileAndDataURLFile) &&
+                                photo.fileAndDataURLFile.some(file => file.fileReaderData === item.fileReaderData)
+                            );
+                        }
+                    });
+                } else {
+                    return photoForDeletion.photoPath === photo.photoPath;
+                }
+            });
+
+            if (foundPhoto) {
+                if (Array.isArray(foundPhoto)) {
+                    shouldKeep = !foundPhoto.some(item => {
+                        if (typeof item === 'string') {
+                            return (
+                                Array.isArray(photo.fileAndDataURLFile) &&
+                                photo.fileAndDataURLFile.some(file => file.fileReaderData === item)
+                            );
+                        } else {
+                            return (
+                                Array.isArray(photo.fileAndDataURLFile) &&
+                                photo.fileAndDataURLFile.some(file => file.fileReaderData === item.fileReaderData)
+                            );
+                        }
+                    });
+                } else if (foundPhoto.additionalField === photo.additionalField) {
+                    shouldKeep = false;
+                }
+            }
+
+            return shouldKeep;
+        });
+
+        setFinalPhotosDisplayingArray(updatedPhotosDisplayingArray);
+       /* photosPendingDeletion.forEach(photoForDeletion => {
+            setFinalPhotosDisplayingArray(finalPhotosDisplayingArray.filter(photo => photo.photoPath !== photoForDeletion.photoPath))
+        })*/
         if(chosenUserPhotoFilesForRequest.length > 0) {
             photosPendingDeletion.forEach(photoForDeletion => {
                 finalPhotosDisplayingArray.forEach(photo => {
