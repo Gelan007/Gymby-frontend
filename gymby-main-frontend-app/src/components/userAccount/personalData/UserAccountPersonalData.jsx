@@ -11,7 +11,7 @@ import {USER_ACCOUNT_PROFILE_ROUTE, USER_ACCOUNT_ROUTE} from "../../../utils/rou
 import ButtonGreen from "../../UI/buttons/ButtonGreen";
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 import { useTranslation } from 'react-i18next';
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, deleteProfilePhoto, ...props}) => {
@@ -24,6 +24,11 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
     const [chosenUserPhotoFilesForRequest, setChosenUserPhotoFilesForRequest] = useState([])
     const [chosenUserPhotoPathsForDeleteRequest, setChosenUserPhotoPathsForDeleteRequest] = useState([])
     const [photosPendingDeletion, setPhotosPendingDeletion] = useState([])
+    let generatedUsername = uuidv4().slice(0, 13)
+
+    useEffect(() => {
+        console.log(generatedUsername)
+    }, [generatedUsername])
 
     useEffect(() => {
         setUserData(myProfile)
@@ -106,8 +111,10 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
 
     const buttonHandler = () => {
         try {
-            updateProfile(userData.username, userData.email, userData.firstName,
-                userData.lastName, userData.description, userData.photoAvatarPath,
+            updateProfile(userData.username ? userData.username : generatedUsername, userData.email,
+                userData.firstName ? userData.firstName : 'FirstName',
+                userData.lastName ? userData.lastName : 'LastName',
+                userData.description, userData.photoAvatarPath,
                 userData.instagramUrl, userData.facebookUrl, userData.telegramUsername, myProfile.profileId)
 
             if(chosenUserPhotoFilesForRequest.length > 0) {
