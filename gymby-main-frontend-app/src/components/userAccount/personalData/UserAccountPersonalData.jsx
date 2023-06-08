@@ -114,8 +114,12 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
             updateProfile(userData.username ? userData.username : generatedUsername, userData.email,
                 userData.firstName ? userData.firstName : 'FirstName',
                 userData.lastName ? userData.lastName : 'LastName',
-                userData.description, userData.photoAvatarPath,
-                userData.instagramUrl, userData.facebookUrl, userData.telegramUsername, myProfile.profileId)
+                userData.description ? userData.description : '',
+                userData.photoAvatarPath,
+                userData.instagramUrl ? userData.instagramUrl : '',
+                userData.facebookUrl ? userData.facebookUrl : '',
+                userData.telegramUsername ? userData.telegramUsername : '',
+                myProfile.profileId)
 
             if(chosenUserPhotoFilesForRequest.length > 0) {
                 chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
