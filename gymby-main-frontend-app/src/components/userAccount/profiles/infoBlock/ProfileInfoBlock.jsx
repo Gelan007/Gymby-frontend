@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './InfoBlock.module.scss'
-import plug from '../../../../assets/images/userCabinet/personalData/Revan.jpg'
+import defaultPhoto from '../../../../assets/images/userCabinet/personalData/profile.png'
 import trainerIcon from '../../../../assets/images/general/icons/trainer_icon.svg'
 import telegram from '../../../../assets/images/general/icons/socialMedia/telegram.svg'
 import instagram from '../../../../assets/images/general/icons/socialMedia/instagram.svg'
@@ -8,7 +8,7 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 import {useTranslation} from "react-i18next";
 
 
-const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, instagramUrl, isCoach}) => {
+const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, instagramUrl, isCoach, avatar}) => {
     const {t} = useTranslation()
 
     return (
@@ -16,7 +16,7 @@ const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, inst
             <div className={s.profileInfoBlock__leftBlock}>
                 <div className={s.profileInfoBlock__avatarBlock}>
                     <div className={s.profileInfoBlock__avatar}>
-                        <img src={plug} alt="avatar"/>
+                        <img src={avatar ? avatar : defaultPhoto} alt="avatar"/>
                     </div>
                     <span className={s.profileInfoBlock__username}>{username}</span>
                 </div>
