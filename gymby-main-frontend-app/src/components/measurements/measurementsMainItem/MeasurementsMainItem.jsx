@@ -43,14 +43,24 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
                     </div>
                 </div>
                 <div className={s.itemsList}>
-                    {measurementsData?.map((measurement) => (
-                        <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
-                                          changesValue={'+1,2'} date={measurement.date}
-                                          days={'31'} measurementUnit={measurement.unit} measurementType={type}
-                                          addMeasurement={addMeasurement} deleteMeasurement={deleteMeasurement}
-                                          measurementId={measurement.id} editMeasurement={editMeasurement}
-                        />
-                    ))}
+                    {measurementsData?.map((measurement, index) => {
+                        let previousMeasurementValue = index === 0 ? 0 : measurement.value - measurementsData[index - 1].value;
+                        let currentDate = new Date();
+                        const today = new Date();
+                        const initialDate = new Date(measurement.date);
+                        let differenceInDays = Math.floor((currentDate.getTime() - initialDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                        return (
+                            <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
+                                              changesValue={previousMeasurementValue} date={measurement.date}
+                                              days={initialDate.getDate() === today.getDate() ? 0 : differenceInDays} measurementUnit={measurement.unit} measurementType={type}
+                                              addMeasurement={addMeasurement} deleteMeasurement={deleteMeasurement}
+                                              measurementId={measurement.id} editMeasurement={editMeasurement}
+
+                            />
+                        )
+
+                    })}
                 </div>
             </div>
         </div>
