@@ -5,7 +5,7 @@ import trainerIcon from '../../../assets/images/general/icons/trainer_icon.svg'
 import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelContainer";
 import { useTranslation } from 'react-i18next';
 
-const UserAccountSubscriptions = () => {
+const UserAccountSubscriptions = ({data, signature}) => {
     const {t} = useTranslation()
     return (
         <div className={s.subscriptions}>
@@ -33,6 +33,13 @@ const UserAccountSubscriptions = () => {
                     <div className={s.infoBlock__text}>
                         <span className={s.infoBlock__boldPart}>{t("userAccount.subscriptions.createdPrograms1")} <span className={s.infoBlock__redPart}>N</span> {t("userAccount.subscriptions.createdPrograms2")}</span>
                     </div>
+                </div>
+                <div className={s.doSubscriptionBlock}>
+                    <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">
+                        <input type="hidden" name="data" value={`${data}`}/>
+                        <input type="hidden" name="signature" value={`${signature}`}/>
+                        <input type="image" src="//static.liqpay.ua/buttons/p1ru.radius.png"/>
+                    </form>
                 </div>
             </div>
 

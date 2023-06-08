@@ -61,6 +61,8 @@ import MeasurementShouldersContainer from "../../components/measurements/shoulde
 import MeasurementWeightContainer from "../../components/measurements/weight/MeasurementWeightContainer";
 import MeasurementPhotosContainer from "../../components/measurements/photos/MeasurementPhotosContainer";
 import DiaryContainer from "../../components/diary/DiaryContainer";
+import UserAccountSubscriptionsContainer
+    from "../../components/userAccount/subscriptions/UserAccountSubscriptionsContainer";
 
 export const publicRoutes = [
    /* {
@@ -84,7 +86,7 @@ export const authRoutes = [
     },
     {
         path: USER_ACCOUNT_SUBSCRIBES_ROUTE,
-        Component: <UserAccountSubscriptions/>
+        Component: <UserAccountSubscriptionsContainer/>
     },
     {
         path: USER_ACCOUNT_COACHING_ROUTE,
