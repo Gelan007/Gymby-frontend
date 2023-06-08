@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 const UserAccountSubscriptions = ({data, signature, isCoach}) => {
     const {t} = useTranslation()
+    
     return (
         <div className={s.subscriptions}>
             <UserAccountLeftPanelContainer isButtonGold={true}/>
@@ -49,7 +50,7 @@ const UserAccountSubscriptions = ({data, signature, isCoach}) => {
                         <span className={s.doSubscriptionBlock__title}>Стандарт</span>
                         <span className={s.doSubscriptionBlock__price}>$9</span>
                         <span className={s.doSubscriptionBlock__type}>Місячна</span>
-                        <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">
+                        <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8" target="_blank">
                             <input type="hidden" name="data" value={`${data}`}/>
                             <input type="hidden" name="signature" value={`${signature}`}/>
                             <input type="image" src={buttonSubscription}/>
