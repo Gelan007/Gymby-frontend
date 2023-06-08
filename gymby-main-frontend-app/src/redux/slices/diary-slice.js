@@ -83,6 +83,14 @@ export const getAllProgramsInDiary = createAsyncThunk('diary/getAllProgramsInDia
         throw new Error('Failed to fetch diary');
     }
 });
+export const getPersonalPrograms = createAsyncThunk('diary/getPersonalPrograms', async () => {
+    const response = await programsAPI.getPersonalPrograms();
+    if (response.status >= 200 && response.status <= 204) {
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
 export const importProgramDay = createAsyncThunk('diary/importProgramDay', async (payload, {dispatch}) => {
     const response = await diaryAPI.importProgramDay(payload.diaryId, payload.programId, payload.programDayId, payload.date);
     if (response.status >= 200 && response.status <= 204) {
@@ -152,7 +160,8 @@ const diarySlice = createSlice({
             daysOfWeek: []
         },
         listOfMyTrainerFriends: [],
-        allAvailableDiaries: []
+        allAvailableDiaries: [],
+        allPersonalPrograms: []
     },
 
     reducers: {
@@ -202,6 +211,13 @@ const diarySlice = createSlice({
                 state.allProgramsInDiary = action.payload;
                 action.payload.map((program,index) => {
                     state.allProgramsInDiary[index].marks = [program.level, program.type];
+                })
+                state.loading = false;
+            })
+            .addCase(getPersonalPrograms.fulfilled, (state, action) => {
+                state.allPersonalPrograms = action.payload;
+                action.payload.map((program,index) => {
+                    state.allPersonalPrograms[index].marks = [program.level, program.type];
                 })
                 state.loading = false;
             })

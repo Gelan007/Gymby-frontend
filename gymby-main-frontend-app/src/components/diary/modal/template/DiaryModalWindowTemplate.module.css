@@ -91,6 +91,15 @@
   color: #000000;
 }
 
+.username {
+  margin-top: 12px;
+  align-self: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+
 .close {
   margin-left: auto;
   cursor: pointer;

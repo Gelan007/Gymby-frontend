@@ -51,16 +51,12 @@ const DiaryContainer = (props) => {
     }, [])
 
 
-   /* useEffect(() => {
-        props.setAllAvailableDiaries([{value: null, name: 'Мій щоденник', ...props.allAvailableDiaries }])
-    }, [props.allAvailableDiaries])
-*/
     useEffect(() => {
         props.getAllFriendsTrainers()
     }, [])
 
     return (
-        <Diary {...props} inputUserData={inputUserData} setInputUserData={setInputUserData}/>
+        <Diary inputUserData={inputUserData} setInputUserData={setInputUserData}{...props}/>
     );
 };
 
@@ -77,7 +73,8 @@ let mapStateToProps = (state) => {
         autoImportUserData: state.diary.autoImportUserData,
         listOfMyTrainerFriends: state.diary.listOfMyTrainerFriends,
         allAvailableDiaries: state.diary.allAvailableDiaries,
-        isCoach: state.userAccountPage.myProfile.isCoach
+        isCoach: state.userAccountPage.myProfile.isCoach,
+
     }
 }
 

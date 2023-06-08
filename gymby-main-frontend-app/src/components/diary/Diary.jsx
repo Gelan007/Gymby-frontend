@@ -15,12 +15,13 @@ import DiaryModalProgramsListAutoImport from "./modal/programsList/DiaryModalPro
 
 
 
+
 const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercise,
                    getAllExercisesPrototype,exercisesPrototype, exerciseCreationData, setExerciseCreationData,
                    deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
                    allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, autoImportUserData,
                    setAutoImportUserData, importProgramAutomatically, listOfMyTrainerFriends, takeAccessToMyDiaryByUserName,
-                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, isCoach,...props}) => {
+                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, isCoach, ...props}) => {
 
     const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
     const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
@@ -135,6 +136,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                                buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
                                                getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
                                                exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
+
             />
 
             <DiaryModalProgramsListAutoImport isActive={isModalAutoImportActive} setActive={setIsModalAutoImportActive}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./FriendsListItem.module.scss";
 import plug from "../../../../assets/images/userCabinet/personalData/Revan.jpg";
 import trainerIcon from "../../../../assets/images/general/icons/trainer_icon.svg";
@@ -8,7 +8,8 @@ import applyIcon from "../../../../assets/images/general/icons/applyGreen.svg";
 import closeIcon from "../../../../assets/images/general/icons/closeRed.svg";
 
 const UserAccountFriendsListItem = ({username, firstName, lastName,
-                                        selectedOption, friendsValue, isCoach, acceptFriendship, rejectFriendship, deleteFriendship}) => {
+                                        selectedOption, friendsValue, isCoach, acceptFriendship,
+                                        rejectFriendship, deleteFriendship, programAccessHandler, setUserName, isUserCoach}) => {
 
     const handleAcceptFriendship = (e) => {
         e.preventDefault()
@@ -21,6 +22,12 @@ const UserAccountFriendsListItem = ({username, firstName, lastName,
     const handleDeleteFriendship = (e) => {
         e.preventDefault()
         deleteFriendship(username)
+    }
+
+    const handleAccessProgram = (e) => {
+        e.preventDefault()
+        setUserName(username)
+        programAccessHandler()
     }
 
     return (
@@ -44,9 +51,14 @@ const UserAccountFriendsListItem = ({username, firstName, lastName,
                 </div>
                 {selectedOption === friendsValue ?
                     <div className={s.iconsBlock}>
-                        <div className={s.iconsBlock__sendIcon}>
-                            <img src={sendIcon} alt="sendIcon"/>
-                        </div>
+                        {isUserCoach ?
+                            <div className={s.iconsBlock__sendIcon} onClick={handleAccessProgram}>
+                                <img src={sendIcon} alt="sendIcon"/>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
                         <div className={s.iconsBlock__basketIcon} onClick={handleDeleteFriendship}>
                             <img src={basketIcon} alt="basketIcon"/>
                         </div>
