@@ -61,19 +61,19 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     return (
         <div className={s.diary}>
             <div className={s.diary__topBlock}>
-                <div className={s.topBlock__diarySelect}>
-                    {isCoach ?
+                {isCoach ?
+                    <div className={s.topBlock__diarySelect}>
                         <SelectSimple  value={inputUserData.diary}
                                        onChange={(value) => diarySelectHandler(value, false)}
                                        defaultName='Оберіть щоденник:'
                                        options={allAvailableDiaries}
                                        fontSize={28}
-
                         />
-                        :
-                        <div>Мій щоденник</div>
-                    }
-                </div>
+                    </div>
+                    :
+                    <div></div>
+                }
+
                 <div className={s.topBlock__accessSelect}>
                     <SelectSimple  value={inputUserData.access}
                                    onChange={(value) => diarySelectHandler(false, value)}

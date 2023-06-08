@@ -9,10 +9,10 @@ import ConfirmationModalWindow from "../../general/modalWindow/confirmation/Conf
 import {NavLink} from "react-router-dom";
 import {PROGRAMS_PROGRAM_PROFILE_ROUTE, PROGRAMS_ROUTE, urlPathForProgramCreation} from "../../../utils/routes/consts";
 import { useTranslation } from 'react-i18next';
-
+import trainerIcon from '../../../assets/images/LandingPage/trainerAdvertising/trainerPhotoEllipse.png'
 
 const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createProgram,
-                              userName, deleteProgram, getPersonalPrograms}) => {
+                              userName, deleteProgram, getPersonalPrograms, isCoach, isPersonalPrograms = false}) => {
 
     const {t} = useTranslation();
     const [isModalActive, setIsModalActive] = useState(false);
@@ -32,34 +32,73 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createPr
             <ProgramsLeftPanel/>
             <div className={s.programs__body}>
                 <div className={s.navBlock}>
-                    <div className={s.navBlock__input}>
-                        <InputGreySearch placeholder="Пошук"/>
-                    </div>
-                    <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}
-                         onClick={() => handleCreateProgramButton()}>
-                        {/*<NavLink to={`${PROGRAMS_ROUTE}${urlPathForProgramCreation}`}>*/}
+                    {isCoach ?
+                        <div className={s.navBlock__input}>
+                            <InputGreySearch placeholder="Пошук"/>
+                        </div>
+                        :
+                        <div></div>
+                    }
+
+                    {isCoach ?
+                        <div className={isButtonShow ? `${s.navBlock__button}` : `${s.navBlock__button} ${s.disable}`}
+                             onClick={() => handleCreateProgramButton()}>
                             <ButtonGreen>{t("programs.createProgram")}</ButtonGreen>
-                       {/* </NavLink>*/}
-                    </div>
+                        </div>
+                        :
+                        <div></div>
+                    }
+
                 </div>
                 <div className={s.cards}>
-                    <Grid container spacing={2}>
-                        {programs?.map(((program, index) => (
-                            <Grid item xs={12} sm={6} md={4} key={index}>
-                                <NavLink to={`${PROGRAMS_ROUTE}/${program.programId}`}>
-                                    <ProgramsCard isDeleteIcon={isDeleteIcon}
-                                                  title={program.name}
-                                                  marks={program.marks}
-                                                  modalHandler={modalHandler}
-                                                  setSelectedProgram={setSelectedProgram}
-                                                  setSelectedProgramId={setSelectedProgramId}
-                                                  programId={program.programId}
-                                                  getPersonalPrograms={getPersonalPrograms}
-                                    />
-                                </NavLink>
+                    {isCoach && isPersonalPrograms ?
+                        <Grid container spacing={2}>
+                            {programs?.map(((program, index) => (
+                                <Grid item xs={12} sm={6} md={4} key={index}>
+                                    <NavLink to={`${PROGRAMS_ROUTE}/${program.programId}`}>
+                                        <ProgramsCard isDeleteIcon={isDeleteIcon}
+                                                      title={program.name}
+                                                      marks={program.marks}
+                                                      modalHandler={modalHandler}
+                                                      setSelectedProgram={setSelectedProgram}
+                                                      setSelectedProgramId={setSelectedProgramId}
+                                                      programId={program.programId}
+                                                      getPersonalPrograms={getPersonalPrograms}
+                                        />
+                                    </NavLink>
+                                </Grid>
+                            )))}
+                        </Grid>
+                        :
+                        !isPersonalPrograms ?
+                            <Grid container spacing={2}>
+                                {programs?.map(((program, index) => (
+                                    <Grid item xs={12} sm={6} md={4} key={index}>
+                                        <NavLink to={`${PROGRAMS_ROUTE}/${program.programId}`}>
+                                            <ProgramsCard isDeleteIcon={isDeleteIcon}
+                                                          title={program.name}
+                                                          marks={program.marks}
+                                                          modalHandler={modalHandler}
+                                                          setSelectedProgram={setSelectedProgram}
+                                                          setSelectedProgramId={setSelectedProgramId}
+                                                          programId={program.programId}
+                                                          getPersonalPrograms={getPersonalPrograms}
+                                            />
+                                        </NavLink>
+                                    </Grid>
+                                )))}
                             </Grid>
-                        )))}
-                    </Grid>
+                            :
+                        <div className={s.noTrainerBlock}>
+                            <div className={s.noTrainerText}>Для того, щоб відкрити доступ до власних програм, необхідно
+                                придбати підписку тренера у власному кабінеті
+                            </div>
+                            <div className={s.noTrainerImage}>
+                                <img src={trainerIcon} alt="trainerIcon"/>
+                            </div>
+                        </div>
+                    }
+
                 </div>
             </div>
             <ConfirmationModalWindow isActive={isModalActive}

@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import UserAccountSubscriptions from "./UserAccountSubscriptions";
-import {getData, generateSignature} from "../../../redux/reducers/subscription";
+import {getData, generateSignature, publicKey, privateKey} from "../../../redux/reducers/subscription";
 import {connect} from "react-redux";
+import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 
 const UserAccountSubscriptionsContainer = (props) => {
     const [signature, setSignature] = useState()
@@ -14,19 +15,20 @@ const UserAccountSubscriptionsContainer = (props) => {
         })
     }, [props.username])
 
-   /* useEffect(() => {
-
-    }, [])*/
+    useEffect(() => {
+        props.getMyProfile()
+    }, [])
 
     return (
-        <UserAccountSubscriptions data={data} signature={signature}/>
+        <UserAccountSubscriptions data={data} signature={signature} isCoach={props.isCoach}/>
     );
 };
 
 const mapStateToProps = (state) => {
     return {
-        username: state.userAccountPage.myProfile.username
+        username: state.userAccountPage.myProfile.username,
+        isCoach: state.userAccountPage.myProfile.isCoach
     }
 }
 
-export default connect(mapStateToProps, {})(UserAccountSubscriptionsContainer);
+export default connect(mapStateToProps, {getMyProfile})(UserAccountSubscriptionsContainer);

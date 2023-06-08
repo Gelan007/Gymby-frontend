@@ -176,6 +176,7 @@
       "add": "Додати"
     },
     "userAccount": {
+      "trainer": "Тренер",
       "leftPanel": {
         "title": "Особистий кабінет",
         "personalData": "Особисті дані",

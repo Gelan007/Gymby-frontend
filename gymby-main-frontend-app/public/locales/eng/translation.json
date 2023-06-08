@@ -175,6 +175,7 @@
     "add": "Add"
   },
   "userAccount": {
+    "trainer": "trainer",
     "leftPanel": {
       "title": "Personal account",
       "personalData": "Personal data",
