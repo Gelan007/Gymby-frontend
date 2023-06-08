@@ -8,7 +8,9 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
 const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add',
                                       importProgramDay, selectedProgramDay, date, diaryId,
-                                      selectedProgramId, isAutoImport = false, autoImportUserData, setAutoImportUserData, importProgramAutomatically}) => {
+                                      selectedProgramId, isAutoImport = false, autoImportUserData,
+                                      setAutoImportUserData, importProgramAutomatically, accessProgramToUserByUsername,
+                                      isProgramAccess = false, username}) => {
 
     const newDate = new Date(date);
     const initialDay = newDate.getDate().toString().padStart(2, "0");
@@ -24,10 +26,6 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
             formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
     }, [date, isAutoImport])
 
-    /*useEffect(() => {
-        console.log(autoImportUserData)
-    }, [autoImportUserData])*/
-
     const handleInputDateChange = (event) => {
         const newDate = newDateConverter(event.target.value)
         //newDate.setHours(21, 0, 0, 0)
@@ -41,9 +39,11 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
             importProgramAutomatically({diaryId, programId: selectedProgramId, date,
                 startDate: autoImportUserData && autoImportUserData.date, daysOfWeek:autoImportUserData.daysOfWeek })
             setActive(false)
+        } else if (isProgramAccess) {
+            accessProgramToUserByUsername(selectedProgramId,username)
+            setActive(false)
         } else {
             importProgramDay({diaryId, programId: selectedProgramId, programDayId: selectedProgramDay, date})
-            //console.log(date)
             setActive(false)
         }
     }
@@ -162,9 +162,16 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                         <div className={s.search}>
                             <InputGreySearch placeholder="пошук"/>
                         </div>
-                        <div className={s.date}>
-                            {formattedInitialDate}
-                        </div>
+                        {username ?
+                            <div className={s.username}>
+                                {username}
+                            </div>
+                            :
+                            <div className={s.date}>
+                                {formattedInitialDate}
+                            </div>
+                        }
+
                         <div className={s.close}
                              onClick={() => setActive(false)}
                         >

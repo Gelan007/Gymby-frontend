@@ -13,7 +13,7 @@ const SET_PROFILES_LIST = 'SET_PROFILES_LIST'
 //Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
 let initialState = {
     pageSize: 5,
-    userName: 'Ivan Ruslanovich',
+    userName: null,
     myProfile: {
         profileId: '',
         firstName: '',
@@ -311,6 +311,18 @@ export const deleteFriendship = (username) => {
             })
     }
 }
+
+export const accessProgramToUserByUsername = (programId, username) => {
+    return (dispatch) => {
+        friendsAPI.accessProgramToUserByUsername(programId, username)
+            .then((response) => {
+                if(response.status >= 200 && response.status <= 204) {
+
+                }
+            })
+    }
+}
+
 
 
 export default userAccountReducer;

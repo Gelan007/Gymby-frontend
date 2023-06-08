@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./FriendsList.module.scss";
 import UserAccountLeftPanel from "../leftPanel/UserAccountLeftPanel";
 import InputGreySearch from "../../UI/inputs/InputGreySearch";
@@ -8,15 +8,22 @@ import UserAccountLeftPanelContainer from "../leftPanel/UserAccountLeftPanelCont
 import { useTranslation } from 'react-i18next';
 import {USER_ACCOUNT_ROUTE} from "../../../utils/routes/consts";
 import {NavLink} from "react-router-dom";
+import DiaryModalProgramsList from "../../diary/modal/programsList/DiaryModalProgramsList";
+
 
 
 const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selectedOption, setSelectedOption,
-                                    acceptFriendship, rejectFriendship, deleteFriendship, userSearchData, handleUserSearch}) => {
+                                    acceptFriendship, rejectFriendship, deleteFriendship,
+                                    userSearchData, handleUserSearch, accessProgramToUserByUsername, setUserName, username,
+                                    isUserCoach, ...props}) => {
 
 
     const friendsOptionHandle = () => setSelectedOption(friendsValue);
     const requestsOptionHandle = () => setSelectedOption(requestsValue);
+    const [isActiveAccessProgram, setIsActiveAccessProgram] = useState()
+    const programAccessHandler = () => isActiveAccessProgram ? setIsActiveAccessProgram(false) : setIsActiveAccessProgram(true)
     const {t} = useTranslation()
+
 
     return (
         <div className={s.userAccountFriendsList}>
@@ -51,11 +58,24 @@ const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selected
                                 acceptFriendship={acceptFriendship}
                                 rejectFriendship={rejectFriendship}
                                 deleteFriendship={deleteFriendship}
+                                programAccessHandler={programAccessHandler}
+                                setUserName={setUserName}
+                                isUserCoach={isUserCoach}
                             />
                         </NavLink>
                     ))}
                 </div>
             </div>
+            <DiaryModalProgramsList isActive={isActiveAccessProgram} setActive={programAccessHandler}
+                                    buttonName={t("diary.buttons.addModal")} allProgramsInDiary={props.allProgramsInDiary}
+                                    setSelectedProgramDay={props.setSelectedProgramDay}
+                                    importProgramDay={props.importProgramDay}
+                                    diaryId={props.diaryId} selectedProgramDay={props.selectedProgramDay} date={props.date}
+                                    selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
+                                    setAutoImportUserData={props.setAutoImportUserData} autoImportUserData={props.autoImportUserData}
+                                    accessProgramToUserByUsername={accessProgramToUserByUsername} isProgramAccess={true} username={username}
+                                    setUserName={setUserName}
+            />
         </div>
     );
 };

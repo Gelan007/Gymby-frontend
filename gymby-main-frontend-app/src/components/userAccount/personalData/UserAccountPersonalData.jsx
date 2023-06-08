@@ -187,9 +187,15 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                             }
 
                         </div>
-                        <span className={s.avatarBlock__subscription}>
-                            {t("userAccount.personalData.withoutSubscription")}
-                        </span>
+                        {userData.isCoach ?
+                            <span className={s.avatarBlock__subscription}>
+                                {t("userAccount.personalData.withSubscription")}
+                            </span>
+                            :
+                            <span className={s.avatarBlock__subscription}>
+                                {t("userAccount.personalData.withoutSubscription")}
+                            </span>
+                        }
                         <NavLink to={`${USER_ACCOUNT_ROUTE}/profile/${myProfile.username}`} className={s.avatarBlock__profileOverview}>{t("userAccount.personalData.checkMyProfile")}</NavLink>
                     </div>
                 </div>

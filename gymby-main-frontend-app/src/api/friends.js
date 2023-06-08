@@ -37,6 +37,13 @@ export const friendsAPI = {
         }
         return response;
     },
+    async accessProgramToUserByUsername(programId, username) {
+        console.log(programId)
+        console.log(username)
+        const response = await $authHost.post('api/program/access', {programId, username})
+        console.log(response)
+        return response;
+    },
 
 }
 

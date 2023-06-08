@@ -22,7 +22,7 @@ const ProgramsPersonalContainer = (props) => {
                     :
                 <ProgramsPersonal programs={props.programs} createProgram={props.createProgram}
                                   userName={props.userName} deleteProgram={props.deleteProgram}
-                                  getPersonalPrograms={props.getPersonalPrograms}
+                                  getPersonalPrograms={props.getPersonalPrograms} isCoach={props.isCoach}
                 />
             }
         </div>
@@ -36,7 +36,8 @@ const mapStateToProps = (state) => {
         isLoading: state.program.isLoading,
         userName: state.userAccountPage.myProfile.username,
         isRequestCompleted: state.userAccountPage.myProfile.isRequestCompleted,
-        isProgramAccessibleToEdit: state.program.isProgramAccessibleToEdit
+        isProgramAccessibleToEdit: state.program.isProgramAccessibleToEdit,
+        isCoach: state.userAccountPage.myProfile.isCoach
 
     }
 }

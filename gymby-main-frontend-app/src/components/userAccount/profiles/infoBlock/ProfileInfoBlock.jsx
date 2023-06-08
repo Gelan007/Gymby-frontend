@@ -32,8 +32,17 @@ const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, inst
                         }
 
                     </div>
-                    <div className={s.contentBlock__text}>{t("userAccount.profile.profileInfoBlock.content1")} <span>180</span> {t("userAccount.profile.profileInfoBlock.content2")}</div>
-                    <div className={s.contentBlock__text}><span>15</span> {t("userAccount.profile.profileInfoBlock.content3")}</div>
+                    {isCoach ?
+                        <div className={s.contentBlock__text}>
+                            {t("userAccount.personalData.withSubscription")}
+                        </div>
+                        :
+                        <div className={s.contentBlock__text}>
+                            {t("userAccount.personalData.withoutSubscription")}
+                        </div>
+                    }
+                   {/* <div className={s.contentBlock__text}>{t("userAccount.profile.profileInfoBlock.content1")} <span>180</span> {t("userAccount.profile.profileInfoBlock.content2")}</div>
+                    <div className={s.contentBlock__text}><span>15</span> {t("userAccount.profile.profileInfoBlock.content3")}</div>*/}
                     <div className={s.contentBlock__socialMediaIcons}>
                         <a href={instagramUrl}>
                             <div className={s.contentBlock__icon + " " + s.contentBlock__icon_instagram}>
