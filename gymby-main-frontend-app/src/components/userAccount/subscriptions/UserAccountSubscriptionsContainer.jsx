@@ -1,18 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import UserAccountSubscriptions from "./UserAccountSubscriptions";
-import {data, generateSignature} from "../../../redux/reducers/subscription";
+import {getData, generateSignature} from "../../../redux/reducers/subscription";
+import {connect} from "react-redux";
 
-const UserAccountSubscriptionsContainer = () => {
+const UserAccountSubscriptionsContainer = (props) => {
     const [signature, setSignature] = useState()
+    const [data, setData] = useState()
+
     useEffect(() => {
-        generateSignature(data).then(result => {
+        setData(getData(props.username))
+        generateSignature(getData(props.username)).then(result => {
             setSignature(result)
         })
-    }, [])
+    }, [props.username])
+
+   /* useEffect(() => {
+
+    }, [])*/
 
     return (
         <UserAccountSubscriptions data={data} signature={signature}/>
     );
 };
 
-export default UserAccountSubscriptionsContainer;
+const mapStateToProps = (state) => {
+    return {
+        username: state.userAccountPage.myProfile.username
+    }
+}
+
+export default connect(mapStateToProps, {})(UserAccountSubscriptionsContainer);

@@ -1,18 +1,25 @@
-let orderId = Math.floor(1 + Math.random() * 900000000)
+import { v4 as uuidv4 } from 'uuid';
 
-export const data = btoa(
-    JSON.stringify({
-        "version": "3",
-        "public_key": "sandbox_i61590184070",
-        "action": "subscribe",
-        "amount": "1",
-        "currency": "USD",
-        "description": "Subscription payment",
-        "order_id": orderId,
-        "subscribe_date_start": "2023-06-07 00:00:00",
-        "subscribe_periodicity": "month",
-        "sandbox": "1"
-    }))
+let orderId = uuidv4()
+
+export const getData = (username) => {
+    return (
+    btoa(JSON.stringify(
+        {
+            "version": "3",
+            "public_key": "sandbox_i61590184070",
+            "action": "subscribe",
+            "amount": "1",
+            "currency": "USD",
+            "description": "Subscription payment",
+            "order_id": orderId,
+            "subscribe_date_start": "2023-06-07 00:00:00",
+            "subscribe_periodicity": "month",
+            "sandbox": "1",
+            "username": username
+        })
+    ))
+}
 
 export async function generateSignature(data) {
     const encoder = new TextEncoder();
@@ -29,8 +36,3 @@ export async function generateSignature(data) {
     return signature;
 }
 
-
-/*
-export const generateSignature = () => {
-
-}*/
