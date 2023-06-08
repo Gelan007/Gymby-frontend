@@ -4,13 +4,9 @@ export const diaryAPI = {
     async getDiaryDay(date, diaryId) {
         let response;
         if(date && diaryId) {
-            console.log(diaryId)
             response = await $authHost.post(`api/diary/day`, {date, diaryId})
-            console.log(response)
         } else {
-            console.log(diaryId)
             response = await $authHost.post(`api/diary/day`, {date, diaryId: null})
-            console.log(response)
         }
         return response;
     },

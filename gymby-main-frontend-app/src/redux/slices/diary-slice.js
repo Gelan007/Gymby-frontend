@@ -147,8 +147,8 @@ const diarySlice = createSlice({
         selectedProgramDay: '',
         selectedProgramId: '',
         autoImportUserData: {
-            date: new Date(),
-            formattedDate: new Date(),
+            date: new Date().getDate(),
+            formattedDate: new Date().getDate(),
             daysOfWeek: []
         },
         listOfMyTrainerFriends: [],
