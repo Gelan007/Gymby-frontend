@@ -23,6 +23,13 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
 
     const newDateConverter = (newDate) => new Date(newDate);
     const [formattedInitialDate, setFormattedInitialDate] = useState(newDateConverter(date).toISOString().slice(0, 10))
+    const [dateToForbidSelectFutureDates, setDateToForbidSelectFutureDates] = useState()
+    useEffect(() => {
+        const dateNow = new Date()
+        dateNow.setDate(dateNow.getDate() + 1)
+        setDateToForbidSelectFutureDates(dateNow.toISOString().split('T')[0])
+    }, [])
+
 
     useEffect(() => {
         let newDate = newDateConverter(date);
@@ -104,6 +111,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
                 {isEditMode ?
                     <div className={s.fullDate}>
                         <input type="date"
+                               max={dateToForbidSelectFutureDates}
                                value={measurementsUserInput.formattedDate}
                                onChange={(e) => handleInputDateChange(e)}
                         />

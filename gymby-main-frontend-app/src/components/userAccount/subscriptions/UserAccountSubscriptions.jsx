@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 const UserAccountSubscriptions = ({data, signature, isCoach}) => {
     const {t} = useTranslation()
-    
+
     return (
         <div className={s.subscriptions}>
             <UserAccountLeftPanelContainer isButtonGold={true}/>
