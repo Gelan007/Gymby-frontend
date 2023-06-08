@@ -20,12 +20,22 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
     const [isEditMode, setIsEditMode] = useState(false)
     const [measurementsUserInput, setMeasurementsUserInput] = useState({value: '', date: ''})
     const editModeHandler = () => isEditMode ?  setIsEditMode(false) : setIsEditMode(true);
-    const newDateConverter = (newDate) => new Date(newDate);
-    const formattedInitialDate = newDateConverter(date).toISOString().slice(0, 10);
 
+    const newDateConverter = (newDate) => new Date(newDate);
+    const [formattedInitialDate, setFormattedInitialDate] = useState(newDateConverter(date).toISOString().slice(0, 10))
 
     useEffect(() => {
-        setMeasurementsUserInput({value: measurements, date: date, formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
+        let newDate = newDateConverter(date);
+        //newDate.setDate(newDate.getDate() + 1);
+        setFormattedInitialDate(newDate.toISOString().slice(0, 10))
+    }, [date])
+
+    useEffect(() => {
+        let dateWithExtraMinuteForCorrectDisplaying = newDateConverter(date);
+        dateWithExtraMinuteForCorrectDisplaying.setTime(dateWithExtraMinuteForCorrectDisplaying.getTime() + 10 * 60 * 60 * 1000)
+        //let newDate = newDateConverter(date);
+        //newDate.setDate(newDate.getDate() + 1);
+        setMeasurementsUserInput({value: measurements, date: dateWithExtraMinuteForCorrectDisplaying.toISOString(), formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
     }, [measurements, date])
 
     const getMeasurementUnitForDisplaying = () => {
@@ -40,6 +50,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
 
     const handleInputDateChange = (event) => {
         const newDate = newDateConverter(event.target.value)
+        newDate.setTime(newDate.getTime() + 3 * 60 * 60 * 1000)
         const isoDate = newDate.toISOString();
         setMeasurementsUserInput({...measurementsUserInput, date: isoDate, formattedDate: event.target.value});
     };
@@ -88,7 +99,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
                 }
 
                 <div className={s.differences}>
-                    {changesValue} {t("measurements.item.centimeter")} 
+                    {changesValue > 0 ? `+${changesValue}` : `${changesValue}`} <span>{getMeasurementUnitForDisplaying()}</span>
                 </div>
                 {isEditMode ?
                     <div className={s.fullDate}>

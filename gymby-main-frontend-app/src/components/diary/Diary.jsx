@@ -29,7 +29,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const addProgramHandler = () => isModalAddExerciseActive ? setIsModalAddExerciseActive(false) : setIsModalAddExerciseActive(true)
     const [isModalAutoImportActive, setIsModalAutoImportActive] = useState(false);
     const modalAutoImportActiveHandler = () => isModalAutoImportActive ? setIsModalAutoImportActive(false) : setIsModalAutoImportActive(true)
-
+    const [calendarDefaultDate, setCalendarDefaultDate] = useState()
 
     useEffect(() => {
         /*Когда будет создание упражнения в чужом дневнике, то надо будет передавать diaryId другое.
@@ -52,7 +52,9 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
 
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
-        const isoDate = selectedDate.toISOString();
+        setCalendarDefaultDate(selectedDate.setDate(selectedDate.getDate()))
+        selectedDate.setDate(selectedDate.getDate() + 1);
+        const isoDate = selectedDate.toISOString()
         setDate(isoDate);
     };
 
@@ -81,7 +83,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                 <div className={`${s.bottomBlock__calendarBlock} ${s.calendarBlock}`}>
                     <div className={s.calendarBlock__calendar}>
                         <Calendar onChange={handleDateChange}
-                                  value={date}
+                                  value={calendarDefaultDate}
                                   maxDate={new Date(2030, 0, 0)}
                                   minDate={new Date(2019, 0, 0)}
                         />
