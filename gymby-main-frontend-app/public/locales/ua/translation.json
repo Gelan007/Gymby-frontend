@@ -191,6 +191,7 @@
       },
       "personalData": {
         "withoutSubscription": "Без підписки",
+        "withSubscription": "Підписка: тренер",
         "checkMyProfile": "Переглянути особистий профіль",
         "uploadPhoto": "Завантажити фото",
         "textInputs": {

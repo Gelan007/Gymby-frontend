@@ -20,7 +20,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                    deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
                    allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, autoImportUserData,
                    setAutoImportUserData, importProgramAutomatically, listOfMyTrainerFriends, takeAccessToMyDiaryByUserName,
-                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, ...props}) => {
+                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, isCoach,...props}) => {
 
     const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
     const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
@@ -62,13 +62,17 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         <div className={s.diary}>
             <div className={s.diary__topBlock}>
                 <div className={s.topBlock__diarySelect}>
-                    <SelectSimple  value={inputUserData.diary}
-                                   onChange={(value) => diarySelectHandler(value, false)}
-                                   defaultName='Оберіть щоденник:'
-                                   options={allAvailableDiaries}
-                                   fontSize={28}
+                    {isCoach ?
+                        <SelectSimple  value={inputUserData.diary}
+                                       onChange={(value) => diarySelectHandler(value, false)}
+                                       defaultName='Оберіть щоденник:'
+                                       options={allAvailableDiaries}
+                                       fontSize={28}
 
-                    />
+                        />
+                        :
+                        <div>Мій щоденник</div>
+                    }
                 </div>
                 <div className={s.topBlock__accessSelect}>
                     <SelectSimple  value={inputUserData.access}

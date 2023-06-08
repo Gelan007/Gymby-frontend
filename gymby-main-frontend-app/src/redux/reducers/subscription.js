@@ -15,8 +15,7 @@ export const getData = (username) => {
             "order_id": orderId,
             "subscribe_date_start": "2023-06-07 00:00:00",
             "subscribe_periodicity": "month",
-            "sandbox": "1",
-            "username": username
+            "server_url":`https://b2fc-212-86-118-13.ngrok-free.app/api/payments/webhook?username=${username}`
         })
     ))
 }

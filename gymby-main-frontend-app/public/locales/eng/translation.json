@@ -190,6 +190,7 @@
     },
     "personalData": {
       "withoutSubscription": "Without a subscription",
+      "withSubscription": "Subscription: trainer",
       "checkMyProfile": "Check my personal profile",
       "uploadPhoto": "Upload a photo",
       "textInputs": {

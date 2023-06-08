@@ -76,8 +76,8 @@ let mapStateToProps = (state) => {
         selectedProgramId: state.diary.selectedProgramId,
         autoImportUserData: state.diary.autoImportUserData,
         listOfMyTrainerFriends: state.diary.listOfMyTrainerFriends,
-        allAvailableDiaries: state.diary.allAvailableDiaries
-
+        allAvailableDiaries: state.diary.allAvailableDiaries,
+        isCoach: state.userAccountPage.myProfile.isCoach
     }
 }
 
