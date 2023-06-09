@@ -7,6 +7,7 @@ import profileSlice from './slices/profile-slice'
 import measurementSlice from './slices/measurements-slice'
 import programSlice from './slices/program-slice'
 import diarySlice from './slices/diary-slice'
+import statisticsSlice from './slices/statistics-slice'
 
 export const store = configureStore({
     reducer: {
@@ -16,7 +17,8 @@ export const store = configureStore({
         profile: profileSlice,
         measurements: measurementSlice,
         program: programSlice,
-        diary: diarySlice
+        diary: diarySlice,
+        statistics: statisticsSlice
     },
     devTools: true
 })
