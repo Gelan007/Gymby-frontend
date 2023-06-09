@@ -27,13 +27,13 @@ const ProgramsLeftPanelList = () => {
                             {t("programs.leftPanel.free")}
                         </NavLink>
                     </li>
-                    <li className={s.item}>
+                   {/* <li className={s.item}>
                         <div className={s.icon}><img src={heartIcon} alt="heartIcon"/></div>
                         <NavLink to={PROGRAMS_FAVORITES_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("programs.leftPanel.favorite")}
                         </NavLink>
-                    </li>
+                    </li>*/}
                     <li className={s.item}>
                         <div className={s.icon}><img src={trainerNotesIcon} alt="trainerNotesIcon"/></div>
                         <NavLink to={PROGRAMS_TRAINER_BASED_ROUTE} className={({isActive, isPending}) =>

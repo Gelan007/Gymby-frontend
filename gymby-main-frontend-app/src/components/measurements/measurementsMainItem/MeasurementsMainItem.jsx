@@ -44,7 +44,7 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
                 </div>
                 <div className={s.itemsList}>
                     {measurementsData?.map((measurement, index) => {
-                        let previousMeasurementValue = index === 0 ? 0 : measurement.value - measurementsData[index - 1].value;
+                        let previousMeasurementValue = index === 0 ? 0 : measurement.value - measurementsData[index - 1].value
                         let currentDate = new Date();
                         const today = new Date();
                         const initialDate = new Date(measurement.date);
@@ -52,8 +52,9 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
 
                         return (
                             <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
-                                              changesValue={previousMeasurementValue} date={measurement.date}
-                                              days={initialDate.getDate() === today.getDate() ? 0 : differenceInDays} measurementUnit={measurement.unit} measurementType={type}
+                                              changesValue={previousMeasurementValue.toFixed(2)} date={measurement.date}
+                                              days={initialDate.getDate() === today.getDate() ? 0 : differenceInDays}
+                                              measurementUnit={measurement.unit} measurementType={type}
                                               addMeasurement={addMeasurement} deleteMeasurement={deleteMeasurement}
                                               measurementId={measurement.id} editMeasurement={editMeasurement}
 

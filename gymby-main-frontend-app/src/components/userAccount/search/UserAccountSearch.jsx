@@ -43,6 +43,7 @@ const UserAccountSearch = ({profiles, everybodyValue,trainersValue,selectedOptio
                                 lastName={profile.lastName}
                                 isCoach={profile.isCoach}
                                 inviteFriend={inviteFriend}
+                                avatar={profile.photoAvatarPath}
                             />
                         </NavLink>
                     ))}

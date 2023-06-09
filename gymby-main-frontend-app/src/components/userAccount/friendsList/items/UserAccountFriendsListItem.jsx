@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import s from "./FriendsListItem.module.scss";
-import plug from "../../../../assets/images/userCabinet/personalData/Revan.jpg";
+import defaultPhoto from '../../../../assets/images/userCabinet/personalData/profile.png'
 import trainerIcon from "../../../../assets/images/general/icons/trainer_icon.svg";
 import basketIcon from "../../../../assets/images/general/icons/basketWhiteBackground2.svg";
 import sendIcon from "../../../../assets/images/general/icons/sendIcon.svg";
@@ -9,7 +9,7 @@ import closeIcon from "../../../../assets/images/general/icons/closeRed.svg";
 
 const UserAccountFriendsListItem = ({username, firstName, lastName,
                                         selectedOption, friendsValue, isCoach, acceptFriendship,
-                                        rejectFriendship, deleteFriendship, programAccessHandler, setUserName, isUserCoach}) => {
+                                        rejectFriendship, deleteFriendship, programAccessHandler, setUserName, isUserCoach, avatar}) => {
 
     const handleAcceptFriendship = (e) => {
         e.preventDefault()
@@ -34,7 +34,7 @@ const UserAccountFriendsListItem = ({username, firstName, lastName,
         <div className={s.friendsListItem + " " + s.userAccountItem}>
             <div className={s.friendsListItem__body + " " + s.userAccountItem__body}>
                 <div className={s.avatar}>
-                    <img src={plug} alt="avatar"/>
+                    <img src={avatar ? avatar : defaultPhoto} alt="avatar"/>
                 </div>
                 <div className={s.fullTextBlock}>
                     <div className={s.infoBlock}>

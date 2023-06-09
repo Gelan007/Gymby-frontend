@@ -61,6 +61,7 @@ const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selected
                                 programAccessHandler={programAccessHandler}
                                 setUserName={setUserName}
                                 isUserCoach={isUserCoach}
+                                avatar={profile.photoAvatarPath}
                             />
                         </NavLink>
                     ))}
