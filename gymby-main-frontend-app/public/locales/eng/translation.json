@@ -149,6 +149,12 @@
       "card1": "Count of performed exercises",
       "card2": "Count of trainings",
       "card3": "Count of performed approaches"
+    },
+    "records": {
+      "title": "Your records",
+      "record1": "Maximum number of reps per workout",
+      "record2": "Maximum tonnage per training",
+      "record3": "Maximum number of exercises per workout"
     }
   },
   "measurements": {

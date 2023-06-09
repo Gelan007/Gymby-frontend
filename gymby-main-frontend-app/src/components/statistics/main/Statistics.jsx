@@ -15,7 +15,7 @@ const Statistics = ({countOfExecutedExercises, countOfTrainings, countOfExecuted
                         ...props}) => {
 
     const {t} = useTranslation()
-   
+
     return (
         <div className={s.statistics}>
             <div className={s.topBlock}>
@@ -27,6 +27,29 @@ const Statistics = ({countOfExecutedExercises, countOfTrainings, countOfExecuted
                 </div>
                 <div className={s.topBlock__column}>
                     <Card icon={stopwatchDumbbellIcon} title={countOfExecutedApproaches} text={t("statistics.cards.card3")}/>
+                </div>
+            </div>
+
+            <div className={s.bottomBlock}>
+                <div className={s.bottomBlock__titleBlock}>
+                    <div className={s.bottomBlock__titleBlock_icon}>
+                        <img src={awardIcon} alt="awardIcon"/>
+                    </div>
+                    <span>{t("statistics.records.title")}</span>
+                </div>
+                <div className={s.bottomBlock__cardsBlock}>
+                    <div className={s.bottomBlock__column}>
+                        <Card isLightBlue={true} title={maxApproachesCountPerTraining} icon={medalIcon}
+                              text={t("statistics.records.record1")}/>
+                    </div>
+                    <div className={s.bottomBlock__column}>
+                        <Card isLightWhiteBlue={true} title={maxTonnagePerTraining} icon={medalIcon}
+                              text={t("statistics.records.record2")}/>
+                    </div>
+                    <div className={s.bottomBlock__column}>
+                        <Card icon={medalIcon} title={maxExercisesCountPerTraining}
+                              text={t("statistics.records.record3")}/>
+                    </div>
                 </div>
             </div>
         </div>
