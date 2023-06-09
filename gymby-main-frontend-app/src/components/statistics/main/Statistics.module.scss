@@ -22,10 +22,15 @@
 
 }
 
+.mediumBlock {
+  width: 1000px;
+  margin: 70px auto;
+}
+
 .bottomBlock {
   display: flex;
   flex-direction: column;
-  margin: 100px 0 0;
+  margin: 0 0 50px;
   &__titleBlock {
     display: flex;
     align-items: center;
@@ -81,6 +86,12 @@
 
 }
 
+@media (max-width: 1090px) {
+  .mediumBlock {
+    width: 700px;
+  }
+}
+
 @media (max-width: 950px) {
   .topBlock {
     /*justify-content: initial;*/
@@ -96,4 +107,10 @@
     }
   }
 
+}
+
+@media (max-width: 760px) {
+  .mediumBlock {
+    width: 600px;
+  }
 }

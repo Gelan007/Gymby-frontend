@@ -155,6 +155,10 @@
       "record1": "Maximum number of reps per workout",
       "record2": "Maximum tonnage per training",
       "record3": "Maximum number of exercises per workout"
+    },
+    "charts": {
+      "exercises": "Exercises",
+      "approaches": "Approaches"
     }
   },
   "measurements": {

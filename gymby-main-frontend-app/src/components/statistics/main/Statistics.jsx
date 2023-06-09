@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Statistics.module.scss'
 import Card from "../card/Card";
 import noteDoneIcon from '../../../assets/images/statistics/noteDone.svg'
@@ -7,14 +7,19 @@ import stopwatchDumbbellIcon from '../../../assets/images/statistics/stopwatchDu
 import awardIcon from '../../../assets/images/statistics/award.svg'
 import medalIcon from '../../../assets/images/statistics/medal.svg'
 import { useTranslation } from 'react-i18next';
+import ChartCard from "../chart/ChartCard";
 
 
 
 const Statistics = ({countOfExecutedExercises, countOfTrainings, countOfExecutedApproaches,
                         maxApproachesCountPerTraining, maxTonnagePerTraining,maxExercisesCountPerTraining,
-                        ...props}) => {
+                        doneExercisesByDate, doneApproachesByDate,...props}) => {
 
     const {t} = useTranslation()
+    const EXERCISES = 'EXERCISES';
+    const APPROACHES = 'APPROACHES';
+    const [selectedStatisticsChartItem, setSelectedStatisticsChartItem] = useState(EXERCISES)
+
 
     return (
         <div className={s.statistics}>
@@ -29,7 +34,20 @@ const Statistics = ({countOfExecutedExercises, countOfTrainings, countOfExecuted
                     <Card icon={stopwatchDumbbellIcon} title={countOfExecutedApproaches} text={t("statistics.cards.card3")}/>
                 </div>
             </div>
-
+            <div className={s.mediumBlock}>
+                {selectedStatisticsChartItem === EXERCISES &&
+                    <ChartCard selectedStatisticsChartItem={selectedStatisticsChartItem}
+                               setSelectedStatisticsChartItem={setSelectedStatisticsChartItem}
+                               data={doneExercisesByDate} APPROACHES={APPROACHES} EXERCISES={EXERCISES}
+                    />
+                    ||
+                    selectedStatisticsChartItem === APPROACHES &&
+                    <ChartCard selectedStatisticsChartItem={selectedStatisticsChartItem}
+                               setSelectedStatisticsChartItem={setSelectedStatisticsChartItem}
+                               data={doneApproachesByDate} APPROACHES={APPROACHES} EXERCISES={EXERCISES}
+                    />
+                }
+            </div>
             <div className={s.bottomBlock}>
                 <div className={s.bottomBlock__titleBlock}>
                     <div className={s.bottomBlock__titleBlock_icon}>
