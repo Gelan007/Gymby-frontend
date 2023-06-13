@@ -49,7 +49,6 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
                         const today = new Date();
                         const initialDate = new Date(measurement.date);
                         let differenceInDays = Math.floor((currentDate.getTime() - initialDate.getTime()) / (1000 * 60 * 60 * 24));
-                        console.log(measurement.date)
                         return (
                             <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
                                               changesValue={previousMeasurementValue.toFixed(1)} date={measurement.date}
