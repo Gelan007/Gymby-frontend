@@ -17,6 +17,7 @@
     margin-bottom: 8px;
     & img {
       @include avatarBlockImage();
+      cursor: initial;
     }
   }
   &__username {

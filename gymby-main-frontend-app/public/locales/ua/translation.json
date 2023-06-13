@@ -234,7 +234,8 @@
       },
       "friendsList": {
         "friends": "Друзі",
-        "requests": "Запити"
+        "requests": "Запити",
+        "import": "Імпортувати"
       },
       "subscriptions": {
         "yourSubscription": "Ваша підписка:",

@@ -18,6 +18,10 @@ const UserAccountSubscriptionsContainer = (props) => {
     useEffect(() => {
         props.getMyProfile()
     }, [])
+    useEffect(() => {
+        console.log(publicKey)
+        console.log(privateKey)
+    }, [publicKey, privateKey])
 
     return (
         <UserAccountSubscriptions data={data} signature={signature} isCoach={props.isCoach}/>

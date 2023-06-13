@@ -52,7 +52,7 @@ const MeasurementsMainItem = ({measurementsData, icon, addMeasurement, deleteMea
 
                         return (
                             <MeasurementsItem key={measurement.id} icon={icon} measurements={measurement.value}
-                                              changesValue={previousMeasurementValue.toFixed(2)} date={measurement.date}
+                                              changesValue={previousMeasurementValue.toFixed(1)} date={measurement.date}
                                               days={initialDate.getDate() === today.getDate() ? 0 : differenceInDays}
                                               measurementUnit={measurement.unit} measurementType={type}
                                               addMeasurement={addMeasurement} deleteMeasurement={deleteMeasurement}

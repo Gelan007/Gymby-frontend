@@ -82,7 +82,7 @@ export const createProgram = createAsyncThunk('programs/createProgram', async (p
         dispatch(getPersonalPrograms())
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -92,16 +92,16 @@ export const getProgramById = createAsyncThunk('programs/getProgramById', async 
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
 export const getFreePrograms = createAsyncThunk('programs/getFreePrograms', async () => {
     const response = await programsAPI.getFreePrograms();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status < 300) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 export const getSharedPrograms = createAsyncThunk('programs/getSharedPrograms', async () => {
@@ -109,7 +109,7 @@ export const getSharedPrograms = createAsyncThunk('programs/getSharedPrograms', 
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 export const getPersonalPrograms = createAsyncThunk('programs/getPersonalPrograms', async () => {
@@ -117,7 +117,7 @@ export const getPersonalPrograms = createAsyncThunk('programs/getPersonalProgram
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -126,7 +126,7 @@ export const createProgramDay = createAsyncThunk('programs/createProgramDay', as
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -135,7 +135,7 @@ export const updateProgramDay = createAsyncThunk('programs/updateProgramDay', as
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -144,7 +144,7 @@ export const deleteProgramDay = createAsyncThunk('programs/deleteProgramDay', as
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (payload, {dispatch}) => {
@@ -152,7 +152,7 @@ export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (p
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getPersonalPrograms())
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -161,16 +161,17 @@ export const createExercise = createAsyncThunk('programs/createExercise', async 
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
 export const deleteExercise = createAsyncThunk('programs/deleteExercise', async (payload, {dispatch}) => {
     const response = await programsAPI.deleteExercise(payload.programId, payload.exerciseId);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status < 300) {
         dispatch(getProgramById({programId: payload.programId}))
+        return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercisesPrototype', async (payload) => {
@@ -178,7 +179,7 @@ export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercis
     if (response.status >= 200 && response.status <= 204) {
         return response.data;
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -188,7 +189,7 @@ export const createApproach = createAsyncThunk('programs/createApproach', async 
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -199,7 +200,7 @@ export const deleteApproach = createAsyncThunk('programs/deleteApproach', async 
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 export const updateApproach = createAsyncThunk('programs/updateApproach', async (payload, {dispatch}) => {
@@ -207,7 +208,7 @@ export const updateApproach = createAsyncThunk('programs/updateApproach', async 
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 
@@ -216,7 +217,7 @@ export const updateProgram = createAsyncThunk('programs/updateProgram', async (p
     if (response.status >= 200 && response.status <= 204) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
-        throw new Error('Failed to fetch measurements');
+        throw new Error('Failed to fetch programs');
     }
 });
 

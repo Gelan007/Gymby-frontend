@@ -233,7 +233,8 @@
     },
     "friendsList": {
       "friends": "Friends",
-      "requests": "Requests"
+      "requests": "Requests",
+      "import": "Import"
     },
     "subscriptions": {
       "yourSubscription": "Your subscription:",
