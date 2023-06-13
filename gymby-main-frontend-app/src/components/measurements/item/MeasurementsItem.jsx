@@ -69,6 +69,7 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
             value: measurementsUserInput.value, unit: measurementUnit,
             id:measurementId
         })
+        console.log(measurementsUserInput.date)
         editModeHandler()
     }
 
