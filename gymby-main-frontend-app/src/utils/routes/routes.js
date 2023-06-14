@@ -63,6 +63,7 @@ import MeasurementPhotosContainer from "../../components/measurements/photos/Mea
 import DiaryContainer from "../../components/diary/DiaryContainer";
 import UserAccountSubscriptionsContainer
     from "../../components/userAccount/subscriptions/UserAccountSubscriptionsContainer";
+import UserAccountCoachingContainer from "../../components/userAccount/coaching/UserAccountCoachingContainer";
 
 export const publicRoutes = [
    /* {
@@ -90,7 +91,7 @@ export const authRoutes = [
     },
     {
         path: USER_ACCOUNT_COACHING_ROUTE,
-        Component: <UserAccountCoaching/>
+        Component: <UserAccountCoachingContainer/>
     },
     {
         path: USER_ACCOUNT_SEARCH_ROUTE,
