@@ -56,7 +56,6 @@
   margin: 0 10px 0 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .infoBlock__name {
   font-weight: 500;
@@ -252,12 +251,24 @@
   line-height: 110%;
   color: #000000;
 }
+.avatarBlock__subscriptionBlock {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+}
+.avatarBlock__subscriptionBlock > *:not(:last-child) {
+  margin-bottom: 5px;
+}
 .avatarBlock__subscription {
   font-weight: 300;
   font-size: 18px;
   line-height: 110%;
   color: #000000;
   opacity: 0.7;
+}
+.avatarBlock__subscription span {
+  opacity: 1;
+  font-weight: 500;
 }
 .avatarBlock__profileOverview {
   margin-top: 30px;

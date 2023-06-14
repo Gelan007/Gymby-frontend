@@ -3,11 +3,13 @@ import UserAccountPersonalData from "./UserAccountPersonalData";
 import {connect} from "react-redux";
 import {getMyProfile, updateProfile, addProfilePhoto, deleteProfilePhoto} from "../../../redux/reducers/user-account-reducer";
 import {useOidcAccessToken, useOidcIdToken, useOidcUser} from "@axa-fr/react-oidc";
+import {getAllAvailableDiaries} from "../../../redux/slices/diary-slice";
 
 const UserAccountPersonalDataContainer = (props) => {
 
     useEffect(() => {
         props.getMyProfile()
+        props.getAllAvailableDiaries()
     }, [])
 
 
@@ -26,10 +28,11 @@ const UserAccountPersonalDataContainer = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        myProfile: state.userAccountPage.myProfile
+        myProfile: state.userAccountPage.myProfile,
+        allAvailableDiaries: state.diary.allAvailableDiaries
     }
 }
 
 
-export default connect(mapStateToProps, {updateProfile, getMyProfile, addProfilePhoto, deleteProfilePhoto})
+export default connect(mapStateToProps, {updateProfile, getMyProfile, addProfilePhoto, deleteProfilePhoto, getAllAvailableDiaries})
 (UserAccountPersonalDataContainer);

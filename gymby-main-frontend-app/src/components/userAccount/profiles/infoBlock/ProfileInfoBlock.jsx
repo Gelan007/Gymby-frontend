@@ -8,7 +8,7 @@ import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 import {useTranslation} from "react-i18next";
 
 
-const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, instagramUrl, isCoach, avatar}) => {
+const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, instagramUrl, isCoach, avatar, allAvailableDiaries}) => {
     const {t} = useTranslation()
 
     return (
@@ -33,8 +33,13 @@ const ProfileInfoBlock = ({username, firstName, lastName, telegramUsername, inst
 
                     </div>
                     {isCoach ?
-                        <div className={s.contentBlock__text}>
-                            {t("userAccount.personalData.withSubscription")}
+                        <div className={s.contentBlock__textBlock}>
+                            <div className={s.contentBlock__text}>
+                                {t("userAccount.personalData.withSubscription")}
+                            </div>
+                            {/*<div className={s.contentBlock__text}>
+                                {t("userAccount.profile.profileInfoBlock.content3")}: <span>{allAvailableDiaries?.length ? allAvailableDiaries?.length : 0}</span>
+                            </div>*/}
                         </div>
                         :
                         <div className={s.contentBlock__text}>

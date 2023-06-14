@@ -55,6 +55,13 @@
   }
   &__trainerIcon {
   }
+  &__textBlock {
+    display: flex;
+    flex-direction: column;
+    &>*:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
   &__text {
     font-weight: 300;
     font-size: 20px;
