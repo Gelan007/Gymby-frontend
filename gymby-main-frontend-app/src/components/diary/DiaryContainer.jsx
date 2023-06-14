@@ -22,7 +22,7 @@ import {
     takeAccessToMyDiaryByUserName, getAllAvailableDiaries,
     setAllAvailableDiaries, setDiaryId, getQueryProgram, setAllExercisesPrototype
 } from "../../redux/slices/diary-slice";
-
+import {getMyProfile, updateProfile, addProfilePhoto, deleteProfilePhoto} from "../../redux/reducers/user-account-reducer";
 
 
 const DiaryContainer = (props) => {
@@ -55,6 +55,7 @@ const DiaryContainer = (props) => {
 
 
     useEffect(() => {
+        props.getMyProfile()
         props.getAllFriendsTrainers()
     }, [])
 
@@ -106,5 +107,6 @@ export default connect(mapStateToProps,
     {getDiaryDay, setDiaryDay, setDate, createExercise, getAllExercisesPrototype, setExerciseCreationData,
         deleteExercise, deleteApproach, createApproach, updateApproach, getAllProgramsInDiary,
         setSelectedProgramDay, importProgramDay,setSelectedProgramId,setAutoImportUserData, importProgramAutomatically,getAllFriendsTrainers,
-        takeAccessToMyDiaryByUserName, getAllAvailableDiaries, setAllAvailableDiaries, setDiaryId, getQueryProgram, setAllExercisesPrototype})
+        takeAccessToMyDiaryByUserName, getAllAvailableDiaries, setAllAvailableDiaries, setDiaryId,
+        getQueryProgram, setAllExercisesPrototype,getMyProfile})
 (DiaryContainer);
