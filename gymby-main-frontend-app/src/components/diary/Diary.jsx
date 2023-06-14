@@ -16,12 +16,14 @@ import DiaryModalProgramsListAutoImport from "./modal/programsList/DiaryModalPro
 
 
 
+
 const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercise,
                    getAllExercisesPrototype,exercisesPrototype, exerciseCreationData, setExerciseCreationData,
                    deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
                    allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, autoImportUserData,
                    setAutoImportUserData, importProgramAutomatically, listOfMyTrainerFriends, takeAccessToMyDiaryByUserName,
-                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, isCoach, ...props}) => {
+                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, isCoach, getDiaryQueryProgram,
+                   searchExercisesPrototype, userModalExerciseSearch, setUserModalExerciseSearch, ...props}) => {
 
     const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
     const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
@@ -33,9 +35,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const [calendarDefaultDate, setCalendarDefaultDate] = useState()
 
     useEffect(() => {
-        /*Когда будет создание упражнения в чужом дневнике, то надо будет передавать diaryId другое.
-        * т.е. условие что если diaryId === null то тогда передавать налл, а иначе айди, или как то так*/
-            setExerciseCreationData({diaryId, date})
+        setExerciseCreationData({diaryId, date})
     }, [date, diaryId])
 
 
@@ -130,12 +130,17 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                     importProgramDay={props.importProgramDay}
                                     diaryId={diaryId} selectedProgramDay={selectedProgramDay} date={date}
                                     selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
-                                    setAutoImportUserData={setAutoImportUserData} autoImportUserData={autoImportUserData}
+                                    setAutoImportUserData={setAutoImportUserData}
+                                    autoImportUserData={autoImportUserData} getQueryProgram={getDiaryQueryProgram}
+                                    userModalProgramSearch={props.userModalProgramSearch}
             />
             <ExerciseCreationModalProgramsList isActive={isModalAddExerciseActive} setActive={setIsModalAddExerciseActive}
                                                buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
                                                getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
                                                exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
+                                               userModalExerciseSearch={userModalExerciseSearch} searchExercisesPrototype={searchExercisesPrototype}
+                                               setUserModalExerciseSearch={setUserModalExerciseSearch}
+
 
             />
 
@@ -146,7 +151,8 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                               diaryId={diaryId} selectedProgramDay={selectedProgramDay} date={date}
                                               selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
                                               isAutoImport={isModalAutoImportActive} setAutoImportUserData={setAutoImportUserData} autoImportUserData={autoImportUserData}
-                                              importProgramAutomatically={importProgramAutomatically}
+                                              importProgramAutomatically={importProgramAutomatically} getQueryProgram={getDiaryQueryProgram}
+                                              userModalProgramSearch={props.userModalProgramSearch}
             />
         </div>
     );

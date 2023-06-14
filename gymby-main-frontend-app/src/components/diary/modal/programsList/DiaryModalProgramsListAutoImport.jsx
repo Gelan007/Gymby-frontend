@@ -3,16 +3,18 @@ import DiaryModalWindowTemplate from "../template/DiaryModalWindowTemplate";
 import s from "./DiaryModalProgramsList.module.scss";
 import DiaryModalProgramsListItem from "./DiaryModalProgramsListItem";
 
+
 const DiaryModalProgramsListAutoImport = ({isActive, setActive, buttonName, allProgramsInDiary,
                                               setSelectedProgramDay, selectedProgramDay, importProgramDay, date,
                                               diaryId, selectedProgramId, setSelectedProgramId, isAutoImport, setAutoImportUserData,
-                                              autoImportUserData, importProgramAutomatically}) => {
+                                              autoImportUserData, importProgramAutomatically, getQueryProgram, ...props}) => {
     return (
         <DiaryModalWindowTemplate isActive={isActive} setActive={setActive}
                                   buttonName={buttonName} importProgramDay={importProgramDay}
                                   date={date} diaryId={diaryId} selectedProgramDay={selectedProgramDay} selectedProgramId={selectedProgramId}
                                   isAutoImport={isAutoImport} setAutoImportUserData={setAutoImportUserData}
                                   autoImportUserData={autoImportUserData} importProgramAutomatically={importProgramAutomatically}
+                                  doSearch={getQueryProgram} userModalProgramSearch={props.userModalProgramSearch}
         >
 
             <div className={s.programListItems}>

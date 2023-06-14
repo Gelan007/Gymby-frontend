@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {diaryAPI} from '../../api/diary'
 import {programsAPI} from "../../api/programs";
 import {friendsAPI} from "../../api/friends";
+import {getProgramById} from "./program-slice";
 
 
 const createApproachInitialData = (exerciseId) => {
@@ -131,6 +132,16 @@ export const getAllAvailableDiaries = createAsyncThunk('diary/getAllAvailableDia
         throw new Error('Failed to fetch diary');
     }
 });
+export const getQueryProgram = createAsyncThunk('diary/getQueryProgram', async (payload, {dispatch}) => {
+    const response = await programsAPI.getQueryProgram(payload.query);
+    if (response.status >= 200 && response.status <= 300) {
+        return response.data
+    } else {
+        throw new Error('Failed to fetch diary');
+    }
+});
+
+
 const diarySlice = createSlice({
     name: 'diary',
     initialState : {
@@ -192,6 +203,9 @@ const diarySlice = createSlice({
         setDiaryId:  (state, action) => {
             state.diaryId = action.payload
         },
+        setAllExercisesPrototype: (state, action) => {
+            state.exercisesPrototype = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -239,9 +253,17 @@ const diarySlice = createSlice({
                 state.allAvailableDiaries = diaries;
                 state.loading = false;
             })
+            .addCase(getQueryProgram.fulfilled, (state, action) => {
+                state.allProgramsInDiary = action.payload;
+                action.payload.map((program,index) => {
+                    state.allProgramsInDiary[index].marks = [program.level, program.type];
+                })
+                state.loading = false;
+            })
 
     }
 })
 
-export const {setDiaryDay, setDate,setDiaryId, setExerciseCreationData, setSelectedProgramDay, setSelectedProgramId, setAutoImportUserData, setAllAvailableDiaries} = diarySlice.actions;
+export const {setDiaryDay, setDate,setDiaryId, setExerciseCreationData, setSelectedProgramDay,
+    setSelectedProgramId, setAutoImportUserData, setAllAvailableDiaries, setAllExercisesPrototype} = diarySlice.actions;
 export default diarySlice.reducer;

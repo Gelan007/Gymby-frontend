@@ -220,7 +220,14 @@ export const updateProgram = createAsyncThunk('programs/updateProgram', async (p
         throw new Error('Failed to fetch programs');
     }
 });
-
+export const getQueryProgram = createAsyncThunk('programs/getQueryProgram', async (payload, {dispatch}) => {
+    const response = await programsAPI.getQueryProgram(payload.query);
+    if (response.status >= 200 && response.status <= 300) {
+        dispatch(getProgramById({programId: payload.programId}))
+    } else {
+        throw new Error('Failed to fetch programs');
+    }
+});
 
 
 const programSlice = createSlice({

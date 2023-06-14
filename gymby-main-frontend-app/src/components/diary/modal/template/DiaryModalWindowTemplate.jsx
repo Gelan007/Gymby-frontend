@@ -10,7 +10,7 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                                       importProgramDay, selectedProgramDay, date, diaryId,
                                       selectedProgramId, isAutoImport = false, autoImportUserData,
                                       setAutoImportUserData, importProgramAutomatically, accessProgramToUserByUsername,
-                                      isProgramAccess = false, username}) => {
+                                      isProgramAccess = false, username, doSearch, ...props}) => {
 
     const newDate = new Date(date);
     const initialDay = newDate.getDate().toString().padStart(2, "0");
@@ -25,6 +25,10 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
             date: date,
             formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
     }, [date, isAutoImport])
+
+    useEffect(() => {
+
+    }, [])
 
     const handleInputDateChange = (event) => {
         const newDate = newDateConverter(event.target.value)
@@ -66,7 +70,9 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                     <div className={s.topBlock}>
                         <div className={s.topBlock__leftBlock}>
                             <div className={s.search_autoImport}>
-                                <InputGreySearch placeholder="пошук"/>
+                                <InputGreySearch placeholder="пошук" onChange={doSearch}
+                                                 value={props.userModalProgramSearch}
+                                />
                             </div>
                             <div className={s.date}>
                                 <span>Початкова дата: </span>
@@ -160,7 +166,8 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                 <div className={s.diaryModalWindowTemplate}>
                     <div className={s.topBlock}>
                         <div className={s.search}>
-                            <InputGreySearch placeholder="пошук"/>
+                            <InputGreySearch placeholder="пошук" onChange={doSearch}
+                                             value={props.userModalProgramSearch}/>
                         </div>
                         {username ?
                             <div className={s.username}>

@@ -4,7 +4,8 @@ import ExerciseCreationModalProgramsListItem from "./ExerciseCreationModalProgra
 import s from './ExerciseCreationModalProgramsList.module.scss'
 
 const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, createExercise, getAllExercisesPrototype,
-                                               exercisesPrototype, setExerciseCreationData, exerciseCreationData}) => {
+                                               exercisesPrototype, setExerciseCreationData, exerciseCreationData,
+                                               userModalExerciseSearch, searchExercisesPrototype, setUserModalExerciseSearch}) => {
     const [exerciseName, setExerciseName] = useState()
     const [selectedExerciseId, setSelectedExerciseId] = useState('')
     useEffect(() => {
@@ -29,6 +30,8 @@ const ExerciseCreationModalProgramsList = ({isActive, setActive, buttonName, cre
         <ExerciseCreationModalWindowTemplate isActive={isActive} setActive={setActive}
                                              buttonName={buttonName} createExercise={createExercise}
                                              creationData={exerciseCreationData} setCreationData={setExerciseCreationData}
+                                             userModalExerciseSearch={userModalExerciseSearch}
+                                             searchExercisesPrototype={searchExercisesPrototype} setUserModalExerciseSearch={setUserModalExerciseSearch}
 
         >
             <div className={s.programListItems}>

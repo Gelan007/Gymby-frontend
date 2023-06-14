@@ -65,4 +65,16 @@ export const programsAPI = {
         const response = await $authHost.post(`api/program/approach/update`, {programId, approachId, exerciseId,repeats,weight,isDone, interval})
         return response;
     },
+    async getQueryProgram(query, level, type) {
+        let response = await $authHostWithoutHeaders.get(`/api/program/search`)
+
+        if (type && level && query) {
+            response = await $authHostWithoutHeaders.get(`/api/program/search?level=${level}&type=${type}&query=${query}`)
+        } else if (type) {
+            response = await $authHostWithoutHeaders.get(`/api/program/search?type=${type}`)
+        } else if (query) {
+            response = await $authHostWithoutHeaders.get(`/api/program/search?query=${query}`)
+        }
+        return response;
+    },
 }

@@ -19,7 +19,6 @@ export const measurementsAPI = {
     },
     async addMeasurementPhoto(photo, date) {
         let formData = new FormData();
-
         formData.append('photo', photo);
         formData.append('date', date);
 

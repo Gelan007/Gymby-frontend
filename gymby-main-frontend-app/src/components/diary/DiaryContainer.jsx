@@ -20,12 +20,15 @@ import {
     importProgramAutomatically,
     getAllFriendsTrainers,
     takeAccessToMyDiaryByUserName, getAllAvailableDiaries,
-    setAllAvailableDiaries, setDiaryId
+    setAllAvailableDiaries, setDiaryId, getQueryProgram, setAllExercisesPrototype
 } from "../../redux/slices/diary-slice";
+
 
 
 const DiaryContainer = (props) => {
     const [inputUserData, setInputUserData] = useState('')
+    const [userModalProgramSearch, setUserModalProgramSearch] = useState('')
+    const [userModalExerciseSearch, setUserModalExerciseSearch] = useState('')
 
     useEffect(() => {
         const initializeDate = new Date();
@@ -53,10 +56,32 @@ const DiaryContainer = (props) => {
 
     useEffect(() => {
         props.getAllFriendsTrainers()
+        setUserModalExerciseSearch(props.exercisesPrototype)
     }, [])
 
+    useEffect(() => {
+        searchExercisesPrototype();
+    }, [userModalExerciseSearch])
+
+    const getDiaryQueryProgram = (e) => {
+        const result = e.target.value
+        setUserModalProgramSearch(result)
+        props.getQueryProgram({query: result})
+    }
+
+    const searchExercisesPrototype = () => {
+        if(userModalExerciseSearch !== ''){
+            props.setAllExercisesPrototype(props.exercisesPrototype.filter(prototype => prototype.category.includes(userModalExerciseSearch)));
+        } else if(userModalExerciseSearch === ''){
+            props.getAllExercisesPrototype()
+        }
+    }
+
     return (
-        <Diary inputUserData={inputUserData} setInputUserData={setInputUserData}{...props}/>
+        <Diary inputUserData={inputUserData} setInputUserData={setInputUserData}
+               userModalProgramSearch={userModalProgramSearch} setUserModalProgramSearch={setUserModalProgramSearch}
+               getDiaryQueryProgram={getDiaryQueryProgram} searchExercisesPrototype={searchExercisesPrototype}
+               userModalExerciseSearch={userModalExerciseSearch} {...props} setUserModalExerciseSearch={setUserModalExerciseSearch}/>
     );
 };
 
@@ -82,5 +107,5 @@ export default connect(mapStateToProps,
     {getDiaryDay, setDiaryDay, setDate, createExercise, getAllExercisesPrototype, setExerciseCreationData,
         deleteExercise, deleteApproach, createApproach, updateApproach, getAllProgramsInDiary,
         setSelectedProgramDay, importProgramDay,setSelectedProgramId,setAutoImportUserData, importProgramAutomatically,getAllFriendsTrainers,
-        takeAccessToMyDiaryByUserName, getAllAvailableDiaries, setAllAvailableDiaries, setDiaryId})
+        takeAccessToMyDiaryByUserName, getAllAvailableDiaries, setAllAvailableDiaries, setDiaryId, getQueryProgram, setAllExercisesPrototype})
 (DiaryContainer);

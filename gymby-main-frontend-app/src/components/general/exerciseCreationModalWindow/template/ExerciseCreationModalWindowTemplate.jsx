@@ -6,7 +6,8 @@ import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
 
 const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add',
-                                                 createExercise, setCreationData, creationData}) => {
+                                                 createExercise, setCreationData,
+                                                 creationData, userModalExerciseSearch, searchExercisesPrototype, setUserModalExerciseSearch}) => {
     const handleCreateButton = () => {
         createExercise(creationData)
         /*setCreationData(
@@ -29,7 +30,8 @@ const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, but
             <div className={s.exerciseCreationModalWindowTemplate}>
                 <div className={s.topBlock}>
                     <div className={s.search}>
-                        <InputGreySearch placeholder="пошук"/>
+                        <InputGreySearch placeholder="пошук"  onChange={event => setUserModalExerciseSearch(event.target.value)}
+                                         value={userModalExerciseSearch}/>
                     </div>
                     <div className={s.close}
                          onClick={() => setActive(false)}
