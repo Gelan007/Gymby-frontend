@@ -42,8 +42,11 @@ const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, but
                 <div className={s.bottomBlock}>
                     {children}
                 </div>
-                <div className={s.button}>
-                    <ButtonGreen onClick={handleCreateButton}>{buttonName}</ButtonGreen>
+                <div className={creationData.name === '' ? `${s.button} ${s.inactive}` : s.button}>
+                    <ButtonGreen onClick={() => creationData.name === '' ?  alert('Будь-ласка, оберіть вправу') : handleCreateButton()}
+                                 style={creationData.name === '' ? {cursor: 'initial'} : {cursor: 'pointer'}}>
+                        {buttonName}
+                    </ButtonGreen>
                 </div>
             </div>
         </ModalWindow>

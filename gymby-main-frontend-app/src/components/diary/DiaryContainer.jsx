@@ -56,7 +56,6 @@ const DiaryContainer = (props) => {
 
     useEffect(() => {
         props.getAllFriendsTrainers()
-        setUserModalExerciseSearch(props.exercisesPrototype)
     }, [])
 
     useEffect(() => {
