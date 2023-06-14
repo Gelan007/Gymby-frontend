@@ -15,6 +15,7 @@ const DiaryModalProgramsListAutoImport = ({isActive, setActive, buttonName, allP
                                   isAutoImport={isAutoImport} setAutoImportUserData={setAutoImportUserData}
                                   autoImportUserData={autoImportUserData} importProgramAutomatically={importProgramAutomatically}
                                   doSearch={getQueryProgram} userModalProgramSearch={props.userModalProgramSearch}
+                                  setSelectedProgramId={setSelectedProgramId}
         >
 
             <div className={s.programListItems}>

@@ -10,7 +10,7 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                                       importProgramDay, selectedProgramDay, date, diaryId,
                                       selectedProgramId, isAutoImport = false, autoImportUserData,
                                       setAutoImportUserData, importProgramAutomatically, accessProgramToUserByUsername,
-                                      isProgramAccess = false, username, doSearch, ...props}) => {
+                                      isProgramAccess = false, username, doSearch,setSelectedProgramId, ...props}) => {
 
     const newDate = new Date(date);
     const initialDay = newDate.getDate().toString().padStart(2, "0");
