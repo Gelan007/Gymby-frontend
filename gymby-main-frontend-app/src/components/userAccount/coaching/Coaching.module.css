@@ -53,5 +53,33 @@
 .possibilities__description span {
   font-weight: 700;
 }
+.doSubscriptionBlock {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #0278ED;
+  color: #0278ED;
+  width: 300px;
+  padding: 32px 0;
+}
+.doSubscriptionBlock > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+.doSubscriptionBlock__title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+}
+.doSubscriptionBlock__price {
+  font-weight: 400;
+  font-size: 80px;
+}
+.doSubscriptionBlock__type {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 25px;
+}
 
 /*# sourceMappingURL=Coaching.module.css.map */

@@ -15,7 +15,7 @@ import {useNavigate} from "react-router-dom";
 
 
 
-const UserAccountProfile = ({profile, isRequestCompleted, ...props}) => {
+const UserAccountProfile = ({profile, isRequestCompleted, allAvailableDiaries, ...props}) => {
     const {t} = useTranslation()
     const navigate = useNavigate()
 
@@ -29,7 +29,7 @@ const UserAccountProfile = ({profile, isRequestCompleted, ...props}) => {
                 <ProfileInfoBlock firstName={profile.firstName} lastName={profile.lastName}
                                   telegramUsername={profile.telegramUsername} username={profile.username}
                                   instagramUrl={profile.instagramUrl} isCoach={profile.isCoach}
-                                  avatar={profile.photoAvatarPath}
+                                  avatar={profile.photoAvatarPath} allAvailableDiaries={allAvailableDiaries}
                 />
                 <div className={s.userDescriptionBlock}>
                     <div className={s.userDescriptionBlock__title + " " + s.userAccountProfile__title}>

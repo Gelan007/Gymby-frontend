@@ -30,12 +30,14 @@ const NavbarContainer = (props) => {
     function UAButtonStateHandler (lang) {
         props.setIsActiveUABtn(true);
         props.setIsActiveENGBtn(false);
+        localStorage.setItem('gymby-localization', 'ua')
         i18n.changeLanguage(lang);
     }
 
     function ENGButtonStateHandler (lang) {
         props.setIsActiveENGBtn(true);
         props.setIsActiveUABtn(false);
+        localStorage.setItem('gymby-localization', 'eng')
         i18n.changeLanguage(lang);
     }
 

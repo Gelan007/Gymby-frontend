@@ -231,7 +231,8 @@
       "fifthPoint": "Tracking the progress of your students.",
       "interesting1": "Are you interested? Then",
       "interesting2": "become a coach",
-      "interesting3": "right now!"
+      "interesting3": "right now!",
+      "alreadyTrainer": "You already have a subscription. Please note that your subscription will be automatically renewed every month"
     },
     "friendsList": {
       "friends": "Friends",
@@ -256,7 +257,7 @@
       "profileInfoBlock": {
         "content1": "Already coaching",
         "content2": "days",
-        "content3": "clients",
+        "content3": "Clients",
         "addToFriends": "Add to friends"
       },
       "userInfo": "User information",

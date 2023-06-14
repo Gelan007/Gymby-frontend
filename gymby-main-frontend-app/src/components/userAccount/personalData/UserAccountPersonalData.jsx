@@ -14,7 +14,8 @@ import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, deleteProfilePhoto, ...props}) => {
+
+const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, deleteProfilePhoto,allAvailableDiaries, ...props}) => {
 
     const {t} = useTranslation()
     const [userData, setUserData] = useState(myProfile);
@@ -190,9 +191,16 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
 
                         </div>
                         {userData.isCoach ?
-                            <span className={s.avatarBlock__subscription}>
+                            <div className={s.avatarBlock__subscriptionBlock}>
+                                <div className={s.avatarBlock__subscription}>
                                 {t("userAccount.personalData.withSubscription")}
-                            </span>
+                            </div>
+
+                                <div className={s.avatarBlock__subscription}>
+                                    {t("userAccount.profile.profileInfoBlock.content3")}: <span>{allAvailableDiaries?.length ? allAvailableDiaries?.length : 0}</span>
+                                </div>
+                            </div>
+
                             :
                             <span className={s.avatarBlock__subscription}>
                                 {t("userAccount.personalData.withoutSubscription")}

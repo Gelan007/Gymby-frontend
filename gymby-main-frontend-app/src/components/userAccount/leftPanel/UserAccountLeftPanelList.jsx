@@ -49,13 +49,13 @@ const UserAccountLeftPanelList = () => {
                             {t("userAccount.leftPanel.instruction")}
                         </NavLink>
                     </li>
-                    <li className={s.item}>
+                   {/* <li className={s.item}>
                         <div className={s.icon}><img src={dollarIcon} alt="dollarIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SUBSCRIBES_ROUTE} className={({isActive, isPending}) =>
                             isPending ? s.pending : isActive ? s.active : s.text}>
                             {t("userAccount.leftPanel.subscriptionsManagement")}
                         </NavLink>
-                    </li>
+                    </li>*/}
                     <li className={s.item}>
                         <div className={s.icon}><img src={searchIcon} alt="searchIcon"/></div>
                         <NavLink to={USER_ACCOUNT_SEARCH_ROUTE} className={({isActive, isPending}) =>

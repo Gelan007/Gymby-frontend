@@ -3,8 +3,8 @@ import {createSlice} from "@reduxjs/toolkit";
 const languageSlice = createSlice({
     name: 'language',
     initialState : {
-        isActiveUABtn: true,
-        isActiveENGBtn: false
+        isActiveUABtn: !localStorage.getItem('gymby-localization') ? true : localStorage.getItem('gymby-localization') === 'ua' ? true : false,
+        isActiveENGBtn: localStorage.getItem('gymby-localization') === 'eng' ? true : false
     },
     reducers: {
         setIsActiveUABtn: (state, action) => {

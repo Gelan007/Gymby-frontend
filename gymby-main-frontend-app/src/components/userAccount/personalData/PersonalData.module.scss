@@ -126,7 +126,14 @@ $opacity: 0.9;
   }
 
   &__icon {}
-
+  &__subscriptionBlock {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3px;
+    &>*:not(:last-child) {
+      margin-bottom: 5px;
+  }
+  }
 
   &__subscription {
     font-weight: 300;
@@ -134,6 +141,11 @@ $opacity: 0.9;
     line-height: 110%;
     color: #000000;
     opacity: 0.7;
+
+    & span {
+      opacity: 1;
+      font-weight: 500;
+    }
   }
   &__profileOverview {
     margin-top: 30px;
