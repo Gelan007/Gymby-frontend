@@ -100,7 +100,9 @@
       "addModal": "Додати"
     },
     "modal": {
-      "day": "День"
+      "day": "День",
+      "accessDiaryText": "Ви дійсно бажаєте надати доступ до свого щоденника ",
+      "accessDiaryTitle": "Надати доступ"
     }
   },
 
@@ -234,7 +236,8 @@
       },
       "friendsList": {
         "friends": "Друзі",
-        "requests": "Запити"
+        "requests": "Запити",
+        "import": "Імпортувати"
       },
       "subscriptions": {
         "yourSubscription": "Ваша підписка:",

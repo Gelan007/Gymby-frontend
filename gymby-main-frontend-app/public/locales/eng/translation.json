@@ -100,7 +100,9 @@
       "addModal": "Add"
     },
     "modal": {
-      "day": "Day"
+      "day": "Day",
+      "accessDiaryText": "Do you really wish to grant access to ",
+      "accessDiaryTitle": "Access diary"
     }
   },
 
@@ -233,7 +235,8 @@
     },
     "friendsList": {
       "friends": "Friends",
-      "requests": "Requests"
+      "requests": "Requests",
+      "import": "Import"
     },
     "subscriptions": {
       "yourSubscription": "Your subscription:",

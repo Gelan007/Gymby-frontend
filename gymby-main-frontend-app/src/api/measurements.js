@@ -17,5 +17,20 @@ export const measurementsAPI = {
         const response = await $authHost.post(`api/measurement/delete`, {id})
         return response;
     },
+    async addMeasurementPhoto(photo, date) {
+        let formData = new FormData();
+        formData.append('photo', photo);
+        formData.append('date', date);
+
+        const response = await $authHostWithoutHeaders.post(`api/photo/measurement`, formData)
+        return response;
+    },
+    async deleteMeasurementPhoto(photoId) {
+        let formData = new FormData();
+        formData.append('photoId', photoId);
+
+        const response = await $authHostWithoutHeaders.post(`api/photo/measurement/delete`, formData)
+        return response;
+    },
 }
 

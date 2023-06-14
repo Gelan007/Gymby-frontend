@@ -95,9 +95,9 @@ const MeasurementsItem = ({icon = dumbbellPlugIcon, measurements,
                     <div className={s.measurements}>
                         <InputGrey value={measurementsUserInput.value}
                                    onChange={(e) => valueInputChangeHandler(e)}
-                                   style={{height: "35px", minWidth: "80px", maxWidth: "100px"}}
+                                   style={{height: "35px", minWidth: "60px", maxWidth: "80px"}}
                         />
-                        <span>{getMeasurementUnitForDisplaying()}</span>
+                        <span> {getMeasurementUnitForDisplaying()}</span>
                     </div>
                     :
                     <div className={s.measurements}>

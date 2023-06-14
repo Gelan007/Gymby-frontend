@@ -1,0 +1,19 @@
+.photoItem {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
+}
+.photoItem > * {
+  margin-left: 30px;
+  margin-top: 6px;
+}
+.photoItem__date {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+  color: #000000;
+  opacity: 0.7;
+}
+
+/*# sourceMappingURL=MeasurementsPhotoItem.module.css.map */

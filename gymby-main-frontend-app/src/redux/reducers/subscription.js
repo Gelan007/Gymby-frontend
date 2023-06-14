@@ -1,8 +1,18 @@
 import { v4 as uuidv4 } from 'uuid';
 
 let orderId = uuidv4()
-export const publicKey = 'sandbox_i61590184070'
-export const privateKey = 'sandbox_8stztPC7ANo0eN26Bnec8XOYJGCxzbJbYeSGz8Il'
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+const day = String(currentDate.getDate()).padStart(2, '0');
+const hours = String(currentDate.getHours()).padStart(2, '0');
+const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+export const publicKey = process.env.REACT_APP_SUBSCRIPTION_PUBLIC_KEY;
+export const privateKey = process.env.REACT_APP_SUBSCRIPTION_PRIVATE_KEY;
+
 
 export const getData = (username) => {
     return (
@@ -11,11 +21,11 @@ export const getData = (username) => {
             "version": "3",
             "public_key": publicKey,
             "action": "subscribe",
-            "amount": "1",
+            "amount": "6",
             "currency": "USD",
             "description": "Subscription payment",
             "order_id": orderId,
-            "subscribe_date_start": "2023-06-07 00:00:00",
+            "subscribe_date_start": formattedDate,
             "subscribe_periodicity": "month",
             "server_url":`https://gymby-api.azurewebsites.net/api/payments/webhook?username=${username}`
         })

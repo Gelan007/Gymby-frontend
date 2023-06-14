@@ -3,6 +3,7 @@ import s from './AddingCardPhotos.module.scss'
 import PhotoCard from "./PhotoCard";
 import AddingCard from "./AddingCard";
 const AddingCardPhotos = ({photos, handleAddingCardFileChange, handlePhotoDelete, isUserAccount = false}) => {
+
     return (
         <div className={s.addingCardPhotos}>
             {isUserAccount &&
@@ -12,7 +13,7 @@ const AddingCardPhotos = ({photos, handleAddingCardFileChange, handlePhotoDelete
                 ))
             ||
                 photos?.map((photo, index) => (
-                    <PhotoCard allPhotoData={photo} photoToDisplay={photo} key={index}
+                    <PhotoCard allPhotoData={photo} photoToDisplaying={photo.photoPath} key={index}
                                handlePhotoDelete={handlePhotoDelete}/>
                 ))
             }

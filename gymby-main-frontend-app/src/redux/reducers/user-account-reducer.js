@@ -10,7 +10,6 @@ const SET_MY_PROFILE_PHOTO = 'SET_MY_PROFILE_PHOTO'
 const SET_PROFILES_LIST = 'SET_PROFILES_LIST'
 
 
-//Пока оставлю profiles, но возмодно он не нуден будет, и всё буду записывать сразу в profiles(кроме myProfile)
 let initialState = {
     pageSize: 5,
     userName: null,

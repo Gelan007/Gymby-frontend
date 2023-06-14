@@ -24,7 +24,6 @@ const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selected
     const programAccessHandler = () => isActiveAccessProgram ? setIsActiveAccessProgram(false) : setIsActiveAccessProgram(true)
     const {t} = useTranslation()
 
-
     return (
         <div className={s.userAccountFriendsList}>
             <UserAccountLeftPanelContainer isButtonGold={true}/>
@@ -68,7 +67,7 @@ const UserAccountFriendsList = ({profiles, friendsValue, requestsValue, selected
                 </div>
             </div>
             <DiaryModalProgramsList isActive={isActiveAccessProgram} setActive={programAccessHandler}
-                                    buttonName={t("diary.buttons.addModal")} allProgramsInDiary={props.allProgramsInDiary}
+                                    buttonName={t("userAccount.friendsList.import")} allProgramsInDiary={props.allProgramsInDiary}
                                     setSelectedProgramDay={props.setSelectedProgramDay}
                                     importProgramDay={props.importProgramDay}
                                     diaryId={props.diaryId} selectedProgramDay={props.selectedProgramDay} date={props.date}

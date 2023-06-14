@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {measurementsAPI} from '../../api/measurements'
+import {getPersonalPrograms} from "./program-slice";
 
 const MeasurementType = {
     Weight: 0,
@@ -25,7 +26,26 @@ const handleMeasurementsFulfilled = (state, action) => {
     state.waist = [];
     state.thigh = [];
     state.hand = [];
-    state.photos.push(action.payload.photos)
+    state.photos = []
+
+    action.payload.photos?.forEach((photo) => {
+        // Получите дату создания без учета времени
+        const creationDate = new Date(photo.creationDate).toLocaleDateString();
+
+        // Проверьте, существует ли уже группа с такой датой
+        const existingGroup = state.photos.find((group) => group.creationDate === creationDate);
+
+        // Если группа с такой датой уже существует, добавьте текущий объект в массив photos этой группы
+        if (existingGroup) {
+            existingGroup.photos.push(photo);
+        } else {
+            // Иначе создайте новую группу и добавьте ее в массив photos
+            state.photos?.push({
+                creationDate,
+                photos: [photo]
+            });
+        }
+    });
 
     measurements.forEach((measurement) => {
         const { ...measurementData } = measurement;
@@ -60,6 +80,7 @@ const handleMeasurementsFulfilled = (state, action) => {
             default:
                 break;
         }
+
     });
 }
 
@@ -103,6 +124,30 @@ export const deleteMeasurement = createAsyncThunk('measurements/deleteMeasuremen
     }
 });
 
+export const addMeasurementPhoto = createAsyncThunk('measurements/addMeasurementPhoto', async (payload, {dispatch}) => {
+    const {photo} = payload
+    const date = new Date()
+    const isoDate = date.toISOString();
+
+    const response = await measurementsAPI.addMeasurementPhoto(photo, isoDate);
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getMeasurements())
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
+
+export const deleteMeasurementPhoto = createAsyncThunk('measurements/deleteMeasurementPhoto', async (payload, {dispatch}) => {
+    const {photoId} = payload
+    const response = await measurementsAPI.deleteMeasurementPhoto(photoId);
+    if (response.status >= 200 && response.status <= 204) {
+        dispatch(getMeasurements())
+        return response.data;
+    } else {
+        throw new Error('Failed to fetch measurements');
+    }
+});
 
 const measurementsSlice = createSlice({
     name: 'measurements',
@@ -119,9 +164,21 @@ const measurementsSlice = createSlice({
         photos: []
     },
     reducers: {
-        /*setMeasurements: (state, action) => {
-            // state.isActiveUABtn = action.payload
-        }*/
+        addMeasurementPhotoCreationDate: (state, action) => {
+            const date = new Date()
+            const isoDate = date.toISOString();
+            const creationDate = new Date(isoDate).toLocaleDateString();
+
+            const existingGroup = state.photos.find((group) => group.creationDate === creationDate);
+            if (existingGroup) {
+                return
+            } else {
+                state.photos.push({
+                    creationDate,
+                    photos: []
+                });
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -129,9 +186,8 @@ const measurementsSlice = createSlice({
             .addCase(addMeasurement.fulfilled, handleMeasurementsFulfilled)
             .addCase(deleteMeasurement.fulfilled, handleMeasurementsFulfilled)
             .addCase(editMeasurement.fulfilled, handleMeasurementsFulfilled)
-            /*.addCase(addMeasurement.fulfilled, (state, action) => {})*/
     }
 })
 
-export const {} = measurementsSlice.actions;
+export const {addMeasurementPhotoCreationDate} = measurementsSlice.actions;
 export default measurementsSlice.reducer;

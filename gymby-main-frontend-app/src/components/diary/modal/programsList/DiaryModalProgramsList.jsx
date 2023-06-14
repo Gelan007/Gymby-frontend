@@ -6,11 +6,12 @@ import plug from "../../../../assets/images/measurements/biceps.svg";
 import DiaryModalProgramsListItem from "./DiaryModalProgramsListItem";
 
 
+
 const DiaryModalProgramsList = ({isActive, setActive, buttonName, allProgramsInDiary,
                                     setSelectedProgramDay, selectedProgramDay, importProgramDay, date,
                                     diaryId, selectedProgramId, setSelectedProgramId,
                                     autoImportUserData, setAutoImportUserData, accessProgramToUserByUsername,
-                                    isProgramAccess, username}) => {
+                                    isProgramAccess, username, getQueryProgram, ...props}) => {
     return (
         <DiaryModalWindowTemplate isActive={isActive} setActive={setActive}
                                   buttonName={buttonName} importProgramDay={importProgramDay}
@@ -18,7 +19,8 @@ const DiaryModalProgramsList = ({isActive, setActive, buttonName, allProgramsInD
                                   selectedProgramId={selectedProgramId} autoImportUserData={autoImportUserData}
                                   setAutoImportUserData={setAutoImportUserData}
                                   accessProgramToUserByUsername={accessProgramToUserByUsername} isProgramAccess={isProgramAccess}
-                                  username={username}
+                                  username={username} doSearch={getQueryProgram}
+                                  userModalProgramSearch={props.userModalProgramSearch}
         >
 
             <div className={s.programListItems}>

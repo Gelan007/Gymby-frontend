@@ -31,4 +31,5 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {updateProfile, getMyProfile, addProfilePhoto, deleteProfilePhoto})(UserAccountPersonalDataContainer);
+export default connect(mapStateToProps, {updateProfile, getMyProfile, addProfilePhoto, deleteProfilePhoto})
+(UserAccountPersonalDataContainer);

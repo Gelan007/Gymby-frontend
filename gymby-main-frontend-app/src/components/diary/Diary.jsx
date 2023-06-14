@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next';
 import ExerciseCreationModalProgramsList
     from "../general/exerciseCreationModalWindow/programsList/ExerciseCreationModalProgramsList";
 import DiaryModalProgramsListAutoImport from "./modal/programsList/DiaryModalProgramsListAutoImport";
+import ConfirmationModalWindow from "../general/modalWindow/confirmation/ConfirmationModalWindow";
+
 
 
 
@@ -21,7 +23,8 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                    deleteExercise, deleteApproach, createApproach, updateApproach, diaryId,
                    allProgramsInDiary, selectedProgramDay, setSelectedProgramDay, autoImportUserData,
                    setAutoImportUserData, importProgramAutomatically, listOfMyTrainerFriends, takeAccessToMyDiaryByUserName,
-                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, isCoach, ...props}) => {
+                   allAvailableDiaries, inputUserData, setInputUserData, setDiaryId, isCoach, getDiaryQueryProgram,
+                   searchExercisesPrototype, userModalExerciseSearch, setUserModalExerciseSearch, ...props}) => {
 
     const [isModalProgramDayActive, setIsModalProgramDayActive] = useState(false);
     const programImportHandler = () => isModalProgramDayActive ? setIsModalProgramDayActive(false) : setIsModalProgramDayActive(true)
@@ -32,10 +35,13 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const modalAutoImportActiveHandler = () => isModalAutoImportActive ? setIsModalAutoImportActive(false) : setIsModalAutoImportActive(true)
     const [calendarDefaultDate, setCalendarDefaultDate] = useState()
 
+    const [isModalConfirmationAccessActive, setIsModalConfirmationAccessActive] = useState(false);
+    const modalConfirmationAccess = () => isModalConfirmationAccessActive ? setIsModalConfirmationAccessActive(false) : setIsModalConfirmationAccessActive(true)
+
+    const [temporaryAccessValueForConfirmationWindow, setTemporaryAccessValueForConfirmationWindow] = useState()
+
     useEffect(() => {
-        /*Когда будет создание упражнения в чужом дневнике, то надо будет передавать diaryId другое.
-        * т.е. условие что если diaryId === null то тогда передавать налл, а иначе айди, или как то так*/
-            setExerciseCreationData({diaryId, date})
+        setExerciseCreationData({diaryId, date})
     }, [date, diaryId])
 
 
@@ -46,10 +52,14 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         } else if(access) {
             setInputUserData({...inputUserData, access})
             takeAccessToMyDiaryByUserName({username: access})
-            //updateProgram({level: inputUserData.level, access})
         }
-
     }
+
+    const diaryAccessSelectHandler = (diary, access) => {
+        setTemporaryAccessValueForConfirmationWindow(access)
+        modalConfirmationAccess()
+    }
+
 
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
@@ -77,7 +87,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
 
                 <div className={s.topBlock__accessSelect}>
                     <SelectSimple  value={inputUserData.access}
-                                   onChange={(value) => diarySelectHandler(false, value)}
+                                   onChange={(value) => diaryAccessSelectHandler(false, value)}
                                    defaultName="Надати доступ:"
                                    options={listOfMyTrainerFriends}
                                    isDefaultValueEmpty={true}
@@ -130,12 +140,17 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                     importProgramDay={props.importProgramDay}
                                     diaryId={diaryId} selectedProgramDay={selectedProgramDay} date={date}
                                     selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
-                                    setAutoImportUserData={setAutoImportUserData} autoImportUserData={autoImportUserData}
+                                    setAutoImportUserData={setAutoImportUserData}
+                                    autoImportUserData={autoImportUserData} getQueryProgram={getDiaryQueryProgram}
+                                    userModalProgramSearch={props.userModalProgramSearch}
             />
             <ExerciseCreationModalProgramsList isActive={isModalAddExerciseActive} setActive={setIsModalAddExerciseActive}
                                                buttonName={t("diary.buttons.addModal")} createExercise={createExercise}
                                                getAllExercisesPrototype={getAllExercisesPrototype} exercisesPrototype={exercisesPrototype}
                                                exerciseCreationData={exerciseCreationData} setExerciseCreationData={setExerciseCreationData}
+                                               userModalExerciseSearch={userModalExerciseSearch} searchExercisesPrototype={searchExercisesPrototype}
+                                               setUserModalExerciseSearch={setUserModalExerciseSearch}
+
 
             />
 
@@ -146,8 +161,15 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                               diaryId={diaryId} selectedProgramDay={selectedProgramDay} date={date}
                                               selectedProgramId={props.selectedProgramId} setSelectedProgramId={props.setSelectedProgramId}
                                               isAutoImport={isModalAutoImportActive} setAutoImportUserData={setAutoImportUserData} autoImportUserData={autoImportUserData}
-                                              importProgramAutomatically={importProgramAutomatically}
+                                              importProgramAutomatically={importProgramAutomatically} getQueryProgram={getDiaryQueryProgram}
+                                              userModalProgramSearch={props.userModalProgramSearch}
             />
+            <ConfirmationModalWindow isActive={isModalConfirmationAccessActive} setActive={setIsModalConfirmationAccessActive}
+                                     applyButtonRequest={() => diarySelectHandler(false, temporaryAccessValueForConfirmationWindow)}
+                                     titleText={t("diary.modal.accessDiaryTitle")}
+            >
+                {t("diary.modal.accessDiaryText")} <span>{temporaryAccessValueForConfirmationWindow}</span> ?
+                </ConfirmationModalWindow>
         </div>
     );
 };

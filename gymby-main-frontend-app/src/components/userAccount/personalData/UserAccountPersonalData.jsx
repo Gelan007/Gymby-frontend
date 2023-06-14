@@ -19,16 +19,11 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
     const {t} = useTranslation()
     const [userData, setUserData] = useState(myProfile);
     const [temporaryPhotoPath, setTemporaryPhotoPath] = useState()
-    /*const [temporaryPhotosList, setTemporaryPhotosList] = useState([])*/
     const [finalPhotosDisplayingArray, setFinalPhotosDisplayingArray] = useState([])
     const [chosenUserPhotoFilesForRequest, setChosenUserPhotoFilesForRequest] = useState([])
     const [chosenUserPhotoPathsForDeleteRequest, setChosenUserPhotoPathsForDeleteRequest] = useState([])
     const [photosPendingDeletion, setPhotosPendingDeletion] = useState([])
     let generatedUsername = uuidv4().slice(0, 13)
-
-    useEffect(() => {
-        console.log(generatedUsername)
-    }, [generatedUsername])
 
     useEffect(() => {
         setUserData(myProfile)
@@ -91,9 +86,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
         });
 
         setFinalPhotosDisplayingArray(updatedPhotosDisplayingArray);
-       /* photosPendingDeletion.forEach(photoForDeletion => {
-            setFinalPhotosDisplayingArray(finalPhotosDisplayingArray.filter(photo => photo.photoPath !== photoForDeletion.photoPath))
-        })*/
+
         if(chosenUserPhotoFilesForRequest.length > 0) {
             photosPendingDeletion.forEach(photoForDeletion => {
                 finalPhotosDisplayingArray.forEach(photo => {
@@ -128,8 +121,6 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
             if(chosenUserPhotoPathsForDeleteRequest.length > 0) {
                 chosenUserPhotoPathsForDeleteRequest.forEach(photoId => deleteProfilePhoto(photoId))
             }
-
-            //console.log(chosenUserPhotoFilesForRequest)
         } catch {
             alert('Something went wrong')
         }
@@ -154,7 +145,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
         const fileReader = new FileReader();
 
         fileReader.onload = () => {
-            setFinalPhotosDisplayingArray([...finalPhotosDisplayingArray, {fileAndDataURLFile: [{fileReaderData: fileReader.result, file}]} ]);
+            setFinalPhotosDisplayingArray([...finalPhotosDisplayingArray, {fileAndDataURLFile: [{fileReaderData: fileReader.result, file}]}]);
         };
 
         if (file) {
