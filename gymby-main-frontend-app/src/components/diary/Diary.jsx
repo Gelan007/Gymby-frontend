@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import ExerciseCreationModalProgramsList
     from "../general/exerciseCreationModalWindow/programsList/ExerciseCreationModalProgramsList";
 import DiaryModalProgramsListAutoImport from "./modal/programsList/DiaryModalProgramsListAutoImport";
+import ConfirmationModalWindow from "../general/modalWindow/confirmation/ConfirmationModalWindow";
 
 
 
@@ -34,6 +35,11 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
     const modalAutoImportActiveHandler = () => isModalAutoImportActive ? setIsModalAutoImportActive(false) : setIsModalAutoImportActive(true)
     const [calendarDefaultDate, setCalendarDefaultDate] = useState()
 
+    const [isModalConfirmationAccessActive, setIsModalConfirmationAccessActive] = useState(false);
+    const modalConfirmationAccess = () => isModalConfirmationAccessActive ? setIsModalConfirmationAccessActive(false) : setIsModalConfirmationAccessActive(true)
+
+    const [temporaryAccessValueForConfirmationWindow, setTemporaryAccessValueForConfirmationWindow] = useState()
+
     useEffect(() => {
         setExerciseCreationData({diaryId, date})
     }, [date, diaryId])
@@ -46,10 +52,14 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
         } else if(access) {
             setInputUserData({...inputUserData, access})
             takeAccessToMyDiaryByUserName({username: access})
-            //updateProgram({level: inputUserData.level, access})
         }
-
     }
+
+    const diaryAccessSelectHandler = (diary, access) => {
+        setTemporaryAccessValueForConfirmationWindow(access)
+        modalConfirmationAccess()
+    }
+
 
     const handleDateChange = (e) => {
         const selectedDate = e instanceof Date ? e : new Date(e);
@@ -77,7 +87,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
 
                 <div className={s.topBlock__accessSelect}>
                     <SelectSimple  value={inputUserData.access}
-                                   onChange={(value) => diarySelectHandler(false, value)}
+                                   onChange={(value) => diaryAccessSelectHandler(false, value)}
                                    defaultName="Надати доступ:"
                                    options={listOfMyTrainerFriends}
                                    isDefaultValueEmpty={true}
@@ -154,6 +164,12 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                                               importProgramAutomatically={importProgramAutomatically} getQueryProgram={getDiaryQueryProgram}
                                               userModalProgramSearch={props.userModalProgramSearch}
             />
+            <ConfirmationModalWindow isActive={isModalConfirmationAccessActive} setActive={setIsModalConfirmationAccessActive}
+                                     applyButtonRequest={() => diarySelectHandler(false, temporaryAccessValueForConfirmationWindow)}
+                                     titleText={t("diary.modal.accessDiaryTitle")}
+            >
+                {t("diary.modal.accessDiaryText")} <span>{temporaryAccessValueForConfirmationWindow}</span> ?
+                </ConfirmationModalWindow>
         </div>
     );
 };

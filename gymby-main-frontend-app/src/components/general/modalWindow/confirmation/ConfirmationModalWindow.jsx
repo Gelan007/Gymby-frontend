@@ -13,7 +13,11 @@ const ConfirmationModalWindow = ({isActive, setActive, titleText, titleIcon = du
     
     const applyButtonHandler = () => {
         setActive(false);
-        applyButtonRequest(firstParameterForApplyButton);
+        if(firstParameterForApplyButton) {
+            applyButtonRequest(firstParameterForApplyButton);
+        } else {
+            applyButtonRequest()
+        }
     }
 
     return (
