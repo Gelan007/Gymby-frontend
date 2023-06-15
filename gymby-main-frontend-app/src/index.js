@@ -10,15 +10,17 @@ import {OidcProvider} from "@axa-fr/react-oidc";
 import {configuration} from "./api/oidc/axa-auth";
 /*import store from "./redux/store";*/
 import './utils/i18next/i18next';
+import {CircularProgress} from "@mui/material";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const SessionLost = () => <p>Session Lost</p>;
+
+const Loading = () => <div><CircularProgress /></div>
 /*const SessionLost = () => <p>Session Lost</p>;*/
 /*sessionLostComponent={SessionLost}*/
 
 root.render(
     <React.StrictMode>
-        <OidcProvider configuration={configuration} sessionLostComponent={SessionLost}>
+        <OidcProvider configuration={configuration} loadingComponent={Loading}>
             <BrowserRouter>
                 <Provider store={store}>
                     <App/>
