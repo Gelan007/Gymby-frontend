@@ -81,7 +81,7 @@ const handleMeasurementsFulfilled = (state, action) => {
 
 export const getMeasurements = createAsyncThunk('measurements/getMeasurements', async () => {
     const response = await measurementsAPI.getMeasurements();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');
@@ -91,7 +91,7 @@ export const getMeasurements = createAsyncThunk('measurements/getMeasurements', 
 export const addMeasurement = createAsyncThunk('measurements/addMeasurement', async (payload) => {
     const {date, type, value, unit, id} = payload
     const response = await measurementsAPI.addMeasurement(date, type, value, unit, id);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');
@@ -101,7 +101,7 @@ export const addMeasurement = createAsyncThunk('measurements/addMeasurement', as
 export const editMeasurement = createAsyncThunk('measurements/editMeasurement', async (payload) => {
     const {date, type, value, unit, id} = payload
     const response = await measurementsAPI.editMeasurement(id, date, type, value, unit);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');
@@ -111,7 +111,7 @@ export const editMeasurement = createAsyncThunk('measurements/editMeasurement', 
 export const deleteMeasurement = createAsyncThunk('measurements/deleteMeasurement', async (payload) => {
     const {id} = payload
     const response = await measurementsAPI.deleteMeasurement(id);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch measurements');
@@ -121,7 +121,7 @@ export const deleteMeasurement = createAsyncThunk('measurements/deleteMeasuremen
 export const addMeasurementPhoto = createAsyncThunk('measurements/addMeasurementPhoto', async (payload, {dispatch}) => {
     const {photo, date} = payload
     const response = await measurementsAPI.addMeasurementPhoto(photo, date);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getMeasurements())
         return response.data;
     } else {
@@ -132,7 +132,7 @@ export const addMeasurementPhoto = createAsyncThunk('measurements/addMeasurement
 export const deleteMeasurementPhoto = createAsyncThunk('measurements/deleteMeasurementPhoto', async (payload, {dispatch}) => {
     const {photoId} = payload
     const response = await measurementsAPI.deleteMeasurementPhoto(photoId);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getMeasurements())
         return response.data;
     } else {
