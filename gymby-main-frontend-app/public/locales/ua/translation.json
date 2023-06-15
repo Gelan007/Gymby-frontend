@@ -118,6 +118,8 @@
         "personal": "Особисті"
       },
       "programDescription": {
+        "edit": "Редагувати",
+        "stopEditing": "Завершити редагування",
         "leftPanel": {
           "title": "Програма",
           "description": "Опис",

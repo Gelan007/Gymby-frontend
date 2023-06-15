@@ -69,14 +69,14 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                                onChange={titleChangeHandler}
                                onBlur={updateProgramInputHandler}
                     />
-                    <div><ButtonGreen onClick={() => handleEndEditing()}>Завершити редагування</ButtonGreen></div>
+                    <div><ButtonGreen onClick={() => handleEndEditing()}>{t("programs.programDescription.edit")}</ButtonGreen></div>
                 </div>
                 :
                 <div className={s.program__titleEdit_default}>
                     <div className={s.program__title}>
                         {program?.name}
                     </div>
-                    <div><ButtonGreen onClick={() => handleStartEditing()}>Редагувати</ButtonGreen></div>
+                    <div><ButtonGreen onClick={() => handleStartEditing()}>{t("programs.programDescription.stopEditing")}</ButtonGreen></div>
                 </div>
             ) ||
                 <div className={s.program__title}>

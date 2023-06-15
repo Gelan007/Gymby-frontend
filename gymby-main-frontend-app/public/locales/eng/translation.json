@@ -118,6 +118,8 @@
       "personal": "Personal"
     },
     "programDescription": {
+      "edit": "Edit",
+      "stopEditing": "Stop editing",
       "leftPanel": {
         "title": "Program",
         "description": "Description",
