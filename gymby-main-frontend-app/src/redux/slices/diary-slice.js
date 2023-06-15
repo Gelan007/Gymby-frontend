@@ -247,7 +247,9 @@ const diarySlice = createSlice({
                     value: item.diaryId,
                     name: item.name,
                 }));
-
+                localStorage.getItem('gymby-localization') === 'eng' ?
+                    diaries.unshift({ value: false, name: 'My diary'})
+                    :
                 diaries.unshift({ value: false, name: 'Мій щоденник' });
 
                 state.allAvailableDiaries = diaries;

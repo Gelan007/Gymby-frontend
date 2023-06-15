@@ -4,6 +4,7 @@ import ModalWindow from "../../../general/modalWindow/ModalWindow";
 import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
+import {useTranslation} from "react-i18next";
 
 
 const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add',
@@ -17,7 +18,7 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
     const initialMonth = (newDate.getMonth() + 1).toString().padStart(2, "0");
     const initialYear = newDate.getFullYear().toString();
     const formattedInitialDate = `${initialDay}.${initialMonth}.${initialYear}`;
-
+    const {t} = useTranslation()
     const newDateConverter = (newDate) => new Date(newDate);
 
     useEffect(() => {
@@ -70,7 +71,7 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                     <div className={s.topBlock}>
                         <div className={s.topBlock__leftBlock}>
                             <div className={s.search_autoImport}>
-                                <InputGreySearch placeholder="пошук" onChange={doSearch}
+                                <InputGreySearch placeholder={t("general.search")} onChange={doSearch}
                                                  value={props.userModalProgramSearch}
                                 />
                             </div>
@@ -166,7 +167,7 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
                 <div className={s.diaryModalWindowTemplate}>
                     <div className={s.topBlock}>
                         <div className={s.search}>
-                            <InputGreySearch placeholder="пошук" onChange={doSearch}
+                            <InputGreySearch placeholder={t("general.search")} onChange={doSearch}
                                              value={props.userModalProgramSearch}/>
                         </div>
                         {username ?

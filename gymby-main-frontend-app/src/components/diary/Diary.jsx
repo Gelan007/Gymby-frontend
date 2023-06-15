@@ -76,7 +76,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                     <div className={s.topBlock__diarySelect}>
                         <SelectSimple  value={inputUserData.diary}
                                        onChange={(value) => diarySelectHandler(value, false)}
-                                       defaultName='Оберіть щоденник:'
+                                       defaultName={t("diary.diaryChoosing")}
                                        options={allAvailableDiaries}
                                        fontSize={28}
                         />
@@ -88,7 +88,7 @@ const Diary = ({getDiaryDay, diaryDay, setDiaryDay, setDate, date, createExercis
                 <div className={s.topBlock__accessSelect}>
                     <SelectSimple  value={inputUserData.access}
                                    onChange={(value) => diaryAccessSelectHandler(false, value)}
-                                   defaultName="Надати доступ:"
+                                   defaultName={t("diary.giveAccess")}
                                    options={listOfMyTrainerFriends}
                                    isDefaultValueEmpty={true}
                     />
