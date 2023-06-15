@@ -9,9 +9,6 @@ import InputGrey from "../../../UI/inputs/InputGrey";
 import {useTranslation} from "react-i18next";
 
 
-/*когда буду добавлять состояние для checkbox добавить условие, что если false то тогда
-* отображаем checkboxDisabled иначе checkboxEnabled*/
-/*onClick для стрелочек вешать на само изображение а не на блок*/
 const ApproachItem = ({isWeight = false, isMark = false,
                           isBasket = false, numeration = 1,
                           isEditMode, isDrawControlIcons, approach, deleteApproach, exerciseId, programId,
@@ -283,11 +280,11 @@ const ApproachItem = ({isWeight = false, isMark = false,
                                        onChange={(e) => intervalInputChangeHandler(e)}
                                        value={inputData.interval}
                                        onBlur={() => updateApproachItemHandler(false, false, true)}
-                            />  сек{/*{t("approach.repeats")}*/}
+                            /> {t("approach.time")}
                         </div>
                         :
                         <div className={inputData.isDone && `${s.customizableBlock__value} ${s.text} ${s.textDone}` || `${s.customizableBlock__value} ${s.text}`}>
-                            {inputData.interval}  сек{/*{t("approach.repeats")}*/}
+                            {inputData.interval} {t("approach.time")}
                         </div>
                     }
                     {isDrawControlIcons &&

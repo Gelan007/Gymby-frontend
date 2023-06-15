@@ -27,10 +27,6 @@ const DiaryModalWindowTemplate = ({isActive, setActive, children, buttonName = '
             formattedDate: newDateConverter(date).toISOString().slice(0, 10)})
     }, [date, isAutoImport])
 
-    useEffect(() => {
-
-    }, [])
-
     const handleInputDateChange = (event) => {
         const newDate = newDateConverter(event.target.value)
         //newDate.setHours(21, 0, 0, 0)

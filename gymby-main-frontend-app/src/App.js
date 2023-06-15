@@ -8,7 +8,6 @@ function App() {
 
   return (
       <div>
-       {/* <MainPage/>*/}
           <NavbarContainer/>
           <AppRouter/>
       </div>

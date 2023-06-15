@@ -65,9 +65,6 @@ const SecondDegreeOfNestingExercise = ({name, setExerciseName, setSelectedExerci
         "Tricep Extension": t("programs.exercises.tricepExtension"),
         "Tricep Dip": t("programs.exercises.tricepDip")
     };
-    useEffect(() => {
-        console.log(name)
-    }, [name])
 
     return (
         <div className={id === selectedExerciseId ? `${s.secondDegreeOfNestingExercise} ${s.chosen}` : s.secondDegreeOfNestingExercise}

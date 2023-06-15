@@ -333,7 +333,8 @@
   },
   "approach": {
     "kg": "kg",
-    "repeats": "repeats"
+    "repeats": "repeats",
+    "time": "s"
   },
   "general": {
     "confirmationModalWindow":  {

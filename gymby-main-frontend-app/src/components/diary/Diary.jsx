@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import Approach from "../general/approach/Approach";
 import s from './Diary.module.scss'
 import SelectSimple from "../UI/select/SelectSimple";
-import arrowSelect from "../../assets/images/approach/bottomArrow.svg"
 import ButtonOrange from "../UI/buttons/ButtonOrange";
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';

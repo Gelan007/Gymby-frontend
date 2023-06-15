@@ -338,7 +338,8 @@
     },
   "approach": {
     "kg": "кг",
-    "repeats": "пвт"
+    "repeats": "пвт",
+    "time": "сек"
   },
 
     "general": {

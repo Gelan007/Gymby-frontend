@@ -2,7 +2,6 @@ import {profileAPI} from "../../api/profile";
 import {friendsAPI} from "../../api/friends";
 
 const SET_FIRST_NAME = 'SET_FIRST_NAME'
-const SET_LAST_NAME = 'SET_LAST_NAME'
 const SET_USERNAME = 'SET_USERNAME'
 const SET_MY_PROFILE = 'SET_MY_PROFILE'
 const SET_PROFILE = 'SET_PROFILE'
@@ -113,7 +112,7 @@ const userAccountReducer = (state = initialState, action) => {
     }
 }
 
-//export const setUsersAC = (userId) => ({type: SET_USERS, userId})
+
 export const setUserName = (userName) => ({type: SET_USERNAME, userName})
 export const setFirstName = (firstName) => ({type: SET_FIRST_NAME, firstName})
 export const setMyProfile = (username, email, firstName,

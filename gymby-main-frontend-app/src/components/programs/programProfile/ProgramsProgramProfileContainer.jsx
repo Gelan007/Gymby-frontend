@@ -63,13 +63,6 @@ const ProgramsProgramProfileContainer = (props) => {
         <div>
             {
                 props.myProfile.isRequestCompleted ? (
-                      /*  checkIfEditProgram ?
-                    <ProgramsProgramProfile program={props.program} programId={programId}
-                                            selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
-                                            isProgramEditing={props.isProgramEditing}
-                                            setIsProgramEditing={props.setIsProgramEditing} isProgramAccessibleToEdit={props.isProgramAccessibleToEdit}
-                    />
-                    :*/
                             checkIfProgramViewing ?
                         <ProgramsProgramProfile program={props.program} programId={programId}
                                                 selectedDay={props.selectedDay} setSelectedDay={props.setSelectedDay}
