@@ -4,6 +4,7 @@ import ProgramsFree from "../free/ProgramsFree";
 import {connect} from "react-redux";
 import {createProgram, getPersonalPrograms, setPrograms, setIsProgramAccessibleToEdit, deleteProgram} from "../../../redux/slices/program-slice";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
+import {CircularProgress} from "@mui/material";
 
 const ProgramsPersonalContainer = (props) => {
 
@@ -18,7 +19,7 @@ const ProgramsPersonalContainer = (props) => {
     return (
         <div>
             {props.isLoading && props.isRequestCompleted ?
-                    <span>Loading...</span>
+                    <span><CircularProgress /></span>
                     :
                 <ProgramsPersonal programs={props.programs} createProgram={props.createProgram}
                                   userName={props.userName} deleteProgram={props.deleteProgram}

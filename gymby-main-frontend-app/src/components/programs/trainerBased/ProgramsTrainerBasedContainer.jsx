@@ -3,6 +3,7 @@ import ProgramsTrainerBased from "./ProgramsTrainerBased";
 import ProgramsFree from "../free/ProgramsFree";
 import {connect} from "react-redux";
 import {getSharedPrograms, setPrograms} from "../../../redux/slices/program-slice";
+import {CircularProgress} from "@mui/material";
 
 const ProgramsTrainerBasedContainer = (props) => {
     useEffect(() => {
@@ -15,7 +16,7 @@ const ProgramsTrainerBasedContainer = (props) => {
     return (
         <div>
             {props.isLoading ?
-                <span>Loading...</span>
+                <span><CircularProgress /></span>
                 :
                 <ProgramsTrainerBased programs={props.programs}/>
             }

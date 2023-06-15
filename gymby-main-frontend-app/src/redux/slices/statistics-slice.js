@@ -4,7 +4,7 @@ import {statisticsAPI} from '../../api/statistics'
 
 export const getAllNumberStatistics = createAsyncThunk('measurements/getAllNumberStatistics', async (payload) => {
     const response = await statisticsAPI.getAllNumberStatistics();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch statistics');
@@ -13,7 +13,7 @@ export const getAllNumberStatistics = createAsyncThunk('measurements/getAllNumbe
 
 export const getDoneExercisesByDate = createAsyncThunk('measurements/getDoneExercisesByDate', async (payload) => {
     const response = await statisticsAPI.getDoneExercisesByDate(payload.startDate, payload.endDate);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch statistics');
@@ -23,7 +23,7 @@ export const getDoneExercisesByDate = createAsyncThunk('measurements/getDoneExer
 
 export const getDoneApproachesByDate = createAsyncThunk('measurements/getDoneApproachesByDate', async (payload) => {
     const response = await statisticsAPI.getDoneApproachesByDate(payload.startDate, payload.endDate);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch statistics');

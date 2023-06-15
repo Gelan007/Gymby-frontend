@@ -140,7 +140,7 @@ export const updateProfile = (username, email, firstName,
             lastName, description, photoAvatarPath,
             instagramUrl, facebookUrl, telegramUsername, profileId)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     const isRequestCompleted = true
                     dispatch(setMyProfile(
                         response.data.username, response.data.email, response.data.firstName,
@@ -156,7 +156,7 @@ export const getMyProfile = () => {
     return (dispatch) => {
         profileAPI.getMyProfile()
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     const isRequestCompleted = true
                     dispatch(setMyProfile(
                         response.data.username, response.data.email, response.data.firstName,
@@ -172,7 +172,7 @@ export const addProfilePhoto = (photo) => {
     return (dispatch) => {
         profileAPI.addProfilePhoto(photo)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     /*dispatch(setMyProfilePhoto(
                         response.data
                     ))*/
@@ -185,7 +185,7 @@ export const deleteProfilePhoto = (photoId) => {
     return (dispatch) => {
         profileAPI.deleteProfilePhoto(photoId)
             .then(response => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     /*dispatch(setMyProfilePhoto(
                         response.data
                     ))*/
@@ -198,7 +198,7 @@ export const getProfileByUserName = (userName) => {
     return (dispatch) => {
         profileAPI.getProfileByUserName(userName)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     const isRequestCompleted = true
                     dispatch(setProfile(
                         response.data.username, response.data.email, response.data.firstName,
@@ -215,7 +215,7 @@ export const getMyFriendsList = () => {
     return (dispatch) => {
         friendsAPI.getMyFriendsList()
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     dispatch(setProfilesList(
                         response.data
                     ))
@@ -227,7 +227,7 @@ export const getMyPendingFriendsList = () => {
     return (dispatch) => {
         friendsAPI.getMyPendingFriendsList()
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     dispatch(setProfilesList(
                         response.data
                     ))
@@ -239,7 +239,7 @@ export const getQueryProfile = (type, query) => {
     return (dispatch) => {
         profileAPI.getQueryProfile(type, query)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     dispatch(setProfilesList(
                         response.data
                     ))
@@ -252,7 +252,7 @@ export const getQueryFriendsProfile = (type, query) => {
     return (dispatch) => {
         friendsAPI.getQueryFriendsProfile(type, query)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     dispatch(setProfilesList(
                         response.data
                     ))
@@ -265,7 +265,7 @@ export const inviteFriend = (username) => {
     return (dispatch) => {
         friendsAPI.inviteFriend(username)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                    /* dispatch(setProfilesList(
                         response.data
                     ))*/
@@ -278,7 +278,7 @@ export const acceptFriendship = (username) => {
     return (dispatch) => {
         friendsAPI.acceptFriendship(username)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                      dispatch(setProfilesList(
                         response.data
                     ))
@@ -290,7 +290,7 @@ export const rejectFriendship = (username) => {
     return (dispatch) => {
         friendsAPI.rejectFriendship(username)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     dispatch(setProfilesList(
                         response.data
                     ))
@@ -302,7 +302,7 @@ export const deleteFriendship = (username) => {
     return (dispatch) => {
         friendsAPI.deleteFriendship(username)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
                     dispatch(setProfilesList(
                         response.data
                     ))
@@ -315,7 +315,7 @@ export const accessProgramToUserByUsername = (programId, username) => {
     return (dispatch) => {
         friendsAPI.accessProgramToUserByUsername(programId, username)
             .then((response) => {
-                if(response.status >= 200 && response.status <= 204) {
+                if(response.status >= 200 && response.status <= 300) {
 
                 }
             })

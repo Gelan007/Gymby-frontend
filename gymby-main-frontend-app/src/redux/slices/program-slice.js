@@ -78,7 +78,7 @@ const createApproachInitialData = (programId, exerciseId) => {
 export const createProgram = createAsyncThunk('programs/createProgram', async (payload, {dispatch}) => {
     const programData = createInitialProgramData(payload.userName, payload.userProgramsCount, payload.dayName);
     const response = await programsAPI.createProgram(programData);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getPersonalPrograms())
         return response.data;
     } else {
@@ -89,7 +89,7 @@ export const createProgram = createAsyncThunk('programs/createProgram', async (p
 
 export const getProgramById = createAsyncThunk('programs/getProgramById', async (payload) => {
     const response = await programsAPI.getProgramById(payload.programId);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch programs');
@@ -106,7 +106,7 @@ export const getFreePrograms = createAsyncThunk('programs/getFreePrograms', asyn
 });
 export const getSharedPrograms = createAsyncThunk('programs/getSharedPrograms', async () => {
     const response = await programsAPI.getSharedPrograms();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch programs');
@@ -114,7 +114,7 @@ export const getSharedPrograms = createAsyncThunk('programs/getSharedPrograms', 
 });
 export const getPersonalPrograms = createAsyncThunk('programs/getPersonalPrograms', async () => {
     const response = await programsAPI.getPersonalPrograms();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch programs');
@@ -123,7 +123,7 @@ export const getPersonalPrograms = createAsyncThunk('programs/getPersonalProgram
 
 export const createProgramDay = createAsyncThunk('programs/createProgramDay', async (payload) => {
     const response = await programsAPI.createProgramDay(payload.programId, payload.name);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch programs');
@@ -132,7 +132,7 @@ export const createProgramDay = createAsyncThunk('programs/createProgramDay', as
 
 export const updateProgramDay = createAsyncThunk('programs/updateProgramDay', async (payload) => {
     const response = await programsAPI.updateProgramDay(payload.programDayId, payload.programId, payload.name);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch programs');
@@ -141,7 +141,7 @@ export const updateProgramDay = createAsyncThunk('programs/updateProgramDay', as
 
 export const deleteProgramDay = createAsyncThunk('programs/deleteProgramDay', async (payload) => {
     const response = await programsAPI.deleteProgramDay(payload.programDayId, payload.programId);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch programs');
@@ -149,7 +149,7 @@ export const deleteProgramDay = createAsyncThunk('programs/deleteProgramDay', as
 });
 export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (payload, {dispatch}) => {
     const response = await programsAPI.deleteProgram(payload);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getPersonalPrograms())
     } else {
         throw new Error('Failed to fetch programs');
@@ -158,7 +158,7 @@ export const deleteProgram = createAsyncThunk('programs/deleteProgram', async (p
 
 export const createExercise = createAsyncThunk('programs/createExercise', async (payload, {dispatch}) => {
     const response = await programsAPI.createExercise(payload.programId, payload.exercisePrototypeId, payload.programDayId, payload.name);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
         throw new Error('Failed to fetch programs');
@@ -176,7 +176,7 @@ export const deleteExercise = createAsyncThunk('programs/deleteExercise', async 
 });
 export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercisesPrototype', async (payload) => {
     const response = await programsAPI.getAllExercisesPrototype();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch programs');
@@ -186,7 +186,7 @@ export const getAllExercisesPrototype = createAsyncThunk('programs/getAllExercis
 export const createApproach = createAsyncThunk('programs/createApproach', async (payload, {dispatch}) => {
     const approachData = createApproachInitialData(payload.programId, payload.exerciseId)
     const response = await programsAPI.createApproach(approachData.programId, approachData.exerciseId,approachData.repeats,approachData.weight, approachData.interval);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
         throw new Error('Failed to fetch programs');
@@ -197,7 +197,7 @@ export const deleteApproach = createAsyncThunk('programs/deleteApproach', async 
 
     const response = await programsAPI.deleteApproach(payload.programId, payload.exerciseId, payload.approachId);
 
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
         throw new Error('Failed to fetch programs');
@@ -205,7 +205,7 @@ export const deleteApproach = createAsyncThunk('programs/deleteApproach', async 
 });
 export const updateApproach = createAsyncThunk('programs/updateApproach', async (payload, {dispatch}) => {
     const response = await programsAPI.updateApproach(payload.programId, payload.exerciseId, payload.approachId, payload.repeats, payload.weight, payload.isDone, payload.interval);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
         throw new Error('Failed to fetch programs');
@@ -214,7 +214,7 @@ export const updateApproach = createAsyncThunk('programs/updateApproach', async 
 
 export const updateProgram = createAsyncThunk('programs/updateProgram', async (payload, {dispatch}) => {
     const response = await programsAPI.updateProgram(payload.programId, payload.name, payload.description, payload.level, payload.type);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getProgramById({programId: payload.programId}))
     } else {
         throw new Error('Failed to fetch programs');

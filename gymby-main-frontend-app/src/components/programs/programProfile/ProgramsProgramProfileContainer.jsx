@@ -20,6 +20,7 @@ import {
 import NotFound from "../../notFound/NotFound";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";
 import {urlPathForProgramCreation} from "../../../utils/routes/consts";
+import {CircularProgress} from "@mui/material";
 
 const ProgramsProgramProfileContainer = (props) => {
     const {programId} = useParams()
@@ -84,7 +85,7 @@ const ProgramsProgramProfileContainer = (props) => {
                         :
                     <NotFound/>
                 ) :
-                    <div>Loading</div>
+                    <div><CircularProgress /></div>
             }
         </div>
     );

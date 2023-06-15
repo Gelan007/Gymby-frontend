@@ -20,7 +20,7 @@ const createApproachInitialData = (exerciseId) => {
 
 export const getDiaryDay = createAsyncThunk('diary/getDiaryDay', async (payload) => {
     const response = await diaryAPI.getDiaryDay(payload.date, payload.diaryId);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch diary');
@@ -28,7 +28,7 @@ export const getDiaryDay = createAsyncThunk('diary/getDiaryDay', async (payload)
 });
 export const createExercise = createAsyncThunk('diary/createExercise', async (payload, {dispatch}) => {
     const response = await diaryAPI.createExercise(payload.diaryId, payload.exercisePrototypeId, payload.date, payload.name);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {
         throw new Error('Failed to fetch diary');
@@ -36,7 +36,7 @@ export const createExercise = createAsyncThunk('diary/createExercise', async (pa
 });
 export const getAllExercisesPrototype = createAsyncThunk('diary/getAllExercisesPrototype', async (payload) => {
     const response = await programsAPI.getAllExercisesPrototype();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch diary');
@@ -45,7 +45,7 @@ export const getAllExercisesPrototype = createAsyncThunk('diary/getAllExercisesP
 
 export const deleteExercise = createAsyncThunk('diary/deleteExercise', async (payload, {dispatch}) => {
     const response = await diaryAPI.deleteExercise(payload.exerciseId);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {
         throw new Error('Failed to fetch diary');
@@ -53,7 +53,7 @@ export const deleteExercise = createAsyncThunk('diary/deleteExercise', async (pa
 });
 export const deleteApproach = createAsyncThunk('diary/deleteApproach', async (payload, {dispatch}) => {
     const response = await diaryAPI.deleteApproach(payload.approachId);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {
         throw new Error('Failed to fetch diary');
@@ -62,7 +62,7 @@ export const deleteApproach = createAsyncThunk('diary/deleteApproach', async (pa
 export const createApproach = createAsyncThunk('diary/createApproach', async (payload, {dispatch}) => {
     const approachData = createApproachInitialData(payload.exerciseId)
     const response = await diaryAPI.createApproach(approachData.exerciseId,approachData.repeats,approachData.weight );
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {
         throw new Error('Failed to fetch diary');
@@ -70,7 +70,7 @@ export const createApproach = createAsyncThunk('diary/createApproach', async (pa
 });
 export const updateApproach = createAsyncThunk('diary/updateApproach', async (payload, {dispatch}) => {
     const response = await diaryAPI.updateApproach(payload.exerciseId, payload.approachId, payload.repeats, payload.weight, payload.isDone, payload.interval);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {
         throw new Error('Failed to fetch diary');
@@ -78,7 +78,7 @@ export const updateApproach = createAsyncThunk('diary/updateApproach', async (pa
 });
 export const getAllProgramsInDiary = createAsyncThunk('diary/getAllProgramsInDiary', async (payload, {dispatch}) => {
     const response = await diaryAPI.getAllProgramsInDiary();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch diary');
@@ -86,7 +86,7 @@ export const getAllProgramsInDiary = createAsyncThunk('diary/getAllProgramsInDia
 });
 export const getPersonalPrograms = createAsyncThunk('diary/getPersonalPrograms', async () => {
     const response = await programsAPI.getPersonalPrograms();
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch diary');
@@ -94,7 +94,7 @@ export const getPersonalPrograms = createAsyncThunk('diary/getPersonalPrograms',
 });
 export const importProgramDay = createAsyncThunk('diary/importProgramDay', async (payload, {dispatch}) => {
     const response = await diaryAPI.importProgramDay(payload.diaryId, payload.programId, payload.programDayId, payload.date);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {
         throw new Error('Failed to fetch diary');
@@ -102,7 +102,7 @@ export const importProgramDay = createAsyncThunk('diary/importProgramDay', async
 });
 export const importProgramAutomatically = createAsyncThunk('diary/importProgramAutomatically', async (payload, {dispatch}) => {
     const response = await diaryAPI.importProgramAutomatically(payload.diaryId, payload.programId,payload.startDate, payload.daysOfWeek);
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         dispatch(getDiaryDay({date: payload.date, diaryId: payload.diaryId}))
     } else {
         throw new Error('Failed to fetch diary');
@@ -110,7 +110,7 @@ export const importProgramAutomatically = createAsyncThunk('diary/importProgramA
 });
 export const getAllFriendsTrainers = createAsyncThunk('diary/getAllFriendsTrainers', async (payload, {dispatch}) => {
     const response = await friendsAPI.getQueryFriendsProfile('trainers', null)
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch diary');
@@ -118,7 +118,7 @@ export const getAllFriendsTrainers = createAsyncThunk('diary/getAllFriendsTraine
 });
 export const takeAccessToMyDiaryByUserName = createAsyncThunk('diary/takeAccessToMyDiaryByUserName', async (payload, {dispatch}) => {
     const response = await diaryAPI.accessToMyDiaryByUserName(payload.username)
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch diary');
@@ -126,7 +126,7 @@ export const takeAccessToMyDiaryByUserName = createAsyncThunk('diary/takeAccessT
 });
 export const getAllAvailableDiaries = createAsyncThunk('diary/getAllAvailableDiaries', async (payload, {dispatch}) => {
     const response = await diaryAPI.getAllAvailableDiaries()
-    if (response.status >= 200 && response.status <= 204) {
+    if (response.status >= 200 && response.status <= 300) {
         return response.data;
     } else {
         throw new Error('Failed to fetch diary');

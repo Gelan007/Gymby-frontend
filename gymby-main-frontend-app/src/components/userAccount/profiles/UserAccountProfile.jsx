@@ -11,6 +11,7 @@ import fifthImage from '../../../assets/images/userCabinet/personalData/Revan.jp
 import ButtonExit from "../../UI/buttons/ButtonExit";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
+import {CircularProgress} from "@mui/material";
 
 
 
@@ -59,7 +60,7 @@ const UserAccountProfile = ({profile, isRequestCompleted, allAvailableDiaries, .
                                 ))}
                             </CarouselProfile>
                         ) : (
-                            <div>Loading...</div>
+                            <div><CircularProgress /></div>
                         )}
                     </div>
                 </div>
