@@ -41,9 +41,9 @@ const UserAccountCoaching = ({data, signature, isCoach}) => {
                     <div></div>
                     :
                     <div className={s.doSubscriptionBlock}>
-                        <span className={s.doSubscriptionBlock__title}>Стандарт</span>
+                        <span className={s.doSubscriptionBlock__title}>{t("general.subscription.type")}</span>
                         <span className={s.doSubscriptionBlock__price}>$9</span>
-                        <span className={s.doSubscriptionBlock__type}>Місячна</span>
+                        <span className={s.doSubscriptionBlock__type}>{t("general.subscription.month")}</span>
                         <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8" target="_blank">
                             <input type="hidden" name="data" value={`${data}`}/>
                             <input type="hidden" name="signature" value={`${signature}`}/>

@@ -90,7 +90,7 @@
 
   "diary": {
     "sort": {
-      "popularity": "За популярністю",
+      "popularity": "For popularity",
       "diaryChoosing": "Choose diary"
     },
     "buttons": {
@@ -103,7 +103,10 @@
       "day": "Day",
       "accessDiaryText": "Do you really wish to grant access to ",
       "accessDiaryTitle": "Access diary"
-    }
+    },
+    "myDiary": "My diary",
+    "giveAccess": "Give an access: ",
+    "diaryChoosing": "Choose diary"
   },
 
   "programs": {
@@ -128,6 +131,7 @@
         "type": "Type"
       }
     },
+    "closeExercise": "In order to open access to your own programs, you need to purchase a trainer subscription in your account.",
     "modalWindow": {
       "title": "Program deletion",
       "text": "Are you sure that you want to delete the"
@@ -335,6 +339,12 @@
     "confirmationModalWindow":  {
       "yes": "Yes",
       "no": "No"
+    },
+    "search": "Search",
+    "subscription": {
+      "type": "Standard",
+      "month": "Month",
+      "buy": "Buy"
     }
   }
 

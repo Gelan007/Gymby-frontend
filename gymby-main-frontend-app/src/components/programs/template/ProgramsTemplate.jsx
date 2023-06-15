@@ -34,7 +34,7 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createPr
                 <div className={s.navBlock}>
                     {isCoach ?
                         <div className={s.navBlock__input}>
-                            <InputGreySearch placeholder="Пошук"/>
+                            <InputGreySearch placeholder={t("general.search")}/>
                         </div>
                         :
                         <div></div>
@@ -90,8 +90,8 @@ const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createPr
                             </Grid>
                             :
                         <div className={s.noTrainerBlock}>
-                            <div className={s.noTrainerText}>Для того, щоб відкрити доступ до власних програм, необхідно
-                                придбати підписку тренера у власному кабінеті
+                            <div className={s.noTrainerText}>
+                                {t("programs.closeExercise")}
                             </div>
                             <div className={s.noTrainerImage}>
                                 <img src={trainerIcon} alt="trainerIcon"/>

@@ -4,20 +4,14 @@ import ModalWindow from "../../../general/modalWindow/ModalWindow";
 import InputGreySearch from "../../../UI/inputs/InputGreySearch";
 import closeIcon from "../../../../assets/images/general/icons/closeBlack.svg"
 import ButtonGreen from "../../../UI/buttons/ButtonGreen";
+import {useTranslation} from "react-i18next";
 
 const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, buttonName = 'Add',
                                                  createExercise, setCreationData,
                                                  creationData, userModalExerciseSearch, searchExercisesPrototype, setUserModalExerciseSearch}) => {
+    const {t} = useTranslation()
     const handleCreateButton = () => {
         createExercise(creationData)
-        /*setCreationData(
-            {
-                programId: '',
-                exercisePrototypeId: '',
-                programDayId: '',
-                name: ''
-            }
-        )*/
         setCreationData(
             {
                 name: ''
@@ -25,12 +19,13 @@ const ExerciseCreationModalWindowTemplate = ({isActive, setActive, children, but
         )
         setActive(false)
     }
+
     return (
         <ModalWindow isActive={isActive} setActive={setActive}>
             <div className={s.exerciseCreationModalWindowTemplate}>
                 <div className={s.topBlock}>
                     <div className={s.search}>
-                        <InputGreySearch placeholder="пошук"  onChange={event => setUserModalExerciseSearch(event.target.value)}
+                        <InputGreySearch placeholder={t("general.search")}  onChange={event => setUserModalExerciseSearch(event.target.value)}
                                          value={userModalExerciseSearch}/>
                     </div>
                     <div className={s.close}

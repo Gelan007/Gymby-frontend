@@ -21,7 +21,7 @@ const UserAccountSearch = ({profiles, everybodyValue,trainersValue,selectedOptio
             <div className={s.userAccountSearch__body}>
                 <div className={s.navBlock}>
                     <div className={s.navBlock__input}>
-                        <InputGreySearch placeholder="Пошук" value={userSearchData} onChange={(e) => handleUserSearch(e)}/>
+                        <InputGreySearch placeholder={t("general.search")} value={userSearchData} onChange={(e) => handleUserSearch(e)}/>
                     </div>
                     <div className={s.navBlock__options}>
                         <span className={selectedOption === trainersValue ?
