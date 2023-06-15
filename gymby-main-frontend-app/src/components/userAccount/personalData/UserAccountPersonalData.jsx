@@ -197,7 +197,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                             </div>
 
                                 <div className={s.avatarBlock__subscription}>
-                                    {t("userAccount.profile.profileInfoBlock.content3")}: <span>{allAvailableDiaries?.length ? allAvailableDiaries?.length : 0}</span>
+                                    {t("userAccount.profile.profileInfoBlock.content3")}: <span>{allAvailableDiaries?.length ? allAvailableDiaries?.length -1 : 0}</span>
                                 </div>
                             </div>
 

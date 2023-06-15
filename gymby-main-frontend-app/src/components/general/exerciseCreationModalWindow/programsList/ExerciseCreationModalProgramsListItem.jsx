@@ -32,7 +32,11 @@ const ExerciseCreationModalProgramsListItem = ({isExpand = false, setSelectedExe
 
     const textMap = {
         Arms: t("programs.categories.arms"),
-        Legs: t("programs.categories.legs")
+        Legs: t("programs.categories.legs"),
+        Shoulders: t("programs.categories.shoulders"),
+        Chest: t("programs.categories.chest"),
+        Back: t("programs.categories.back"),
+        ABS: t("programs.categories.abs")
     };
 
     return (

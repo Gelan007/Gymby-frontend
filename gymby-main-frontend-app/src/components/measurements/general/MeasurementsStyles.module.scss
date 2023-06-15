@@ -10,6 +10,15 @@
   padding-left: 30px;
   margin-bottom: 23px;
   padding-right: 100px;
+
+  &__rightBlock {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    &>*:not(:last-child) {
+      margin-right: 10px;
+  }
+  }
   &__title {
     margin-right: 40px;
     font-weight: 700;

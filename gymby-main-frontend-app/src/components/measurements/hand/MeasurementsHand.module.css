@@ -27,6 +27,14 @@
   margin-bottom: 23px;
   padding-right: 100px;
 }
+.navBlock__rightBlock {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.navBlock__rightBlock > *:not(:last-child) {
+  margin-right: 10px;
+}
 .navBlock__title {
   margin-right: 40px;
   font-weight: 700;
