@@ -14,7 +14,7 @@ import SelectSimple from "../../../UI/select/SelectSimple";
 const ProgramsProgramDescription = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                         isProgramAccessibleToEdit, setIsProgramEditing, createProgramDay, getProgramById,
                                         deleteProgramDay, updateProgramDay, updateProgram, inputUserData,
-                                        setInputUserData, titleChangeHandler}) => {
+                                        setInputUserData, titleChangeHandler, isFreePrograms}) => {
 
     const {t} = useTranslation()
 
@@ -98,9 +98,14 @@ const ProgramsProgramDescription = ({program, programId, selectedDay, setSelecte
                         <div className={s.photoBlock__photo}>
                             <img src={defaultProgramPhoto} alt="programPhoto"/>
                         </div>
-                        <div className={s.photoBlock__description}>
-                            {t("programs.programDescription.programAuthor")}: <span>@Gymby_team</span>
-                        </div>
+                        {isFreePrograms ?
+                            <div className={s.photoBlock__description}>
+                                {t("programs.programDescription.programAuthor")}: <span>@Gymby_team</span>
+                            </div>
+                            :
+                            <div></div>
+                        }
+
                     </div>
                     <div className={s.mainBlock}>
                         <div className={s.mainBlock__titleBlock}>

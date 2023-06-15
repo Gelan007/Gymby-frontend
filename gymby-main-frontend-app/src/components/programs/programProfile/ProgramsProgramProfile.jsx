@@ -6,7 +6,7 @@ import ProgramsProgramDay from "./day/ProgramsProgramDay";
 const ProgramsProgramProfile = ({program, programId, selectedDay, setSelectedDay, isProgramEditing,
                                     setIsProgramEditing, isProgramAccessibleToEdit, createProgramDay, getProgramById,
                                     deleteProgramDay, updateProgramDay,createExercise, getAllExercisesPrototype, exercisesPrototype,
-                                    exerciseCreationData, setExerciseCreationData, updateProgram, ...props}) => {
+                                    exerciseCreationData, setExerciseCreationData, updateProgram,isFreePrograms, ...props}) => {
 
     const [inputUserData, setInputUserData] = useState({name:'', description:'', level: '', type: ''})
 
