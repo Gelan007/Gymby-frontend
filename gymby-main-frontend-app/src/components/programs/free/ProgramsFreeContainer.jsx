@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import ProgramsFree from "./ProgramsFree";
 import {connect} from "react-redux";
 import {getFreePrograms, setPrograms} from "../../../redux/slices/program-slice";
+import {CircularProgress} from "@mui/material";
 
 const ProgramsFreeContainer = (props) => {
     useEffect(() => {
@@ -14,7 +15,7 @@ const ProgramsFreeContainer = (props) => {
     return (
         <div>
             {props.isLoading ?
-                <span>Loading...</span>
+                <span><CircularProgress /></span>
                 :
                 <ProgramsFree programs={props.programs}/>
             }
