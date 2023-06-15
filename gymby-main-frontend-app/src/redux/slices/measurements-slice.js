@@ -29,13 +29,13 @@ const handleMeasurementsFulfilled = (state, action) => {
     state.photos = []
 
     action.payload.photos?.forEach((photo) => {
-        const creationDate = new Date(photo.creationDate).toLocaleDateString();
-        const existingGroup = state.photos.find((group) => group.creationDate === creationDate);
+        const measurementDate = new Date(photo.measurementDate).toLocaleDateString();
+        const existingGroup = state.photos.find((group) => group.measurementDate === measurementDate);
         if (existingGroup) {
             existingGroup.photos.push(photo);
         } else {
             state.photos?.push({
-                creationDate,
+                measurementDate,
                 photos: [photo]
             });
         }
@@ -156,13 +156,13 @@ const measurementsSlice = createSlice({
     },
     reducers: {
         addMeasurementPhotoCreationDate: (state, action) => {
-            const creationDate = new Date(action.payload).toLocaleDateString();
-            const existingGroup = state.photos.find((group) => group.creationDate === creationDate);
+            const measurementDate = new Date(action.payload).toLocaleDateString();
+            const existingGroup = state.photos.find((group) => group.measurementDate === measurementDate);
             if (existingGroup) {
                 return
             } else {
                 state.photos.push({
-                    creationDate: creationDate,
+                    measurementDate,
                     photos: []
                 });
             }
