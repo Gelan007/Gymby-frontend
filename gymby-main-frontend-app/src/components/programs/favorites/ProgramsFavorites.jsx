@@ -1,6 +1,5 @@
 import React from 'react';
 import ProgramsTemplate from "../template/ProgramsTemplate";
-import ProgramsCard from "../card/ProgramsCard";
 
 const ProgramsFavorites = () => {
     return (
@@ -12,7 +11,3 @@ const ProgramsFavorites = () => {
 
 export default ProgramsFavorites;
 
-/*
-<ProgramsTemplate>
-    <ProgramsCard/>
-</ProgramsTemplate>*/

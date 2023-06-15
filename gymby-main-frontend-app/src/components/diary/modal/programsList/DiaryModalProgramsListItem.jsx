@@ -28,9 +28,6 @@ const DiaryModalProgramsListItem = ({isExpand = false, program, setSelectedProgr
                     <div className={s.titleBlock}>
                         <div className={s.title}>{program.name}</div>
                         <div className={s.programDescriptionItems}>
-                            {/*<div className={s.programDescriptionItem}>набір маси</div>
-                            <div className={s.programDescriptionItem}>ектоморф</div>
-                            <div className={s.programDescriptionItem}>середній</div>*/}
                             {program.marks?.map((mark, index) => (
                                 <ProgramsMark text={mark} key={index} isBlackTextColor={true}/>
                             ))}
@@ -50,11 +47,6 @@ const DiaryModalProgramsListItem = ({isExpand = false, program, setSelectedProgr
                                  programDayId={day.id} setSelectedProgramId={setSelectedProgramId} programId={program.id}
                             />
                         ))}
-
-                     {/*   <Day number={2}/>
-                        <Day number={3}/>
-                        <Day number={4}/>
-                        <Day number={5}/>*/}
                     </div>
                     <div className={s.bottomBlock__rightBlock}>
                         <DisplayerDarkBlue>{/**/}

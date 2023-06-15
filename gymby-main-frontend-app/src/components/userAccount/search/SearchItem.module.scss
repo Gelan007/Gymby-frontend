@@ -27,3 +27,11 @@
     filter: drop-shadow(0px 8px 8px rgba(0, 246, 10, 1));
   }
 }
+.verifiedIcon {
+  width: 30px;
+  margin-left: auto;
+
+  & img {
+    max-width: 100%;
+  }
+}

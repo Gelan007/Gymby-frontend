@@ -66,10 +66,6 @@ import UserAccountSubscriptionsContainer
 import UserAccountCoachingContainer from "../../components/userAccount/coaching/UserAccountCoachingContainer";
 
 export const publicRoutes = [
-   /* {
-        path: LOGIN_ROUTE,
-        Component: <Login/>
-    },*/
     {
         path: HOME_ROUTE,
         Component: <MainPage/>

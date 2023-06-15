@@ -223,7 +223,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.email")}</span>
-                            <InputGrey type="email" value={userData.email} onChange={(e) => setUserData({...userData, email: e.target.value})}/>
+                            <InputGrey type="email" value={userData.email} />
                         </div>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.username")}</span>

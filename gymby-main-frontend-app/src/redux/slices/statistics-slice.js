@@ -44,11 +44,7 @@ const statisticsSlice = createSlice({
         doneExercisesByDate: [],
         doneApproachesByDate: []
     },
-    reducers: {
-        /*setMeasurements: (state, action) => {
-            // state.isActiveUABtn = action.payload
-        }*/
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getAllNumberStatistics.fulfilled, (state, action) => {

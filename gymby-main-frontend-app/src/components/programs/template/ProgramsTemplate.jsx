@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import trainerIcon from '../../../assets/images/LandingPage/trainerAdvertising/trainerPhotoEllipse.png'
 
 const ProgramsTemplate = ({programs, isButtonShow= false, isDeleteIcon, createProgram,
-                              userName, deleteProgram, getPersonalPrograms, isCoach, isPersonalPrograms = false}) => {
+                              userName, deleteProgram, getPersonalPrograms, isCoach, isPersonalPrograms = false, isFreePrograms = false}) => {
 
     const {t} = useTranslation();
     const [isModalActive, setIsModalActive] = useState(false);

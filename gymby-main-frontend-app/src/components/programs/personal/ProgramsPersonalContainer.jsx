@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import ProgramsPersonal from "./ProgramsPersonal";
-import ProgramsFree from "../free/ProgramsFree";
 import {connect} from "react-redux";
 import {createProgram, getPersonalPrograms, setPrograms, setIsProgramAccessibleToEdit, deleteProgram} from "../../../redux/slices/program-slice";
 import {getMyProfile} from "../../../redux/reducers/user-account-reducer";

@@ -1,16 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import s from "./ProgramsProgramLeftPanelList.module.scss";
-import {NavLink} from "react-router-dom";
 import dumbbellIcon from '../../../../assets/images/programs/dumbbell.svg'
 import spellIcon from '../../../../assets/images/programs/spell.svg'
 import plusIcon from '../../../../assets/images/general/icons/plus.svg'
 import deleteIcon from '../../../../assets/images/general/icons/basketWhiteBackground2.svg'
-
-import {
-    PROGRAMS_FAVORITES_ROUTE,
-    PROGRAMS_FREE_ROUTE, PROGRAMS_PERSONAL_ROUTE, PROGRAMS_PROGRAM_PROFILE_ROUTE, PROGRAMS_ROUTE,
-    PROGRAMS_TRAINER_BASED_ROUTE
-} from "../../../../utils/routes/consts";
 import {useTranslation} from "react-i18next";
 import InputGrey from "../../../UI/inputs/InputGrey";
 

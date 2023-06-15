@@ -55,28 +55,9 @@ export const profileAPI = {
             response = await $authHostWithoutHeaders.get(`/api/profile/search?query=${query}`)
         }
         return response;
-    },
-
-    /*async updateProfile(username, email, firstName,
-                        lastName, description, photoAvatarPath,
-                        instagramUrl, facebookUrl, telegramUsername, profileId) {
-
-        const response = await $authHost.post('api/profile/update',
-            {
-                username, email, firstName,
-                lastName, description, photoAvatarPath,
-                instagramUrl, facebookUrl, telegramUsername, profileId
-            })
-        return response;
-    } */
-
+    }
 }
 
-/*
-export const getProfile = async () => {
-    const response = await $authHost.get('api/Quest/Popular')
-    return response.data;
-}*/
 
 
 

@@ -10,12 +10,6 @@ import {
     MEASUREMENTS_SHOULDERS_ROUTE, MEASUREMENTS_THIGH_ROUTE,
     MEASUREMENTS_WAIST_ROUTE,
     MEASUREMENTS_WEIGHT_ROUTE,
-    USER_ACCOUNT_COACHING_ROUTE,
-    USER_ACCOUNT_FRIENDS_LIST_ROUTE,
-    USER_ACCOUNT_INSTRUCTION_ROUTE,
-    USER_ACCOUNT_PERSONAL_DATA_ROUTE,
-    USER_ACCOUNT_SEARCH_ROUTE,
-    USER_ACCOUNT_SUBSCRIBES_ROUTE
 } from "../../../utils/routes/consts";
 import bicepsIcon from "../../../assets/images/measurements/biceps.svg";
 import chestIcon from "../../../assets/images/measurements/Chest.svg";
