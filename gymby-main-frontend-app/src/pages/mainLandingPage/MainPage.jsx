@@ -29,6 +29,7 @@ import facebook from '../../assets/images/LandingPage/footer/facebookBlack.svg'
 import telegram from '../../assets/images/LandingPage/footer/telegramBlack.svg'
 import instagram from '../../assets/images/LandingPage/footer/instagramBlack.svg'
 import twitter from '../../assets/images/LandingPage/footer/twitterBlack.svg'
+import plug from '../../assets/images/LandingPage/mainLandingPage/photo_2023-06-15_18-41-09.jpg'
 import NavbarContainer from "../../components/navbars/NavbarContainer";
 import {useTranslation} from "react-i18next";
 
@@ -61,11 +62,15 @@ const MainPage = () => {
                         </div>
                         <div className={s.topBlockTitular__video}>
                             <div className={s.topBlockTitular__iframeBlock}>
-                                <iframe src="https://www.youtube.com/embed/EgBJmlPo8Xw"
+                              {/*  <iframe src="https://www.youtube.com/embed/EgBJmlPo8Xw"
                                         title="YouTube video player" frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen>
-                                </iframe>
+                                </iframe>*/}
+                                <iframe src="https://www.youtube.com/embed/e6eKim_yqnY"
+                                        title="YouTube video player" frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowFullScreen></iframe>
                             </div>
                             <img src={notebook} alt="notebook"/>
                         </div>
