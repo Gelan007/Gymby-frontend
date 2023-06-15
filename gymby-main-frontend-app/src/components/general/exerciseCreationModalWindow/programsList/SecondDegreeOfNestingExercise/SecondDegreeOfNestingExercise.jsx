@@ -33,7 +33,7 @@ const SecondDegreeOfNestingExercise = ({name, setExerciseName, setSelectedExerci
         "Decline Bench Press": t("programs.exercises.declineBenchPress"),
         "Bench Press": t("programs.exercises.benchPress"),
         "Dumbbell Flyes": t("programs.exercises.dumbbellFlyes"),
-        "Push-ups on the Uneven Bars": t("programs.exercises.pushupsOnTheUnevenBars"),
+        "Push-ups on the uneven bars": t("programs.exercises.pushupsOnTheUnevenBars"),
         "Incline Bench Press": t("programs.exercises.inclineBenchPress"),
         "Mixing in a crossover lying on an incline bench": t("programs.exercises.mixingInACrossoverLyingOnAnInclineBench"),
         "Dumbbell Pullover": t("programs.exercises.dumbbellPullover"),
