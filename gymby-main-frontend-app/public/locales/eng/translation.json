@@ -143,7 +143,11 @@
     },
     "categories": {
       "legs": "Legs",
-      "arms": "Arms"
+      "arms": "Arms",
+      "shoulders": "Shoulders",
+      "chest": "Chest",
+      "back": "Back",
+      "abs": "ABS"
     }
   },
   "statistics": {
