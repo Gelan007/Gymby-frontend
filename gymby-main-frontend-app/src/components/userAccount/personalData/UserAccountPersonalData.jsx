@@ -105,7 +105,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
     }, [photosPendingDeletion])
 
     const checkIfUsernameCorrect = () => {
-        const symbols = /^[a-zA-Z0-9\-_@]+$/;
+        const symbols = /^[a-zA-Z0-9\-_@.]+$/;
         if(userData.username.length >= 6 && symbols.test(userData.username ? userData.username : '')) {
             setIsUserDataCorrect(true)
             return true
