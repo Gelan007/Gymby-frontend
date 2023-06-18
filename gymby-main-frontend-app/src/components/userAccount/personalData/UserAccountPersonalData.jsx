@@ -25,6 +25,7 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
     const [chosenUserPhotoPathsForDeleteRequest, setChosenUserPhotoPathsForDeleteRequest] = useState([])
     const [photosPendingDeletion, setPhotosPendingDeletion] = useState([])
     let generatedUsername = uuidv4().slice(0, 13)
+    const [isUserDataCorrect, setIsUserDataCorrect] = useState(true)
 
     useEffect(() => {
         setUserData(myProfile)
@@ -103,24 +104,37 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
         }
     }, [photosPendingDeletion])
 
+    const checkIfUsernameCorrect = () => {
+        const symbols = /^[a-zA-Z0-9\-_@]+$/;
+        if(userData.username.length >= 6 && symbols.test(userData.username ? userData.username : '')) {
+            setIsUserDataCorrect(true)
+            return true
+        } else {
+            setIsUserDataCorrect(false)
+            return false
+        }
+    }
     const buttonHandler = () => {
         try {
-            updateProfile(userData.username ? userData.username : generatedUsername, userData.email,
-                userData.firstName ? userData.firstName : 'FirstName',
-                userData.lastName ? userData.lastName : 'LastName',
-                userData.description ? userData.description : '',
-                userData.photoAvatarPath,
-                userData.instagramUrl ? userData.instagramUrl : '',
-                userData.facebookUrl ? userData.facebookUrl : '',
-                userData.telegramUsername ? userData.telegramUsername : '',
-                myProfile.profileId)
+            if(checkIfUsernameCorrect()) {
+                updateProfile(userData.username ? userData.username : generatedUsername, userData.email,
+                    userData.firstName ? userData.firstName : 'FirstName',
+                    userData.lastName ? userData.lastName : 'LastName',
+                    userData.description ? userData.description : '',
+                    userData.photoAvatarPath,
+                    userData.instagramUrl ? userData.instagramUrl : '',
+                    userData.facebookUrl ? userData.facebookUrl : '',
+                    userData.telegramUsername ? userData.telegramUsername : '',
+                    myProfile.profileId)
+                setIsUserDataCorrect(true)
 
-            if(chosenUserPhotoFilesForRequest.length > 0) {
-                chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
-                setChosenUserPhotoFilesForRequest([])
-            }
-            if(chosenUserPhotoPathsForDeleteRequest.length > 0) {
-                chosenUserPhotoPathsForDeleteRequest.forEach(photoId => deleteProfilePhoto(photoId))
+                if (chosenUserPhotoFilesForRequest.length > 0) {
+                    chosenUserPhotoFilesForRequest.forEach(photo => addProfilePhoto(photo))
+                    setChosenUserPhotoFilesForRequest([])
+                }
+                if (chosenUserPhotoPathsForDeleteRequest.length > 0) {
+                    chosenUserPhotoPathsForDeleteRequest.forEach(photoId => deleteProfilePhoto(photoId))
+                }
             }
         } catch {
             alert('Something went wrong')
@@ -188,7 +202,6 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                                 :
                                 <div></div>
                             }
-
                         </div>
                         {userData.isCoach ?
                             <div className={s.avatarBlock__subscriptionBlock}>
@@ -223,12 +236,21 @@ const UserAccountPersonalData = ({myProfile, updateProfile, addProfilePhoto, del
                     <div className={s.inputData__row}>
                         <div className={s.inputData__item}>
                             <span>{t("userAccount.personalData.textInputs.email")}</span>
-                            <InputGrey type="email" value={userData.email} />
+                            <InputGrey type="email" value={userData.email} readonly/>
                         </div>
-                        <div className={s.inputData__item}>
-                            <span>{t("userAccount.personalData.textInputs.username")}</span>
-                            <InputGrey value={userData.username} onChange={(e) => setUserData({...userData, username: e.target.value})}/>
-                        </div>
+                        {isUserDataCorrect ?
+                            <div className={s.inputData__item}>
+                                <span>{t("userAccount.personalData.textInputs.username")}</span>
+                                <InputGrey value={userData.username} onChange={(e) => setUserData({...userData, username: e.target.value})}/>
+                            </div>
+                            :
+                            <div className={s.inputData__item}>
+                                <span>{t("userAccount.personalData.textInputs.username")}</span>
+                                <InputGrey value={userData.username} onChange={(e) => setUserData({...userData, username: e.target.value})}/>
+                                <span style={{color: 'red', opacity: '0.7'}}>Допустима довжина не менше 6 символів. Допустимі символи _ та -.</span>
+                            </div>
+                        }
+
                     </div>
                 </div>
                 <div className={s.photoCards}>
