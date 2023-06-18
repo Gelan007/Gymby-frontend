@@ -159,11 +159,11 @@
         "machineShoulderPress": "Жим на тренажері для плечей",
         "seatedOverheadPress": "Сидячий жим над головою",
         "lateralRaise": "Розведення гантелей в боки",
-        "frontRaiseCable": "Підйом гантелей вперед (на кабельній машині)",
+        "frontRaiseCable": "Підйом гантелей вперед",
         "arnoldPress": "Жим Арнольда",
         "militaryPress": "Військовий жим",
         "reverseFly": "Розведення гантелей назад",
-        "lateralRaiseCable": "Розведення гантелей в боки (на кабельній машині)",
+        "lateralRaiseCable": "Розведення гантелей в боки",
         "shrug": "Підтягування плечима",
         "squats": "Присідання",
         "lunges": "Випади",
@@ -212,7 +212,13 @@
         "tricepBenchDip": "Віджимання від лавці на трицепс",
         "skullcrusher": "Жим штанги лежачи над головою",
         "tricepExtension": "Розгинання рук на трицепс",
-        "tricepDip": "Віджимання на трицепс"
+        "tricepDip": "Віджимання на трицепс",
+        "dumbellBentOverRaise": "Підйом гантелей в нахилі у боки",
+        "dumbellBentOver": "Підйом гантелей в нахилі назад",
+        "dumbbellStepUp": "Підйом на поверхню з гантелями",
+        "vUp": "V-складка",
+        "doubleCrunch": "Прес з піднятими ногами",
+        "dumbbellOverheadTricepsExtension": "Розгинання гантелі над головою"
       }
 
     },
