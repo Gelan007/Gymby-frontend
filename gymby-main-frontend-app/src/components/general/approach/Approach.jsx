@@ -88,7 +88,13 @@ const Approach = ({isDrawControlIcons = true, isWeight = true,
         "Tricep Bench Dip": t("programs.exercises.tricepBenchDip"),
         "Skullcrusher ": t("programs.exercises.skullcrusher"),
         "Tricep Extension": t("programs.exercises.tricepExtension"),
-        "Tricep Dip": t("programs.exercises.tricepDip")
+        "Tricep Dip": t("programs.exercises.tricepDip"),
+        "Dumbbell Bent-Over Raise": t("programs.exercises.dumbellBentOverRaise"),
+        "Dumbbell Bent-Over": t("programs.exercises.dumbellBentOver"),
+        "Dumbbell Step-Up": t("programs.exercises.dumbbellStepUp"),
+        "V-Up": t("programs.exercises.vUp"),
+        "Double Crunch": t("programs.exercises.doubleCrunch"),
+        "Dumbbell Overhead Triceps Extension": t("programs.exercises.dumbbellOverheadTricepsExtension")
     };
 
     return (

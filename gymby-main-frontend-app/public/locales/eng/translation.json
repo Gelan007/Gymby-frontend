@@ -210,7 +210,13 @@
       "tricepBenchDip": "Tricep Bench Dip",
       "skullcrusher": "Skullcrusher",
       "tricepExtension": "Tricep Extension",
-      "tricepDip": "Tricep Dip"
+      "tricepDip": "Tricep Dip",
+      "dumbellBentOverRaise": "Dumbbell Bent-Over Raise",
+      "dumbellBentOver": "Dumbbell Bent-Over",
+      "dumbbellStepUp": "Dumbbell Step-Up",
+      "vUp": "V-Up",
+      "doubleCrunch": "Double Crunch",
+      "dumbbellOverheadTricepsExtension": "Dumbbell Overhead Triceps Extension"
     }
   },
   "statistics": {
