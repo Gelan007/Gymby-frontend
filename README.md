@@ -1,5 +1,5 @@
 # Gymby-frontend
-## A software system for systematizing the process of physical training.
+## A software system for systematizing the process of physical trainings.
 
 The software application contains two roles - a common user and a trainer.
 **The following functions are available to a common user:**
