@@ -1,6 +1,9 @@
 # Gymby-frontend
 ## A software system for systematizing the process of physical trainings.
 
+### [YouTube demo video](https://www.youtube.com/watch?v=8Jugz5prO7g&list=LLgyC_Jq-UaWJpf-ZvzCkb_A&ab_channel=IvanK) 
+
+
 The software application contains two roles - a common user and a trainer.
 **The following functions are available to a common user:**
 - registration and authorization in the system;
@@ -31,4 +34,3 @@ The software application contains two roles - a common user and a trainer.
 - editing the client's training diary.
 
   
-### [YouTube demo video](https://www.youtube.com/watch?v=8Jugz5prO7g&list=LLgyC_Jq-UaWJpf-ZvzCkb_A&ab_channel=IvanK) 
